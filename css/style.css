@@ -1,4 +1,4 @@
-/* Main styles for the website */
+
 :root {
     --bg: #0A0A10;
     --header-bg: #1C1C24;
@@ -30,7 +30,7 @@ header {
     gap: 15px;
 }
 .brand img {
-    width: 80px; /* ajuste conforme necessário */
+    width: 80px; 
     height: auto;
     border-radius: 50px;
     display: block;
@@ -61,6 +61,63 @@ nav ul li {
 nav a:hover {
     background: var(--accent);
 }
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-login {
+    background: transparent;
+    color: var(--text);
+    border-color: rgba(255,255,255,0.08);
+}
+
+
+.btn-download {
+    background: linear-gradient(90deg, var(--accent), #5f39d9);
+    color: var(--text);
+    border-color: transparent;
+}
+
+.btn-login:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.btn-download:hover {
+    filter: brightness(1.05);
+}
+
+
+@media (max-width: 640px) {
+    header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
 
 .container {
     width: 80%;
