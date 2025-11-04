@@ -1,24 +1,46 @@
 /* Main styles for the website */
-
+:root {
+    --bg: #0A0A10;
+    --header-bg: #1C1C24;
+    --text: #FFFFFF;
+    --title: #EBEBEB;
+    --muted: #8F8F9B;
+    --accent: #7A49FF;
+    --footer-bg: #35424a;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bg);
+    color: var(--text);
+}
+header {
+    background: var(--header-bg);
+    color: var(--text);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
 }
 
-header {
-    background: #35424a;
-    color: #ffffff;
-    padding: 10px 0;
-    text-align: center;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+.brand img {
+    width: 80px; /* ajuste conforme necessário */
+    height: auto;
+    border-radius: 50px;
+    display: block;
 }
+.brand h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--title);
+}
+
 nav {
     margin: 10px 0;
     display: flex;
@@ -27,7 +49,7 @@ nav {
 }
 
 nav a {
-    color: #ffffff;
+    color: var(--muted);
     text-decoration: none;
     padding: 10px 15px;
 }
@@ -37,7 +59,7 @@ nav ul li {
 }   
 
 nav a:hover {
-    background: #e8491d;
+    background: var(--accent);
 }
 
 .container {
@@ -47,8 +69,8 @@ nav a:hover {
 }
 
 .footer {
-    background: #35424a;
-    color: #ffffff;
+    background: var(--footer-bg);
+    color: var(--text);
     text-align: center;
     padding: 10px 0;
     position: relative;
