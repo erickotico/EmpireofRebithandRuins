@@ -14,10 +14,16 @@ header {
     padding: 10px 0;
     text-align: center;
 }
-
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
 nav {
     margin: 10px 0;
-    ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav a {
