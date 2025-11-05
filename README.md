@@ -1,3 +1,4 @@
-# My Website
-
-Este site será servido para um jogo futuro, como se fosse um manual para o jogo em si podendo se tornar uma rede social especifico para o jogador sobre o jogo 
+# Empire of Rebirth & Ruins
+===============
+Este site esta sendo criado com proposito de um projeto de game futuro,como se fosse um manual para o jogo em si podendo se tornar uma rede social especifico para o jogador sobre o jogo.
+(ainda em desenvolvimento)
