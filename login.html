@@ -59,15 +59,74 @@
                         Continuar com Google
                     </button>
                 </div>
-
                 <p class="signup-prompt">
-                    Não tem uma conta? <a href="cadastro.html" class="text-accent">Criar conta</a>
+                    Não tem uma conta? <a href="#" id="openSignup" type="button" class="signup-link">Criar conta</link>
                 </p>
-                    </button>
+                </form>
+    <!-- Modal de cadastro -->
+    <div id="signupModal" class="modal-overlay" hidden aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+            <button class="modal-close" id="closeSignup" aria-label="Fechar">×</button>
+            <h3 id="signupTitle">Criar conta</h3>
+            <form id="signupForm" class="signup-form" novalidate>
+                <div class="form-group">
+                   <label for="fullName">Nome completo</label>
+                    <input id="fullName" name="fullName" type="text" required>
+                    <div class="form-error" data-for="fullName"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">E‑mail</label>
+                    <input id="signupEmail" name="email" type="email" required>
+                    <div class="form-error" data-for="signupEmail"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Número de telefone</label>
+                    <input id="phone" name="phone" type="tel" placeholder="+55 11 9xxxx-xxxx">
+                    <div class="form-error" data-for="phone"></div>
+                </div>
+
+                <div class="form-row dob-row">
+                    <div>
+                        <label for="birthDay">Dia</label>
+                        <input id="birthDay" name="day" type="number" min="1" max="31" required>
+                    </div>
+                    <div>
+                        <label for="birthMonth">Mês</label>
+                        <input id="birthMonth" name="month" type="number" min="1" max="12" required>
+                    </div>
+                    <div>
+                        <label for="birthYear">Ano</label>
+                        <input id="birthYear" name="year" type="number" min="1900" max="2025" required>
+                    </div>
+                    <div class="form-error" data-for="dob"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Senha</label>
+                    <input id="signupPassword" name="password" type="password" minlength="6" required>
+                    <div class="form-error" data-for="signupPassword"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" id="agreeTerms" required> Eu li e concordo com os <a href="#" target="_blank">termos de privacidade</a>
+                    </label>
+                    <div class="form-error" data-for="agreeTerms"></div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-download">Criar conta</button>
+                    <button type="button" class="btn btn-login" id="cancelSignup">Cancelar</button>
                 </div>
             </form>
-        </aside>
+        </div>
+    </div>
+
+    </aside>
     </main>
 <script src="js/login.js"></script>
-</body>
+ </body>
 </html>
+

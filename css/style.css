@@ -23,7 +23,6 @@ header {
     align-items: center;
     justify-content:space-between;
 }
-
 .brand {
     display: flex;
     align-items: center;
@@ -40,14 +39,12 @@ header {
     font-size: 1.25rem;
     color: var(--title);
 }
-
 nav {
     margin: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 nav a {
     color: var(--muted);
     text-decoration: none;
@@ -57,7 +54,6 @@ nav ul li {
     display: inline;
     margin-right: 10px;
 }   
-
 nav a:hover {
     background: var(--accent);
 }
@@ -66,7 +62,6 @@ nav a:hover {
     gap: 0.5rem;
     align-items: center;
 }
-
 .btn {
     font-family: inherit;
     font-size: 0.95rem;
@@ -79,28 +74,22 @@ nav a:hover {
     align-items: center;
     justify-content: center;
 }
-
 .btn-login {
     background: transparent;
     color: var(--text);
     border-color: rgba(255,255,255,0.08);
 }
-
-
 .btn-download {
     background: linear-gradient(90deg, var(--accent), #5f39d9);
     color: var(--text);
     border-color: transparent;
 }
-
 .btn-login:hover {
     background: rgba(255,255,255,0.03);
 }
-
 .btn-download:hover {
     filter: brightness(1.05);
 }
-
 
 @media (max-width: 640px) {
     header {
@@ -130,26 +119,22 @@ nav a:hover {
     text-align: center;
     padding: 2rem;
 }
-
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
 }
-
 .hero h2 {
     font-size: 3.5rem;
     color: var(--text);
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
-
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--muted);
     margin-bottom: 2rem;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
-
 .hero .btn-download {
     font-size: 1.2rem;
     padding: 1rem 2rem;
@@ -168,14 +153,12 @@ nav a:hover {
     padding: 4rem 2rem;
     background: var(--bg);
 }
-
 .section-title {
     text-align: center;
     font-size: 2rem;
     color: var(--title);
     margin-bottom: 2rem;
 }
-
 .updates-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -183,53 +166,44 @@ nav a:hover {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .update-card {
     background: var(--header-bg);
     border-radius: 8px;
     padding: 1.5rem;
     border: 1px solid rgba(255,255,255,0.1);
 }
-
 .update-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
 }
-
 .update-version {
     color: var(--accent);
     font-weight: bold;
 }
-
 .update-date {
     color: var(--muted);
     font-size: 0.9rem;
 }
-
 .update-card h3 {
     color: var(--title);
     margin-bottom: 1rem;
     font-size: 1.25rem;
 }
-
 .update-list {
     list-style: none;
     padding: 0;
     margin: 0 0 1rem 0;
 }
-
 .update-list li {
     color: var(--text);
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
 .update-list li:last-child {
     border-bottom: none;
 }
-
 .update-link {
     color: var(--accent);
     text-decoration: none;
@@ -237,7 +211,6 @@ nav a:hover {
     display: inline-block;
     margin-top: 1rem;
 }
-
 .update-link:hover {
     text-decoration: underline;
 }
@@ -263,7 +236,6 @@ nav a:hover {
     overflow-y: auto;
     padding-right: 8px; 
 }
-
 .updates-grid::-webkit-scrollbar {
     width: 10px;
 }
@@ -293,14 +265,12 @@ nav a:hover {
     margin: auto;
     overflow: hidden;
 }
-
 .site-footer {
     background: var(--footer-bg);
     color: var(--text);
     padding: 3rem 1rem;
     border-top: 1px solid rgba(255,255,255,0.02);
 }
-
 .footer-grid {
     display: flex;
     gap: 2rem;
@@ -311,27 +281,23 @@ nav a:hover {
     padding: 0 1rem;
     box-sizing: border-box;
 }
-
 .footer-brand {
     display: flex;
     gap: 1rem;
     align-items: flex-start;
     min-width: 260px;
 }
-
 .footer-brand img {
     width: 72px;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
 }
-
 .footer-brand h3 {
     margin: 0;
     color: var(--title);
     font-size: 1.05rem;
 }
-
 .footer-desc {
     margin: 0.4rem 0 0;
     color: var(--muted);
@@ -339,41 +305,34 @@ nav a:hover {
     max-width: 320px;
     line-height: 1.4;
 }
-
 .footer-links {
     display: flex;
     gap: 2rem;
     margin-left: auto;
     flex-wrap: wrap;
 }
-
 .footer-col h4 {
     margin: 0 0 0.5rem 0;
     color: var(--title);
     font-size: 0.98rem;
 }
-
 .footer-col ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 .footer-col li {
     margin: 0.45rem 0;
 }
-
 .footer-col a {
     color: var(--muted);
     text-decoration: none;
     font-size: 0.95rem;
 }
-
 .footer-col a:hover {
     color: var(--accent);
     text-decoration: underline;
 }
-
 .footer-bottom {
     max-width: 1200px;
     margin: 1.25rem auto 0;
@@ -423,6 +382,7 @@ nav a:hover {
         max-width: 100%;
     }
 }
+
 /* Estilos para a página de login */
 .auth-layout {
     display: flex;
@@ -434,7 +394,6 @@ nav a:hover {
     box-sizing: border-box;
     border-radius: 10px;
 }
-
 .auth-image {
     flex: 0 0 60%;
     border-radius: 10px;
@@ -455,50 +414,44 @@ nav a:hover {
     flex: 0 0 40%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* centraliza todo conteúdo */
+    align-items: center;
     gap: 1.5rem;
-    padding: 2.5rem; /* aumentado para dar mais espaço */
+    padding: 2.5rem;
     background: var(--header-bg);
     border: 1px solid rgba(255,255,255,0.04);
     border-radius: 10px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
-
 .auth-panel .login-brand {
     text-align: center;
     width: 100%;
-    max-width: 320px; /* limita largura */
+    max-width: 320px;
 }
 
 .auth-panel .login-brand { margin-bottom: 0.5rem; }
 .auth-panel .login-brand img { width: 85px; }
 .auth-panel .login-desc { margin-top: 0.25rem; }
 
-
-
 .auth-panel .login-form {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     width: 100%;
-    max-width: 320px; /* reduzido de 360px */
+    max-width: 320px;
 }
-
 .auth-panel .form-group {
     width: 100%;
 }
-
 .auth-panel .form-group input {
     width: 100%;
-    box-sizing: border-box; /* garante que padding não extrapole */
-    padding: 12px 16px; /* aumentado de 10px 12px */
+    box-sizing: border-box;
+    padding: 12px 16px;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.06);
     background: rgba(255,255,255,0.02);
     color: var(--text);
     font-size: 1rem;
 }
-
 .auth-panel .form-group label {
     display: block;
     margin-bottom: 0.5rem;
@@ -535,11 +488,9 @@ nav a:hover {
 .password-wrap {
     position: relative;
 }
-
 .password-wrap input {
-    padding-right: 40px; /* espaço para o ícone */
+    padding-right: 40px;
 }
-
 .toggle-password {
     position: absolute;
     right: 10px;
@@ -554,23 +505,19 @@ nav a:hover {
     opacity: 0.7;
     transition: opacity 0.2s;
 }
-
 .toggle-password:hover {
     opacity: 1;
 }
-
 .eye-icon {
     width: 20px;
     height: 20px;
-    filter: invert(1); /* Se suas imagens forem pretas e quiser que apareçam brancas */
+    filter: invert(1);
 }
-
 .auth-divider {
     position: relative;
     text-align: center;
     margin: 1rem 0;
 }
-
 .auth-divider::before,
 .auth-divider::after {
     content: "";
@@ -592,22 +539,20 @@ nav a:hover {
 .btn-google:hover {
     background: #f1f1f1;
 }
-
 .signup-prompt {
     text-align: center;
     margin-top: 1rem;
     color: var(--muted);
     font-size: 0.9rem;
 }
-
 .text-accent {
     color: var(--accent);
     text-decoration: none;
 }
-
 .text-accent:hover {
     text-decoration: underline;
 }
+
 /*google button styles*/    
 .btn-google {
     width: 100%;
@@ -624,14 +569,69 @@ nav a:hover {
     cursor: pointer;
     transition: background 0.15s, transform 0.06s;
 }
-
 .btn-google:hover {
     background: #f6f6f6;
     transform: translateY(-1px);
 }
-
 .google-icon {
     width: 20px;
     height: 20px;
     display: inline-block;
+}
+
+/* Estilo para o link de cadastro */
+.signup-link {
+    color: var(--title);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* Modal de cadastro */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    padding: 1.25rem;
+}
+.modal {
+    width: 100%;
+    max-width: 640px;
+    background: var(--header-bg);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    position: relative;
+    color: var(--text);
+}
+.modal-close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.signup-form .form-group { margin-bottom: 0.85rem; }
+.signup-form label { display: block; margin-bottom: 0.35rem; color: var(--title); }
+.signup-form input { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); color: var(--text); }
+.dob-row { display: flex; gap: 0.5rem; }
+.dob-row > div { flex: 1; }
+.form-error { color: #ff8b8b; font-size: 0.85rem; min-height: 18px; margin-top: 6px; }
+
+.modal .form-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 0.75rem; }
+
+@media (max-width: 720px) {
+    .modal { max-width: 92%; padding: 1rem; }
+    .dob-row { flex-direction: column; }
 }
