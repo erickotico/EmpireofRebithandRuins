@@ -87,6 +87,790 @@
         "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
       }
 
+    },
+     {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
+    }, {
+      "id": "m001",
+      "name": "Goblin Ancião",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
+        "regiao": "Floresta Ancestral",
+        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
+        "tipo": "Humanoide / Beast",
+        "dificuldade": "Médio"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cajado Ancião",
+          "chance": 5,
+          "quantidade": 1
+        },
+        {
+          "item": "Moedas de Ouro",
+          "chance": 100,
+          "quantidade": "50-150"
+        },
+        {
+          "item": "Pergaminho de Sabedoria Goblin",
+          "chance": 15,
+          "quantidade": "1-3"
+        }
+      ],"variantes": [
+        {
+          "name": "Goblin Ancião Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Goblin Ancião Caçador",
+          "image": "img/LogoRPG.jpg",
+          "info": "Variante especializada em emboscadas."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Goblin Ancião Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+      },
+
+      "zombie": {
+        "name": "Goblin Ancião Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+      }
+
     }
 
 
