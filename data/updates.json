@@ -1,0 +1,27 @@
+{
+  "updates": [
+    {
+      "version": "v1.2.0", 
+      "date": "2023-11-04",
+      "title": "Novo Conteúdo Disponível!",
+      "changes": [
+        "Nova dungeon: Caverna dos Ancestrais",
+        "Adicionado novo chefe: Guardião Ancestral", 
+        "Sistema de crafting melhorado"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "v1.1.0",
+      "date": "2023-10-15", 
+      "title": "Atualização de Balanceamento",
+      "changes": [
+        "Ajustes nas classes principais",
+        "Novos itens adicionados",
+        "Correção de bugs menores"
+      ],
+      "link": "#"
+    }
+    
+  ]
+}
