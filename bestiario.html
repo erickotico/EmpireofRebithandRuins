@@ -3,12 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestiário</title>
+    <title>Bestiário - Empire of Rebirth & Ruins</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/bestiario.css">
 </head>
 <body>
-    
+    <header>
+        <div class="brand">
+            <img src="./img/LogoRPG.jpg" alt="Logo do jogo">
+            <h1>Empire of Rebirth & Ruins</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="bestiario.html">Bestiário</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="bestiary-container">
+        <h2 class="section-title">Bestiário</h2>
+        
+        <div class="bestiary-filters">
+            <input type="text" id="searchMonster" placeholder="Procurar monstro...">
+            <select id="filterType">
+                <option value="">Todos os tipos</option>
+                <option value="undead">Morto-vivo</option>
+                <option value="beast">Fera</option>
+                <option value="demon">Demônio</option>
+            </select>
+        </div>
+
+        <div class="monster-grid">
+            <article class="monster-card">
+                <div class="monster-image">     
+                    <img src="img/monsters/monster1.jpg" alt="Nome do Monstro">
+                </div>
+                <div class="monster-info">
+                    <h3>Nome do Monstro</h3>
+                    <p class="monster-type">Tipo: Morto-vivo</p>
+                    <div class="monster-stats">
+                        <span>HP: 100</span>
+                        <span>ATK: 50</span>
+                        <span>DEF: 30</span>
+                    </div>
+                    <p class="monster-description">
+                        Breve descrição do monstro e suas habilidades principais.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <!-- Mesmo footer do index.html -->
+    </footer>
+
+    <script src="js/bestiario.js"></script>
 </body>
 </html>

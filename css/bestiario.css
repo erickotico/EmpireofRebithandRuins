@@ -1,0 +1,407 @@
+/* Cores de raridade */
+.comum { border-color: #808080; }
+.comum .monster-rarity { background: #808080; color: #fff; }
+.incomum { border-color: #2e7d32; }
+.incomum .monster-rarity { background: #2e7d32; color: #fff; }
+.raro { border-color: #1976d2; }
+.raro .monster-rarity { background: #1976d2; color: #fff; }
+.lendario { border-color: #9c27b0; }
+.lendario .monster-rarity { background: #9c27b0; color: #fff; }
+.divindade { border-color: #ffd700; }
+.divindade .monster-rarity { background: #ffd700; color: #000; }
+
+/* Container */
+.bestiary-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Filtros */
+.bestiary-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.bestiary-filters input,
+.bestiary-filters select {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: var(--text);
+    border-radius: 6px;
+}
+
+/* Grid de cards */
+.monster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* Card */
+.monster-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--header-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.monster-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Imagem do card */
+.monster-card-image {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    overflow: hidden;
+    background: rgba(0,0,0,0.06);
+}
+
+.monster-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.monster-card:hover .monster-card-image img {
+    transform: scale(1.04);
+}
+
+/* badge de raridade sobre a imagem */
+.monster-rarity {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+/* Corpo do card */
+.monster-card-body {
+    padding: 0.85rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.monster-basic-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.monster-name {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--title);
+    font-weight: 700;
+}
+
+.monster-level {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* estrelas à direita */
+.monster-stars {
+    color: #ffd700;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* Localização com background leve e espaçamento */
+.monster-location {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0;
+    padding: 0.4rem 0.65rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* Linha de estatísticas: 4 blocos lado a lado */
+.monster-stats-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    align-items: stretch;
+}
+
+.stat-block {
+    flex: 1 1 0;
+    background: rgba(255,255,255,0.02);
+    padding: 0.45rem 0.5rem;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+    min-width: 0;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+/* Tabs e modal - conteúdo já existente ajustado */
+.monster-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    padding: 1.25rem;
+}
+
+.modal-content {
+    background: var(--header-bg);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 880px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.modal-header {
+    position: relative;
+    padding-bottom: 44%; /* imagem ocupa topo */
+    overflow: hidden;
+}
+
+.modal-header img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.35rem;
+}
+
+.modal-level { font-size: 0.95rem; color: #fff; opacity: 0.95; }
+.modal-stars { color: #ffd700; }
+.modal-rarity { padding: 0.18rem 0.5rem; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; }
+
+/* Tabs */
+.modal-tabs {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+}
+
+.tab-btn {
+    padding: 0.45rem 0.8rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--muted);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.92rem;
+}
+
+.tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+/* Conteúdo das tabs */
+.modal-body {
+    padding: 1rem;
+}
+
+.tab-content {
+    display: none;
+    padding: 0.5rem 0 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Informações */
+.monster-history {
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+}
+
+.info-item {
+    background: rgba(255,255,255,0.02);
+    padding: 0.65rem;
+    border-radius: 6px;
+}
+
+.info-label { color: var(--muted); display: block; margin-bottom: 0.25rem; }
+
+/* Estatísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.stat-item {
+    background: rgba(255,255,255,0.02);
+    padding: 0.65rem;
+    border-radius: 6px;
+}
+
+.stat-label { color: var(--muted); display: block; margin-bottom: 0.25rem; }
+
+/* Resistências: grid 2 por linha e flexível para mais atributos */
+.resistances { margin-top: 0.85rem; }
+.resistances h4 { margin-bottom: 0.5rem; color: var(--title); font-size: 1rem; }
+
+.resistances-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.resistance-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.6rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 6px;
+    font-size: 0.92rem;
+}
+
+.resistance-type { text-transform: capitalize; color: var(--text); }
+.resistance-icon { font-size: 1.05rem; font-weight: 700; }
+
+.resistance-icon.muito-forte,
+.resistance-icon.forte { color: #4caf50; }
+
+.resistance-icon.fraco,
+.resistance-icon.muito-fraco { color: #f44336; }
+
+.resistance-icon.neutro { color: #909090; font-weight: 700; }
+
+/* Habilidades */
+.xp-info { margin-bottom: 1rem; color: #4caf50; }
+.skill-item { background: rgba(255,255,255,0.02); padding: 0.85rem; border-radius: 6px; margin-bottom: 0.75rem; }
+.skill-name { color: var(--accent); margin-bottom: 0.35rem; }
+.skill-desc { margin-bottom: 0.35rem; line-height: 1.4; }
+.skill-cd { color: var(--muted); font-size: 0.9rem; }
+
+/* Recompensas */
+.rewards-list { margin-top: 0.5rem; }
+.reward-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.75rem;
+    padding: 0.55rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    align-items: center;
+}
+.reward-chance { color: #4caf50; }
+.reward-qty { color: var(--muted); }
+
+/* Variantes / Corrompido / Zumbi */
+.variantes .variant-card,
+.corrompido .variant-card,
+.zumbi .variant-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    margin-bottom: 0.6rem;
+}
+
+.variant-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
+.variant-info h4 { margin: 0 0 0.35rem 0; color: var(--accent); }
+.variant-info p { margin: 0; line-height: 1.4; font-size: 0.95rem; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .bestiary-filters { flex-direction: column; gap: 0.6rem; }
+    .monster-grid { grid-template-columns: 1fr; }
+    .info-grid, .stats-grid { grid-template-columns: 1fr; }
+    .resistances-grid { grid-template-columns: repeat(2, 1fr); }
+    .monster-stats-row { flex-wrap: wrap; gap: 0.5rem; }
+    .stat-block { flex: 1 1 45%; }
+    .modal-content { max-width: 94%; max-height: 95vh; }
+    .modal-header { padding-bottom: 50%; }
+}
+
+@media (min-width: 769px) {
+    .resistances-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
