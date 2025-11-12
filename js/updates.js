@@ -87,6 +87,6 @@ class UpdatesManager {
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     const updatesManager = new UpdatesManager();
-    updatesManager.loadLocalUpdates(); // Use este para dados locais
-    // updatesManager.loadFromAPI(); // Use este quando tiver uma API
+    updatesManager.loadLocalUpdates(); // este para dados locais
+    // updatesManager.loadFromAPI(); // este quando tiver uma API
 });
