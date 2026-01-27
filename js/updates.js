@@ -41,7 +41,7 @@ class UpdatesManager {
     // Carrega as atualizações do arquivo JSON local
     async loadLocalUpdates() {
         try {
-            const response = await fetch('/data/updates.json');
+            const response = await fetch('./data/updates.json');
             const data = await response.json();
             this.displayUpdates(data.updates);
         } catch (error) {

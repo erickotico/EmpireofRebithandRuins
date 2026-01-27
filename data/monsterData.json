@@ -76,15 +76,15 @@
       ],
 
       "corrompido": {
-        "name": "Goblin Ancião Corrompido",
-        "image": "img/LogoRPG.jpg",
-        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+        "name": "",
+        "image": "",
+        "info": ""
       },
 
       "zombie": {
-        "name": "Goblin Ancião Zumbi",
-        "image": "img/LogoRPG.jpg",
-        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+        "name": "",
+        "image": "",
+        "info": ""
       }
 
     },
