@@ -1,3 +1,11 @@
+/*Lista de Raridade de monstros
+    comum
+    incomum
+    raro
+    lendário
+*/
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const monsterGrid = document.querySelector('.monster-grid');
     let monsters = [];
