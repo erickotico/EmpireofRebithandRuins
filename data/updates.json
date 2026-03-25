@@ -1,115 +1,15 @@
 {
   "updates": [
     {
-      "version": "v1.2.0", 
-      "date": "2023-11-04",
-      "title": "Novo Conteúdo Disponível!",
+      "version": "v0.0.4", 
+      "date": "2026-03-0424",
+      "title": "Adição de atributos de subclasses",
       "changes": [
-        "Nova dungeon: Caverna dos Ancestrais",
-        "Adicionado novo chefe: Guardião Ancestral", 
-        "Sistema de crafting melhorado"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
-      ],
-      "link": "#"
-    },
-        {
-      "version": "v1.1.0",
-      "date": "2023-10-15", 
-      "title": "Atualização de Balanceamento",
-      "changes": [
-        "Ajustes nas classes principais",
-        "Novos itens adicionados",
-        "Correção de bugs menores"
+        "Escolha de subclasses agora concede bônus de atributos",
+        "Subclasses reequilibradas para melhor se encaixar com os bônus de atributos", 
+        "Adição de novos atributos como 'Velocidade' e 'Resistência'"
       ],
       "link": "#"
     }
-    
   ]
 }
