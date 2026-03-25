@@ -163,12 +163,12 @@
         }
       ]
     },
-        {
+  {
       "id": "c003",
-      "name": "Arqueiro",
+      "name": "Feiticeiro",
       "image": "img/LogoRPG.jpg",
-      "descricao": "Especialistas em ataques à distância, com alta velocidade e precisão",
-      "cor": "#388e3c",
+      "descricao": "Especialistas em magias de destruição, com alta inteligência e poder mágico",
+      "cor": "#7b1fa2",
       "estatisticas": {
         "forca": 1,
         "defesa": 1,
@@ -190,9 +190,9 @@
       ],
       "subclasses": [
         {
-          "id": "sc006",
-          "name": "Ranger",
-          "descricao": "Aumenta dano de ataques à distância, mas reduz defesa",
+          "id": "sc011",
+          "name": "Necromace",
+          "descricao": "Aumenta dano de magias de morte, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "forca": "+30%",
@@ -200,9 +200,9 @@
           }
         },
         {
-          "id": "sc007",
-          "name": "Assassin",
-          "descricao": "Aumenta dano crítico, mas reduz defesa",
+          "id": "sc012",
+          "name": "VoidWalker",
+          "descricao": "Aumenta dano de magias de escuridão, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "forca": "+30%",
@@ -210,9 +210,9 @@
           }
         },
         {
-          "id": "sc008",
-          "name": "Arcane Archer",
-          "descricao": "Aumenta dano mágico, mas reduz defesa e velocidade",
+          "id": "sc013",
+          "name": "ShadowCaster",
+          "descricao": "Aumenta dano de magias de sombra, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "forca": "+30%",
@@ -221,8 +221,8 @@
           }
         },
         {
-          "id": "sc009",
-          "name": "GloomStalker",
+          "id": "sc014",
+          "name": "ChaosSorcerior",
           "descricao": "Aumenta resistência e dano, mas reduz velocidade",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
@@ -232,8 +232,8 @@
           }
         },
         {
-          "id": "sc010",
-          "name": "BloodArcher",
+          "id": "sc015",
+          "name": "BloodSorcerior",
           "descricao": "Aumenta dano e resistência, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
