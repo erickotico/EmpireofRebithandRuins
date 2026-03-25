@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const classesGrid = document.getElementById('classesGrid');
     let classes = [];
-
+/*
+Gostaria de saber se tem como fazer um comparativo nos atributos das classes, para que mostre os atributos no nivel um e atributos diferentes quando estiver no nivel maximo
+*/
     // Criar card de classe
     function createClassCard(classe) {
         return `
