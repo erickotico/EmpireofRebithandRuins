@@ -325,7 +325,7 @@
         }
       ]
     },
-        {
+    {
       "id": "c005",
       "name": "Lanceiro",
       "image": "img/LogoRPG.jpg",
@@ -396,6 +396,87 @@
         {
           "id": "sc030",
           "name": "DragonSlayer",
+          "descricao": "Aumenta dano de magias de gelo, mas reduz defesa e velocidade",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "c006",
+      "name": "Espadachim",
+      "image": "img/LogoRPG.jpg",
+      "descricao": "Especialistas em magias de destruição, com alta inteligência e poder mágico",
+      "cor": "#c2185b",
+      "estatisticas": {
+        "forca": 1,
+        "defesa": 1,
+        "velocidade": 1,
+        "inteligencia": 1,
+        "resistencia": 1
+      },
+      "habilidades": [
+        {
+          "nome": "Golpe Poderoso",
+          "descricao": "Causa 200% de dano com um golpe devastador",
+          "cooldown": "5s"
+        },
+        {
+          "nome": "Escudo de Ferro",
+          "descricao": "Aumenta defesa em 50% por 8 segundos",
+          "cooldown": "10s"
+        }
+      ],
+      "subclasses": [
+        {
+          "id": "sc031",
+          "name": "Samurai",
+          "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc032",
+          "name": "Spell Blade",
+          "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc033",
+          "name": "HexBlade",
+          "descricao": "Aumenta dano mágico, mas reduz defesa e velocidade",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc034",
+          "name": "Blade Dancer",
+          "descricao": "Aumenta dano de magias de tempestade, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "resistencia": "+30%",
+            "forca": "+30%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc035",
+          "name": "Blade Master",
           "descricao": "Aumenta dano de magias de gelo, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
