@@ -109,9 +109,9 @@
       ],
       "subclasses": [
         {
-          "id": "sc001",
-          "name": "Berserker",
-          "descricao": "Aumenta dano drasticamente ao custo de defesa",
+          "id": "sc006",
+          "name": "Ranger",
+          "descricao": "Aumenta dano de ataques à distância, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "forca": "+30%",
@@ -119,9 +119,9 @@
           }
         },
         {
-          "id": "sc002",
-          "name": "Blood Knight",
-          "descricao": "Capacidade de se curar ao causar dano, mas com redução de defesa",
+          "id": "sc007",
+          "name": "Assassin",
+          "descricao": "Aumenta dano crítico, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "forca": "+30%",
@@ -129,9 +129,9 @@
           }
         },
         {
-          "id": "sc003",
-          "name": "Dead Knight",
-          "descricao": "Aumenta dano e resistência, mas reduz velocidade",
+          "id": "sc008",
+          "name": "Arcane Archer",
+          "descricao": "Aumenta dano mágico, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "forca": "+30%",
@@ -140,20 +140,100 @@
           }
         },
         {
-          "id": "sc004",
-          "name": "Paladino",
-          "descricao": "Aumenta defesa e resistência, mas reduz velocidade",
+          "id": "sc009",
+          "name": "GloomStalker",
+          "descricao": "Aumenta resistência e dano, mas reduz velocidade",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "resistencia": "+30%",
             "forca": "+30%",
-            "defesa": "+10%",
             "velocidade": "-10%"
           }
         },
         {
-          "id": "sc005",
-          "name": "Dragon Knight",
+          "id": "sc010",
+          "name": "BloodArcher",
+          "descricao": "Aumenta dano e resistência, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        }
+      ]
+    },
+        {
+      "id": "c003",
+      "name": "Arqueiro",
+      "image": "img/LogoRPG.jpg",
+      "descricao": "Especialistas em ataques à distância, com alta velocidade e precisão",
+      "cor": "#388e3c",
+      "estatisticas": {
+        "forca": 1,
+        "defesa": 1,
+        "velocidade": 1,
+        "inteligencia": 1,
+        "resistencia": 1
+      },
+      "habilidades": [
+        {
+          "nome": "Golpe Poderoso",
+          "descricao": "Causa 200% de dano com um golpe devastador",
+          "cooldown": "5s"
+        },
+        {
+          "nome": "Escudo de Ferro",
+          "descricao": "Aumenta defesa em 50% por 8 segundos",
+          "cooldown": "10s"
+        }
+      ],
+      "subclasses": [
+        {
+          "id": "sc006",
+          "name": "Ranger",
+          "descricao": "Aumenta dano de ataques à distância, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc007",
+          "name": "Assassin",
+          "descricao": "Aumenta dano crítico, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc008",
+          "name": "Arcane Archer",
+          "descricao": "Aumenta dano mágico, mas reduz defesa e velocidade",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc009",
+          "name": "GloomStalker",
+          "descricao": "Aumenta resistência e dano, mas reduz velocidade",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "resistencia": "+30%",
+            "forca": "+30%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc010",
+          "name": "BloodArcher",
           "descricao": "Aumenta dano e resistência, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
