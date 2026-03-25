@@ -163,7 +163,7 @@
         }
       ]
     },
-  {
+    {
       "id": "c003",
       "name": "Feiticeiro",
       "image": "img/LogoRPG.jpg",
@@ -235,6 +235,168 @@
           "id": "sc015",
           "name": "BloodSorcerior",
           "descricao": "Aumenta dano e resistência, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "c004",
+      "name": "Mago",
+      "image": "img/LogoRPG.jpg",
+      "descricao": "Especialistas em magias de destruição, com alta inteligência e poder mágico",
+      "cor": "#1976d2",
+      "estatisticas": {
+        "forca": 1,
+        "defesa": 1,
+        "velocidade": 1,
+        "inteligencia": 1,
+        "resistencia": 1
+      },
+      "habilidades": [
+        {
+          "nome": "Golpe Poderoso",
+          "descricao": "Causa 200% de dano com um golpe devastador",
+          "cooldown": "5s"
+        },
+        {
+          "nome": "Escudo de Ferro",
+          "descricao": "Aumenta defesa em 50% por 8 segundos",
+          "cooldown": "10s"
+        }
+      ],
+      "subclasses": [
+        {
+          "id": "sc016",
+          "name": "Pyromancer",
+          "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc017",
+          "name": "MagicKnight",
+          "descricao": "Aumenta dano de magias de gelo, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc018",
+          "name": "Illusionist",
+          "descricao": "Aumenta dano de magias de ilusão, mas reduz defesa e velocidade",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc019",
+          "name": "StormCaller",
+          "descricao": "Aumenta dano de magias de tempestade, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "resistencia": "+30%",
+            "forca": "+30%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc020",
+          "name": "Cryomancer",
+          "descricao": " Aumenta dano de magias de gelo, mas reduz defesa e velocidade",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        }
+      ]
+    },
+        {
+      "id": "c005",
+      "name": "Lanceiro",
+      "image": "img/LogoRPG.jpg",
+      "descricao": "Especialistas em magias de destruição, com alta inteligência e poder mágico",
+      "cor": "#f57c00",
+      "estatisticas": {
+        "forca": 1,
+        "defesa": 1,
+        "velocidade": 1,
+        "inteligencia": 1,
+        "resistencia": 1
+      },
+      "habilidades": [
+        {
+          "nome": "Golpe Poderoso",
+          "descricao": "Causa 200% de dano com um golpe devastador",
+          "cooldown": "5s"
+        },
+        {
+          "nome": "Escudo de Ferro",
+          "descricao": "Aumenta defesa em 50% por 8 segundos",
+          "cooldown": "10s"
+        }
+      ],
+      "subclasses": [
+        {
+          "id": "sc026",
+          "name": "Hoplite",
+          "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc027",
+          "name": "Halberd",
+          "descricao": "Aumenta dano de magias de gelo, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%"
+          }
+        },
+        {
+          "id": "sc028",
+          "name": "Celestial Lancer",
+          "descricao": "Aumenta dano de magias de ilusão, mas reduz defesa e velocidade",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "forca": "+30%",
+            "defesa": "-10%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc029",
+          "name": "Assyrian Elite Spearman",
+          "descricao": "Aumenta dano de magias de tempestade, mas reduz defesa",
+          "imagem": "img/LogoRPG.jpg",
+          "bonus": {
+            "resistencia": "+30%",
+            "forca": "+30%",
+            "velocidade": "-10%"
+          }
+        },
+        {
+          "id": "sc030",
+          "name": "DragonSlayer",
+          "descricao": "Aumenta dano de magias de gelo, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
           "bonus": {
             "forca": "+30%",
