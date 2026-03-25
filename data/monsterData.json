@@ -3,17 +3,17 @@
   "monsters": [
     {
       "id": "m001",
-      "name": "Goblin Ancião",
+      "name": "Slime",
       "image": "img/LogoRPG.jpg",
-      "level": 15,
+      "level": 10,
       "stars": 1,
       "rarity": "comum",
       "informacoes": {
-        "historia": "Um goblin que sobreviveu décadas graças à sua astúcia e experiência em combate. Lidera grupos menores em ataques coordenados.",
-        "regiao": "Floresta Ancestral",
-        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
-        "tipo": "Humanoide / Beast",
-        "dificuldade": "Médio"
+        "historia": "Criaturas gelatinosas que habitam áreas úmidas, conhecidas por sua capacidade de regeneração rápida.",
+        "regiao": "Pântanos e cavernas úmidas",
+        "comportamento": "Passivo, mas pode se tornar agressivo quando ameaçado",
+        "tipo": "Gelatina / Beast",
+        "dificuldade": "Fácil"
       },
         "estatisticas": {
         "pontosVida": 2500,
@@ -49,30 +49,30 @@
       },
       "recompensas": [
         {
-          "item": "Cajado Ancião",
-          "chance": 5,
+          "item": "Gelatina de Slime",
+          "chance": 100,
           "quantidade": 1
         },
         {
-          "item": "Moedas de Ouro",
+          "item": "Nucleo de Slime",
           "chance": 100,
           "quantidade": "50-150"
-        },
-        {
-          "item": "Pergaminho de Sabedoria Goblin",
-          "chance": 15,
-          "quantidade": "1-3"
         }
       ],"variantes": [
         {
-          "name": "Goblin Ancião Alpha",
+          "name": "Slime Maior",
           "image": "img/LogoRPG.jpg",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         {
-          "name": "Goblin Ancião Caçador",
+          "name": "Slime King",
           "image": "img/LogoRPG.jpg",
-          "info": "Variante especializada em emboscadas."
+          "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência."
+        },
+        {
+          "name": "Glutão Slime",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável."
         }
       ],
 
@@ -91,17 +91,17 @@
     },
     {
       "id": "m002",
-      "name": "Dragão Ancião",
+      "name": "Lobo",
       "image": "img/LogoRPG.jpg",
-      "level": 200,
-      "stars": 7,
-      "rarity": "lendario",
+      "level": 15,
+      "stars": 2,
+      "rarity": "incomum",
       "informacoes": {
-        "historia": "Um dragão que mata geral e que come o cu de quem está lendo.",
-        "regiao": "Floresta Ancestral",
-        "comportamento": "Territorial e estratégico, prefere emboscar suas presas usando táticas em grupo.",
-        "tipo": "Dragonoid/ Beast",
-        "dificuldade": "Médio"
+        "historia": "Predadores ágeis que caçam em matilhas, conhecidos por sua ferocidade e inteligência.",
+        "regiao": "Florestas e montanhas",
+        "comportamento": "Agressivo, especialmente quando em matilha",
+        "tipo": "Bestial / Predador",
+        "dificuldade": "Media"
       },
         "estatisticas": {
         "pontosVida": 2500,
@@ -137,46 +137,235 @@
       },
       "recompensas": [
         {
-          "item": "Cajado Ancião",
-          "chance": 5,
+          "item": "Pele de Lobo",
+          "chance": 100,
+          "quantidade": 2
+        },
+        {
+          "item": "Nucleo de Lobo",
+          "chance": 30,
           "quantidade": 1
         },
         {
-          "item": "Moedas de Ouro",
-          "chance": 100,
-          "quantidade": "50-150"
+          "item": "Coração de Lobo",
+          "chance": 50,
+          "quantidade": 1
         },
         {
-          "item": "Pergaminho de Sabedoria Goblin",
-          "chance": 15,
-          "quantidade": "1-3"
+          "item": "Olho de Lobo",
+          "chance": 50,
+          "quantidade": 2
         }
       ],"variantes": [
         {
-          "name": "Goblin Ancião Alpha",
+          "name": "Slime Maior",
           "image": "img/LogoRPG.jpg",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         {
-          "name": "Goblin Ancião Caçador",
+          "name": "Slime King",
           "image": "img/LogoRPG.jpg",
-          "info": "Variante especializada em emboscadas."
+          "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência."
+        },
+        {
+          "name": "Glutão Slime",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável."
         }
       ],
 
       "corrompido": {
-        "name": "Goblin Ancião Corrompido",
-        "image": "img/LogoRPG.jpg",
-        "info": "Transformado por uma corrupção sombria — ganha dano de sombra."
+        "name": "",
+        "image": "",
+        "info": ""
       },
 
       "zombie": {
-        "name": "Goblin Ancião Zumbi",
+        "name": "",
+        "image": "",
+        "info": ""
+      }
+
+    },
+    {
+      "id": "m003",
+      "name": "Vespa",
+      "image": "img/LogoRPG.jpg",
+      "level": 15,
+      "stars": 2,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Insetos voadores que habitam áreas florestais, conhecidos por seus ferrões venenosos e comportamento agressivo.",
+        "regiao": "Florestas e áreas rurais",
+        "comportamento": "Agressivo, especialmente quando perturbados",
+        "tipo": "Inseto / Voador",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Ferrão de Vespa",
+          "chance": 100,
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Vespa",
+          "chance": 30,
+          "quantidade": 1
+        },
+        {
+          "item": "Saco de Veneno",
+          "chance": 10,
+          "quantidade": 1
+        },
+        {
+          "item": "Olho de Vespa",
+          "chance": 50,
+          "quantidade": 2
+        },
+        {
+          "item": "Patas de Vespa",
+          "chance": 60,
+          "quantidade": 2
+        }
+      ],"variantes": [
+        {
+          "name": "Vespa Rainha",
+          "image": "img/LogoRPG.jpg",
+          "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Vespa Corrompida",
         "image": "img/LogoRPG.jpg",
-        "info": "Reanimado, movimento mais lento mas com resistência física aumentada."
+        "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+      },
+
+      "zombie": {
+        "name": "Vespa Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
+      }
+
+    },
+    {
+      "id": "m004",
+      "name": "Verme Gigante",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "raro",
+      "informacoes": {
+        "historia": "Criaturas subterrâneas que se alimentam de minerais e matéria orgânica, conhecidas por sua força bruta e resistência.",
+        "regiao": "Cavernas e áreas Deserticas",
+        "comportamento": "Agressivo, especialmente quando ameaçado",
+        "tipo": "Inseto / Subterrâneo",
+        "dificuldade": "Dificil"
+      },
+        "estatisticas": {
+        "pontosVida": 2500,
+        "dano": 180,
+        "defesa": 120,
+        "velocidade": 65,
+        "inteligencia": 85,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Comando Tribal",
+            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Investida Astuta",
+            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Dente de Verme",
+          "chance": 100,
+          "quantidade": "10-20"
+        },
+        {
+          "item": "Nucleo de Verme",
+          "chance": 30,
+          "quantidade": 1
+        },
+        {
+          "item": "Terra Mastigada",
+          "chance": 100,
+          "quantidade": "50-150"
+        }
+      ],"variantes": [
+        {
+          "name": "Verme Gigante Alpha",
+          "image": "img/LogoRPG.jpg",
+          "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
+        }
+      ],
+
+      "corrompido": {
+        "name": "Verme Gigante Corrompido",
+        "image": "img/LogoRPG.jpg",
+        "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+      },
+
+      "zombie": {
+        "name": "Verme Gigante Zumbi",
+        "image": "img/LogoRPG.jpg",
+        "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
       }
 
     }
+
+
+
 
   ]
 }
