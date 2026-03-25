@@ -754,3 +754,654 @@ nav a:hover {
         gap: 20px;
     }
 }
+
+/* ==================== ESTILOS DA PÁGINA SOBRE ==================== */
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--bg) 0%, rgba(122, 73, 255, 0.05) 100%);
+}
+
+.about-container > h1 {
+    font-size: 3rem;
+    color: var(--title);
+    text-align: center;
+    margin-bottom: 60px;
+    text-shadow: 0 2px 10px rgba(122, 73, 255, 0.3);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.about-container > h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* ========== SEÇÃO: QUEM SOMOS ========== */
+.studio-info {
+    background: linear-gradient(135deg, rgba(28, 28, 36, 0.8), rgba(28, 28, 36, 0.4));
+    border: 1px solid rgba(122, 73, 255, 0.3);
+    border-radius: 12px;
+    padding: 50px 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 8px 32px rgba(122, 73, 255, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.studio-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), #5f39d9, transparent);
+}
+
+.studio-info h2 {
+    font-size: 2.5rem;
+    color: var(--title);
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.studio-info h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(180deg, var(--accent), #5f39d9);
+    border-radius: 2px;
+}
+
+.studio-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 40px;
+    padding: 20px;
+    border-left: 4px solid var(--accent);
+    background: rgba(122, 73, 255, 0.08);
+    border-radius: 8px;
+}
+
+.studio-mission,
+.studio-vision {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(122, 73, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(122, 73, 255, 0.2);
+}
+
+.studio-mission h3,
+.studio-vision h3 {
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.studio-mission p,
+.studio-vision p {
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* ========== SEÇÃO: EQUIPE ========== */
+.team-section {
+    background: linear-gradient(135deg, rgba(28, 28, 36, 0.8), rgba(28, 28, 36, 0.4));
+    border: 1px solid rgba(122, 73, 255, 0.3);
+    border-radius: 12px;
+    padding: 50px 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 8px 32px rgba(122, 73, 255, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.team-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5f39d9, var(--accent), transparent);
+}
+
+.team-section h2 {
+    font-size: 2.5rem;
+    color: var(--title);
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.team-section h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(180deg, #5f39d9, var(--accent));
+    border-radius: 2px;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.team-member {
+    background: linear-gradient(135deg, rgba(28, 28, 36, 0.9), rgba(28, 28, 36, 0.5));
+    border: 2px solid rgba(122, 73, 255, 0.4);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    box-shadow: 0 4px 15px rgba(122, 73, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.team-member:hover {
+    border-color: var(--accent);
+    box-shadow: 0 12px 30px rgba(122, 73, 255, 0.3);
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, rgba(122, 73, 255, 0.1), rgba(28, 28, 36, 0.6));
+}
+
+.team-member:hover::before {
+    opacity: 1;
+}
+
+.member-avatar {
+    font-size: 60px;
+    margin-bottom: 15px;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.team-member:hover .member-avatar {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.member-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--title);
+    margin-bottom: 8px;
+}
+
+.member-role {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.member-bio {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ========== SEÇÃO: HISTÓRICO DO PROJETO ========== */
+.project-history {
+    background: linear-gradient(135deg, rgba(28, 28, 36, 0.8), rgba(28, 28, 36, 0.4));
+    border: 1px solid rgba(122, 73, 255, 0.3);
+    border-radius: 12px;
+    padding: 50px 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 8px 32px rgba(122, 73, 255, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.project-history::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent), #5f39d9);
+}
+
+.project-history h2 {
+    font-size: 2.5rem;
+    color: var(--title);
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.project-history h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(180deg, var(--accent), #5f39d9);
+    border-radius: 2px;
+}
+
+.timeline {
+    position: relative;
+    padding: 0 0 0 40px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), #5f39d9, transparent);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
+    padding: 20px 25px;
+    background: rgba(122, 73, 255, 0.08);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    transition: all 0.3s ease;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -46px;
+    top: 25px;
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(122, 73, 255, 0.3);
+    transition: all 0.3s;
+}
+
+.timeline-item:hover {
+    background: rgba(122, 73, 255, 0.15);
+    border-left-color: #5f39d9;
+    box-shadow: 0 4px 15px rgba(122, 73, 255, 0.2);
+    transform: translateX(8px);
+}
+
+.timeline-item:hover::before {
+    width: 20px;
+    height: 20px;
+    left: -50px;
+    box-shadow: 0 0 0 5px rgba(122, 73, 255, 0.4);
+}
+
+.timeline-date {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    padding: 5px 12px;
+    background: rgba(122, 73, 255, 0.2);
+    border-radius: 20px;
+}
+
+.timeline-item h4 {
+    font-size: 1.3rem;
+    color: var(--title);
+    margin: 10px 0;
+}
+
+.timeline-item p {
+    color: var(--text);
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ========== SEÇÃO: REDES SOCIAIS ========== */
+.contact-links {
+    background: linear-gradient(135deg, rgba(28, 28, 36, 0.8), rgba(28, 28, 36, 0.4));
+    border: 1px solid rgba(122, 73, 255, 0.3);
+    border-radius: 12px;
+    padding: 50px 40px;
+    margin-bottom: 60px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(122, 73, 255, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.contact-links::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5f39d9, var(--accent), #5f39d9);
+}
+
+.contact-links h2 {
+    font-size: 2.5rem;
+    color: var(--title);
+    margin-bottom: 40px;
+}
+
+.social-media {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, rgba(122, 73, 255, 0.3), rgba(95, 57, 217, 0.2));
+    color: var(--text);
+    text-decoration: none;
+    border: 2px solid rgba(122, 73, 255, 0.5);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.3s;
+}
+
+.social-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(122, 73, 255, 0.4);
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, rgba(122, 73, 255, 0.5), rgba(95, 57, 217, 0.4));
+}
+
+.social-link:hover::before {
+    left: 100%;
+}
+
+.social-icon {
+    font-size: 1.3rem;
+}
+
+/* ========== SEÇÃO: VALORES ========== */
+.values-section {
+    background: linear-gradient(135deg, rgba(28, 28, 36, 0.8), rgba(28, 28, 36, 0.4));
+    border: 1px solid rgba(122, 73, 255, 0.3);
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 8px 32px rgba(122, 73, 255, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.values-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #5f39d9, var(--accent));
+}
+
+.values-section h2 {
+    font-size: 2.5rem;
+    color: var(--title);
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.values-section h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(180deg, #5f39d9, var(--accent));
+    border-radius: 2px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.value-card {
+    background: linear-gradient(135deg, rgba(28, 28, 36, 0.9), rgba(122, 73, 255, 0.05));
+    border: 2px solid rgba(122, 73, 255, 0.4);
+    border-radius: 12px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    box-shadow: 0 4px 15px rgba(122, 73, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), #5f39d9);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.value-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 12px 30px rgba(122, 73, 255, 0.3);
+    transform: translateY(-10px) scale(1.02);
+    background: linear-gradient(135deg, rgba(122, 73, 255, 0.15), rgba(28, 28, 36, 0.8));
+}
+
+.value-card:hover::before {
+    transform: scaleX(1);
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    color: var(--title);
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ========== ANIMAÇÕES KEYFRAMES ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 40px 15px;
+    }
+
+    .about-container > h1 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .studio-info,
+    .team-section,
+    .project-history,
+    .contact-links,
+    .values-section {
+        padding: 30px 20px;
+        margin-bottom: 40px;
+    }
+
+    .studio-info h2,
+    .team-section h2,
+    .project-history h2,
+    .contact-links h2,
+    .values-section h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    .team-members {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .value-card {
+        padding: 20px 15px;
+    }
+
+    .value-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .social-media {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .social-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .timeline {
+        padding-left: 0;
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        margin-bottom: 25px;
+        padding-left: 20px;
+        border-left: 3px solid var(--accent);
+    }
+
+    .timeline-item::before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-container > h1 {
+        font-size: 1.5rem;
+    }
+
+    .studio-info h2,
+    .team-section h2,
+    .project-history h2,
+    .contact-links h2,
+    .values-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .studio-description {
+        font-size: 0.95rem;
+    }
+
+    .member-name {
+        font-size: 1.2rem;
+    }
+}
