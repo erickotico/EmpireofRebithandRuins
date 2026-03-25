@@ -1,0 +1,285 @@
+/* ========== VARIÁVEIS CSS ========== */
+:root {
+    --bg: #0A0A10;
+    --header-bg: #1C1C24;
+    --text: #FFFFFF;
+    --title: #EBEBEB;
+    --muted: #8F8F9B;
+    --accent: #7A49FF;
+    --footer-bg: #35424a;
+}
+
+/* ========== TIPOGRAFIA E ESTILOS BASE ========== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* ========== HEADER ========== */
+header {
+    background: var(--header-bg);
+    color: var(--text);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand img {
+    width: 80px;
+    height: auto;
+    border-radius: 50px;
+    display: block;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--title);
+}
+
+/* ========== NAVEGAÇÃO ========== */
+nav {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav a:hover {
+    background: var(--accent);
+}
+
+/* ========== HEADER ACTIONS ========== */
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* ========== BOTÕES ========== */
+.btn {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-login {
+    background: transparent;
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.btn-download {
+    background: linear-gradient(90deg, var(--accent), #5f39d9);
+    color: var(--text);
+    border-color: transparent;
+}
+
+.btn-login:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.btn-download:hover {
+    filter: brightness(1.05);
+}
+
+/* ========== FOOTER ========== */
+.site-footer {
+    background: var(--footer-bg);
+    color: var(--text);
+    padding: 1.5rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.footer-grid {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.footer-brand {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    min-width: 220px;
+}
+
+.footer-brand img {
+    width: 60px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.footer-brand h3 {
+    margin: 0;
+    color: var(--title);
+    font-size: 0.95rem;
+}
+
+.footer-desc {
+    margin: 0.3rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    max-width: 320px;
+    line-height: 1.3;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.footer-col h4 {
+    margin: 0 0 0.4rem 0;
+    color: var(--title);
+    font-size: 0.9rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin: 0.3rem 0;
+}
+
+.footer-col a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-col a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0.75rem auto 0;
+    padding: 0.75rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+/* ========== FOOTER MINIMALISTA (LOGIN) ========== */
+.auth-footer {
+    padding: 0.5rem 1rem;
+    margin-top: auto;
+}
+
+.auth-footer p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* ========== MEDIA QUERIES GLOBAIS ========== */
+@media (max-width: 640px) {
+    header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        gap: 1rem;
+    }
+
+    .footer-brand {
+        min-width: 220px;
+    }
+
+    .footer-links {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer-grid {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .footer-bottom {
+        padding-top: 0.75rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-desc {
+        max-width: 100%;
+    }
+}

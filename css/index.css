@@ -1,0 +1,164 @@
+/* ========== HERO ========== */
+.hero {
+    min-height: 80vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)),
+        url('../img/LogoRPG.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero .btn-download {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+}
+
+/* ========== UPDATES ========== */
+.updates {
+    padding: 4rem 2rem;
+    background: var(--bg);
+}
+
+.updates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--title);
+    margin-bottom: 2rem;
+}
+
+.update-card {
+    background: var(--header-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.update-version {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.update-date {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.update-card h3 {
+    color: var(--title);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.update-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.update-list li {
+    color: var(--text);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-list li:last-child {
+    border-bottom: none;
+}
+
+.update-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.update-link:hover {
+    text-decoration: underline;
+}
+
+/* ========== SCROLLBAR CUSTOMIZADO ========== */
+.updates-grid::-webkit-scrollbar {
+    width: 10px;
+}
+
+.updates-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+}
+
+.updates-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent), #5f39d9);
+    border-radius: 8px;
+}
+
+@supports (scrollbar-width: thin) {
+    .updates-grid {
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent) rgba(255, 255, 255, 0.02);
+    }
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .updates {
+        padding: 2rem 1rem;
+    }
+
+    .update-card {
+        padding: 1rem;
+    }
+
+    .updates-grid {
+        max-height: 360px;
+    }
+}
