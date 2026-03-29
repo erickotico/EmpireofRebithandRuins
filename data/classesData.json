@@ -438,11 +438,16 @@
       "descricao": "Especialistas em magias de destruição, com alta inteligência e poder mágico",
       "cor": "#c2185b",
       "estatisticas": {
-        "forca": 1,
-        "defesa": 1,
-        "velocidade": 1,
-        "inteligencia": 1,
-        "resistencia": 1
+        "vida": 80,
+        "mana": 40,
+        "stamina": 100,
+        "forca": 70,
+        "armadura": 60,
+        "agilidade": 90,
+        "inteligencia": 10,
+        "carisma": 40,
+        "percepcao": 50,
+        "maestria": 50
       },
       "habilidades": [
         {
