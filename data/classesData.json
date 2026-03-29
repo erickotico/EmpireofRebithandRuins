@@ -7,11 +7,16 @@
       "descricao": "Mestres da luta corpo a corpo com alta resistência e poder de ataque",
       "cor": "#d32f2f",
       "estatisticas": {
-        "forca": 1,
-        "defesa": 1,
-        "velocidade": 1,
-        "inteligencia": 1,
-        "resistencia": 1
+        "vida": 100,
+        "mana": 10,
+        "stamina": 70,
+        "forca": 90,
+        "armadura": 80,
+        "agilidade": 50,
+        "inteligencia": 10,
+        "carisma": 50,
+        "percepcao": 50,
+        "maestria": 60
       },
       "habilidades": [
         {
