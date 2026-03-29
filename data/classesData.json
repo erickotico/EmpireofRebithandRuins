@@ -94,11 +94,16 @@
       "descricao": "Especialistas em ataques à distância, com alta velocidade e precisão",
       "cor": "#388e3c",
       "estatisticas": {
-        "forca": 1,
-        "defesa": 1,
-        "velocidade": 1,
-        "inteligencia": 1,
-        "resistencia": 1
+        "vida": 40,
+        "mana": 30,
+        "stamina": 90,
+        "forca": 10,
+        "armadura": 30,
+        "agilidade": 100,
+        "inteligencia": 50,
+        "carisma": 30,
+        "percepcao": 50,
+        "maestria": 70
       },
       "habilidades": [
         {
