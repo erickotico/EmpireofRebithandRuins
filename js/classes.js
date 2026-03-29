@@ -21,6 +21,61 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
         `;
     }
 
+    // Função para mostrar painel flutuante de estatísticas da subclasse
+    function showSubclassStatsPanel(subclassItem, subclass, corClasse, dialog) {
+        // Remove any existing panel
+        const existingPanel = document.querySelector('.subclass-stats-panel');
+        if (existingPanel) existingPanel.remove();
+
+        const statsHtml = Object.entries(subclass.estatisticas)
+            .map(([key, value]) => `
+                <div class="stat-bar" style="margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
+                        <span class="stat-value" style="font-weight: 600; color: ${corClasse};">${value}</span>
+                    </div>
+                    <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
+                        <div class="stat-fill" style="width: ${value}%; height: 100%; background: ${corClasse}; transition: width 0.3s;"></div>
+                    </div>
+                </div>
+            `).join('');
+
+        const panel = document.createElement('div');
+        panel.className = 'subclass-stats-panel';
+        panel.style = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0f0f0f;
+            border: 2px solid ${corClasse};
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            z-index: 1001;
+            max-width: 300px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        `;
+        panel.innerHTML = `
+            <button class="panel-close" style="position: absolute; top: 10px; right: 10px; background: ${corClasse}; color: white; border: none; font-size: 20px; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">×</button>
+            <h4 style="margin: 0 0 15px 0; color: ${corClasse}; font-size: 18px;">${subclass.name}</h4>
+            <div class="stats-container">${statsHtml}</div>
+        `;
+
+        dialog.appendChild(panel);
+
+        // Close on click outside or close button
+        panel.querySelector('.panel-close').addEventListener('click', () => panel.remove());
+        document.addEventListener('click', function closePanel(e) {
+            if (!panel.contains(e.target) && !subclassItem.contains(e.target)) {
+                panel.remove();
+                document.removeEventListener('click', closePanel);
+            }
+        });
+    }
+
     // Criar modal de classe com abas
     function createClassModal(classe) {
         const corClasse = classe.cor || '#333';
@@ -58,18 +113,13 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
 
         const subclassesHtml = (classe.subclasses || [])
             .map(sub => `
-                <div class="subclass-item" style="border: 2px solid ${corClasse}40; border-radius: 8px; overflow: hidden; background: #1a1a1a; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+                <div class="subclass-item" data-subclass-id="${sub.id}" style="border: 2px solid ${corClasse}40; border-radius: 8px; overflow: hidden; background: #1a1a1a; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.5); cursor: pointer;">
                     <div class="subclass-image-wrapper" style="height: 150px; overflow: hidden; background: linear-gradient(135deg, ${corClasse}30, ${corClasse}10);">
                         <img src="${sub.imagem}" alt="${sub.name}" class="subclass-image" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="subclass-info" style="padding: 15px;">
                         <h4 style="margin: 0 0 8px 0; color: ${corClasse}; font-size: 16px; font-weight: 700;">${sub.name}</h4>
-                        <p style="margin: 0 0 12px 0; color: #aaa; font-size: 13px;">${sub.descricao}</p>
-                        <div class="bonus-list" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            ${Object.entries(sub.bonus || {}).map(([key, value]) => 
-                                `<span class="bonus-tag" style="background: ${corClasse}30; color: ${corClasse}; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: capitalize;">${key}: ${value}</span>`
-                            ).join('')}
-                        </div>
+                        <p style="margin: 0; color: #aaa; font-size: 13px;">${sub.descricao}</p>
                     </div>
                 </div>
             `).join('') || '<p style="color: #999;">Nenhuma subclasse disponível</p>';
@@ -160,6 +210,18 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
 
         const dialog = modal.querySelector('.modal-content');
         setupModalTabs(dialog);
+
+        // Event listeners for subclasses
+        const subclassItems = dialog.querySelectorAll('.subclass-item');
+        subclassItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const subclassId = item.dataset.subclassId;
+                const subclass = classe.subclasses.find(sub => sub.id === subclassId);
+                if (subclass) {
+                    showSubclassStatsPanel(item, subclass, classe.cor || '#333', dialog);
+                }
+            });
+        });
 
         // Fechar modal
         modal.addEventListener('click', (ev) => {

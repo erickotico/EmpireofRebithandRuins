@@ -36,9 +36,17 @@
           "name": "Berserker",
           "descricao": "Aumenta dano drasticamente ao custo de defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 100,
+            "mana": 10,
+            "stamina": 70,
+            "forca": 117,
+            "armadura": 72,
+            "agilidade": 50,
+            "inteligencia": 10,
+            "carisma": 50,
+            "percepcao": 50,
+            "maestria": 60
           }
         },
         {
@@ -46,9 +54,17 @@
           "name": "Blood Knight",
           "descricao": "Capacidade de se curar ao causar dano, mas com redução de defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 100,
+            "mana": 10,
+            "stamina": 70,
+            "forca": 117,
+            "armadura": 72,
+            "agilidade": 50,
+            "inteligencia": 10,
+            "carisma": 50,
+            "percepcao": 50,
+            "maestria": 60
           }
         },
         {
@@ -56,10 +72,17 @@
           "name": "Dead Knight",
           "descricao": "Aumenta dano e resistência, mas reduz velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 100,
+            "mana": 10,
+            "stamina": 70,
+            "forca": 117,
+            "armadura": 72,
+            "agilidade": 45,
+            "inteligencia": 10,
+            "carisma": 50,
+            "percepcao": 50,
+            "maestria": 60
           }
         },
         {
@@ -67,11 +90,17 @@
           "name": "Paladino",
           "descricao": "Aumenta defesa e resistência, mas reduz velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "resistencia": "+30%",
-            "forca": "+30%",
-            "defesa": "+10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 100,
+            "mana": 10,
+            "stamina": 70,
+            "forca": 117,
+            "armadura": 114,
+            "agilidade": 45,
+            "inteligencia": 10,
+            "carisma": 50,
+            "percepcao": 50,
+            "maestria": 60
           }
         },
         {
@@ -79,10 +108,17 @@
           "name": "Dragon Knight",
           "descricao": "Aumenta dano e resistência, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 100,
+            "mana": 10,
+            "stamina": 70,
+            "forca": 117,
+            "armadura": 72,
+            "agilidade": 45,
+            "inteligencia": 10,
+            "carisma": 50,
+            "percepcao": 50,
+            "maestria": 60
           }
         }
       ]
@@ -123,9 +159,17 @@
           "name": "Ranger",
           "descricao": "Aumenta dano de ataques à distância, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 30,
+            "stamina": 90,
+            "forca": 13,
+            "armadura": 27,
+            "agilidade": 100,
+            "inteligencia": 50,
+            "carisma": 30,
+            "percepcao": 50,
+            "maestria": 70
           }
         },
         {
@@ -133,9 +177,17 @@
           "name": "Assassin",
           "descricao": "Aumenta dano crítico, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 30,
+            "stamina": 90,
+            "forca": 13,
+            "armadura": 27,
+            "agilidade": 100,
+            "inteligencia": 50,
+            "carisma": 30,
+            "percepcao": 50,
+            "maestria": 70
           }
         },
         {
@@ -143,10 +195,17 @@
           "name": "Arcane Archer",
           "descricao": "Aumenta dano mágico, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 30,
+            "stamina": 90,
+            "forca": 13,
+            "armadura": 27,
+            "agilidade": 90,
+            "inteligencia": 50,
+            "carisma": 30,
+            "percepcao": 50,
+            "maestria": 70
           }
         },
         {
@@ -154,10 +213,17 @@
           "name": "GloomStalker",
           "descricao": "Aumenta resistência e dano, mas reduz velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "resistencia": "+30%",
-            "forca": "+30%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 30,
+            "stamina": 90,
+            "forca": 13,
+            "armadura": 39,
+            "agilidade": 90,
+            "inteligencia": 50,
+            "carisma": 30,
+            "percepcao": 50,
+            "maestria": 70
           }
         },
         {
@@ -165,10 +231,17 @@
           "name": "BloodArcher",
           "descricao": "Aumenta dano e resistência, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 30,
+            "stamina": 90,
+            "forca": 13,
+            "armadura": 27,
+            "agilidade": 90,
+            "inteligencia": 50,
+            "carisma": 30,
+            "percepcao": 50,
+            "maestria": 70
           }
         }
       ]
@@ -209,9 +282,17 @@
           "name": "Necromace",
           "descricao": "Aumenta dano de magias de morte, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 30,
+            "mana": 100,
+            "stamina": 50,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 10,
+            "inteligencia": 70,
+            "carisma": 10,
+            "percepcao": 90,
+            "maestria": 90
           }
         },
         {
@@ -219,9 +300,17 @@
           "name": "VoidWalker",
           "descricao": "Aumenta dano de magias de escuridão, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 30,
+            "mana": 100,
+            "stamina": 50,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 10,
+            "inteligencia": 70,
+            "carisma": 10,
+            "percepcao": 90,
+            "maestria": 90
           }
         },
         {
@@ -229,10 +318,17 @@
           "name": "ShadowCaster",
           "descricao": "Aumenta dano de magias de sombra, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 30,
+            "mana": 100,
+            "stamina": 50,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 9,
+            "inteligencia": 70,
+            "carisma": 10,
+            "percepcao": 90,
+            "maestria": 90
           }
         },
         {
@@ -240,10 +336,17 @@
           "name": "ChaosSorcerior",
           "descricao": "Aumenta resistência e dano, mas reduz velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "resistencia": "+30%",
-            "forca": "+30%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 30,
+            "mana": 100,
+            "stamina": 50,
+            "forca": 13,
+            "armadura": 13,
+            "agilidade": 9,
+            "inteligencia": 70,
+            "carisma": 10,
+            "percepcao": 90,
+            "maestria": 90
           }
         },
         {
@@ -251,10 +354,17 @@
           "name": "BloodSorcerior",
           "descricao": "Aumenta dano e resistência, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 30,
+            "mana": 100,
+            "stamina": 50,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 9,
+            "inteligencia": 70,
+            "carisma": 10,
+            "percepcao": 90,
+            "maestria": 90
           }
         }
       ]
@@ -295,9 +405,17 @@
           "name": "Pyromancer",
           "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 90,
+            "stamina": 60,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 20,
+            "inteligencia": 100,
+            "carisma": 30,
+            "percepcao": 70,
+            "maestria": 70
           }
         },
         {
@@ -305,9 +423,17 @@
           "name": "MagicKnight",
           "descricao": "Aumenta dano de magias de gelo, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 90,
+            "stamina": 60,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 20,
+            "inteligencia": 100,
+            "carisma": 30,
+            "percepcao": 70,
+            "maestria": 70
           }
         },
         {
@@ -315,10 +441,17 @@
           "name": "Illusionist",
           "descricao": "Aumenta dano de magias de ilusão, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 90,
+            "stamina": 60,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 18,
+            "inteligencia": 100,
+            "carisma": 30,
+            "percepcao": 70,
+            "maestria": 70
           }
         },
         {
@@ -326,10 +459,17 @@
           "name": "StormCaller",
           "descricao": "Aumenta dano de magias de tempestade, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "resistencia": "+30%",
-            "forca": "+30%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 90,
+            "stamina": 60,
+            "forca": 13,
+            "armadura": 13,
+            "agilidade": 18,
+            "inteligencia": 100,
+            "carisma": 30,
+            "percepcao": 70,
+            "maestria": 70
           }
         },
         {
@@ -337,10 +477,17 @@
           "name": "Cryomancer",
           "descricao": " Aumenta dano de magias de gelo, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 40,
+            "mana": 90,
+            "stamina": 60,
+            "forca": 13,
+            "armadura": 9,
+            "agilidade": 18,
+            "inteligencia": 100,
+            "carisma": 30,
+            "percepcao": 70,
+            "maestria": 70
           }
         }
       ]
@@ -381,9 +528,17 @@
           "name": "Hoplite",
           "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 60,
+            "mana": 50,
+            "stamina": 100,
+            "forca": 117,
+            "armadura": 36,
+            "agilidade": 80,
+            "inteligencia": 30,
+            "carisma": 10,
+            "percepcao": 60,
+            "maestria": 60
           }
         },
         {
@@ -391,9 +546,17 @@
           "name": "Halberd",
           "descricao": "Aumenta dano de magias de gelo, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 60,
+            "mana": 50,
+            "stamina": 100,
+            "forca": 117,
+            "armadura": 36,
+            "agilidade": 80,
+            "inteligencia": 30,
+            "carisma": 10,
+            "percepcao": 60,
+            "maestria": 60
           }
         },
         {
@@ -401,10 +564,17 @@
           "name": "Celestial Lancer",
           "descricao": "Aumenta dano de magias de ilusão, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 60,
+            "mana": 50,
+            "stamina": 100,
+            "forca": 117,
+            "armadura": 36,
+            "agilidade": 72,
+            "inteligencia": 30,
+            "carisma": 10,
+            "percepcao": 60,
+            "maestria": 60
           }
         },
         {
@@ -412,10 +582,17 @@
           "name": "Assyrian Elite Spearman",
           "descricao": "Aumenta dano de magias de tempestade, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "resistencia": "+30%",
-            "forca": "+30%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 60,
+            "mana": 50,
+            "stamina": 100,
+            "forca": 117,
+            "armadura": 52,
+            "agilidade": 72,
+            "inteligencia": 30,
+            "carisma": 10,
+            "percepcao": 60,
+            "maestria": 60
           }
         },
         {
@@ -423,10 +600,17 @@
           "name": "DragonSlayer",
           "descricao": "Aumenta dano de magias de gelo, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 60,
+            "mana": 50,
+            "stamina": 100,
+            "forca": 117,
+            "armadura": 36,
+            "agilidade": 72,
+            "inteligencia": 30,
+            "carisma": 10,
+            "percepcao": 60,
+            "maestria": 60
           }
         }
       ]
@@ -467,9 +651,17 @@
           "name": "Samurai",
           "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 80,
+            "mana": 40,
+            "stamina": 100,
+            "forca": 91,
+            "armadura": 54,
+            "agilidade": 90,
+            "inteligencia": 10,
+            "carisma": 40,
+            "percepcao": 50,
+            "maestria": 50
           }
         },
         {
@@ -477,9 +669,17 @@
           "name": "Spell Blade",
           "descricao": "Aumenta dano de magias de fogo, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%"
+          "estatisticas": {
+            "vida": 80,
+            "mana": 40,
+            "stamina": 100,
+            "forca": 91,
+            "armadura": 54,
+            "agilidade": 90,
+            "inteligencia": 10,
+            "carisma": 40,
+            "percepcao": 50,
+            "maestria": 50
           }
         },
         {
@@ -487,10 +687,17 @@
           "name": "HexBlade",
           "descricao": "Aumenta dano mágico, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 80,
+            "mana": 40,
+            "stamina": 100,
+            "forca": 91,
+            "armadura": 54,
+            "agilidade": 81,
+            "inteligencia": 10,
+            "carisma": 40,
+            "percepcao": 50,
+            "maestria": 50
           }
         },
         {
@@ -498,10 +705,17 @@
           "name": "Blade Dancer",
           "descricao": "Aumenta dano de magias de tempestade, mas reduz defesa",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "resistencia": "+30%",
-            "forca": "+30%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 80,
+            "mana": 40,
+            "stamina": 100,
+            "forca": 91,
+            "armadura": 78,
+            "agilidade": 81,
+            "inteligencia": 10,
+            "carisma": 40,
+            "percepcao": 50,
+            "maestria": 50
           }
         },
         {
@@ -509,10 +723,17 @@
           "name": "Blade Master",
           "descricao": "Aumenta dano de magias de gelo, mas reduz defesa e velocidade",
           "imagem": "img/LogoRPG.jpg",
-          "bonus": {
-            "forca": "+30%",
-            "defesa": "-10%",
-            "velocidade": "-10%"
+          "estatisticas": {
+            "vida": 80,
+            "mana": 40,
+            "stamina": 100,
+            "forca": 91,
+            "armadura": 54,
+            "agilidade": 81,
+            "inteligencia": 10,
+            "carisma": 40,
+            "percepcao": 50,
+            "maestria": 50
           }
         }
       ]
