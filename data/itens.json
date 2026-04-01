@@ -1,7 +1,7 @@
 [
     {
         "nome": "Espada de Ferro",
-        "imagem": "img/icons/espada_ferro.png",
+        "imagem": "img/LogoRPG.jpg",
         "descricao": "Uma espada básica feita de ferro.",
         "para_que_serve": "Usada para combate corpo a corpo.",
         "craftavel": true,
@@ -9,10 +9,10 @@
     },
     {
         "nome": "Poção de Cura",
-        "imagem": "img/icons/pocao_cura.png",
+        "imagem": "img/LogoRPG.jpg",
         "descricao": "Uma poção que restaura vida.",
         "para_que_serve": "Restaura 50 pontos de vida.",
-        "craftavel": false,
-        "craft_resultado": null
+        "craftavel": true,
+        "craft_resultado": "Poção de Cura Maior"
     }
 ]

@@ -27,20 +27,22 @@
     <!-- Seção de Reinos -->
     <section id="reinos">
         <h2>Reinos</h2>
-        <div id="lista-reinos"></div>
+        <input type="text" id="filtro-reinos" placeholder="Buscar reinos..." oninput="filtrarReinos(this.value)">
+        <div id="lista-reinos" class="scroll-box"></div>
     </section>
-
 
     <!-- Seção de Masmorras -->
     <section id="masmorras">
         <h2>Tipos de Masmorras</h2>
-        <div id="lista-masmorras"></div>
+        <input type="text" id="filtro-masmorras" placeholder="Buscar masmorras..." oninput="filtrarMasmorras(this.value)">
+        <div id="lista-masmorras" class="scroll-box"></div>
     </section>
 
     <!-- Seção de Itens -->
     <section id="itens">
         <h2>Itens</h2>
-        <div id="lista-itens"></div>
+        <input type="text" id="filtro-itens" placeholder="Buscar itens..." oninput="filtrarItens(this.value)">
+        <div id="lista-itens" class="scroll-box"></div>
     </section>
 
     <script src="js/beguinnersguide.js"></script>
