@@ -28,9 +28,9 @@
 .bestiary-filters input,
 .bestiary-filters select {
     padding: 0.5rem 1rem;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.03);
-    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
     border-radius: 6px;
 }
 
@@ -40,6 +40,25 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 1rem 0;
+}
+
+/* Responsividade para cards */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .monster-grid {
+        grid-template-columns: repeat(2, 385px);
+    }
+    .monster-card {
+        min-height: 455px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .monster-grid {
+        grid-template-columns: repeat(3, 385px);
+    }
+    .monster-card {
+        min-height: 455px;
+    }
 }
 
 /* Card */
@@ -358,15 +377,33 @@
 .skill-cd { color: var(--muted); font-size: 0.9rem; }
 
 /* Recompensas */
+.rarity-filter {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.rarity-filter label {
+    color: var(--text);
+    font-size: 0.9rem;
+}
+.rarity-filter select {
+    padding: 0.4rem 0.8rem;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    border-radius: 4px;
+}
 .rewards-list { margin-top: 0.5rem; }
 .reward-item {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto auto auto;
     gap: 0.75rem;
     padding: 0.55rem;
     border-bottom: 1px solid rgba(255,255,255,0.03);
     align-items: center;
 }
+.reward-rarity { color: var(--accent); font-weight: 500; }
 .reward-chance { color: #4caf50; }
 .reward-qty { color: var(--muted); }
 

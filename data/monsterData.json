@@ -16,11 +16,16 @@
         "dificuldade": "Fácil"
       },
         "estatisticas": {
-        "pontosVida": 2500,
-        "dano": 180,
-        "defesa": 120,
-        "velocidade": 65,
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
         "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
         "resistencias": {
           "fogo": "fraco", 
           "agua": "forte",    
@@ -50,15 +55,16 @@
       "recompensas": [
         {
           "item": "Gelatina de Slime",
-          "chance": 100,
+          "raridade": "Comum",
           "quantidade": 1
         },
         {
           "item": "Nucleo de Slime",
-          "chance": 100,
+          "raridade": "Incomum",
           "quantidade": "50-150"
         }
-      ],"variantes": [
+      ],"hasVariantes": true,
+      "listaVariantes": [
         {
           "name": "Slime Maior",
           "image": "img/LogoRPG.jpg",
@@ -74,19 +80,7 @@
           "image": "img/LogoRPG.jpg",
           "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável."
         }
-      ],
-
-      "corrompido": {
-        "name": "",
-        "image": "",
-        "info": ""
-      },
-
-      "zombie": {
-        "name": "",
-        "image": "",
-        "info": ""
-      }
+      ]
 
     },
     {
@@ -100,15 +94,20 @@
         "historia": "Predadores ágeis que caçam em matilhas, conhecidos por sua ferocidade e inteligência.",
         "regiao": "Florestas e montanhas",
         "comportamento": "Agressivo, especialmente quando em matilha",
-        "tipo": "Bestial / Predador",
+        "tipo": "Beast",
         "dificuldade": "Media"
       },
         "estatisticas": {
-        "pontosVida": 2500,
-        "dano": 180,
-        "defesa": 120,
-        "velocidade": 65,
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
         "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
         "resistencias": {
           "fogo": "fraco", 
           "agua": "forte",    
@@ -138,25 +137,26 @@
       "recompensas": [
         {
           "item": "Pele de Lobo",
-          "chance": 100,
+          "raridade": "Comum",
           "quantidade": 2
         },
         {
           "item": "Nucleo de Lobo",
-          "chance": 30,
+          "raridade": "Raro",
           "quantidade": 1
         },
         {
           "item": "Coração de Lobo",
-          "chance": 50,
+          "raridade": "Raro",
           "quantidade": 1
         },
         {
           "item": "Olho de Lobo",
-          "chance": 50,
+          "raridade": "Incomum",
           "quantidade": 2
         }
-      ],"variantes": [
+      ],"hasVariantes": true,
+      "listaVariantes": [
         {
           "name": "Slime Maior",
           "image": "img/LogoRPG.jpg",
@@ -172,19 +172,7 @@
           "image": "img/LogoRPG.jpg",
           "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável."
         }
-      ],
-
-      "corrompido": {
-        "name": "",
-        "image": "",
-        "info": ""
-      },
-
-      "zombie": {
-        "name": "",
-        "image": "",
-        "info": ""
-      }
+      ]
 
     },
     {
@@ -198,15 +186,20 @@
         "historia": "Insetos voadores que habitam áreas florestais, conhecidos por seus ferrões venenosos e comportamento agressivo.",
         "regiao": "Florestas e áreas rurais",
         "comportamento": "Agressivo, especialmente quando perturbados",
-        "tipo": "Inseto / Voador",
+        "tipo": "Inseto / Felino",
         "dificuldade": "Media"
       },
         "estatisticas": {
-        "pontosVida": 2500,
-        "dano": 180,
-        "defesa": 120,
-        "velocidade": 65,
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
         "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
         "resistencias": {
           "fogo": "fraco", 
           "agua": "forte",    
@@ -236,48 +229,47 @@
       "recompensas": [
         {
           "item": "Ferrão de Vespa",
-          "chance": 100,
+          "raridade": "Comum",
           "quantidade": 1
         },
         {
           "item": "Nucleo de Vespa",
-          "chance": 30,
+          "raridade": "Raro",
           "quantidade": 1
         },
         {
           "item": "Saco de Veneno",
-          "chance": 10,
+          "raridade": "lendario",
           "quantidade": 1
         },
         {
           "item": "Olho de Vespa",
-          "chance": 50,
+          "raridade": "Incomum",
           "quantidade": 2
         },
         {
           "item": "Patas de Vespa",
-          "chance": 60,
+          "raridade": "Incomum",
           "quantidade": 2
         }
-      ],"variantes": [
+      ],"hasVariantes": true,
+      "listaVariantes": [
         {
           "name": "Vespa Rainha",
           "image": "img/LogoRPG.jpg",
           "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
+        },
+        {
+          "name": "Vespa Corrompida",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+        },
+        {
+          "name": "Vespa Zumbi",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
         }
-      ],
-
-      "corrompido": {
-        "name": "Vespa Corrompida",
-        "image": "img/LogoRPG.jpg",
-        "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
-      },
-
-      "zombie": {
-        "name": "Vespa Zumbi",
-        "image": "img/LogoRPG.jpg",
-        "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
-      }
+      ]
 
     },
     {
@@ -295,11 +287,16 @@
         "dificuldade": "Dificil"
       },
         "estatisticas": {
-        "pontosVida": 2500,
-        "dano": 180,
-        "defesa": 120,
-        "velocidade": 65,
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
         "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
         "resistencias": {
           "fogo": "fraco", 
           "agua": "forte",    
@@ -329,38 +326,37 @@
       "recompensas": [
         {
           "item": "Dente de Verme",
-          "chance": 100,
+          "raridade": "Comum",
           "quantidade": "10-20"
         },
         {
           "item": "Nucleo de Verme",
-          "chance": 30,
+          "raridade": "Raro",
           "quantidade": 1
         },
         {
           "item": "Terra Mastigada",
-          "chance": 100,
+          "raridade": "Comum",
           "quantidade": "50-150"
         }
-      ],"variantes": [
+      ],"hasVariantes": true,
+      "listaVariantes": [
         {
           "name": "Verme Gigante Alpha",
           "image": "img/LogoRPG.jpg",
           "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
+        },
+        {
+          "name": "Verme Gigante Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+        },
+        {
+          "name": "Verme Gigante Zumbi",
+          "image": "img/LogoRPG.jpg",
+          "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
         }
-      ],
-
-      "corrompido": {
-        "name": "Verme Gigante Corrompido",
-        "image": "img/LogoRPG.jpg",
-        "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
-      },
-
-      "zombie": {
-        "name": "Verme Gigante Zumbi",
-        "image": "img/LogoRPG.jpg",
-        "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
-      }
+      ]
 
     }
 

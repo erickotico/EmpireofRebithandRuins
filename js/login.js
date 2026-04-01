@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Modal elements
+    // Elementos do modal de cadastro
     const modal = document.getElementById('signupModal');
     const openButton = document.getElementById('openSignup');
     const closeButton = document.getElementById('closeSignup');
     const cancelButton = document.getElementById('cancelSignup');
     const signupForm = document.getElementById('signupForm');
 
-    // Abrir modal
+    // Abri o modal
     openButton?.addEventListener('click', (e) => {
         e.preventDefault();
         if (!modal) return;
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         first?.focus();
     });
 
-    // Fechar modal
+    // Fecha o modal
     const closeModal = () => {
         if (!modal) return;
         modal.hidden = true;

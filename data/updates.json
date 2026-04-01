@@ -10,6 +10,19 @@
         "Adição de novos atributos como 'Velocidade' e 'Resistência'"
       ],
       "link": "#"
+    },
+      {
+      "version": "v0.0.5", 
+      "date": "2026-03-30",
+      "title": "Adição dos atributos verdadeiros das classes",
+      "changes": [
+        "Adicionando os detalhes dos atributos verdadeiros para cada classe",
+        "Revisão dos atributos para melhor refletir as características únicas de cada classe",
+        "Correção de erros nos atributos anteriores e ajustes para melhor equilíbrio",
+        "Adição e melhoria no Site para exibir os atributos de forma clara e informativa"
+
+      ],
+      "link": "#"
     }
   ]
 }

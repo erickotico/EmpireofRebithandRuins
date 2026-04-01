@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const classesGrid = document.getElementById('classesGrid');
     let classes = [];
-/*
-Gostaria de saber se tem como fazer um comparativo nos atributos das classes, para que mostre os atributos no nivel um e atributos diferentes quando estiver no nivel maximo
-*/
-    // Criar card de classe
+
+
+    // Cria os cards das classes
     function createClassCard(classe) {
         return `
             <article class="class-card" data-class-id="${classe.id}" style="position: relative; overflow: hidden; border-radius: 8px; background: #1a1a1a; border: 2px solid ${classe.cor}40; transition: all 0.3s;">
@@ -66,7 +65,7 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
 
         dialog.appendChild(panel);
 
-        // Close on click outside or close button
+        // Fecha o painel ao clicar no botão de fechar ou fora do painel
         panel.querySelector('.panel-close').addEventListener('click', () => panel.remove());
         document.addEventListener('click', function closePanel(e) {
             if (!panel.contains(e.target) && !subclassItem.contains(e.target)) {
@@ -76,7 +75,7 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
         });
     }
 
-    // Criar modal de classe com abas
+    // Cria o modal das classes com as abas
     function createClassModal(classe) {
         const corClasse = classe.cor || '#333';
         
@@ -211,7 +210,7 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
         const dialog = modal.querySelector('.modal-content');
         setupModalTabs(dialog);
 
-        // Event listeners for subclasses
+        // Evento para itens de subclasse
         const subclassItems = dialog.querySelectorAll('.subclass-item');
         subclassItems.forEach(item => {
             item.addEventListener('click', (e) => {
@@ -223,7 +222,7 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
             });
         });
 
-        // Fechar modal
+        // Fecha o modal
         modal.addEventListener('click', (ev) => {
             if (ev.target === modal || ev.target.matches('.modal-close')) {
                 modal.remove();
@@ -232,13 +231,28 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
         });
     });
 
-    // Carregar classes
+    // Carrega as classes
     async function loadClasses() {
         try {
-            const response = await fetch('./data/classesData.json');
+            console.log('Iniciando carregamento das classes...');
+            const response = await fetch('data/classesData.json');
+            console.log('Resposta do fetch:', response);
             const data = await response.json();
+            console.log('Dados carregados:', data);
             classes = data.classes;
+            console.log('Classes definidas:', classes);
             classesGrid.innerHTML = classes.map(createClassCard).join('');
+
+            // Preenche o select das classes após carregar
+            const classSelect = document.getElementById('classSelect');
+            console.log('Elemento classSelect:', classSelect);
+            classes.forEach(classe => {
+                const option = document.createElement('option');
+                option.value = classe.id;
+                option.textContent = classe.name;
+                classSelect.appendChild(option);
+                console.log('Adicionada classe:', classe.name);
+            });
         } catch (error) {
             console.error('Erro ao carregar classes:', error);
             classesGrid.innerHTML = '<p class="error">Erro ao carregar classes: ' + error.message + '</p>';
@@ -246,4 +260,84 @@ Gostaria de saber se tem como fazer um comparativo nos atributos das classes, pa
     }
 
     loadClasses();
+
+    // Calculadora de atributos
+    const subclass1Select = document.getElementById('subclass1Select');
+    const subclass2Select = document.getElementById('subclass2Select');
+    const summedStatsDiv = document.getElementById('summedStats');
+    const classSelect = document.getElementById('classSelect');
+
+    // Função para preencher as subclasses com base na classe selecionada
+    function populateSubclasses() {
+        const selectedClassId = classSelect.value;
+        const selectedClass = classes.find(c => c.id === selectedClassId);
+        const subclasses = selectedClass ? selectedClass.subclasses || [] : [];
+        
+        [subclass1Select, subclass2Select].forEach(select => {
+            select.innerHTML = '<option value="">Selecione subclasse</option>';
+            subclasses.forEach(sub => {
+                const option = document.createElement('option');
+                option.value = sub.id;
+                option.textContent = sub.name;
+                select.appendChild(option);
+            });
+        });
+        calculateSum(); // Recalcula ao mudar de classe
+    }
+
+    // Função para calcular a soma dos atributos
+    function calculateSum() {
+        const classId = classSelect.value;
+        const sub1Id = subclass1Select.value;
+        const sub2Id = subclass2Select.value;
+        
+        if (!classId || !sub1Id || !sub2Id) {
+            summedStatsDiv.style.display = 'none';
+            return;
+        }
+        
+        const classe = classes.find(c => c.id === classId);
+        const sub1 = classe.subclasses.find(s => s.id === sub1Id);
+        const sub2 = classe.subclasses.find(s => s.id === sub2Id);
+        
+        const sumStats = {};
+        
+        // Soma os atributos da classe
+        Object.entries(classe.estatisticas).forEach(([key, val]) => {
+            sumStats[key] = (sumStats[key] || 0) + val;
+        });
+        
+        // Soma a primeira subclasse
+        Object.entries(sub1.estatisticas).forEach(([key, val]) => {
+            sumStats[key] = (sumStats[key] || 0) + val;
+        });
+        
+        // Soma a segunda subclasse
+        Object.entries(sub2.estatisticas).forEach(([key, val]) => {
+            sumStats[key] = (sumStats[key] || 0) + val;
+        });
+        
+        // Exibição dos resultados
+        const corClasse = classe.cor || '#333';
+        const statsHtml = Object.entries(sumStats)
+            .map(([key, value]) => `
+                <div class="stat-bar" style="margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
+                        <span class="stat-value" style="font-weight: 600; color: ${corClasse};">${value}</span>
+                    </div>
+                    <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
+                        <div class="stat-fill" style="width: ${Math.min(value / 50, 100)}%; height: 100%; background: ${corClasse}; transition: width 0.3s;"></div>
+                    </div>
+                </div>
+            `).join('');
+        
+        summedStatsDiv.innerHTML = `<h3 style="color: ${corClasse}; margin-bottom: 20px;">Atributos Somados</h3><div class="stats-container">${statsHtml}</div>`;
+        summedStatsDiv.style.display = 'block';
+    }
+
+    // Eventos
+    classSelect.addEventListener('change', populateSubclasses);
+    subclass1Select.addEventListener('change', calculateSum);
+    subclass2Select.addEventListener('change', calculateSum);
 });

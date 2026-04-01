@@ -3,7 +3,23 @@
     incomum
     raro
     lendário
+    deus
+    imortal
+
 */
+
+// Função para obter chance de drop baseada na raridade
+function getDropChance(rarity) {
+    const chances = {
+        'Comum': 100,
+        'Incomum': 75,
+        'Raro': 50,
+        'lendario': 25,
+        'deus': 10,
+        'imortal': 5
+    };
+    return chances[rarity] || 0;
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,19 +55,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="monster-stats-row" aria-hidden="false">
                         <div class="stat-block">
                             <span class="stat-label">Vida</span>
-                            <span class="stat-value">${monster.estatisticas.pontosVida}</span>
+                            <span class="stat-value">${monster.estatisticas.vida}</span>
                         </div>
                         <div class="stat-block">
                             <span class="stat-label">Força</span>
-                            <span class="stat-value">${monster.estatisticas.dano}</span>
+                            <span class="stat-value">${monster.estatisticas.forca}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Velocidade</span>
-                            <span class="stat-value">${monster.estatisticas.velocidade}</span>
+                            <span class="stat-label">Agilidade</span>
+                            <span class="stat-value">${monster.estatisticas.agilidade}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Defesa</span>
-                            <span class="stat-value">${monster.estatisticas.defesa}</span>
+                            <span class="stat-label">Armadura</span>
+                            <span class="stat-value">${monster.estatisticas.armadura}</span>
                         </div>
                     </div>
                 </div>
@@ -79,23 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
             { key: 'rewards', label: 'Recompensas' }
         ];
 
-        // Extras dinâmicos - FILTRA VARIANTES VAZIAS
+        // Extras dinâmicos
         const extraTabs = [];
         
-        // Verifica variantes com nome preenchido
-        const variantesValidas = (monster.variantes || []).filter(v => v.name && v.name.trim() !== '');
-        if (variantesValidas.length > 0) {
+        // Verifica se tem variantes
+        if (monster.hasVariantes) {
             extraTabs.push({ key: 'variantes', label: 'Variantes' });
-        }
-
-        // Verifica corrompido com nome preenchido
-        if (monster.corrompido?.name && monster.corrompido.name.trim() !== '') {
-            extraTabs.push({ key: 'corrompido', label: 'Corrompido' });
-        }
-
-        // Verifica zombie com nome preenchido
-        if (monster.zombie?.name && monster.zombie.name.trim() !== '') {
-            extraTabs.push({ key: 'zumbi', label: 'Zumbi' });
         }
 
         const allTabs = [...baseTabs, ...extraTabs];
@@ -122,15 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('') || '<p class="muted">Nenhuma habilidade listada.</p>';
 
         const rewardsHtml = (monster.recompensas || []).map(r => `
-            <div class="reward-item">
+            <div class="reward-item" data-rarity="${r.raridade}">
                 <span class="reward-name">${r.item}</span>
-                <span class="reward-chance">${r.chance}%</span>
+                <span class="reward-rarity">${r.raridade}</span>
+                <span class="reward-chance">${getDropChance(r.raridade)}%</span>
                 <span class="reward-qty">Qtd: ${r.quantidade}</span>
             </div>
         `).join('') || '<p class="muted">Nenhuma recompensa listada.</p>';
 
-        // Variantes html (lista) - FILTRA VAZIAS
-        const variantesHtml = variantesValidas
+        // Variantes html (lista)
+        const variantesHtml = (monster.listaVariantes || [])
             .map(v => `
                 <div class="variant-card">
                     <div class="variant-image"><img src="${v.image}" alt="${v.name}"></div>
@@ -140,28 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `).join('') || '<p class="muted">Sem variantes.</p>';
-
-        // Corrompido (se existir e name não vazio)
-        const corrompidoHtml = (monster.corrompido?.name && monster.corrompido.name.trim() !== '') ? `
-            <div class="variant-card single">
-                <div class="variant-image"><img src="${monster.corrompido.image}" alt="${monster.corrompido.name}"></div>
-                <div class="variant-info">
-                    <h4>${monster.corrompido.name}</h4>
-                    <p>${monster.corrompido.info || ''}</p>
-                </div>
-            </div>
-        ` : '<p class="muted">Sem versão corrompida.</p>';
-
-        // Zumbi (se existir e name não vazio)
-        const zumbiHtml = (monster.zombie?.name && monster.zombie.name.trim() !== '') ? `
-            <div class="variant-card single">
-                <div class="variant-image"><img src="${monster.zombie.image}" alt="${monster.zombie.name}"></div>
-                <div class="variant-info">
-                    <h4>${monster.zombie.name}</h4>
-                    <p>${monster.zombie.info || ''}</p>
-                </div>
-            </div>
-        ` : '<p class="muted">Sem versão zumbi.</p>';
 
         return `
             <div class="monster-modal">
@@ -194,12 +178,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
 
                         <div class="tab-content stats">
-                            <div class="stats-grid">
-                                <div class="stat-item"><span class="stat-label">HP:</span><span>${monster.estatisticas.pontosVida}</span></div>
-                                <div class="stat-item"><span class="stat-label">Dano:</span><span>${monster.estatisticas.dano}</span></div>
-                                <div class="stat-item"><span class="stat-label">Defesa:</span><span>${monster.estatisticas.defesa}</span></div>
-                                <div class="stat-item"><span class="stat-label">Velocidade:</span><span>${monster.estatisticas.velocidade}</span></div>
-                                <div class="stat-item"><span class="stat-label">Inteligência:</span><span>${monster.estatisticas.inteligencia}</span></div>
+                            <h3 style="color: #fff; margin-bottom: 20px; font-size: 20px;">Estatísticas</h3>
+                            <div class="stats-container">
+                                ${Object.entries(monster.estatisticas).filter(([key]) => key !== 'resistencias').map(([key, value]) => `
+                                    <div class="stat-bar" style="margin-bottom: 15px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                            <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
+                                            <span class="stat-value" style="font-weight: 600; color: #fff;">${value}</span>
+                                        </div>
+                                        <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
+                                            <div class="stat-fill" style="width: ${value}%; height: 100%; background: #fff; transition: width 0.3s;"></div>
+                                        </div>
+                                    </div>
+                                `).join('')}
                             </div>
                             <div class="resistances">
                                 <h4>Resistências e Fraquezas</h4>
@@ -215,19 +206,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
 
                         <div class="tab-content rewards">
+                            <div class="rarity-filter">
+                                <label for="rarity-select">Filtrar por Raridade:</label>
+                                <select id="rarity-select">
+                                    <option value="all">Todas as Raridades</option>
+                                    <option value="Comum">Comum</option>
+                                    <option value="Incomum">Incomum</option>
+                                    <option value="Raro">Raro</option>
+                                    <option value="lendario">lendario</option>
+                                    <option value="deus">deus</option>
+                                    <option value="imortal">imortal</option>
+                                </select>
+                            </div>
                             <div class="rewards-list">${rewardsHtml}</div>
                         </div>
 
                         <div class="tab-content variantes">
                             ${variantesHtml}
-                        </div>
-
-                        <div class="tab-content corrompido">
-                            ${corrompidoHtml}
-                        </div>
-
-                        <div class="tab-content zumbi">
-                            ${zumbiHtml}
                         </div>
                     </div>
                 </div>
@@ -268,6 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const dialog = modal.querySelector('.modal-content');
         setupModalTabs(dialog);
 
+        // Adicionar listener para filtro de raridade
+        const select = modal.querySelector('#rarity-select');
+        if (select) {
+            select.addEventListener('change', () => {
+                const selected = select.value;
+                const items = modal.querySelectorAll('.reward-item');
+                items.forEach(item => {
+                    if (selected === 'all' || item.dataset.rarity === selected) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+
         // Fechar modal
         modal.addEventListener('click', (ev) => {
             if (ev.target === modal || ev.target.matches('.modal-close')) {
@@ -283,12 +294,58 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('./data/monsterData.json');
             const data = await response.json();
             monsters = data.monsters;
-            monsterGrid.innerHTML = monsters.map(createMonsterCard).join('');
+            
+            // Coletar tipos únicos divididos
+            const allTypes = new Set();
+            monsters.forEach(monster => {
+                const types = monster.informacoes.tipo.split(' / ');
+                types.forEach(type => allTypes.add(type.trim()));
+            });
+            const uniqueTypes = Array.from(allTypes).sort();
+            
+            // Popular o select de tipo
+            const filterTypeSelect = document.getElementById('filterType');
+            filterTypeSelect.innerHTML = '<option value="">Todos os tipos</option>';
+            uniqueTypes.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                filterTypeSelect.appendChild(option);
+            });
+            
+            // Renderizar cards
+            renderMonsters(monsters);
         } catch (error) {
             console.error('Erro ao carregar monstros:', error);
             monsterGrid.innerHTML = '<p class="error">Erro ao carregar monstros: ' + error.message + '</p>';
         }
     }
+
+    // Função para renderizar monstros com filtros
+    function renderMonsters(monsterList) {
+        monsterGrid.innerHTML = monsterList.map(createMonsterCard).join('');
+    }
+
+    // Implementar filtros
+    const searchInput = document.getElementById('searchMonster');
+    const filterTypeSelect = document.getElementById('filterType');
+
+    function applyFilters() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedType = filterTypeSelect.value;
+        
+        const filtered = monsters.filter(monster => {
+            const matchesSearch = monster.name.toLowerCase().includes(searchTerm);
+            const monsterTypes = monster.informacoes.tipo.split(' / ').map(t => t.trim());
+            const matchesType = !selectedType || monsterTypes.includes(selectedType);
+            return matchesSearch && matchesType;
+        });
+        
+        renderMonsters(filtered);
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    filterTypeSelect.addEventListener('change', applyFilters);
 
     loadMonsters();
 });
