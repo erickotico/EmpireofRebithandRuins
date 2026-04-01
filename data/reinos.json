@@ -1,0 +1,12 @@
+[
+    {
+        "nome": "Reino de Eldoria",
+        "descricao": "Um reino próspero com cidades grandes.",
+        "posicao": "Centro do mapa"
+    },
+    {
+        "nome": "Reino das Sombras",
+        "descricao": "Um reino escuro e perigoso.",
+        "posicao": "Norte do mapa"
+    }
+]

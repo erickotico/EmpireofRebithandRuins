@@ -1,0 +1,18 @@
+[
+    {
+        "nome": "Espada de Ferro",
+        "imagem": "img/icons/espada_ferro.png",
+        "descricao": "Uma espada básica feita de ferro.",
+        "para_que_serve": "Usada para combate corpo a corpo.",
+        "craftavel": true,
+        "craft_resultado": "Espada de Aço"
+    },
+    {
+        "nome": "Poção de Cura",
+        "imagem": "img/icons/pocao_cura.png",
+        "descricao": "Uma poção que restaura vida.",
+        "para_que_serve": "Restaura 50 pontos de vida.",
+        "craftavel": false,
+        "craft_resultado": null
+    }
+]

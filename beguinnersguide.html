@@ -5,9 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/beguinnersguide.css"> <!-- Adicionando CSS específico -->
     <title>Guia para Iniciantes</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Guia para Iniciantes</h1>
+    </header>
+        <!-- Imagem do mapa -->
+    <section id="mapa">
+        <h2>Mapa do Jogo</h2>
+        <img id="mapa-img" src="img/LogoRPG.jpg" alt="Mapa do Jogo" onclick="abrirPopup()">
+    </section>
+
+    <!-- Popup para imagem ampliada -->
+    <div id="popup" class="popup">
+        <span class="fechar" onclick="fecharPopup()">&times;</span>
+        <img id="popup-img" src="img/LogoRPG.jpg" alt="Mapa Ampliada">
+    </div>
+
+    <!-- Seção de Reinos -->
+    <section id="reinos">
+        <h2>Reinos</h2>
+        <div id="lista-reinos"></div>
+    </section>
+
+
+    <!-- Seção de Masmorras -->
+    <section id="masmorras">
+        <h2>Tipos de Masmorras</h2>
+        <div id="lista-masmorras"></div>
+    </section>
+
+    <!-- Seção de Itens -->
+    <section id="itens">
+        <h2>Itens</h2>
+        <div id="lista-itens"></div>
+    </section>
+
+    <script src="js/beguinnersguide.js"></script>
 </body>
 </html>

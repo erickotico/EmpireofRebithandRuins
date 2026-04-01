@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "Caverna Sombria",
+        "descricao": "Uma caverna escura cheia de perigos ocultos.",
+        "andares": 3,
+        "salas_escondidas": 0,
+        "tipos_inimigos": ["Goblins", "Ratos Gigantes", "Aranhas"],
+        "tem_boss": true,
+        "boss": "Rei Goblin"
+    },
+    {
+        "nome": "Floresta Assombrada",
+        "descricao": "Uma floresta densa com espíritos malignos.",
+        "andares": 2,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Lobos", "Espectros", "Aranhas Venenosas"],
+        "tem_boss": false,
+        "boss": null
+    }
+]
