@@ -24,7 +24,7 @@ async function carregarMasmorras() {
                 <h3>${masmorra.nome}</h3>
                 <p><strong>Descrição:</strong> ${masmorra.descricao}</p>
                 <p><strong>Andares:</strong> ${masmorra.andares}</p>
-                <p><strong>Salas Escondidas:</strong> ${masmorra.salas_escondidas}</p>
+                ${masmorra.tem_salas_escondidas ? `<p><strong>Salas Escondidas:</strong> ${masmorra.salas_escondidas}</p>` : ''}
                 <p><strong>Tipos de Inimigos:</strong> ${masmorra.tipos_inimigos.join(', ')}</p>
                 <p><strong>Tem Boss:</strong> ${masmorra.tem_boss ? 'Sim' : 'Não'}</p>
                 ${masmorra.tem_boss ? `<p><strong>Boss:</strong> ${masmorra.boss}</p>` : ''}
