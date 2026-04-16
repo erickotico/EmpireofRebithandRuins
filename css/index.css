@@ -53,6 +53,34 @@
     padding-right: 8px;
 }
 
+.updates-page .updates-grid {
+    grid-template-columns: 1fr;
+    max-height: none;
+}
+
+.updates-page .updates-search {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 8px;
+}
+
+.updates-page .updates-search input {
+    width: 100%;
+    max-width: 420px;
+    padding: 0.95rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.updates-page .updates-search input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
 .section-title {
     text-align: center;
     font-size: 2rem;

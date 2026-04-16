@@ -1,6 +1,8 @@
 class UpdatesManager {
     constructor() {
         this.updatesContainer = document.querySelector('.updates-grid');
+        this.searchInput = document.getElementById('search-updates');
+        this.updates = [];
     }
 /*    dados do Json local
 {
@@ -43,7 +45,12 @@ class UpdatesManager {
         try {
             const response = await fetch('./data/updates.json');
             const data = await response.json();
-            this.displayUpdates(data.updates);
+            this.updates = data.updates || [];
+            this.displayUpdates(this.updates);
+
+            if (this.searchInput) {
+                this.searchInput.addEventListener('input', () => this.filterUpdates());
+            }
         } catch (error) {
             console.error('Erro ao carregar atualizações:', error);
             this.displayFallbackUpdate();
@@ -66,6 +73,18 @@ class UpdatesManager {
     displayUpdates(updates) {
         const html = updates.map(update => this.createUpdateCard(update)).join('');
         this.updatesContainer.innerHTML = html;
+    }
+
+    filterUpdates() {
+        if (!this.searchInput) return;
+
+        const termo = this.searchInput.value.trim().toLowerCase();
+        const filtrados = this.updates.filter(update => {
+            return update.version.toLowerCase().includes(termo)
+                || update.title.toLowerCase().includes(termo);
+        });
+
+        this.displayUpdates(filtrados);
     }
 
     // Mostra um card padrão em caso de erro

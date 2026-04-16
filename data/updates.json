@@ -9,7 +9,7 @@
         "Subclasses reequilibradas para melhor se encaixar com os bônus de atributos", 
         "Adição de novos atributos como 'Velocidade' e 'Resistência'"
       ],
-      "link": "#"
+      "link": "../updates.html"
     },
       {
       "version": "v0.0.5", 
@@ -22,7 +22,7 @@
         "Adição e melhoria no Site para exibir os atributos de forma clara e informativa"
 
       ],
-      "link": "#"
+      "link": "../updates.html"
     }
   ]
 }

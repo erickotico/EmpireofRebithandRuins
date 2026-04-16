@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestiário - Empire of Rebirth & Ruins</title>
+    <title>Atualizações - Empire of Rebirth & Ruins</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/bestiario.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+<body class="updates-page">
     <header>
         <div class="brand">
-            <img src="./img/LogoRPG.jpg" alt="Logo do jogo">
+            <img src="./img/LogoRPG.jpg" alt="foto-logo">
             <h1>Empire of Rebirth & Ruins</h1>
         </div>
         <nav>
@@ -20,43 +20,23 @@
                 <li><a href="bestiario.html">Bestiário</a></li>
                 <li><a href="classes.html">Classes</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                
+               
             </ul>
         </nav>
+        <div class="header-actions">
+            <button class="btn btn-login" type="button" aria-label="Login"><a href="./login.html">Login</a></button>
+            <a class="btn btn-download" href="./downloads/EmpireSetup.exe" download aria-label="Download do jogo">Download</a>
+        </div>
     </header>
 
-    <main class="bestiary-container">
-        <h2 class="section-title">Bestiário</h2>
-        
-        <div class="bestiary-filters">
-            <div class="search-container">
-                <input type="text" id="searchMonster" placeholder="Procurar monstro...">
-                <button id="searchButton">Pesquisar</button>
+    <main>
+        <section class="updates">
+            <h2 class="section-title">Todas as Atualizações</h2>
+            <div class="updates-search">
+                <input id="search-updates" type="search" placeholder="Buscar atualizações..." aria-label="Pesquisar atualizações">
             </div>
-            <select id="filterType">
-                <option value="">Todos os tipos</option>
-            </select>
-        </div>
-
-        <div class="monster-grid">
-            <article class="monster-card">
-                <div class="monster-image">     
-                    <img src="img/monsters/monster1.jpg" alt="Nome do Monstro">
-                </div>
-                <div class="monster-info">
-                    <h3>Nome do Monstro</h3>
-                    <p class="monster-type">Tipo: Morto-vivo</p>
-                    <div class="monster-stats">
-                        <span>HP: 100</span>
-                        <span>ATK: 50</span>
-                        <span>DEF: 30</span>
-                    </div>
-                    <p class="monster-description">
-                        Breve descrição do monstro e suas habilidades principais.
-                    </p>
-                </div>
-            </article>
-        </div>
+            <div class="updates-grid" role="region" aria-label="Atualizações do jogo" tabindex="0"></div>
+        </section>
     </main>
 
     <footer class="site-footer" role="contentinfo">
@@ -65,10 +45,9 @@
                 <img src="./img/LogoRPG.jpg" alt="Logo Empire of Rebirth & Ruins">
                 <div>
                     <h3>Empire of Rebirth & Ruins</h3>
-                    <p class="footer-desc">Explore dungeons, derrote monstros e torne-se uma lenda.</p>
+                    <p class="footer-desc">Explore dungeons, derrote monstros e torne-se uma lenda em Empire of Rebirth & Ruins.</p>
                 </div>
             </div>
-
             <div class="footer-links" aria-hidden="false">
                 <div class="footer-col">
                     <h4>Jogo</h4>
@@ -79,7 +58,6 @@
                         <li><a href="patchnotes.html">Patch notes</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
                     <h4>Comunidade</h4>
                     <ul>
@@ -89,7 +67,6 @@
                         <li><a href="fanart.html">FanArt</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
                     <h4>Suporte</h4>
                     <ul>
@@ -102,10 +79,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-           <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Empire of Rebirth & Ruins. Todos os direitos reservados.</p>
+            <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Empire of Rebirth & Ruins. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="js/bestiario.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/updates.js"></script>
 </body>
 </html>
