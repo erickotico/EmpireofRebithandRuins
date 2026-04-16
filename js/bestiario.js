@@ -346,6 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchInput.addEventListener('input', applyFilters);
     filterTypeSelect.addEventListener('change', applyFilters);
+    document.getElementById('searchButton').addEventListener('click', applyFilters);
 
     loadMonsters();
 });
