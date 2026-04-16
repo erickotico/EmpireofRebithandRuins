@@ -7,7 +7,8 @@
         "salas_escondidas": 0,
         "tipos_inimigos": ["Goblins", "Ratos Gigantes", "Aranhas"],
         "tem_boss": true,
-        "boss": "Rei Goblin"
+        "boss": "Rei Goblin",
+        "imagem": "img/LogoRPG.jpg"
     },
     {
         "nome": "Floresta Assombrada",
@@ -17,6 +18,7 @@
         "salas_escondidas": 1,
         "tipos_inimigos": ["Lobos", "Espectros", "Aranhas Venenosas"],
         "tem_boss": false,
-        "boss": null
+        "boss": null,
+        "imagem": "img/LogoRPG.jpg"
     }
 ]

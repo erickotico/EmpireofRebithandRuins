@@ -95,8 +95,9 @@ section input::placeholder {
     overflow-y: auto;
     padding-right: 8px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    row-gap: 28px;
     padding-bottom: 8px;
 }
 
@@ -117,16 +118,103 @@ section input::placeholder {
     background: #1e1e1e;
     border: 1px solid #333;
     border-radius: 10px;
-    padding: 12px;
+    padding: 8px;
     margin: 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
 }
 
+.card,
+.card h3,
+.card p,
+.card span,
+.card strong,
+.card li {
+    letter-spacing: 0.15px;
+}
+
 .card:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+}
+
+.masmorra.card {
+    cursor: pointer;
+}
+
+.masmorra-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10000;
+}
+
+.masmorra-modal-content {
+    width: 100%;
+    max-width: 900px;
+    width: min(90vw, 900px);
+    background: #101010;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+    position: relative;
+}
+
+.masmorra-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.masmorra-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    text-align: center;
+}
+
+.masmorra-modal-header img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid #333;
+}
+
+.masmorra-modal-heading h2 {
+    margin: 0 0 12px 0;
+    font-size: 28px;
+}
+
+.masmorra-modal-heading p {
+    margin: 0;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.masmorra-modal-body {
+    padding: 0 24px 24px;
+    display: grid;
+    gap: 12px;
+}
+
+.masmorra-modal-body p {
+    margin: 0;
+    color: #e5e5e5;
 }
 
 .masmorra,
@@ -138,7 +226,7 @@ section input::placeholder {
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px solid #2f2f2f;
 }
 

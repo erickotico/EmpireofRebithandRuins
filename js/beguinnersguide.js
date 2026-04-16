@@ -47,17 +47,57 @@ function renderMasmorras(listaMasmorras) {
     listaMasmorras.forEach(masmorra => {
         const div = document.createElement('div');
         div.className = 'masmorra card';
+        div.tabIndex = 0;
+        div.setAttribute('role', 'button');
         div.innerHTML = `
             <h3>${masmorra.nome}</h3>
-            <p><strong>Descrição:</strong> ${masmorra.descricao}</p>
-            <p><strong>Andares:</strong> ${masmorra.andares}</p>
-            ${masmorra.tem_salas_escondidas ? `<p><strong>Salas Escondidas:</strong> ${masmorra.salas_escondidas}</p>` : ''}
-            <p><strong>Tipos de Inimigos:</strong> ${masmorra.tipos_inimigos.join(', ')}</p>
-            <p><strong>Tem Boss:</strong> ${masmorra.tem_boss ? 'Sim' : 'Não'}</p>
-            ${masmorra.tem_boss ? `<p><strong>Boss:</strong> ${masmorra.boss}</p>` : ''}
+            <p>${masmorra.descricao}</p>
         `;
+
+        div.addEventListener('click', () => abrirModalMasmorra(masmorra));
+        div.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                abrirModalMasmorra(masmorra);
+            }
+        });
+
         lista.appendChild(div);
     });
+}
+
+function abrirModalMasmorra(masmorra) {
+    const modal = document.createElement('div');
+    modal.className = 'masmorra-modal';
+    modal.innerHTML = `
+        <div class="masmorra-modal-content" role="dialog" aria-modal="true" aria-label="Informações da masmorra ${masmorra.nome}">
+            <button class="masmorra-modal-close" aria-label="Fechar">×</button>
+            <div class="masmorra-modal-header">
+                <img src="${masmorra.imagem}" alt="Foto da masmorra ${masmorra.nome}">
+                <div class="masmorra-modal-heading">
+                    <h2>${masmorra.nome}</h2>
+                    <p>${masmorra.descricao}</p>
+                </div>
+            </div>
+            <div class="masmorra-modal-body">
+                <p><strong>Andares:</strong> ${masmorra.andares}</p>
+                <p><strong>Tipos de inimigos:</strong> ${masmorra.tipos_inimigos.join(', ')}</p>
+                <p><strong>Salas escondidas:</strong> ${masmorra.tem_salas_escondidas ? masmorra.salas_escondidas : 'Não'}</p>
+                <p><strong>Tem boss:</strong> ${masmorra.tem_boss ? 'Sim' : 'Não'}</p>
+                ${masmorra.tem_boss ? `<p><strong>Boss:</strong> ${masmorra.boss}</p>` : ''}
+            </div>
+        </div>
+    `;
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal || event.target.closest('.masmorra-modal-close')) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
 }
 
 function renderItens(listaItens) {
