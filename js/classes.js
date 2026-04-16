@@ -259,6 +259,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Função para filtrar classes
+    function filtrarClasses(query) {
+        const termo = query.trim().toLowerCase();
+        const filtrados = classes.filter(classe => {
+            return classe.name.toLowerCase().includes(termo)
+                || classe.descricao.toLowerCase().includes(termo);
+        });
+        classesGrid.innerHTML = filtrados.map(createClassCard).join('');
+    }
+
+    // Event listeners para busca
+    const searchInput = document.getElementById('searchClasses');
+    const searchButton = document.getElementById('searchClassesButton');
+    searchButton.addEventListener('click', () => filtrarClasses(searchInput.value));
+    searchInput.addEventListener('input', (e) => filtrarClasses(e.target.value));
+
     loadClasses();
 
     // Calculadora de atributos
@@ -266,6 +282,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const subclass2Select = document.getElementById('subclass2Select');
     const summedStatsDiv = document.getElementById('summedStats');
     const classSelect = document.getElementById('classSelect');
+
+    function closeSumModal() {
+        const existingModal = document.querySelector('.sum-modal');
+        if (existingModal) {
+            existingModal.remove();
+            document.body.style.overflow = '';
+        }
+    }
+
+    function createSumModal(sumStats, corClasse, classeName, sub1Name, sub2Name) {
+        closeSumModal();
+
+        const statsHtml = Object.entries(sumStats)
+            .map(([key, value]) => `
+                <div class="stat-bar" style="margin-bottom: 14px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
+                        <span class="stat-value" style="font-weight: 600; color: ${corClasse};">${value}</span>
+                    </div>
+                    <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
+                        <div class="stat-fill" style="width: ${Math.min(value / 50, 100)}%; height: 100%; background: ${corClasse}; transition: width 0.3s;"></div>
+                    </div>
+                </div>
+            `).join('');
+
+        const modal = document.createElement('div');
+        modal.className = 'sum-modal';
+        modal.style.cssText = `
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        `;
+
+        modal.innerHTML = `
+            <div class="sum-modal-content" style="width: 100%; max-width: 520px; background: #0f0f0f; border-radius: 16px; padding: 28px; position: relative; border: 2px solid ${corClasse}; box-shadow: 0 18px 50px rgba(0,0,0,0.55);">
+                <button class="modal-close" aria-label="Fechar resultado" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: none; border-radius: 50%; background: ${corClasse}; color: white; font-size: 20px; cursor: pointer;">×</button>
+                <h2 style="margin: 0 0 8px 0; color: ${corClasse}; font-size: 24px;">Atributos calculados</h2>
+                <p style="margin: 0 0 10px 0; color: #bbb; font-size: 14px;">Classe: <strong>${classeName}</strong> + Subclasses: <strong>${sub1Name}</strong>, <strong>${sub2Name}</strong></p>
+                <div class="stats-container">${statsHtml}</div>
+            </div>
+        `;
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal || event.target.closest('.modal-close')) {
+                closeSumModal();
+            }
+        });
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+    }
 
     // Função para preencher as subclasses com base na classe selecionada
     function populateSubclasses() {
@@ -282,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 select.appendChild(option);
             });
         });
-        calculateSum(); // Recalcula ao mudar de classe
+        closeSumModal();
     }
 
     // Função para calcular a soma dos atributos
@@ -292,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sub2Id = subclass2Select.value;
         
         if (!classId || !sub1Id || !sub2Id) {
-            summedStatsDiv.style.display = 'none';
+            closeSumModal();
             return;
         }
         
@@ -317,23 +389,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sumStats[key] = (sumStats[key] || 0) + val;
         });
         
-        // Exibição dos resultados
         const corClasse = classe.cor || '#333';
-        const statsHtml = Object.entries(sumStats)
-            .map(([key, value]) => `
-                <div class="stat-bar" style="margin-bottom: 15px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
-                        <span class="stat-value" style="font-weight: 600; color: ${corClasse};">${value}</span>
-                    </div>
-                    <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
-                        <div class="stat-fill" style="width: ${Math.min(value / 50, 100)}%; height: 100%; background: ${corClasse}; transition: width 0.3s;"></div>
-                    </div>
-                </div>
-            `).join('');
-        
-        summedStatsDiv.innerHTML = `<h3 style="color: ${corClasse}; margin-bottom: 20px;">Atributos Somados</h3><div class="stats-container">${statsHtml}</div>`;
-        summedStatsDiv.style.display = 'block';
+        createSumModal(sumStats, corClasse, classe.name, sub1.name, sub2.name);
     }
 
     // Eventos
