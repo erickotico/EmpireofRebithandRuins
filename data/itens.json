@@ -9,6 +9,35 @@
         "utilizavel": true,
         "raridade": "Comum"
     },
+        {
+        "nome": "Poção de Cura",
+        "imagem": "img/LogoRPG.jpg",
+        "descricao": "Uma poção que restaura vida.",
+        "para_que_serve": "Restaura 50 pontos de vida.",
+        "craftavel": true,
+        "craft_resultado": "Poção de Cura Maior",
+        "utilizavel": true,
+        "raridade": "Incomum"
+    },
+        {
+        "nome": "Poção de Cura",
+        "imagem": "img/LogoRPG.jpg",
+        "descricao": "Uma poção que restaura vida.",
+        "para_que_serve": "Restaura 50 pontos de vida.",
+        "craftavel": true,
+        "craft_resultado": "Poção de Cura Maior",
+        "utilizavel": true,
+        "raridade": "Incomum"
+    },    {
+        "nome": "Poção de Cura",
+        "imagem": "img/LogoRPG.jpg",
+        "descricao": "Uma poção que restaura vida.",
+        "para_que_serve": "Restaura 50 pontos de vida.",
+        "craftavel": true,
+        "craft_resultado": "Poção de Cura Maior",
+        "utilizavel": true,
+        "raridade": "Incomum"
+    },
     {
         "nome": "Poção de Cura",
         "imagem": "img/LogoRPG.jpg",

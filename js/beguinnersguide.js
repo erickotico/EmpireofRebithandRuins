@@ -4,6 +4,8 @@ let reinos = [];
 let masmorras = [];
 let itens = [];
 
+
+
 // Função para abrir o popup da imagem ampliada
 function abrirPopup() {
     document.getElementById('popup').style.display = 'block';
@@ -175,10 +177,10 @@ function renderItens(listaItens) {
         div.tabIndex = 0;
         div.setAttribute('role', 'button');
         div.innerHTML = `
-            <div class="item-imagem">
+            <div class="item-card-image">
                 <img src="${item.imagem}" alt="${item.nome}">
+                <div class="item-name-overlay"><span>${item.nome}</span></div>
             </div>
-            <h3>${item.nome}</h3>
         `;
 
         div.addEventListener('click', () => abrirModalItem(item));
@@ -261,7 +263,8 @@ function filtrarItens(query) {
         return item.nome.toLowerCase().includes(termo)
             || item.descricao.toLowerCase().includes(termo)
             || item.para_que_serve.toLowerCase().includes(termo)
-            || (item.craft_resultado && item.craft_resultado.toLowerCase().includes(termo));
+            || (item.craft_resultado && item.craft_resultado.toLowerCase().includes(termo))
+            || item.raridade.toLowerCase().includes(termo);
     });
     renderItens(filtrados);
 }

@@ -101,6 +101,11 @@ section input::placeholder {
     padding-bottom: 8px;
 }
 
+#itens .scroll-box {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    align-items: flex-start;
+}
+
 .scroll-box::-webkit-scrollbar {
     width: 10px;
 }
@@ -317,28 +322,145 @@ section input::placeholder {
     display: block;
 }
 
-.item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 8px 0;
-    border-bottom: 1px solid #2f2f2f;
+.item.card {
+    cursor: pointer;
+    text-align: center;
+    padding: 2px;
+    max-width: 80px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.item:last-child {
-    border-bottom: none;
+.item.card h3 {
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.2;
 }
 
-.item-image img {
-    width: 60px;
-    height: 60px;
+.item-card-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    width: 100%;
+    padding-top: 100%;
+    margin-bottom: 8px;
+}
+
+.item-card-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    display: block;
+}
+
+.item-name-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 6px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10000;
+}
+
+.item-modal-content {
+    width: 100%;
+    max-width: 600px;
+    background: #101010;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+    position: relative;
+}
+
+.item-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.item-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+.item-modal-header img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 16px;
     border: 1px solid #333;
 }
 
-.item-body h3 {
-    margin-top: 0;
+.item-modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.item-raridade {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Raridades */
+.comum { background: #808080; color: #fff; }
+.incomum { background: #2e7d32; color: #fff; }
+.raro { background: #1976d2; color: #fff; }
+.épico { background: #9c27b0; color: #fff; }
+.lendario { background: #ffd700; color: #000; }
+.deus { background: #ff5722; color: #fff; }
+.imortal { background: #e91e63; color: #fff; }
+
+.item-modal-body {
+    padding: 0 24px 24px;
+    display: grid;
+    gap: 16px;
+}
+
+.item-info h3 {
+    margin: 0 0 8px 0;
+    color: #fff;
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 4px;
+}
+
+.item-info p {
+    margin: 0;
+    color: #e5e5e5;
+    line-height: 1.5;
 }
 
 .nenhum-resultado {
