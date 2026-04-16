@@ -5,7 +5,9 @@
         "descricao": "Uma espada básica feita de ferro.",
         "para_que_serve": "Usada para combate corpo a corpo.",
         "craftavel": true,
-        "craft_resultado": "Espada de Aço"
+        "craft_resultado": "Espada de Aço",
+        "utilizavel": true,
+        "raridade": "Comum"
     },
     {
         "nome": "Poção de Cura",
@@ -13,6 +15,8 @@
         "descricao": "Uma poção que restaura vida.",
         "para_que_serve": "Restaura 50 pontos de vida.",
         "craftavel": true,
-        "craft_resultado": "Poção de Cura Maior"
+        "craft_resultado": "Poção de Cura Maior",
+        "utilizavel": true,
+        "raridade": "Incomum"
     }
 ]

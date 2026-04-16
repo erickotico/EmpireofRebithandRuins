@@ -139,6 +139,101 @@ section input::placeholder {
     box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
 }
 
+.reino.card {
+    cursor: pointer;
+}
+
+.reino-imagem {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.reino-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10000;
+}
+
+.reino-modal-content {
+    width: 100%;
+    max-width: 900px;
+    width: min(90vw, 900px);
+    background: #101010;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+    position: relative;
+}
+
+.reino-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.reino-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    text-align: center;
+}
+
+.reino-modal-header img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid #333;
+}
+
+.reino-modal-heading h2 {
+    margin: 0 0 12px 0;
+    font-size: 28px;
+}
+
+.reino-modal-heading p {
+    margin: 0;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.reino-modal-body {
+    padding: 0 24px 24px;
+    display: grid;
+    gap: 16px;
+}
+
+.reino-info h3 {
+    margin: 0 0 8px 0;
+    color: #fff;
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 4px;
+}
+
+.reino-info p {
+    margin: 0;
+    color: #e5e5e5;
+    line-height: 1.5;
+}
+
 .masmorra.card {
     cursor: pointer;
 }

@@ -2,11 +2,21 @@
     {
         "nome": "Reino de Eldoria",
         "descricao": "Um reino próspero com cidades grandes.",
-        "posicao": "Centro do mapa"
+        "imagem": "img/LogoRPG.jpg",
+        "localizacao": "Localizado no centro do continente, cercado por montanhas e rios.",
+        "historia": "Fundado há séculos por guerreiros lendários, Eldoria prosperou através do comércio e da magia.",
+        "cultura": "Valoriza a honra, a magia e as tradições ancestrais.",
+        "costumes": "Os habitantes praticam rituais diários de gratidão aos deuses.",
+        "festivais": "Festival da Lua Cheia, onde fogos de artifício iluminam o céu."
     },
     {
         "nome": "Reino das Sombras",
         "descricao": "Um reino escuro e perigoso.",
-        "posicao": "Norte do mapa"
+        "imagem": "img/LogoRPG.jpg",
+        "localizacao": "Situado nas regiões frias do norte, com florestas densas e cavernas profundas.",
+        "historia": "Nascido das trevas após uma guerra antiga, é lar de criaturas sombrias.",
+        "cultura": "Baseada na sobrevivência e na força, com ênfase em rituais noturnos.",
+        "costumes": "Os moradores evitam a luz do sol e realizam cerimônias à meia-noite.",
+        "festivais": "Festival das Sombras, celebrando a noite eterna com danças e músicas misteriosas."
     }
 ]

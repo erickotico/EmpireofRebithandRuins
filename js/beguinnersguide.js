@@ -26,13 +26,73 @@ function renderReinos(listaReinos) {
     listaReinos.forEach(reino => {
         const div = document.createElement('div');
         div.className = 'reino card';
+        div.tabIndex = 0;
+        div.setAttribute('role', 'button');
         div.innerHTML = `
+            <img src="${reino.imagem}" alt="Imagem do ${reino.nome}" class="reino-imagem">
             <h3>${reino.nome}</h3>
-            <p><strong>Descrição:</strong> ${reino.descricao}</p>
-            <p><strong>Posição no Mapa:</strong> ${reino.posicao}</p>
+            <p>${reino.descricao}</p>
         `;
+
+        div.addEventListener('click', () => abrirModalReino(reino));
+        div.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                abrirModalReino(reino);
+            }
+        });
+
         lista.appendChild(div);
     });
+}
+
+function abrirModalReino(reino) {
+    const modal = document.createElement('div');
+    modal.className = 'reino-modal';
+    modal.innerHTML = `
+        <div class="reino-modal-content" role="dialog" aria-modal="true" aria-label="Informações do reino ${reino.nome}">
+            <button class="reino-modal-close" aria-label="Fechar">×</button>
+            <div class="reino-modal-header">
+                <img src="${reino.imagem}" alt="Imagem do reino ${reino.nome}">
+                <div class="reino-modal-heading">
+                    <h2>${reino.nome}</h2>
+                    <p>${reino.descricao}</p>
+                </div>
+            </div>
+            <div class="reino-modal-body">
+                <div class="reino-info">
+                    <h3>Localização</h3>
+                    <p>${reino.localizacao}</p>
+                </div>
+                <div class="reino-info">
+                    <h3>História</h3>
+                    <p>${reino.historia}</p>
+                </div>
+                <div class="reino-info">
+                    <h3>Cultura</h3>
+                    <p>${reino.cultura}</p>
+                </div>
+                <div class="reino-info">
+                    <h3>Costumes</h3>
+                    <p>${reino.costumes}</p>
+                </div>
+                <div class="reino-info">
+                    <h3>Festivais</h3>
+                    <p>${reino.festivais}</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal || event.target.closest('.reino-modal-close')) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
 }
 
 function renderMasmorras(listaMasmorras) {
@@ -111,21 +171,63 @@ function renderItens(listaItens) {
 
     listaItens.forEach(item => {
         const div = document.createElement('div');
-        div.className = 'item';
+        div.className = 'item card';
+        div.tabIndex = 0;
+        div.setAttribute('role', 'button');
         div.innerHTML = `
-            <div class="item-image">
+            <div class="item-imagem">
                 <img src="${item.imagem}" alt="${item.nome}">
             </div>
-            <div class="item-body">
-                <h3>${item.nome}</h3>
-                <p><strong>Descrição:</strong> ${item.descricao}</p>
-                <p><strong>Para que serve:</strong> ${item.para_que_serve}</p>
-                <p><strong>Craftável:</strong> ${item.craftavel ? 'Sim' : 'Não'}</p>
-                ${item.craftavel ? `<p><strong>Pode ser usado para craftar:</strong> ${item.craft_resultado}</p>` : ''}
-            </div>
+            <h3>${item.nome}</h3>
         `;
+
+        div.addEventListener('click', () => abrirModalItem(item));
+        div.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                abrirModalItem(item);
+            }
+        });
+
         lista.appendChild(div);
     });
+}
+
+function abrirModalItem(item) {
+    const modal = document.createElement('div');
+    modal.className = 'item-modal';
+    modal.innerHTML = `
+        <div class="item-modal-content" role="dialog" aria-modal="true" aria-label="Informações do item ${item.nome}">
+            <button class="item-modal-close" aria-label="Fechar">×</button>
+            <div class="item-modal-header">
+                <img src="${item.imagem}" alt="Imagem do item ${item.nome}">
+                <h2>${item.nome}</h2>
+                <span class="item-raridade ${item.raridade.toLowerCase()}">${item.raridade}</span>
+            </div>
+            <div class="item-modal-body">
+                <div class="item-info">
+                    <h3>Descrição</h3>
+                    <p>${item.descricao}</p>
+                </div>
+                <div class="item-info">
+                    <h3>Utilidade</h3>
+                    <p>${item.para_que_serve}</p>
+                </div>
+                ${item.utilizavel ? '<div class="item-info"><h3>Utilizável</h3><p>Sim</p></div>' : ''}
+                ${item.craftavel ? `<div class="item-info"><h3>Craftável</h3><p>Pode ser usado para craftar: ${item.craft_resultado}</p></div>` : ''}
+            </div>
+        </div>
+    `;
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal || event.target.closest('.item-modal-close')) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
 }
 
 function filtrarReinos(query) {
@@ -133,7 +235,11 @@ function filtrarReinos(query) {
     const filtrados = reinos.filter(reino => {
         return reino.nome.toLowerCase().includes(termo)
             || reino.descricao.toLowerCase().includes(termo)
-            || reino.posicao.toLowerCase().includes(termo);
+            || reino.localizacao.toLowerCase().includes(termo)
+            || reino.historia.toLowerCase().includes(termo)
+            || reino.cultura.toLowerCase().includes(termo)
+            || reino.costumes.toLowerCase().includes(termo)
+            || reino.festivais.toLowerCase().includes(termo);
     });
     renderReinos(filtrados);
 }
