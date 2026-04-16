@@ -428,22 +428,26 @@ section input::placeholder {
     font-size: 24px;
 }
 
-.item-raridade {
+.item-raridade-dropdown {
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
+    border: none;
+    background: #808080;
+    color: #fff;
+    cursor: pointer;
 }
 
-/* Raridades */
-.comum { background: #808080; color: #fff; }
-.incomum { background: #2e7d32; color: #fff; }
-.raro { background: #1976d2; color: #fff; }
-.épico { background: #9c27b0; color: #fff; }
-.lendario { background: #ffd700; color: #000; }
-.deus { background: #ff5722; color: #fff; }
-.imortal { background: #e91e63; color: #fff; }
+/* Raridades para dropdown */
+.item-raridade-dropdown option[value="comum"] { background: #808080; color: #fff; }
+.item-raridade-dropdown option[value="incomum"] { background: #2e7d32; color: #fff; }
+.item-raridade-dropdown option[value="raro"] { background: #1976d2; color: #fff; }
+.item-raridade-dropdown option[value="épico"] { background: #9c27b0; color: #fff; }
+.item-raridade-dropdown option[value="lendario"] { background: #ffd700; color: #000; }
+.item-raridade-dropdown option[value="deus"] { background: #ff5722; color: #fff; }
+.item-raridade-dropdown option[value="imortal"] { background: #e91e63; color: #fff; }
 
 .item-modal-body {
     padding: 0 24px 24px;

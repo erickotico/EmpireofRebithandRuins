@@ -2,50 +2,44 @@
     {
         "nome": "Espada de Ferro",
         "imagem": "img/LogoRPG.jpg",
-        "descricao": "Uma espada básica feita de ferro.",
-        "para_que_serve": "Usada para combate corpo a corpo.",
-        "craftavel": true,
-        "craft_resultado": "Espada de Aço",
         "utilizavel": true,
-        "raridade": "Comum"
-    },
-        {
-        "nome": "Poção de Cura",
-        "imagem": "img/LogoRPG.jpg",
-        "descricao": "Uma poção que restaura vida.",
-        "para_que_serve": "Restaura 50 pontos de vida.",
         "craftavel": true,
-        "craft_resultado": "Poção de Cura Maior",
-        "utilizavel": true,
-        "raridade": "Incomum"
-    },
-        {
-        "nome": "Poção de Cura",
-        "imagem": "img/LogoRPG.jpg",
-        "descricao": "Uma poção que restaura vida.",
-        "para_que_serve": "Restaura 50 pontos de vida.",
-        "craftavel": true,
-        "craft_resultado": "Poção de Cura Maior",
-        "utilizavel": true,
-        "raridade": "Incomum"
-    },    {
-        "nome": "Poção de Cura",
-        "imagem": "img/LogoRPG.jpg",
-        "descricao": "Uma poção que restaura vida.",
-        "para_que_serve": "Restaura 50 pontos de vida.",
-        "craftavel": true,
-        "craft_resultado": "Poção de Cura Maior",
-        "utilizavel": true,
-        "raridade": "Incomum"
+        "raridade": ["Comum", "Incomum", "Raro"],
+        "versoes": {
+            "Comum": {
+                "descricao": "Uma espada básica feita de ferro.",
+                "para_que_serve": "Usada para combate corpo a corpo.",
+                "craft_resultado": "Espada de Aço"
+            },
+            "Incomum": {
+                "descricao": "Uma espada de ferro bem forjada, com melhor equilíbrio.",
+                "para_que_serve": "Usada para combate melhorado. Causa 15% mais dano.",
+                "craft_resultado": "Espada de Aço Reforçada"
+            },
+            "Raro": {
+                "descricao": "Uma espada de ferro lendária, brilha levemente.",
+                "para_que_serve": "Usada para combate letal. Causa 30% mais dano e ignora 10% da armadura.",
+                "craft_resultado": "Espada de Aço Encantada"
+            }
+        }
     },
     {
         "nome": "Poção de Cura",
         "imagem": "img/LogoRPG.jpg",
-        "descricao": "Uma poção que restaura vida.",
-        "para_que_serve": "Restaura 50 pontos de vida.",
-        "craftavel": true,
-        "craft_resultado": "Poção de Cura Maior",
         "utilizavel": true,
-        "raridade": "Incomum"
+        "craftavel": true,
+        "raridade": ["Incomum", "Raro"],
+        "versoes": {
+            "Incomum": {
+                "descricao": "Uma poção que restaura vida com eficácia normal.",
+                "para_que_serve": "Restaura 50 pontos de vida.",
+                "craft_resultado": "Poção de Cura Maior"
+            },
+            "Raro": {
+                "descricao": "Uma poção que restaura vida com grande eficácia.",
+                "para_que_serve": "Restaura 100 pontos de vida e remove efeitos negativos menores.",
+                "craft_resultado": "Poção de Cura Suprema"
+            }
+        }
     }
 ]
