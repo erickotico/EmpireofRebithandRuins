@@ -41,7 +41,7 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Comando Tribal",
+            "nome": "Jato d'agua",
             "descricao": "Aumenta o ataque de goblins próximos em 25%",
             "cooldown": "45 segundos"
           },
@@ -66,22 +66,54 @@
       ],"hasVariantes": true,
       "listaVariantes": [
         {
+          "name": "Slime Minerio",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Comum",
+          "info": "Versão variante de um slime comum, encontrado em carvernas ricas em minerais."
+        },    
+        {
+          "name": "Slime Rochoso",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Comum",
+          "info": "Versão variante de um slime comum, encontrados em areas rochsas e em cavernas"
+        },  
+        {
+          "name": "Slime de Lava",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Comum",
+          "info": "Versão variante de um slime comum, encontrador em locais vulcanicos e em cavernas de lava."
+        },  
+        {
+          "name": "Slime Gosmento",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Comum",
+          "info": "Versão variante de um slime comum, encontrados em ambientes de pantano e em cavernas úmidas."
+        },  
+        {
           "name": "Slime Maior",
           "image": "img/LogoRPG.jpg",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+          "raridade": "raro",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo. Tambem enconrtado em sua versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
         },
         {
           "name": "Slime King",
           "image": "img/LogoRPG.jpg",
-          "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência."
+          "raridade": "lendario",
+          "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência.Tambem encotrado em sua versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
         },
         {
           "name": "Glutão Slime",
           "image": "img/LogoRPG.jpg",
-          "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável."
+          "raridade": "lendario",
+          "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável. Tambem encontrado em sua forma corrupida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+        },
+        {
+          "name": "Slime corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Sua forma corrupida é uma versão distorcida e mais agressiva"
         }
       ]
-
     },
     {
       "id": "m002",
@@ -160,16 +192,19 @@
         {
           "name": "Slime Maior",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         {
           "name": "Slime King",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
           "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência."
         },
         {
           "name": "Glutão Slime",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
           "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável."
         }
       ]
@@ -257,16 +292,19 @@
         {
           "name": "Vespa Rainha",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
           "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
         },
         {
           "name": "Vespa Corrompida",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
           "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
         },
         {
           "name": "Vespa Zumbi",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
           "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
         }
       ]
@@ -344,16 +382,19 @@
         {
           "name": "Verme Gigante Alpha",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
           "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
         },
         {
           "name": "Verme Gigante Corrompido",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
           "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
         },
         {
           "name": "Verme Gigante Zumbi",
           "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
           "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
         }
       ]

@@ -445,6 +445,13 @@
 
 .variant-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
 .variant-info h4 { margin: 0 0 0.35rem 0; color: var(--accent); }
+.variant-rarity { display: inline-block; margin-bottom: 0.35rem; font-size: 0.88rem; font-weight: 700; color: #fff; padding: 0.25rem 0.55rem; border-radius: 999px; }
+.variant-rarity.comum { background: #808080; }
+.variant-rarity.incomum { background: #2e7d32; }
+.variant-rarity.raro { background: #1976d2; }
+.variant-rarity.lendario { background: #9c27b0; }
+.variant-rarity.deus { background: #f57c00; }
+.variant-rarity.imortal { background: #c2185b; }
 .variant-info p { margin: 0; line-height: 1.4; font-size: 0.95rem; }
 
 /* Responsividade */

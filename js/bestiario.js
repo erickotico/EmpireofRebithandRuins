@@ -149,15 +149,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Variantes html (lista)
         const variantesHtml = (monster.listaVariantes || [])
-            .map(v => `
-                <div class="variant-card">
+            .map(v => {
+                const rarityLabel = v.raridade ? `<span class="variant-rarity ${v.raridade.toLowerCase()}">${v.raridade}</span>` : '';
+                return `
+                <div class="variant-card ${v.raridade ? v.raridade.toLowerCase() : ''}">
                     <div class="variant-image"><img src="${v.image}" alt="${v.name}"></div>
                     <div class="variant-info">
                         <h4>${v.name}</h4>
+                        ${rarityLabel}
                         <p>${v.info || ''}</p>
                     </div>
                 </div>
-            `).join('') || '<p class="muted">Sem variantes.</p>';
+            `;
+            }).join('') || '<p class="muted">Sem variantes.</p>';
 
         return `
             <div class="monster-modal">
