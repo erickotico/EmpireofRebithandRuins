@@ -2,9 +2,21 @@
     comum
     incomum
     raro
+    Épico
     lendário
     deus
     imortal
+
+
+------- Elementos ------- 
+    "fogo"
+    "agua"  
+    "terra"
+    "sombra"
+    "luz"
+    "eletrico"
+    "gelo"
+    "veneno"
 
 */
 
