@@ -91,9 +91,11 @@ function abrirModalReino(reino) {
         </div>
     `;
 
-    modal.addEventListener('click', () => {
-        modal.remove();
-        document.body.style.overflow = '';
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal || event.target.closest('.reino-modal-close')) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
     });
 
     document.body.appendChild(modal);
@@ -154,9 +156,11 @@ function abrirModalMasmorra(masmorra) {
         </div>
     `;
 
-    modal.addEventListener('click', () => {
-        modal.remove();
-        document.body.style.overflow = '';
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal || event.target.closest('.masmorra-modal-close')) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
     });
 
     document.body.appendChild(modal);
@@ -249,9 +253,11 @@ function abrirModalItem(item) {
         }
     });
 
-    modal.addEventListener('click', () => {
-        modal.remove();
-        document.body.style.overflow = '';
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal || event.target.closest('.item-modal-close')) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
     });
 
     document.body.appendChild(modal);
