@@ -23,6 +23,19 @@
 
       ],
       "link": "../updates.html"
+    },
+      {
+      "version": "v0.0.6", 
+      "date": "2026-04-17",
+      "title": "Atualização do site",
+      "changes": [
+        "Adição de nova pagina de atualizações para exibir as mudanças recentes",
+        "Melhoria na navegação do site para facilitar o acesso às informações sobre as classes e subclasses",
+        "Melhoria da pagina de detalhes para novos jogadores",
+        "Adição de informações na pagina para novos jogadores com informações sobre o mundo, masmorras e itens"
+
+      ],
+      "link": "../updates.html"
     }
   ]
 }
