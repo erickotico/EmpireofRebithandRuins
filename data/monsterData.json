@@ -66,7 +66,7 @@
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Slime Minerio",
+          "name": "Slime Mineral",
           "image": "img/LogoRPG.jpg",
           "raridade": "Comum",
           "info": "Versão variante de um slime comum, encontrado em carvernas ricas em minerais."
@@ -155,15 +155,21 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Comando Tribal",
-            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "nome": "Modida",
+            "descricao": "Um golpe que causa dano e reduz a defesa do alvo causando sangramento",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Investida Astuta",
+            "nome": "Investida",
             "descricao": "Avança rapidamente causando dano e atordoamento",
             "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Arranhão",
+            "descricao": "Arranha o alvo causando dano e sangramento",
+            "cooldown": "20 segundos"
           }
+
         ]
       },
       "recompensas": [
@@ -190,22 +196,53 @@
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Slime Maior",
+          "name": "Lobo da Neve",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Comum",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Lobo da Floresta",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Comum",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "HellHound",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "raro",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        
+        {
+          "name": "Lobo da Gigante",
           "image": "img/LogoRPG.jpg",
           "raridade": "Incomum",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         {
-          "name": "Slime King",
+          "name": "Lobo Epiritual",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência."
+          "raridade": "raro",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         {
-          "name": "Glutão Slime",
+          "name": "Wrog",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "lendario",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Lobo Zombie",
           "image": "img/LogoRPG.jpg",
           "raridade": "Incomum",
-          "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável."
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
+        },
+        {
+          "name": "Lobo Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "raro",
+          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         }
       ]
 
@@ -221,7 +258,7 @@
         "historia": "Insetos voadores que habitam áreas florestais, conhecidos por seus ferrões venenosos e comportamento agressivo.",
         "regiao": "Florestas e áreas rurais",
         "comportamento": "Agressivo, especialmente quando perturbados",
-        "tipo": "Inseto / Felino",
+        "tipo": "Inseto",
         "dificuldade": "Media"
       },
         "estatisticas": {
@@ -250,14 +287,24 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Comando Tribal",
-            "descricao": "Aumenta o ataque de goblins próximos em 25%",
+            "nome": "Ferrão Venenoso",
+            "descricao": "Um Golpe capaz de paralisar o alvo por alguns segundos e causar dano ao longo do tempo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Investida Astuta",
-            "descricao": "Avança rapidamente causando dano e atordoamento",
+            "nome": "Corte Navalha",
+            "descricao": "Um ataque rápido que causa dano e pode causar sangramento",
             "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Ataque de Garra",
+            "descricao": "Um Golpe capaz de causar dano e reduzir a defesa do alvo",
+            "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Bomba de Veneno",
+            "descricao": "Um Ataque em area que causa dano e envenena os inimigos atingidos",
+            "cooldown": "60 segundos"
           }
         ]
       },
@@ -294,6 +341,12 @@
           "image": "img/LogoRPG.jpg",
           "raridade": "Raro",
           "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
+        },
+        {
+          "name": "Vespa Executioner",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Uma versão "
         },
         {
           "name": "Vespa Corrompida",

@@ -26,6 +26,7 @@ function getDropChance(rarity) {
         'Comum': 100,
         'Incomum': 75,
         'Raro': 50,
+        'Epico': 35,
         'lendario': 25,
         'deus': 10,
         'imortal': 5
