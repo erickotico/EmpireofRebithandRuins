@@ -26,7 +26,7 @@ function getDropChance(rarity) {
         'Comum': 100,
         'Incomum': 75,
         'Raro': 50,
-        'Epico': 35,
+        'Épico': 35,
         'lendario': 25,
         'deus': 10,
         'imortal': 5
@@ -230,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <option value="Comum">Comum</option>
                                     <option value="Incomum">Incomum</option>
                                     <option value="Raro">Raro</option>
+                                    <option value="Épico">Épico</option>
                                     <option value="lendario">lendario</option>
                                     <option value="deus">deus</option>
                                     <option value="imortal">imortal</option>

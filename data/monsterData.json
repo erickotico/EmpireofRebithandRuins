@@ -62,6 +62,11 @@
           "item": "Nucleo de Slime",
           "raridade": "Incomum",
           "quantidade": "50-150"
+        },
+        {
+          "item": "Essência de Slime",
+          "raridade": "Épico",
+          "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
@@ -104,7 +109,7 @@
         {
           "name": "Glutão Slime",
           "image": "img/LogoRPG.jpg",
-          "raridade": "lendario",
+          "raridade": "Épico",
           "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável. Tambem encontrado em sua forma corrupida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
         },
         {

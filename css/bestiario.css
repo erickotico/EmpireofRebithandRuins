@@ -5,6 +5,8 @@
 .incomum .monster-rarity { background: #2e7d32; color: #fff; }
 .raro { border-color: #1976d2; }
 .raro .monster-rarity { background: #1976d2; color: #fff; }
+.epico { border-color: #ff5722; }
+.epico .monster-rarity { background: #ff5722; color: #fff; }
 .lendario { border-color: #9c27b0; }
 .lendario .monster-rarity { background: #9c27b0; color: #fff; }
 .divindade { border-color: #ffd700; }
@@ -449,6 +451,7 @@
 .variant-rarity.comum { background: #808080; }
 .variant-rarity.incomum { background: #2e7d32; }
 .variant-rarity.raro { background: #1976d2; }
+.variant-rarity.epico { background: #ff5722; }
 .variant-rarity.lendario { background: #9c27b0; }
 .variant-rarity.deus { background: #f57c00; }
 .variant-rarity.imortal { background: #c2185b; }
