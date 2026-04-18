@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filterTypeSelect.innerHTML = '<option value="">Todos os tipos</option>';
             uniqueTypes.forEach(type => {
                 const option = document.createElement('option');
-                option.value = type;
+                option.value = type.toLowerCase();
                 option.textContent = type;
                 filterTypeSelect.appendChild(option);
             });
@@ -350,11 +350,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase();
-        const selectedType = filterTypeSelect.value;
+        const selectedType = filterTypeSelect.value.toLowerCase();
         
         const filtered = monsters.filter(monster => {
             const matchesSearch = monster.name.toLowerCase().includes(searchTerm);
-            const monsterTypes = monster.informacoes.tipo.split(' / ').map(t => t.trim());
+            const monsterTypes = monster.informacoes.tipo.split(' / ').map(t => t.trim().toLowerCase());
             const matchesType = !selectedType || monsterTypes.includes(selectedType);
             return matchesSearch && matchesType;
         });

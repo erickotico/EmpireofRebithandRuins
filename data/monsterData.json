@@ -97,13 +97,13 @@
         {
           "name": "Slime Maior",
           "image": "img/LogoRPG.jpg",
-          "raridade": "raro",
+          "raridade": "Raro",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo. Tambem enconrtado em sua versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
         },
         {
           "name": "Slime King",
           "image": "img/LogoRPG.jpg",
-          "raridade": "lendario",
+          "raridade": "Lendario",
           "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência.Tambem encotrado em sua versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
         },
         {
@@ -132,7 +132,7 @@
         "regiao": "Florestas e montanhas",
         "comportamento": "Agressivo, especialmente quando em matilha",
         "tipo": "Beast",
-        "dificuldade": "Media"
+        "dificuldade": "Média"
       },
         "estatisticas": {
         "vida": 2500,
@@ -215,7 +215,7 @@
         {
           "name": "HellHound",
           "image": "img/LogoRPG.jpg",
-          "raridade": "raro",
+          "raridade": "Raro",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         
@@ -228,13 +228,13 @@
         {
           "name": "Lobo Epiritual",
           "image": "img/LogoRPG.jpg",
-          "raridade": "raro",
+          "raridade": "Raro",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         {
           "name": "Wrog",
           "image": "img/LogoRPG.jpg",
-          "raridade": "lendario",
+          "raridade": "Lendario",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         },
         {
@@ -246,7 +246,7 @@
         {
           "name": "Lobo Corrompido",
           "image": "img/LogoRPG.jpg",
-          "raridade": "raro",
+          "raridade": "Raro",
           "info": "Versão alpha com ataque mais forte e comportamento agressivo."
         }
       ]
@@ -264,7 +264,7 @@
         "regiao": "Florestas e áreas rurais",
         "comportamento": "Agressivo, especialmente quando perturbados",
         "tipo": "Inseto",
-        "dificuldade": "Media"
+        "dificuldade": "Média"
       },
         "estatisticas": {
         "vida": 2500,
@@ -326,7 +326,7 @@
         },
         {
           "item": "Saco de Veneno",
-          "raridade": "lendario",
+          "raridade": "Lendario",
           "quantidade": 1
         },
         {
@@ -386,7 +386,7 @@
         "regiao": "Cavernas e áreas Deserticas",
         "comportamento": "Agressivo, especialmente quando ameaçado",
         "tipo": "Inseto / Subterrâneo",
-        "dificuldade": "Dificil"
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -476,13 +476,13 @@
       "image": "img/LogoRPG.jpg",
       "level": 25,
       "stars": 3,
-      "rarity": "Comum",
+      "rarity": "comum",
       "informacoes": {
         "historia": "Pequenas criaturas humanoides que vivem em grupos, conhecidas por sua astúcia e comportamento imprevisível.",
         "regiao": "Cavernas, Florestas e áreas rurais",
         "comportamento": "Agressivo, ",
         "tipo": "Humanoide",
-        "dificuldade": "Media"
+        "dificuldade": "Média"
       },
         "estatisticas": {
         "vida": 2500,
@@ -566,13 +566,13 @@
         {
           "name": "Goblin Xamã",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Epico",
+          "raridade": "Épico",
           "info": "Versão xamã, uma versão com habilidades de magia negra."
         },
         {
           "name": "Goblin King",
           "image": "img/LogoRPG.jpg",
-          "raridade": "lendario",
+          "raridade": "Lendário",
           "info": "Versão rei, uma versão com habilidades aprimoradas e um comando maior sobre outros goblins."
         },
         {
@@ -601,8 +601,8 @@
         "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
         "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Humanoide / Reptil",
+        "dificuldade": "Média"
       },
         "estatisticas": {
         "vida": 2500,
@@ -669,7 +669,7 @@
         },
         {
           "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "raridade": "Lendário",
           "quantidade": 1
         }
       ],"hasVariantes": true,
@@ -683,7 +683,7 @@
         {
           "name": "Rei Lagarto",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Lendario",
+          "raridade": "Lendário",
           "info": "Versão rei, uma versão de lagarto com habilidades aprimoradas e um comando maior sobre outros lagartos."
         },
         {
@@ -695,7 +695,7 @@
         {
           "name": "Troglodita",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Epico",
+          "raridade": "Épico",
           "info": "Versão troglodita, uma versão de lagarto com habilidades de escavação e ataques subterrâneos."
         },
         {
@@ -730,8 +730,8 @@
         "historia": "Serpentes venenosas que habitam áreas desérticas, florestais e maritimas, são conhecidas por sua velocidade e ataques velozes.",
         "regiao": "Desertos, Florestas, Pantanos",
         "comportamento": "Agressivo",
-        "tipo": "Reptil/ Aquático",
-        "dificuldade": "Media"
+        "tipo": "Reptil / Aquático",
+        "dificuldade": "Média"
       },
         "estatisticas": {
         "vida": 2500,
@@ -788,48 +788,73 @@
         },
         {
           "item": "Veneno de Serpente",
-          "raridade": "Lendario",
+          "raridade": "Lendário",
           "quantidade": 1
+        },
+        {
+          "item": "Presa de Serpente",
+          "raridade": "Incomum",
+          "quantidade": "1-4"
         },
         {
           "item": "Nucleo de Serpente",
-          "raridade": "Lendario",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "raridade": "Lendário",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Anãntemas",
           "image": "img/LogoRPG.jpg",
           "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "info": "Versão anãntemas, uma versão de serpente com habilidades de veneno aprimoradas e ataques mais rápidos."
+        },
+        {
+          "name": "Mestiços",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Os Mestiços são uma versão de serpente com uma aparência humana e habilidades aprimoradas."
+        },
+        {
+          "name": "Gorgonas",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "As Gorgonas são uma versão de serpente com uma aparência humana mais ameaçadora e com habilidades de petrificação."
+        },
+        {
+          "name": "Naga",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "As Nagas são uma versão de serpente gigantes mais elegante e com habilidades de magia aquática."
+        },
+        {
+          "name": "Serpente Zombie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão zumbi, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Serpentes Corrompida",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão corrompida, uma versão de serpente com uma aparência mais ameaçadora e habilidades aprimoradas."
         }
       ]
 
     },   
     {
-      "id": "m006",
-      "name": "Lagarto",
+      "id": "m008",
+      "name": "Morto Vivo",
       "image": "img/LogoRPG.jpg",
       "level": 25,
       "stars": 3,
-      "rarity": "incomum",
+      "rarity": "raro",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Criaturas com alta concentração de energia negativa, reanimados por magia negra ou maldições, conhecidos por sua resistência e ataques implacáveis.",
+        "regiao": "Cemitérios, Ruínas e áreas assombradas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Humanoide",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -870,7 +895,7 @@
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
+          "item": "Ataque ",
           "raridade": "Comum",
           "quantidade": 1
         },
@@ -878,26 +903,6 @@
           "item": "Olhos de Lagarto",
           "raridade": "Raro",
           "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
-          "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
