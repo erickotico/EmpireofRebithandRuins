@@ -326,7 +326,7 @@
         },
         {
           "item": "Saco de Veneno",
-          "raridade": "Lendario",
+          "raridade": "Lendário",
           "quantidade": 1
         },
         {
@@ -1178,22 +1178,58 @@
           "image": "img/LogoRPG.jpg",
           "raridade": "Comum",
           "info": "Uma Versão de Ogro com uma aparência mais suja e habilidades de resistência aprimoradas."
+        },
+        {
+          "name": "Oni",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "Uma Versão de Ogro com uma aparência mais ameaçadora e habilidades de fogo aprimoradas."
+        },
+        {
+          "name": "Tormenta",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Uma Versão de Ogro com uma aparência mais ameaçadora e habilidades de vento aprimoradas."
+        },
+        {
+          "name": "Pigmeu",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Uma Versão de Ogro de porte pequeno e habilidades de agilidade aprimoradas."
+        },
+        {
+          "name": "Ogrillion",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Deus",
+          "info": "Uma Versão de Ogro híbrida, de orc com ogro, gigante e com força aprimorada."
+        },
+        {
+          "name": "Ogro Zombie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão zumbi, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Ogro Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Uma versão de ogro Corrompida com uma aparência mais ameaçadora e habilidades aprimoradas."
         }
       ]
 
     },
     {
-      "id": "m006",
-      "name": "Lagarto",
+      "id": "m011",
+      "name": "Javali",
       "image": "img/LogoRPG.jpg",
       "level": 25,
       "stars": 3,
       "rarity": "incomum",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Porcos de Grande Porte que habitam áreas desérticas, florestais e pantanosas, conhecidos por sua agressividade e força bruta.",
+        "regiao": "Desertos, Florestas, Pantanos",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
+        "tipo": "Animal",
         "dificuldade": "Media"
       },
         "estatisticas": {
@@ -1222,72 +1258,72 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Investida de Chifres",
+            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Giro Selvagem",
+            "descricao": "Um ataque de giro que causa dano em área e pode derrubar os inimigos atingidos",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
-          "quantidade": 1
-        },
-        {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
+          "item": "Pele de Javali",
           "raridade": "Raro",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
+          "item": "Presas de Javali",
+          "raridade": "Raro",
+          "quantidade": "1-2"
+        },
+        {
+          "item": "Pelo de Javali",
           "raridade": "Comum",
           "quantidade": "5-10"
         },
         {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Coração de Javali",
+          "raridade": "Lendário",
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Javali",
+          "raridade": "Lendário",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Javali Zombie",
           "image": "img/LogoRPG.jpg",
           "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "info": "Versão zumbi, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Javali Corrompida",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão corrompida, uma versão reanimada e menos resistente."
         }
       ]
-
     },
     {
-      "id": "m006",
-      "name": "Lagarto",
+      "id": "m012",
+      "name": "Mimic",
       "image": "img/LogoRPG.jpg",
       "level": 25,
       "stars": 3,
       "rarity": "incomum",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "historia": "Uma criatura misteriosa que pode se disfarçar como um baú, atacando os aventureiros desavisados com sua força e habilidades de engano.",
+        "regiao": "Masmorras",
+        "comportamento": "Normal",
+        "tipo": "Metamorfo",
+        "dificuldade": "Fácil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -1315,72 +1351,76 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Impacto",
+            "descricao": "Um ataque de investida que causa dano e pode derrubar o alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
+            "nome": "Mordida",
+            "descricao": "Um ataque de investida que causa dano e pode derrubar o alvo",
+            "cooldown": "45 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
+          "item": "Tesouros",
           "raridade": "Comum",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
+          "item": "Nucleo de Mimic",
           "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Mimic Tesouros",
           "image": "img/LogoRPG.jpg",
           "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "info": "A unica diferença é que seus drops são terouros, e tem uma aparência mais brilhante e chamativa."
+        },
+        {
+          "name": "Mimic Armas",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "A unica diferença é que seus drops são armas, e tem uma aparência mais robusta e ameaçadora."
+        },
+        {
+          "name": "Mimic Armaduras",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "A unica diferença é que seus drops são armaduras, e tem uma aparência mais resistente e ameaçadora."
+        },  
+        {
+          "name": "Mimic Itens",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "A unica diferença é que seus drops são itens de consumo, e tem uma aparência mais colorida e chamativa."
+        },
+        {
+          "name": "Mimic Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão corrompida, uma versão de mimic com uma aparência mais ameaçadora e habilidades aprimoradas."
         }
       ]
 
     },
-        {
-      "id": "m006",
-      "name": "Lagarto",
+    {
+      "id": "m013",
+      "name": "Bruxa",
       "image": "img/LogoRPG.jpg",
       "level": 25,
       "stars": 3,
-      "rarity": "incomum",
+      "rarity": "raro",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "historia": "Bruxas são seres humanos que praticam magia negra, conhecidas por sua astúcia e habilidades mágicas, muitas vezes associadas a maldições e feitiços poderosos.",
+        "regiao": "Florestas, Pantanos",
+        "comportamento": "Normal",
+        "tipo": "Humanoide",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -1408,61 +1448,83 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Maldição de Sangue",
+            "descricao": "Um feitiço que causa dano ao longo do tempo e pode reduzir a defesa do alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
+            "nome": "Maldição demomiaca",
+            "descricao": "Um feitiço que causa dano ao longo do tempo e pode reduzir a força do alvo",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Sopro da Morte",
+            "descricao": "Um feitiço que causa dano instantâneo e pode matar o alvo se sua vida estiver abaixo de um certo limite",
+            "cooldown": "45 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Poção ",
+          "raridade": "Lendário",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Joias Magicas",
+          "raridade": "Lendário",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
+          "item": "Aneis Magicos",
+          "raridade": "Lendário",
+          "quantidade": 1
         },
         {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Medalhão Magicos",
+          "raridade": "Lendário",
+          "quantidade": 1
+        },
+        {
+          "item": "Pergaminhos",
+          "raridade": "Lendário",
+          "quantidade": 1
+        },
+        {
+          "item": "Encantamentos",
+          "raridade": "Lendário",
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Bruxa",
+          "raridade": "Imortal",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Bruxa de Pantano",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Raro",
+          "info": "Uma versão de bruxa com uma aparência mais suja e habilidades de veneno aprimoradas."
+        },
+        {
+          "name": "Bruxa de Floresta",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Uma versão de bruxa com uma aparência mais natural e habilidades de controle de plantas aprimoradas."
+        },
+        {
+          "name": "Bruxa Corrompida",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão corrompida, uma versão de bruxa com uma aparência mais ameaçadora e habilidades aprimoradas."
         }
       ]
 
     },
     {
-      "id": "m006",
+      "id": "m014",
       "name": "Lagarto",
       "image": "img/LogoRPG.jpg",
       "level": 25,

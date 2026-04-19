@@ -27,9 +27,9 @@ function getDropChance(rarity) {
         'Incomum': 75,
         'Raro': 50,
         'Épico': 35,
-        'lendario': 25,
-        'deus': 10,
-        'imortal': 5
+        'Lendário': 25,
+        'Deus': 10,
+        'Imortal': 5
     };
     return chances[rarity] || 0;
 }
