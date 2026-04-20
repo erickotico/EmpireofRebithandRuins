@@ -2891,43 +2891,52 @@
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Coração de Titã",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
+          "item": "Olhos de Titã",
+          "raridade": "Imortal",
           "quantidade": 2
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
+          "item": "Dente de Titã",
+          "raridade": "Imortal",
+          "quantidade": "10-15"
         },
         {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
+          "item": "Nucleo de Titã",
           "raridade": "Lendario",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Titã Berstial",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Imortal",
+          "info": "Versão de titã bestial, uma versão de titã com uma aparência mais animal e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Jotunn",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de jotunn, uma versão de titã com uma aparência mais nórdica e habilidades de controle do gelo aprimoradas."
+        },
+        {
+          "name": "Titã Zombie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de titã zumbi, uma versão de titã que foi reanimada."
+        },
+        {
+          "name": "Titã Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de titã corrompido, uma versão de titã que foi corrompida por forças sombrias, com habilidades de magia negra aprimoradas."
         }
+
       ]
 
     },
