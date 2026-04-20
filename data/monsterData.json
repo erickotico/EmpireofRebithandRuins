@@ -719,7 +719,7 @@
       ]
 
     },
-   {
+    {
       "id": "m007",
       "name": "Serpente",
       "image": "img/LogoRPG.jpg",
@@ -1525,6 +1525,265 @@
     },
     {
       "id": "m014",
+      "name": "Águia",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "comum",
+      "informacoes": {
+        "historia": "Grandes aves de rapina que habitam áreas desérticas, florestais e montanhosas, conhecidas por sua visão aguçada e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e Montanhas",
+        "comportamento": "Agressivo",
+        "tipo": "Ave",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Investida Aerea",
+            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Corte de Vento",
+            "descricao": "Um ataque de corte que arremessa uma massa de ar cortante causandos dano ao alvo atingidos",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Bico de Águia",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Águia",
+          "raridade": "Comum",
+          "quantidade": 2
+        },
+        {
+          "item": "Penas de Águia",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Águia",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Garra de Águia",
+          "raridade": "Comum",
+          "quantidade": 2
+        },
+        {
+          "item": "Nucleo de Águia",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Harpia",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão de harpia, uma versão de águia com uma aparência mais ameaçadora e habilidades aprimoradas."
+        },
+        {
+          "name": "Rapina",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão de rapina, uma versão de águia com uma aparência mais robusta e habilidades de ataque aprimoradas."
+        },
+        {
+          "name": "PEscadora",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão de pescadora, uma versão de águia com uma aparência mais natural e habilidades de pesca aprimoradas."
+        },
+        {
+          "name": "Gigante",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão de gigante, uma versão de águia com uma aparência mais imponente e habilidades aprimoradas."
+        },
+        {
+          "name": "Águia Zombie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão zumbi, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Águia Corrompida",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão corrompida, uma versão de águia com uma aparência mais sombria e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m015",
+      "name": "Orc",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "raro",
+      "informacoes": {
+        "historia": "Grandes criaturas humanoides que habitam áreas desérticas, florestais e montanhosas, conhecidas por sua força bruta e habilidades de combate.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide",
+        "dificuldade": "Difícil"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Cacetete Pesado",
+            "descricao": "Um ataque poderoso que causa dano em área e pode atordoar os inimigos atingidos",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Pedra",
+            "descricao": "Um ataque de arremesso que causa dano e pode derrubar o alvo",
+            "cooldown": "45 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Bastão",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Orc",
+          "raridade": "Lendário",
+          "quantidade": 2
+        },
+        {
+          "item": "Dente de Orc",
+          "raridade": "Raro",
+          "quantidade": "20"
+        },
+        {
+          "item": "Couro de Orc",
+          "raridade": "Raro",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Orc",
+          "raridade": "Deus",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Ogrillion",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Uma versão de orc híbrida de orc com ogro, gigante e com força aprimorada."
+        },
+        {
+          "name": "Orc do Pantano",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Uma versão de orc com uma aparência mais suja e habilidades de resistência aprimoradas."
+        },
+        {
+          "name": "Orc da Floresta",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Uma versão de orc com uma aparência mais natural e habilidades de furtividade aprimoradas."
+        },
+        {
+          "name": "Orc das Montanhas",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Uma versão de orc com uma aparência mais robusta e habilidades de resistência aprimoradas."
+        },
+        {
+          "name": "Druidas",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "Uma versão de orc com habilidades de controle da natureza e magia aprimoradas."
+        },
+        {
+          "name": "Artificie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "Uma versão de orc com habilidades de criação de armas e armaduras aprimoradas."
+        },
+        {
+          "name": "Lord Orc",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Deus",
+          "info": "Uma versão de orc com uma aparência mais imponente e habilidades de liderança aprimoradas."
+        },
+        {
+          "name": "Orc Zombie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão zumbi, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Orc Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão corrompida, uma versão de orc com uma aparência mais ameaçadora e habilidades aprimoradas.'"
+        }
+      ]
+
+    },
+    {
+      "id": "m016",
       "name": "Lagarto",
       "image": "img/LogoRPG.jpg",
       "level": 25,
@@ -1617,7 +1876,7 @@
 
     },
     {
-      "id": "m006",
+      "id": "m017",
       "name": "Lagarto",
       "image": "img/LogoRPG.jpg",
       "level": 25,
@@ -1710,7 +1969,844 @@
 
     },
     {
-      "id": "m006",
+      "id": "m018",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m019",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m020",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m021",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m022",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m023",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m024",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m025",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m026",
+      "name": "Lagarto",
+      "image": "img/LogoRPG.jpg",
+      "level": 25,
+      "stars": 3,
+      "rarity": "incomum",
+      "informacoes": {
+        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide/ Reptil",
+        "dificuldade": "Media"
+      },
+        "estatisticas": {
+        "vida": 2500,
+        "mana": 0,
+        "stamina": 0,
+        "forca": 180,
+        "armadura": 120,
+        "agilidade": 65,
+        "inteligencia": 85,
+        "carisma": 0,
+        "percepcao": 0,
+        "maestria": 0,
+        "resistencias": {
+          "fogo": "fraco", 
+          "agua": "forte",    
+          "terra": "muito_forte", 
+          "sombra": "muito_fraco",
+          "luz": "neutro",
+          "eletrico": "neutro",
+          "gelo": "neutro",
+          "veneno": "fraco"
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1500,
+        "listaHabilidades": [
+          {
+            "nome": "Corte Navalha",
+            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "cooldown": "45 segundos"
+          },
+          {
+            "nome": "Arremeço de Cauda",
+            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cauda de Lagarto",
+          "raridade": "Comum",
+          "quantidade": 1
+        },
+        {
+          "item": "Olhos de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 2
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "50"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridade": "Raro",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridade": "Comum",
+          "quantidade": "5-10"
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridade": "Lendario",
+          "quantidade": 1
+        }
+      ],"hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Hobgiblin",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Incomum",
+          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }
+      ]
+
+    },
+    {
+      "id": "m027",
       "name": "Lagarto",
       "image": "img/LogoRPG.jpg",
       "level": 25,
