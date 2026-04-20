@@ -2770,10 +2770,70 @@
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "DracoLich",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Imortal",
+          "info": "Versão de dracolich, uma versão de dragão que foi reanimada como um lich, com habilidades de magia negra aprimoradas."
+        },
+        {
+          "name": "Dragão de Planta",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão de planta, uma versão de dragão com uma aparência mais vegetal e habilidades de controle de plantas aprimoradas."
+        },
+        {
+          "name": "Dragão de Agua",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão de água, uma versão de dragão com uma aparência mais aquática e habilidades de controle da água aprimoradas."
+        },
+        {
+          "name": "Dragão de Fogo",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão de fogo, uma versão de dragão com uma aparência mais ignea e habilidades de controle do fogo aprimoradas."
+        },
+        {
+          "name": "Dragão de Gelo",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão de gelo, uma versão de dragão com uma aparência mais glacial e habilidades de controle do gelo aprimoradas."
+        },
+        {
+          "name": "Dragao de Eletricidade",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão de eletricidade, uma versão de dragão com uma aparência mais elétrica e habilidades de controle da eletricidade aprimoradas."
+        },
+        {
+          "name": "Dragão das Sombras",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão das sombras, uma versão de dragão com uma aparência mais sombria e habilidades de controle das sombras aprimoradas."
+        },
+        {
+          "name": "Dragão da Luz",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão da luz, uma versão de dragão com uma aparência mais luminosa e habilidades de controle da luz aprimoradas."
+        },
+        {
+          "name": "Wyvern",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de wyvern, uma versão de dragão com uma aparência mais bestial e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Dragão Zombie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão zumbi, uma versão de dragão que foi reanimada como um zumbi."
+        },
+        {
+          "name": "Dragão Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de dragão corrompido, uma versão de dragão que foi corrompida por forças sombrias, com habilidades de magia negra aprimoradas."
         }
       ]
 
