@@ -2840,16 +2840,16 @@
     },
     {
       "id": "m025",
-      "name": "Lagarto",
+      "name": "Titã",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 7,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Gigantes poderosos, conhecidos por sua força e resistência, habitando áreas montanhosas e ruinas antigas.",
+        "regiao": "Montanhas, Ruinas Antigas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
+        "tipo": "Humanoide / Gigante",
         "dificuldade": "Media"
       },
         "estatisticas": {
@@ -2878,13 +2878,13 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Pisão Devastador",
+            "descricao": "Um ataque de pisão que causa dano em área e pode atordoar os inimigos atingidos",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Arremesso",
+            "descricao": "Um ataque que arremessa o inimigo para longe, causando dano e pode atordoar o alvo",
             "cooldown": "20 segundos"
           }
         ]
