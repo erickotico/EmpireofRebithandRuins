@@ -1905,17 +1905,17 @@
     },
     {
       "id": "m017",
-      "name": "Lagarto",
+      "name": "Treanth",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 6,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "historia": "Grandes arvores vivas amaldiçõadas são conhecidas por sua força e resistência, habitando áreas florestais e pantanosas",
+        "regiao": "Florestas, Pantanos",
+        "comportamento": "Territorialistas",
+        "tipo": "Árvore / Planta",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -1943,72 +1943,81 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Ataque de vinhas",
+            "descricao": "Um ataque que invoca vinhas para atacar o inimigo, causando dano e pode enraizar o alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Bola da escuridão",
+            "descricao": "Um ataque mágico que lança uma bola de energia sombria, causando dano e pode cegar o alvo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Madeira",
+          "raridade": "Deus",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Plantas Medicinais",
+          "raridade": "Deus",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Nucleo de Treanth",
+          "raridade": "Imortal",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Treanth de Carvalho",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Lendário",
+          "info": "Versão de treanth de carvalho, uma versão de treanth com uma aparência de uma arvore de carvalho."
+        },
+        {
+          "name": "Treanth de Pinheiro",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "Versão de treanth de pinheiro, uma versão de treanth com uma aparência de uma arvore de pinheiro."
+        },
+        {
+          "name": "Treanth de Betula",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "Versão de treanth de betula, uma versão de treanth com uma aparência de uma arvore de betula."
+        },
+        {
+          "name": "Treanth de Carvalho escuro",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "Versão de treanth de carvalho escuro, uma versão de treanth com uma aparência de uma arvore de carvalho escuro."
+        },
+        {
+          "name": "Treanth Corrompida",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Lendário",
+          "info": "Versão de treanth corrompida, uma versão de treanth com uma aparência mais ameaçadora e habilidades aprimoradas."
         }
       ]
 
     },
     {
       "id": "m018",
-      "name": "Lagarto",
+      "name": "Centauro",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 6,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Seres mitológicos com corpo de cavalo e torso humano, conhecidos por sua habilidade com arcos e lanças, habitando áreas florestais e montanhosas.",
+        "regiao": "Florestas, Pantanos e Montanhas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Humanoide / Animal",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -2036,72 +2045,68 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Tiro de Arco",
+            "descricao": "Um ataque à distância que causa dano e pode reduzir a defesa do alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Avanço",
+            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Coice",
+            "descricao": "Um ataque de coice que causa dano e pode derrubar o alvo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Casco de Cavalo",
+          "raridade": "Deus",
+          "quantidade": 4
+        },
+        {
+          "item": "Rabo de Cavalo",
+          "raridade": "Deus",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Nucleo de Centauro",
+          "raridade": "Imortal",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Centauro Zombie",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Lendário",
+          "info": "Versão zumbi, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Centauro Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Deus",
+          "info": "Versão corrompida, uma versão de centauro com uma aparência mais ameaçadora e habilidades aprimoradas."
         }
       ]
 
     },
     {
       "id": "m019",
-      "name": "Lagarto",
+      "name": "Minotauro",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 6,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
+        "historia": "Seres mitológicos com corpo humano e cabeça de touro, conhecidos por sua força bruta e habilidades de combate corpo a corpo, habitando áreas desérticas, florestais e montanhosas.",
         "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Humanoide / Animal",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -2129,55 +2134,51 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Ataque de Machado",
+            "descricao": "Um ataque poderoso que causa dano e pode atordoar o alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Investida de Chifres",
+            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Cabeça de Minotauro",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
+          "item": "Cifre de Minotauro",
+          "raridade": "Imortal",
           "quantidade": 2
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Nucleo de Minotauro",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Machado de Minotauro",
+          "raridade": "Lendário",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Minotauro Zombie",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Deus",
+          "info": "Versão zumbi, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Minotauro Corrompido",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Deus",
+          "info": "Versão corrompida, uma versão de centauro com uma aparência mais ameaçadora e habilidades aprimoradas."
         }
       ]
 
