@@ -2185,17 +2185,17 @@
     },
     {
       "id": "m020",
-      "name": "Lagarto",
+      "name": "Elfo Negro",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 6,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Elfos que foram corrompidos pela escuridão, conhecidos por sua habilidade com magia negra e furtividade, habitando áreas florestais e pantanosas.",
+        "regiao": "Florestas, Pantanos",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Humanoide",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -2223,72 +2223,103 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Ataque de espada",
+            "descricao": "Um ataque rápido que causa dano e pode causar sangramento",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Ataque de Arco",
+            "descricao": "Um ataque à distância que causa dano e pode reduzir a defesa do alvo",
+            "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Combate",
+            "descricao": "Um ataque corpo a corpo que causa dano e pode atordoar o alvo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Arco",
+          "raridade": "Lendário",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
+          "item": "Espada",
+          "raridade": "Lendário",
+          "quantidade": 1
+        },
+        {
+          "item": "Lança",
+          "raridade": "Lendário",
+          "quantidade": 1
+        },
+        {
+          "item": "Orelha de Elfo",
+          "raridade": "Imortal",
           "quantidade": 2
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Colar Magico",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
+          "item": "Orb Magico",
+          "raridade": "Imortal",
+          "quantidade": 1
         },
         {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Cajado Magico",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Grimorio do Sabio",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Coração de Elfo",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Elfo",
+          "raridade": "Imortal",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Drows",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Imortal",
+          "info": "Versão de drows, uma versão de elfo negro com uma aparência mais sombria e habilidades de magia negra aprimoradas."
+        },
+        {
+          "name": "Elfos das Profundezas",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Os Elfos das profundezas são uma variação mais sombria e poderosa dos elfos, habitando as áreas mais profundas e misteriosas."
         }
       ]
 
     },
     {
       "id": "m021",
-      "name": "Lagarto",
+      "name": "Vampiro",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 7,
+      "rarity": "Imortal",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Seres que se escondem da luz do sol, vivendo nas sombras e caçando suas presas na escuridão",
+        "regiao": "Ruinas Abandonadas, Cemiterios",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Humanoide",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -2316,72 +2347,93 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Coração de Sangue",
+            "descricao": "Um ataque que causa dano e pode drenar a vida do alvo para curar o vampiro",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Maldição de Sangue",
+            "descricao": "Um ataque mágico que causa dano e pode reduzir a defesa do alvo",
+            "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Metamorfose",
+            "descricao": "Um ataque que transforma o vampiro em um morcego, aumentando sua velocidade e evasão por um curto período de tempo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Sangue de Vampiro",
+          "raridade": "Imortal",
+          "quantidade": "1-3"
+        },
+        {
+          "item": "Presa de Vampiro",
+          "raridade": "Deus",
+          "quantidade": "2-4"
+        },
+        {
+          "item": "Colar da Imortalidade",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Colar da Noite",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
+          "item": "Anel da Velocidade",
+          "raridade": "Imortal",
+          "quantidade": 1
         },
         {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Anel da Caça",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Anel de Resistência",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Vampiro",
+          "raridade": "Imortal",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Lord Vampiro",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Imortal",
+          "info": "Versão de lord vampiro, uma versão de vampiro com uma aparência mais imponente e habilidades de liderança aprimoradas."
+        },
+        {
+          "name": "Hemomantes",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de hemomantes, uma versão de vampiro com habilidades de manipulação de sangue aprimoradas."
         }
       ]
 
     },
     {
       "id": "m022",
-      "name": "Lagarto",
+      "name": "Demonio",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 7,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Seres de outra dimensão, conhecidos por sua força e habilidades sobrenaturais, habitando áreas infernais e ruinas antigas.",
+        "regiao": "Infernos, Ruinas Antigas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Humanoide/ Demônio / Animais",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -2409,72 +2461,120 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Explosão de Fogo",
+            "descricao": "Um ataque mágico que causa dano em área e pode queimar os inimigos atingidos",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Raio de Energia",
+            "descricao": "Um ataque mágico que lança um raio de energia, causando dano e pode reduzir a defesa do alvo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
-          "quantidade": 1
-        },
-        {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
+          "item": "Asas de Demônio",
+          "raridade": "Imortal",
           "quantidade": 2
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
+          "item": "Sangue de Demônio",
+          "raridade": "Imortal",
+          "quantidade": 2
         },
         {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Chifres de Demônio",
+          "raridade": "Imortal",
+          "quantidade": 2
+        },
+        {
+          "item": "Colar das Trevas",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
+          "item": "Anel das Trevas",
+          "raridade": "Imortal",
+          "quantidade": 1
         },
         {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Nucleo de Demornio",
+          "raridade": "Imortal",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Marilith",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "raridade": "Imortal",
+          "info": "Versão de marilith, uma versão de demônio com uma aparência mais serpentina e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Luxuria",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de luxuria, uma versão de demônio com uma aparência mais sedutora e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Gula",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de gula, uma versão de demônio com uma aparência mais gorda e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Preguiça",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de preguiça, uma versão de demônio com uma aparência mais perezosa e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Avareza",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de avareza, uma versão de demônio com uma aparência mais gananciosa e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Ira",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de ira, uma versão de demônio com uma aparência mais feroz e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Soberba",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de soberba, uma versão de demônio com uma aparência mais orgulhosa e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Inveja",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de inveja, uma versão de demônio com uma aparência mais ciumenta e habilidades de combate aprimoradas."
+        },
+        {
+          "name": "Lord Demonio",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Imortal",
+          "info": "Versão de lord demônio, uma versão de demônio com uma aparência mais imponente e habilidades de liderança aprimoradas."
         }
       ]
 
     },
     {
       "id": "m024",
-      "name": "Lagarto",
+      "name": "Hydra",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 7,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Grandes criaturas com múltiplas cabeças, conhecidas por sua regeneração rápida e ataques venenosos, habitando áreas pantanosas e florestais.",
+        "regiao": "Florestas, Pantanos",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Animal",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -2502,72 +2602,77 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Baforada de Veneno",
+            "descricao": "Um ataque que exala veneno, causando dano ao longo do tempo e pode envenenar o alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Baforada de Fogo",
+            "descricao": "Um ataque que exala fogo, causando dano ao longo do tempo e pode queimar o alvo",
+            "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Caos de Raios",
+            "descricao": "Um Ataque em area que exala eletricidade, causando dano e pode paralisar o alvo",
+            "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Geada",
+            "descricao": "Um ataque que exala gelo, causando dano ao longo do tempo e pode congelar o alvo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Dente de Hydra",
+          "raridade": "Imortal",
+          "quantidade": "3-5"
+        },
+        {
+          "item": "Olhos de Hydra",
+          "raridade": "Imortal",
+          "quantidade": "2-5"
+        },
+        {
+          "item": "Escama de Hydra",
+          "raridade": "Imortal",
+          "quantidade": "10-20"
+        },
+        {
+          "item": "Bafo de Hydra",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 2
+          "item": "Cabeça de Hydra",
+          "raridade": "Imortal",
+          "quantidade": "1-3"
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Nucleo de Hydra",
+          "raridade": "Imortal",
           "quantidade": 1
         }
-      ],"hasVariantes": true,
+      ],"hasVariantes": false,
       "listaVariantes": [
-        {
-          "name": "Hobgiblin",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
+        
       ]
 
     },
     {
       "id": "m024",
-      "name": "Lagarto",
+      "name": "Dragão",
       "image": "img/LogoRPG.jpg",
       "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "stars": 7,
+      "rarity": "lendario",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Grandes criaturas aladas, conhecidas por sua força e habilidades de voo, habitando áreas montanhosas e vulcânicas.",
+        "regiao": "Montanhas, Vulcões e Ruinas Antigas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Reptil",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -2595,46 +2700,71 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Bafo de Fogo",
+            "descricao": "Um ataque que exala fogo, causando dano ao longo do tempo e pode queimar o alvo",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
+            "nome": "Ataque de Cauda",
             "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "cooldown": "20 segundos"
+          },
+          {
+            "nome": "Ataque de Raios",
+            "descricao": "Um ataque que exala eletricidade, causando dano e pode paralisar o alvo",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "item": "Cauda de Dragão",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
+          "item": "Olhos de Dragão",
+          "raridade": "Imortal",
           "quantidade": 2
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
+          "item": "Escama de Dragão",
+          "raridade": "Imortal",
+          "quantidade": "20-30"
         },
         {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Coração de Dragão",
+          "raridade": "Imortal",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
+          "item": "Ovo de Dragão",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Cabeça de Dragão",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Sangue de Dragão",
+          "raridade": "Imortal",
+          "quantidade": 1
+        },
+        {
+          "item": "Ouro",
           "raridade": "Comum",
+          "quantidade": "100-500"
+        },
+        {
+          "item": "Dente de Dragão",
+          "raridade": "Imortal",
           "quantidade": "5-10"
         },
         {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Nucleo de Dragão",
+          "raridade": "Imortal",
           "quantidade": 1
         }
       ],"hasVariantes": true,
