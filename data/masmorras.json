@@ -1,24 +1,35 @@
 [
     {
-        "nome": "Caverna Sombria",
-        "descricao": "Uma caverna escura cheia de perigos ocultos.",
-        "andares": 3,
+        "nome": "Floresta Sussurante",
+        "descricao": "Uma floresta misteriosa com sussurros de antigas magias.",
+        "andares": 1,
         "tem_salas_escondidas": false,
         "salas_escondidas": 0,
-        "tipos_inimigos": ["Goblins", "Ratos Gigantes", "Aranhas"],
+        "tipos_inimigos": ["Goblins", "Lobos", "Aranhas","Slimes","Vespas"],
         "tem_boss": true,
         "boss": "Rei Goblin",
         "imagem": "img/LogoRPG.jpg"
     },
     {
-        "nome": "Floresta Assombrada",
-        "descricao": "Uma floresta densa com espíritos malignos.",
-        "andares": 2,
+        "nome": "Cripta de Atenas",
+        "descricao": "Uma cripta antiga cheia de segredos e perigos.",
+        "andares": 4,
         "tem_salas_escondidas": true,
         "salas_escondidas": 1,
-        "tipos_inimigos": ["Lobos", "Espectros", "Aranhas Venenosas"],
+        "tipos_inimigos": ["Lobos", "Mortos-Vivos", "Aranhas Venenosas","Mimics"],
         "tem_boss": false,
         "boss": null,
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Gruta de Cristal",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
         "imagem": "img/LogoRPG.jpg"
     }
 ]
