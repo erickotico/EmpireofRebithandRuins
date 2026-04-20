@@ -1784,17 +1784,17 @@
     },
     {
       "id": "m016",
-      "name": "Lagarto",
+      "name": "Urso Gigante",
       "image": "img/LogoRPG.jpg",
       "level": 25,
       "stars": 3,
-      "rarity": "incomum",
+      "rarity": "raro",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
+        "historia": "Enormes Criaturas que habitam áreas florestais e congeladas, conhecidas por sua força bruta e resistência, capazes de causar grande dano com suas garras e mordidas.",
+        "regiao": "Florestas, Áreas Congeladas",
         "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
+        "tipo": "Animal",
+        "dificuldade": "Difícil"
       },
         "estatisticas": {
         "vida": 2500,
@@ -1822,58 +1822,86 @@
         "xpGanho": 1500,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
+            "nome": "Corte de Aço",
+            "descricao": "Um ataque poderoso que causa dano e pode causar sangramento",
             "cooldown": "45 segundos"
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
+            "nome": "Mordida",
+            "descricao": "Um ataque de mordida que causa dano",
             "cooldown": "20 segundos"
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
-          "quantidade": 1
+          "item": "Garras de Urso",
+          "raridade": "Lendário",
+          "quantidade": "5-10"
         },
         {
-          "item": "Olhos de Lagarto",
+          "item": "Olhos de Urso",
           "raridade": "Raro",
           "quantidade": 2
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
+          "item": "Pele de Urso",
+          "raridade": "Lendário",
+          "quantidade": "5-15"
         },
         {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
+          "item": "Coração de Urso",
+          "raridade": "Lendário",
           "quantidade": 1
         },
         {
-          "item": "Dente de Lagarto",
+          "item": "Carne de Urso",
+          "raridade": "Lendário",
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Urso",
           "raridade": "Comum",
           "quantidade": "5-10"
         },
         {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
+          "item": "Nucleo de Urso",
+          "raridade": "Deus",
           "quantidade": 1
         }
       ],"hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
+          "name": "Urso Polar",
           "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
+          "raridade": "Raro",
+          "info": "Versão de urso polar, uma versão de urso gigante com uma aparência mais branca e habilidades de resistência aprimoradas."
+        },
+        {
+          "name": "Urso Panda",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão de urso panda, uma versão de urso gigante com uma aparência mais fofa e habilidades de resistência aprimoradas."
+        },
+        {
+          "name": "Urso Negro",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão de urso negro, uma versão de urso gigante com uma aparência mais escura e habilidades de resistência aprimoradas."
+        },
+         {
+          "name": "Urso Zombie",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão Urso Zombie, uma versão reanimada e menos resistente."
+        },
+        {
+          "name": "Urso Corrompida",
+          "image": "img/LogoRPG.jpg",
+          "raridade": "Raro",
+          "info": "Versão corrompida, uma versão do urso com uma aparência mais ameaçadora e habilidades aprimoradas."
+        }   
       ]
-
     },
     {
       "id": "m017",
@@ -2434,7 +2462,7 @@
 
     },
     {
-      "id": "m023",
+      "id": "m024",
       "name": "Lagarto",
       "image": "img/LogoRPG.jpg",
       "level": 25,
@@ -2714,99 +2742,6 @@
     },
     {
       "id": "m026",
-      "name": "Lagarto",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
-      "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Reptil",
-        "dificuldade": "Media"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Cauda de Lagarto",
-          "raridade": "Comum",
-          "quantidade": 1
-        },
-        {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Lagarto",
-          "raridade": "Lendario",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Hobgiblin",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m027",
       "name": "Lagarto",
       "image": "img/LogoRPG.jpg",
       "level": 25,
