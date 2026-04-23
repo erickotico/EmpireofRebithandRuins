@@ -31,5 +31,192 @@
         "tem_boss": true,
         "boss": "Rei Lagarto",
         "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Ruinas do Guardião Antigo",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Biblioteca do conhecimento proibido",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Labirinto de Minus",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Templo Submerso",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Torre do Julgamento",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Dominio do Rei Esquecido",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Abismo das Almas",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Fenda do Submundo",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Jardim das Realidades Partidas",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Labirinto Demoniaco",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Templo da Morte Silenciosa",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Pico dos Deuses Caido",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Dominio dos Imortais",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Portal do Fim Infinito",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Palácio das Ilusões Infinitas",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Labirinto do Destino Fragmentado",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
+    },
+    {
+        "nome": "Abismo Primordial",
+        "descricao": "Uma gruta cheia de cristais mágicos e perigos.",
+        "andares": 4,
+        "tem_salas_escondidas": true,
+        "salas_escondidas": 1,
+        "tipos_inimigos": ["Slime","Mortos-Vivos", "Aranhas Venenosas","Serpentes","Mimics"],
+        "tem_boss": true,
+        "boss": "Rei Lagarto",
+        "imagem": "img/LogoRPG.jpg"
     }
 ]
