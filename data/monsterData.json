@@ -1,2944 +1,339 @@
-
 {
   "monsters": [
     {
-      "id": "m001",
+      "id": 1,
       "name": "Slime",
-      "image": "img/LogoRPG.jpg",
-      "level": 10,
+      "image": "Slime.jpg",
+      "level": 1,
+      "levelMin": 1,
+      "levelMax": 10,
       "stars": 1,
-      "rarity": "comum",
+      "rarity": "Comum",
       "informacoes": {
-        "historia": "Criaturas gelatinosas que habitam áreas úmidas, conhecidas por sua capacidade de regeneração rápida.",
-        "regiao": "Pântanos e cavernas úmidas",
-        "comportamento": "Passivo, mas pode se tornar agressivo quando ameaçado",
-        "tipo": "Gelatina / Beast",
-        "dificuldade": "Fácil"
+        "historia": "Nas úmidas cavernas subterrâneas, uma poça translúcida aguarda pacientemente no chão de pedra escurecida. Aventureiros incautos frequentemente a confundem com água estagnada até sentirem a queimação ácida corroendo suas botas. Sem olhos ou boca, essa massa gelatinosa se move furtivamente, guiada apenas pelo tremor dos passos alheios. Movida por uma fome silenciosa e implacável, a criatura não morde, mas engolfa e dissolve lentamente tudo o que ousa cruzar seu caminho.",
+        "regiao": "Cavernas úmidas, masmorras abandonadas, pântanos escuros e redes de esgoto subterrâneas.",
+        "comportamento": "Paciente e sorrateiro",
+        "tipo": "Gosma",
+        "dificuldade": "Muito Fácil"
       },
-        "estatisticas": {
-        "vida": 2500,
+      "estatisticas": {
+        "vida": 45,
         "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
+        "stamina": 60,
+        "forca": 4,
+        "armadura": 2,
+        "agilidade": 3,
+        "inteligencia": 1,
+        "carisma": 1,
+        "percepcao": 8,
+        "maestria": 2,
         "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
+          "fogo": 0,
+          "agua": 8,
+          "terra": 4,
+          "sombra": 0,
+          "luz": 0,
+          "eletrico": 0,
+          "gelo": 0,
+          "veneno": 10
         }
       },
       "habilidades": {
-        "xpGanho": 1500,
+        "xpGanho": 15,
         "listaHabilidades": [
           {
-            "nome": "Jato d'agua",
-            "descricao": "Aumenta o ataque de goblins próximos em 25%",
-            "cooldown": "45 segundos"
+            "nome": "Tiro de Ácido",
+            "descricao": "Um Tiro a longa distância que causa dano de queimadura por um tempo",
+            "cooldown": 5
           },
           {
-            "nome": "Investida Astuta",
-            "descricao": "Avança rapidamente causando dano e atordoamento",
-            "cooldown": "20 segundos"
+            "nome": "Divisão Celular",
+            "descricao": "Ao receber um dano cortante critico o slime se divide em dois slimes menores com 50% da sua vida original.",
+            "cooldown": 0
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Gelatina de Slime",
-          "raridade": "Comum",
+          "item": "Gosma de slime",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
           "quantidade": 1
         },
         {
           "item": "Nucleo de Slime",
-          "raridade": "Incomum",
-          "quantidade": "50-150"
-        },
-        {
-          "item": "Essência de Slime",
-          "raridade": "Épico",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
           "quantidade": 1
         }
-      ],"hasVariantes": true,
+      ],
+      "hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Slime Mineral",
-          "image": "img/LogoRPG.jpg",
+          "name": "Slime Ambiente",
+          "image": "slimes.jpg",
           "raridade": "Comum",
-          "info": "Versão variante de um slime comum, encontrado em carvernas ricas em minerais."
-        },    
-        {
-          "name": "Slime Rochoso",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão variante de um slime comum, encontrados em areas rochsas e em cavernas"
-        },  
-        {
-          "name": "Slime de Lava",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão variante de um slime comum, encontrador em locais vulcanicos e em cavernas de lava."
-        },  
-        {
-          "name": "Slime Gosmento",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão variante de um slime comum, encontrados em ambientes de pantano e em cavernas úmidas."
-        },  
+          "info": "É uma variante de biomas do slime padrão, podendo ser encontrado em qualquer ambiente úmido"
+        },
         {
           "name": "Slime Maior",
-          "image": "img/LogoRPG.jpg",
+          "image": "SMaior.jpg",
           "raridade": "Raro",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo. Tambem enconrtado em sua versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+          "info": "Uma evolução dos slimes padrões aumentando seu tamanho e força de combate"
         },
         {
           "name": "Slime King",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendario",
-          "info": "Versão beta, um chefe poderoso com habilidades únicas e alta resistência.Tambem encotrado em sua versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
-        },
-        {
-          "name": "Glutão Slime",
-          "image": "img/LogoRPG.jpg",
+          "image": "Sking.jpg",
           "raridade": "Épico",
-          "info": "Versão gamma, conhecido por sua capacidade de absorver ataques e regenerar rapidamente, tornando-se um adversário formidável. Tambem encontrado em sua forma corrupida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+          "info": "O lider dos slimes, seu tamanho é maior e suas resistencia a dano fisico é superior"
         },
         {
-          "name": "Slime corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Sua forma corrupida é uma versão distorcida e mais agressiva"
-        }
-      ]
-    },
-    {
-      "id": "m002",
-      "name": "Lobo",
-      "image": "img/LogoRPG.jpg",
-      "level": 15,
-      "stars": 2,
-      "rarity": "incomum",
-      "informacoes": {
-        "historia": "Predadores ágeis que caçam em matilhas, conhecidos por sua ferocidade e inteligência.",
-        "regiao": "Florestas e montanhas",
-        "comportamento": "Agressivo, especialmente quando em matilha",
-        "tipo": "Beast",
-        "dificuldade": "Média"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Modida",
-            "descricao": "Um golpe que causa dano e reduz a defesa do alvo causando sangramento",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Investida",
-            "descricao": "Avança rapidamente causando dano e atordoamento",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Arranhão",
-            "descricao": "Arranha o alvo causando dano e sangramento",
-            "cooldown": "20 segundos"
-          }
-
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Pele de Lobo",
-          "raridade": "Comum",
-          "quantidade": 2
+          "name": "Glutão",
+          "image": "Glutao.jpg",
+          "raridade": "Épico",
+          "info": "Glutão é uma forma do slime que comeu muito em sua vida se transformando em um slime mais redondo e maior sendo considerado o maior slime que ja foi avistado"
         },
         {
-          "item": "Nucleo de Lobo",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Coração de Lobo",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Olho de Lobo",
-          "raridade": "Incomum",
-          "quantidade": 2
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Lobo da Neve",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        },
-        {
-          "name": "Lobo da Floresta",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        },
-        {
-          "name": "HellHound",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        },
-        
-        {
-          "name": "Lobo da Gigante",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        },
-        {
-          "name": "Lobo Epiritual",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        },
-        {
-          "name": "Wrog",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendario",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        },
-        {
-          "name": "Lobo Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        },
-        {
-          "name": "Lobo Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão alpha com ataque mais forte e comportamento agressivo."
-        }
-      ]
-
-    },
-    {
-      "id": "m003",
-      "name": "Vespa",
-      "image": "img/LogoRPG.jpg",
-      "level": 15,
-      "stars": 2,
-      "rarity": "incomum",
-      "informacoes": {
-        "historia": "Insetos voadores que habitam áreas florestais, conhecidos por seus ferrões venenosos e comportamento agressivo.",
-        "regiao": "Florestas e áreas rurais",
-        "comportamento": "Agressivo, especialmente quando perturbados",
-        "tipo": "Inseto",
-        "dificuldade": "Média"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Ferrão Venenoso",
-            "descricao": "Um Golpe capaz de paralisar o alvo por alguns segundos e causar dano ao longo do tempo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Corte Navalha",
-            "descricao": "Um ataque rápido que causa dano e pode causar sangramento",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Ataque de Garra",
-            "descricao": "Um Golpe capaz de causar dano e reduzir a defesa do alvo",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Bomba de Veneno",
-            "descricao": "Um Ataque em area que causa dano e envenena os inimigos atingidos",
-            "cooldown": "60 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Ferrão de Vespa",
-          "raridade": "Comum",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Vespa",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Saco de Veneno",
+          "name": "Corrompido",
+          "image": "Scorrompido.jpg",
           "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Olho de Vespa",
-          "raridade": "Incomum",
-          "quantidade": 2
-        },
-        {
-          "item": "Patas de Vespa",
-          "raridade": "Incomum",
-          "quantidade": 2
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Vespa Rainha",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
-        },
-        {
-          "name": "Vespa Executioner",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão "
-        },
-        {
-          "name": "Vespa de Fogo",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Uma versão "
-        },
-        {
-          "name": "Vespa Corrompida",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
-        },
-        {
-          "name": "Vespa Zumbi",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
+          "info": "Uma forma corrompida de qualquer tipo de slime, criado em ambientes toxicos sua aura foi corrompida por conta dos lixos tóxicos."
         }
       ]
-
     },
     {
-      "id": "m004",
-      "name": "Verme Gigante",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "raro",
-      "informacoes": {
-        "historia": "Criaturas subterrâneas que se alimentam de minerais e matéria orgânica, conhecidas por sua força bruta e resistência.",
-        "regiao": "Cavernas e áreas Deserticas",
-        "comportamento": "Agressivo, especialmente quando ameaçado",
-        "tipo": "Inseto / Subterrâneo",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Comando Tribal",
-            "descricao": "Aumenta o ataque de goblins próximos em 25%",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Investida Astuta",
-            "descricao": "Avança rapidamente causando dano e atordoamento",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Dente de Verme",
-          "raridade": "Comum",
-          "quantidade": "10-20"
-        },
-        {
-          "item": "Nucleo de Verme",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Terra Mastigada",
-          "raridade": "Comum",
-          "quantidade": "50-150"
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Verme Gigante Alpha",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": " Versão alpha, uma versão maior e mais poderosa com ataques venenosos mais fortes."
-        },
-        {
-          "name": "Verme Gigante de pedra",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão de pedra, uma versão mais resistente e com habilidades de defesa aprimoradas."
-        },
-        {
-          "name": "Verme Gigante Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
-        },
-        {
-          "name": "Verme Gigante Zumbi",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m005",
+      "id": 2,
       "name": "Goblin",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "comum",
+      "image": "goblin.jpg",
+      "level": 5,
+      "levelMin": 5,
+      "levelMax": 25,
+      "stars": 1,
+      "rarity": "Comum",
       "informacoes": {
-        "historia": "Pequenas criaturas humanoides que vivem em grupos, conhecidas por sua astúcia e comportamento imprevisível.",
-        "regiao": "Cavernas, Florestas e áreas rurais",
-        "comportamento": "Agressivo, ",
-        "tipo": "Humanoide",
-        "dificuldade": "Média"
+        "historia": "Pequenos humanoides de pele esverdeada, conhecidos por viverem em grandes tribos desorganizadas. Sobrevivem de furtos, saques e pequenas emboscadas nas estradas. São fracos individualmente, mas perigosos quando se reúnem em bando. Utilizam armas enferrujadas, armadilhas rudimentares e equipamentos roubados de viajantes.",
+        "regiao": "Florestas densas, vales, acampamentos improvisados em planícies e entradas de cavernas.",
+        "comportamento": "Hostil",
+        "tipo": "Humanoid",
+        "dificuldade": "Fácil"
       },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
+      "estatisticas": {
+        "vida": 60,
+        "mana": 10,
+        "stamina": 80,
+        "forca": 5,
+        "armadura": 3,
+        "agilidade": 7,
+        "inteligencia": 4,
+        "carisma": 2,
+        "percepcao": 6,
+        "maestria": 3,
         "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
+          "fogo": 1,
+          "agua": 2,
+          "terra": 5,
+          "sombra": 2,
+          "luz": 0,
+          "eletrico": 1,
+          "gelo": 0,
+          "veneno": 4
         }
       },
       "habilidades": {
-        "xpGanho": 1500,
+        "xpGanho": 20,
         "listaHabilidades": [
           {
-            "nome": "Comando Tribal",
-            "descricao": "Aumenta o ataque de goblins próximos em 25%",
-            "cooldown": "45 segundos"
+            "nome": "Estocada Traiçoeira",
+            "descricao": "Avança rapidamente em linha reta para desferir um ataque frontal pesado com sua arma.",
+            "cooldown": 5
           },
           {
-            "nome": "Investida Astuta",
-            "descricao": "Avança rapidamente causando dano e atordoamento",
-            "cooldown": "20 segundos"
+            "nome": "Golpe Sujo",
+            "descricao": "Um ataque rapido focado nas pernas do jogador causando lentidão nos movimentos do alvo",
+            "cooldown": 3
+          },
+          {
+            "nome": "Arremesso de sucata",
+            "descricao": "Um ataque a distância onde arremessa a primeira coisa que encontrar no alvo, causando um dano fisico.",
+            "cooldown": 2
           }
         ]
       },
       "recompensas": [
         {
           "item": "Tesouro",
-          "raridade": "Comum",
-          "quantidade": "10-20"
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 10
         },
         {
           "item": "Nucleo de Goblin",
-          "raridade": "Raro",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
           "quantidade": 1
-        },
-        {
-          "item": "Pele de Goblin",
-          "raridade": "Comum",
-          "quantidade": "50-150"
         }
-      ],"hasVariantes": true,
+      ],
+      "hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Hobgiblin",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão maior de goblin, com uma aparência mais ameaçadora e habilidades aprimoradas."
-        },
-        {
-          "name": "Goblin da Caverna",
-          "image": "img/LogoRPG.jpg",
+          "name": "Goblin de Ambiente",
+          "image": "GAmbiente.jpg",
           "raridade": "Comum",
-          "info": "Uma Variante de Goblin encontrado em cavernas, com habilidades de escavação"
+          "info": "Uma versão do goblin de acordo com o ambiente onde o encontrar"
         },
         {
-          "name": "Goblin do Pantano",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma Variante de Goblin encontrado em pantanos, com habilidades de veneno e camuflagem"
+          "name": "Hobgoblin",
+          "image": "hobgoblin.jpg",
+          "raridade": "Incomum",
+          "info": "Os hobgoblins são primos maiores, mais fortes, inteligentes e organizados dos goblins normais."
         },
         {
           "name": "Goblin Pirata",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão pirata, uma versão com uma maior habilidades de combate, roubo e com ataques mais fortes."
+          "image": "GobPirata.jpg",
+          "raridade": "Raro",
+          "info": "Um combatente em batalhas navais mais comuns encontrados em alto mar buscando tesouros em ilhas perdidas"
         },
         {
           "name": "Goblin Xamã",
-          "image": "img/LogoRPG.jpg",
+          "image": "GobXama.jpg",
           "raridade": "Épico",
-          "info": "Versão xamã, uma versão com habilidades de magia negra."
+          "info": "Um lider mitico dos goblins usando seus poderes espirituais para atacar seus alvos."
         },
         {
           "name": "Goblin King",
-          "image": "img/LogoRPG.jpg",
+          "image": "Gobking.jpg",
           "raridade": "Lendário",
-          "info": "Versão rei, uma versão com habilidades aprimoradas e um comando maior sobre outros goblins."
+          "info": "O lider dos goblins, seu poder passa de geração em geração aumentando a força dos proximos goblins que se tornam reis"
         },
         {
           "name": "Goblin Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão zumbi, uma versão reanimada e mais resistente, com habilidades de sobrevivência aprimoradas."
+          "image": "GobZombie.jpg",
+          "raridade": "Épico",
+          "info": "Todos os tipos de goblins que existem pode ter suas versões zombies tendo sua velocidade reduzida."
         },
         {
           "name": "Goblin Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão distorcida e mais agressiva, com ataques venenosos que causam efeitos adicionais de status."
+          "image": "GobCorrompido.jpg",
+          "raridade": "Épico",
+          "info": "Todos os tipos de goblins que existem pode ter suas versões corrompidas, tento seus atributos aumentados."
         }
       ]
-
-    },    
+    },
     {
-      "id": "m006",
+      "id": 3,
       "name": "Lagarto",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
+      "image": "lagarto.jpg",
+      "level": 5,
+      "levelMin": 5,
+      "levelMax": 25,
+      "stars": 1,
+      "rarity": "Comum",
       "informacoes": {
-        "historia": "Grandes répteis que habitam áreas desérticas e florestais, conhecidos por sua pele resistente e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide / Reptil",
-        "dificuldade": "Média"
+        "historia": "Um réptil de grande porte coberto por escamas espessas que funcionam como uma armadura natural. Ele passa a maior parte do dia deitado sobre pedras, absorvendo o calor do sol para manter sua energia. Embora prefira evitar conflitos desnecessários, torna-se uma fera incrivelmente agressiva quando ameaçado ou quando seu território é invadido, utilizando sua cauda pesada para esmagar ameaças.",
+        "regiao": "Desertos, cânions, áreas rochosas, savanas e planícies áridas.",
+        "comportamento": "Normal",
+        "tipo": "Fera / Réptil",
+        "dificuldade": "Fácil"
       },
-        "estatisticas": {
-        "vida": 2500,
+      "estatisticas": {
+        "vida": 120,
         "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
+        "stamina": 100,
+        "forca": 12,
+        "armadura": 8,
+        "agilidade": 4,
+        "inteligencia": 2,
+        "carisma": 1,
+        "percepcao": 7,
+        "maestria": 2,
         "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
+          "fogo": 6,
+          "agua": 2,
+          "terra": 8,
+          "sombra": 0,
+          "luz": 4,
+          "eletrico": 3,
+          "gelo": 0,
+          "veneno": 5
         }
       },
       "habilidades": {
-        "xpGanho": 1500,
+        "xpGanho": 30,
         "listaHabilidades": [
           {
-            "nome": "Corte Navalha",
-            "descricao": "Um Ataque rapido, que causa dano e pode causar sangramento",
-            "cooldown": "45 segundos"
+            "nome": "Mordida",
+            "descricao": "Abrindo sua boca projetando a cabeça mais para frente em um ataque frontal telegrafado.",
+            "cooldown": 3
           },
           {
-            "nome": "Arremeço de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
+            "nome": "Chicotada de cauda",
+            "descricao": "O monstro gira o próprio corpo rapidamente, desferindo um golpe em arco amplo à sua frente e nas laterais com sua cauda espinhosa.",
+            "cooldown": 10
           }
         ]
       },
       "recompensas": [
         {
           "item": "Cauda de Lagarto",
-          "raridade": "Comum",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
           "quantidade": 1
         },
         {
-          "item": "Olhos de Lagarto",
-          "raridade": "Raro",
+          "item": "Olho de Lagarto",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
           "quantidade": 2
         },
         {
-          "item": "Escama de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Lagarto",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Lagarto",
-          "raridade": "Comum",
-          "quantidade": "5-10"
+          "item": "Escama de lagarto",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 10
         },
         {
           "item": "Nucleo de Lagarto",
-          "raridade": "Lendário",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
           "quantidade": 1
         }
-      ],"hasVariantes": true,
+      ],
+      "hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "Lagarto Xamã",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão xamã, uma versão de lagarto com habilidades de magia negra."
-        },
-        {
-          "name": "Rei Lagarto",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão rei, uma versão de lagarto com habilidades aprimoradas e um comando maior sobre outros lagartos."
-        },
-        {
-          "name": "Escamado",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão escamado, uma versão de lagarto com uma pele mais resistente e habilidades de defesa aprimoradas."
-        },
-        {
-          "name": "Troglodita",
-          "image": "img/LogoRPG.jpg",
+          "name": "alguma variante",
+          "image": "varianet.jpg",
           "raridade": "Épico",
-          "info": "Versão troglodita, uma versão de lagarto com habilidades de escavação e ataques subterrâneos."
-        },
-        {
-          "name": "Dragonoid",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Deus",
-          "info": "Versão dragonoid, uma versão de lagarto com habilidades de fogo e ataques aéreos."
-        },
-        {
-          "name": "Lagarto Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Lagarto Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão de lagarto com uma aparência mais ameaçadora e habilidades aprimoradas."
+          "info": "jksldhfklsafbçasldfkajhsdfjkhbgdsf"
         }
       ]
-
-    },
-    {
-      "id": "m007",
-      "name": "Serpente",
-      "image": "img/LogoRPG.jpg",
-      "level": 35,
-      "stars": 4,
-      "rarity": "incomum",
-      "informacoes": {
-        "historia": "Serpentes venenosas que habitam áreas desérticas, florestais e maritimas, são conhecidas por sua velocidade e ataques velozes.",
-        "regiao": "Desertos, Florestas, Pantanos",
-        "comportamento": "Agressivo",
-        "tipo": "Reptil / Aquático",
-        "dificuldade": "Média"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Bote Venenoso",
-            "descricao": "Um ataque rápido que causa dano e envenena o alvo, causando dano ao longo do tempo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Picada de Serpente",
-            "descricao": "Um ataque de picada que causa dano e pode causar paralisia",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Pressão de Serpente",
-            "descricao": "Um ataque que envolve o alvo, causando dano e reduzindo a defesa do alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Escama de Serpente",
-          "raridade": "Raro",
-          "quantidade": "5"
-        },
-        {
-          "item": "Olhos de Serpente",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Veneno de Serpente",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Presa de Serpente",
-          "raridade": "Incomum",
-          "quantidade": "1-4"
-        },
-        {
-          "item": "Nucleo de Serpente",
-          "raridade": "Lendário",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Anãntemas",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão anãntemas, uma versão de serpente com habilidades de veneno aprimoradas e ataques mais rápidos."
-        },
-        {
-          "name": "Mestiços",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Os Mestiços são uma versão de serpente com uma aparência humana e habilidades aprimoradas."
-        },
-        {
-          "name": "Gorgonas",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "As Gorgonas são uma versão de serpente com uma aparência humana mais ameaçadora e com habilidades de petrificação."
-        },
-        {
-          "name": "Naga",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "As Nagas são uma versão de serpente gigantes mais elegante e com habilidades de magia aquática."
-        },
-        {
-          "name": "Serpente Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Serpentes Corrompida",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão de serpente com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },   
-    {
-      "id": "m008",
-      "name": "Morto Vivo",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "raro",
-      "informacoes": {
-        "historia": "Criaturas com alta concentração de energia negativa, reanimados por magia negra ou maldições, conhecidos por sua resistência e ataques implacáveis.",
-        "regiao": "Cemitérios, Ruínas e áreas assombradas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Ataque normal",
-            "descricao": "Um Ataque normal",
-            "cooldown": "10 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Ossos ",
-          "raridade": "Comum",
-          "quantidade": "10-20"
-        },
-        {
-          "item": "Nucleo de Morto Vivo",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Sucata de Armaduras",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Esqueleto",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão esqueleto, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Ghoul",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão ghoul, monstros assustadores com uma aparência sombria e habilidades de assustar inimigos."
-        },
-        {
-          "name": "Afogado",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão afogado, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Mumias",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão mumia, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Lich",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão lich, uma versão de morto vivo com habilidades de magia negra e controle sobre outros mortos vivos."
-        },
-        {
-          "name": "Espectro",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Os Espectros são uma versão de morto vivo com uma aparência mais etérea e habilidades de intangibilidade."
-        },
-        {
-          "name": "Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Versão corrompido, uma versão de morto vivo com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m009",
-      "name": "Troll",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "raro",
-      "informacoes": {
-        "historia": "Grandes criaturas humanoides que habitam áreas desérticas, florestais e montanhosas, conhecidas por sua força bruta e regeneração rápida.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide",
-        "dificuldade": "Media"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Golpe de Martelo",
-            "descricao": "Um ataque poderoso que causa dano em área e pode atordoar os inimigos atingidos",
-            "cooldown": "25 segundos"
-          },
-          {
-            "nome": "Investida Selvagem",
-            "descricao": "Um ataque de investida que causa dano e pode derrubar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Dente de Troll",
-          "raridade": "Incomum",
-          "quantidade": "5-15"
-        },
-        {
-          "item": "Pele de Troll",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Porrete de Troll",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Coração de Troll",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Troll",
-          "raridade": "Lendario",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Troll da Montanha",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Uma versão de troll com uma aparência mais robusta e habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Troll da Floresta",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Uma versão de troll com uma aparência menos intimidadora mas com habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Troll de Lava",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de troll com uma aparência mais ameaçadora e habilidades de fogo aprimoradas."
-        },
-        {
-          "name": "Finntroll",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Uma versão de troll com uma aparência mais ameaçadora e habilidades de gelo aprimoradas."
-        },
-        {
-          "name": "Cães-Troll",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de troll canina, com uma aparência mais ameaçadora e Velocidade aprimoradas."
-        },        
-        {
-          "name": "Hibrido-Troll",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Deus",
-          "info": "Uma versão de troll híbrida, com uma aparência humana gigante e força aprimorada."
-        },
-        {
-          "name": "Troll Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão de troll com uma aparência mais ameaçadora e habilidades aprimoradas."
-        },
-        {
-          "name": "Troll Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        }
-      ]
-
-    },
-    {
-      "id": "m010",
-      "name": "Ogro",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "raro",
-      "informacoes": {
-        "historia": "Grandes criaturas humanoides que habitam áreas desérticas, florestais e montanhosas, conhecidas por sua força bruta e resistência.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Marretada",
-            "descricao": "Um ataque poderoso que causa dano em área e pode atordoar os inimigos atingidos",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Arremeço de Pedra",
-            "descricao": "Um ataque de arremesso que causa dano e pode derrubar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Dente de Ogro",
-          "raridade": "Raro",
-          "quantidade": "5-15"
-        },
-        {
-          "item": "Bastão de Ogro",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Pele de Ogro",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Coração de Ogro",
-          "raridade": "Deus",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Ogro",
-          "raridade": "Deus",
-          "quantidade": 1
-        }
-
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Ogro da Montanha",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Uma Versão de Ogro com uma aparência mais robusta e habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Ogro de Pantano",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Comum",
-          "info": "Uma Versão de Ogro com uma aparência mais suja e habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Oni",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Uma Versão de Ogro com uma aparência mais ameaçadora e habilidades de fogo aprimoradas."
-        },
-        {
-          "name": "Tormenta",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma Versão de Ogro com uma aparência mais ameaçadora e habilidades de vento aprimoradas."
-        },
-        {
-          "name": "Pigmeu",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Uma Versão de Ogro de porte pequeno e habilidades de agilidade aprimoradas."
-        },
-        {
-          "name": "Ogrillion",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Deus",
-          "info": "Uma Versão de Ogro híbrida, de orc com ogro, gigante e com força aprimorada."
-        },
-        {
-          "name": "Ogro Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Ogro Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Uma versão de ogro Corrompida com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m011",
-      "name": "Javali",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
-      "informacoes": {
-        "historia": "Porcos de Grande Porte que habitam áreas desérticas, florestais e pantanosas, conhecidos por sua agressividade e força bruta.",
-        "regiao": "Desertos, Florestas, Pantanos",
-        "comportamento": "Agressivo",
-        "tipo": "Animal",
-        "dificuldade": "Media"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Investida de Chifres",
-            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Giro Selvagem",
-            "descricao": "Um ataque de giro que causa dano em área e pode derrubar os inimigos atingidos",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Pele de Javali",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Presas de Javali",
-          "raridade": "Raro",
-          "quantidade": "1-2"
-        },
-        {
-          "item": "Pelo de Javali",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Coração de Javali",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Javali",
-          "raridade": "Lendário",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Javali Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Javali Corrompida",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão corrompida, uma versão reanimada e menos resistente."
-        }
-      ]
-    },
-    {
-      "id": "m012",
-      "name": "Mimic",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "incomum",
-      "informacoes": {
-        "historia": "Uma criatura misteriosa que pode se disfarçar como um baú, atacando os aventureiros desavisados com sua força e habilidades de engano.",
-        "regiao": "Masmorras",
-        "comportamento": "Normal",
-        "tipo": "Metamorfo",
-        "dificuldade": "Fácil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Impacto",
-            "descricao": "Um ataque de investida que causa dano e pode derrubar o alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Mordida",
-            "descricao": "Um ataque de investida que causa dano e pode derrubar o alvo",
-            "cooldown": "45 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Tesouros",
-          "raridade": "Comum",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Mimic",
-          "raridade": "Raro",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Mimic Tesouros",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "A unica diferença é que seus drops são terouros, e tem uma aparência mais brilhante e chamativa."
-        },
-        {
-          "name": "Mimic Armas",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "A unica diferença é que seus drops são armas, e tem uma aparência mais robusta e ameaçadora."
-        },
-        {
-          "name": "Mimic Armaduras",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "A unica diferença é que seus drops são armaduras, e tem uma aparência mais resistente e ameaçadora."
-        },  
-        {
-          "name": "Mimic Itens",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "A unica diferença é que seus drops são itens de consumo, e tem uma aparência mais colorida e chamativa."
-        },
-        {
-          "name": "Mimic Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão corrompida, uma versão de mimic com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m013",
-      "name": "Bruxa",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "raro",
-      "informacoes": {
-        "historia": "Bruxas são seres humanos que praticam magia negra, conhecidas por sua astúcia e habilidades mágicas, muitas vezes associadas a maldições e feitiços poderosos.",
-        "regiao": "Florestas, Pantanos",
-        "comportamento": "Normal",
-        "tipo": "Humanoide",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Maldição de Sangue",
-            "descricao": "Um feitiço que causa dano ao longo do tempo e pode reduzir a defesa do alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Maldição demomiaca",
-            "descricao": "Um feitiço que causa dano ao longo do tempo e pode reduzir a força do alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Sopro da Morte",
-            "descricao": "Um feitiço que causa dano instantâneo e pode matar o alvo se sua vida estiver abaixo de um certo limite",
-            "cooldown": "45 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Poção ",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Joias Magicas",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Aneis Magicos",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Medalhão Magicos",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Pergaminhos",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Encantamentos",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Bruxa",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Bruxa de Pantano",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de bruxa com uma aparência mais suja e habilidades de veneno aprimoradas."
-        },
-        {
-          "name": "Bruxa de Floresta",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de bruxa com uma aparência mais natural e habilidades de controle de plantas aprimoradas."
-        },
-        {
-          "name": "Bruxa Corrompida",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão de bruxa com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m014",
-      "name": "Águia",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "comum",
-      "informacoes": {
-        "historia": "Grandes aves de rapina que habitam áreas desérticas, florestais e montanhosas, conhecidas por sua visão aguçada e ataques rápidos.",
-        "regiao": "Desertos, Florestas, Pantanos e Montanhas",
-        "comportamento": "Agressivo",
-        "tipo": "Ave",
-        "dificuldade": "Media"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Investida Aerea",
-            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Corte de Vento",
-            "descricao": "Um ataque de corte que arremessa uma massa de ar cortante causandos dano ao alvo atingidos",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Bico de Águia",
-          "raridade": "Comum",
-          "quantidade": 1
-        },
-        {
-          "item": "Olhos de Águia",
-          "raridade": "Comum",
-          "quantidade": 2
-        },
-        {
-          "item": "Penas de Águia",
-          "raridade": "Comum",
-          "quantidade": "50"
-        },
-        {
-          "item": "Coração de Águia",
-          "raridade": "Raro",
-          "quantidade": 1
-        },
-        {
-          "item": "Garra de Águia",
-          "raridade": "Comum",
-          "quantidade": 2
-        },
-        {
-          "item": "Nucleo de Águia",
-          "raridade": "Lendario",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Harpia",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão de harpia, uma versão de águia com uma aparência mais ameaçadora e habilidades aprimoradas."
-        },
-        {
-          "name": "Rapina",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão de rapina, uma versão de águia com uma aparência mais robusta e habilidades de ataque aprimoradas."
-        },
-        {
-          "name": "PEscadora",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão de pescadora, uma versão de águia com uma aparência mais natural e habilidades de pesca aprimoradas."
-        },
-        {
-          "name": "Gigante",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão de gigante, uma versão de águia com uma aparência mais imponente e habilidades aprimoradas."
-        },
-        {
-          "name": "Águia Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Águia Corrompida",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Incomum",
-          "info": "Versão corrompida, uma versão de águia com uma aparência mais sombria e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m015",
-      "name": "Orc",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "raro",
-      "informacoes": {
-        "historia": "Grandes criaturas humanoides que habitam áreas desérticas, florestais e montanhosas, conhecidas por sua força bruta e habilidades de combate.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Cacetete Pesado",
-            "descricao": "Um ataque poderoso que causa dano em área e pode atordoar os inimigos atingidos",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Arremeço de Pedra",
-            "descricao": "Um ataque de arremesso que causa dano e pode derrubar o alvo",
-            "cooldown": "45 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Bastão",
-          "raridade": "Comum",
-          "quantidade": 1
-        },
-        {
-          "item": "Olhos de Orc",
-          "raridade": "Lendário",
-          "quantidade": 2
-        },
-        {
-          "item": "Dente de Orc",
-          "raridade": "Raro",
-          "quantidade": "20"
-        },
-        {
-          "item": "Couro de Orc",
-          "raridade": "Raro",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Orc",
-          "raridade": "Deus",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Ogrillion",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de orc híbrida de orc com ogro, gigante e com força aprimorada."
-        },
-        {
-          "name": "Orc do Pantano",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de orc com uma aparência mais suja e habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Orc da Floresta",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de orc com uma aparência mais natural e habilidades de furtividade aprimoradas."
-        },
-        {
-          "name": "Orc das Montanhas",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Uma versão de orc com uma aparência mais robusta e habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Druidas",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Uma versão de orc com habilidades de controle da natureza e magia aprimoradas."
-        },
-        {
-          "name": "Artificie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Uma versão de orc com habilidades de criação de armas e armaduras aprimoradas."
-        },
-        {
-          "name": "Lord Orc",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Deus",
-          "info": "Uma versão de orc com uma aparência mais imponente e habilidades de liderança aprimoradas."
-        },
-        {
-          "name": "Orc Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Orc Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão de orc com uma aparência mais ameaçadora e habilidades aprimoradas.'"
-        }
-      ]
-
-    },
-    {
-      "id": "m016",
-      "name": "Urso Gigante",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 3,
-      "rarity": "raro",
-      "informacoes": {
-        "historia": "Enormes Criaturas que habitam áreas florestais e congeladas, conhecidas por sua força bruta e resistência, capazes de causar grande dano com suas garras e mordidas.",
-        "regiao": "Florestas, Áreas Congeladas",
-        "comportamento": "Agressivo",
-        "tipo": "Animal",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Corte de Aço",
-            "descricao": "Um ataque poderoso que causa dano e pode causar sangramento",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Mordida",
-            "descricao": "Um ataque de mordida que causa dano",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Garras de Urso",
-          "raridade": "Lendário",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Olhos de Urso",
-          "raridade": "Raro",
-          "quantidade": 2
-        },
-        {
-          "item": "Pele de Urso",
-          "raridade": "Lendário",
-          "quantidade": "5-15"
-        },
-        {
-          "item": "Coração de Urso",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Carne de Urso",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Dente de Urso",
-          "raridade": "Comum",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Urso",
-          "raridade": "Deus",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Urso Polar",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão de urso polar, uma versão de urso gigante com uma aparência mais branca e habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Urso Panda",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão de urso panda, uma versão de urso gigante com uma aparência mais fofa e habilidades de resistência aprimoradas."
-        },
-        {
-          "name": "Urso Negro",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão de urso negro, uma versão de urso gigante com uma aparência mais escura e habilidades de resistência aprimoradas."
-        },
-         {
-          "name": "Urso Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão Urso Zombie, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Urso Corrompida",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Raro",
-          "info": "Versão corrompida, uma versão do urso com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }   
-      ]
-    },
-    {
-      "id": "m017",
-      "name": "Treanth",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 6,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Grandes arvores vivas amaldiçõadas são conhecidas por sua força e resistência, habitando áreas florestais e pantanosas",
-        "regiao": "Florestas, Pantanos",
-        "comportamento": "Territorialistas",
-        "tipo": "Árvore / Planta",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Ataque de vinhas",
-            "descricao": "Um ataque que invoca vinhas para atacar o inimigo, causando dano e pode enraizar o alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Bola da escuridão",
-            "descricao": "Um ataque mágico que lança uma bola de energia sombria, causando dano e pode cegar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Madeira",
-          "raridade": "Deus",
-          "quantidade": 1
-        },
-        {
-          "item": "Plantas Medicinais",
-          "raridade": "Deus",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Treanth",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Treanth de Carvalho",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão de treanth de carvalho, uma versão de treanth com uma aparência de uma arvore de carvalho."
-        },
-        {
-          "name": "Treanth de Pinheiro",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão de treanth de pinheiro, uma versão de treanth com uma aparência de uma arvore de pinheiro."
-        },
-        {
-          "name": "Treanth de Betula",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão de treanth de betula, uma versão de treanth com uma aparência de uma arvore de betula."
-        },
-        {
-          "name": "Treanth de Carvalho escuro",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão de treanth de carvalho escuro, uma versão de treanth com uma aparência de uma arvore de carvalho escuro."
-        },
-        {
-          "name": "Treanth Corrompida",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão de treanth corrompida, uma versão de treanth com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m018",
-      "name": "Centauro",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 6,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Seres mitológicos com corpo de cavalo e torso humano, conhecidos por sua habilidade com arcos e lanças, habitando áreas florestais e montanhosas.",
-        "regiao": "Florestas, Pantanos e Montanhas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide / Animal",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Tiro de Arco",
-            "descricao": "Um ataque à distância que causa dano e pode reduzir a defesa do alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Avanço",
-            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Coice",
-            "descricao": "Um ataque de coice que causa dano e pode derrubar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Casco de Cavalo",
-          "raridade": "Deus",
-          "quantidade": 4
-        },
-        {
-          "item": "Rabo de Cavalo",
-          "raridade": "Deus",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Centauro",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Centauro Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Lendário",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Centauro Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Deus",
-          "info": "Versão corrompida, uma versão de centauro com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m019",
-      "name": "Minotauro",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 6,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Seres mitológicos com corpo humano e cabeça de touro, conhecidos por sua força bruta e habilidades de combate corpo a corpo, habitando áreas desérticas, florestais e montanhosas.",
-        "regiao": "Desertos, Florestas, Pantanos e áreas Pedregosas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide / Animal",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Ataque de Machado",
-            "descricao": "Um ataque poderoso que causa dano e pode atordoar o alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Investida de Chifres",
-            "descricao": "Um ataque de investida que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Cabeça de Minotauro",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Cifre de Minotauro",
-          "raridade": "Imortal",
-          "quantidade": 2
-        },
-        {
-          "item": "Nucleo de Minotauro",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Machado de Minotauro",
-          "raridade": "Lendário",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Minotauro Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Deus",
-          "info": "Versão zumbi, uma versão reanimada e menos resistente."
-        },
-        {
-          "name": "Minotauro Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Deus",
-          "info": "Versão corrompida, uma versão de centauro com uma aparência mais ameaçadora e habilidades aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m020",
-      "name": "Elfo Negro",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 6,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Elfos que foram corrompidos pela escuridão, conhecidos por sua habilidade com magia negra e furtividade, habitando áreas florestais e pantanosas.",
-        "regiao": "Florestas, Pantanos",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Ataque de espada",
-            "descricao": "Um ataque rápido que causa dano e pode causar sangramento",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Ataque de Arco",
-            "descricao": "Um ataque à distância que causa dano e pode reduzir a defesa do alvo",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Combate",
-            "descricao": "Um ataque corpo a corpo que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Arco",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Espada",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Lança",
-          "raridade": "Lendário",
-          "quantidade": 1
-        },
-        {
-          "item": "Orelha de Elfo",
-          "raridade": "Imortal",
-          "quantidade": 2
-        },
-        {
-          "item": "Colar Magico",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Orb Magico",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Cajado Magico",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Grimorio do Sabio",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Coração de Elfo",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Elfo",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Drows",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de drows, uma versão de elfo negro com uma aparência mais sombria e habilidades de magia negra aprimoradas."
-        },
-        {
-          "name": "Elfos das Profundezas",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Os Elfos das profundezas são uma variação mais sombria e poderosa dos elfos, habitando as áreas mais profundas e misteriosas."
-        }
-      ]
-
-    },
-    {
-      "id": "m021",
-      "name": "Vampiro",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 7,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Seres que se escondem da luz do sol, vivendo nas sombras e caçando suas presas na escuridão",
-        "regiao": "Ruinas Abandonadas, Cemiterios",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Coração de Sangue",
-            "descricao": "Um ataque que causa dano e pode drenar a vida do alvo para curar o vampiro",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Maldição de Sangue",
-            "descricao": "Um ataque mágico que causa dano e pode reduzir a defesa do alvo",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Metamorfose",
-            "descricao": "Um ataque que transforma o vampiro em um morcego, aumentando sua velocidade e evasão por um curto período de tempo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Sangue de Vampiro",
-          "raridade": "Imortal",
-          "quantidade": "1-3"
-        },
-        {
-          "item": "Presa de Vampiro",
-          "raridade": "Deus",
-          "quantidade": "2-4"
-        },
-        {
-          "item": "Colar da Imortalidade",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Colar da Noite",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Anel da Velocidade",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Anel da Caça",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Anel de Resistência",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Vampiro",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Lord Vampiro",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de lord vampiro, uma versão de vampiro com uma aparência mais imponente e habilidades de liderança aprimoradas."
-        },
-        {
-          "name": "Hemomantes",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de hemomantes, uma versão de vampiro com habilidades de manipulação de sangue aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m022",
-      "name": "Demonio",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 7,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Seres de outra dimensão, conhecidos por sua força e habilidades sobrenaturais, habitando áreas infernais e ruinas antigas.",
-        "regiao": "Infernos, Ruinas Antigas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide/ Demônio / Animais",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Explosão de Fogo",
-            "descricao": "Um ataque mágico que causa dano em área e pode queimar os inimigos atingidos",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Raio de Energia",
-            "descricao": "Um ataque mágico que lança um raio de energia, causando dano e pode reduzir a defesa do alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Asas de Demônio",
-          "raridade": "Imortal",
-          "quantidade": 2
-        },
-        {
-          "item": "Sangue de Demônio",
-          "raridade": "Imortal",
-          "quantidade": 2
-        },
-        {
-          "item": "Chifres de Demônio",
-          "raridade": "Imortal",
-          "quantidade": 2
-        },
-        {
-          "item": "Colar das Trevas",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Anel das Trevas",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Nucleo de Demornio",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Marilith",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de marilith, uma versão de demônio com uma aparência mais serpentina e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Luxuria",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de luxuria, uma versão de demônio com uma aparência mais sedutora e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Gula",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de gula, uma versão de demônio com uma aparência mais gorda e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Preguiça",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de preguiça, uma versão de demônio com uma aparência mais perezosa e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Avareza",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de avareza, uma versão de demônio com uma aparência mais gananciosa e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Ira",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de ira, uma versão de demônio com uma aparência mais feroz e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Soberba",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de soberba, uma versão de demônio com uma aparência mais orgulhosa e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Inveja",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de inveja, uma versão de demônio com uma aparência mais ciumenta e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Lord Demonio",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de lord demônio, uma versão de demônio com uma aparência mais imponente e habilidades de liderança aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m024",
-      "name": "Hydra",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 7,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Grandes criaturas com múltiplas cabeças, conhecidas por sua regeneração rápida e ataques venenosos, habitando áreas pantanosas e florestais.",
-        "regiao": "Florestas, Pantanos",
-        "comportamento": "Agressivo",
-        "tipo": "Animal",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Baforada de Veneno",
-            "descricao": "Um ataque que exala veneno, causando dano ao longo do tempo e pode envenenar o alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Baforada de Fogo",
-            "descricao": "Um ataque que exala fogo, causando dano ao longo do tempo e pode queimar o alvo",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Caos de Raios",
-            "descricao": "Um Ataque em area que exala eletricidade, causando dano e pode paralisar o alvo",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Geada",
-            "descricao": "Um ataque que exala gelo, causando dano ao longo do tempo e pode congelar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Dente de Hydra",
-          "raridade": "Imortal",
-          "quantidade": "3-5"
-        },
-        {
-          "item": "Olhos de Hydra",
-          "raridade": "Imortal",
-          "quantidade": "2-5"
-        },
-        {
-          "item": "Escama de Hydra",
-          "raridade": "Imortal",
-          "quantidade": "10-20"
-        },
-        {
-          "item": "Bafo de Hydra",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Cabeça de Hydra",
-          "raridade": "Imortal",
-          "quantidade": "1-3"
-        },
-        {
-          "item": "Nucleo de Hydra",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": false,
-      "listaVariantes": [
-        
-      ]
-
-    },
-    {
-      "id": "m024",
-      "name": "Dragão",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 7,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Grandes criaturas aladas, conhecidas por sua força e habilidades de voo, habitando áreas montanhosas e vulcânicas.",
-        "regiao": "Montanhas, Vulcões e Ruinas Antigas",
-        "comportamento": "Agressivo",
-        "tipo": "Reptil",
-        "dificuldade": "Difícil"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Bafo de Fogo",
-            "descricao": "Um ataque que exala fogo, causando dano ao longo do tempo e pode queimar o alvo",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Ataque de Cauda",
-            "descricao": "Um ataque de cauda que causa dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
-          },
-          {
-            "nome": "Ataque de Raios",
-            "descricao": "Um ataque que exala eletricidade, causando dano e pode paralisar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Cauda de Dragão",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Olhos de Dragão",
-          "raridade": "Imortal",
-          "quantidade": 2
-        },
-        {
-          "item": "Escama de Dragão",
-          "raridade": "Imortal",
-          "quantidade": "20-30"
-        },
-        {
-          "item": "Coração de Dragão",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Ovo de Dragão",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Cabeça de Dragão",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Sangue de Dragão",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Ouro",
-          "raridade": "Comum",
-          "quantidade": "100-500"
-        },
-        {
-          "item": "Dente de Dragão",
-          "raridade": "Imortal",
-          "quantidade": "5-10"
-        },
-        {
-          "item": "Nucleo de Dragão",
-          "raridade": "Imortal",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "DracoLich",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dracolich, uma versão de dragão que foi reanimada como um lich, com habilidades de magia negra aprimoradas."
-        },
-        {
-          "name": "Dragão de Planta",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão de planta, uma versão de dragão com uma aparência mais vegetal e habilidades de controle de plantas aprimoradas."
-        },
-        {
-          "name": "Dragão de Agua",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão de água, uma versão de dragão com uma aparência mais aquática e habilidades de controle da água aprimoradas."
-        },
-        {
-          "name": "Dragão de Fogo",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão de fogo, uma versão de dragão com uma aparência mais ignea e habilidades de controle do fogo aprimoradas."
-        },
-        {
-          "name": "Dragão de Gelo",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão de gelo, uma versão de dragão com uma aparência mais glacial e habilidades de controle do gelo aprimoradas."
-        },
-        {
-          "name": "Dragao de Eletricidade",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão de eletricidade, uma versão de dragão com uma aparência mais elétrica e habilidades de controle da eletricidade aprimoradas."
-        },
-        {
-          "name": "Dragão das Sombras",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão das sombras, uma versão de dragão com uma aparência mais sombria e habilidades de controle das sombras aprimoradas."
-        },
-        {
-          "name": "Dragão da Luz",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão da luz, uma versão de dragão com uma aparência mais luminosa e habilidades de controle da luz aprimoradas."
-        },
-        {
-          "name": "Wyvern",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de wyvern, uma versão de dragão com uma aparência mais bestial e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Dragão Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão zumbi, uma versão de dragão que foi reanimada como um zumbi."
-        },
-        {
-          "name": "Dragão Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de dragão corrompido, uma versão de dragão que foi corrompida por forças sombrias, com habilidades de magia negra aprimoradas."
-        }
-      ]
-
-    },
-    {
-      "id": "m025",
-      "name": "Titã",
-      "image": "img/LogoRPG.jpg",
-      "level": 25,
-      "stars": 7,
-      "rarity": "lendario",
-      "informacoes": {
-        "historia": "Gigantes poderosos, conhecidos por sua força e resistência, habitando áreas montanhosas e ruinas antigas.",
-        "regiao": "Montanhas, Ruinas Antigas",
-        "comportamento": "Agressivo",
-        "tipo": "Humanoide / Gigante",
-        "dificuldade": "Media"
-      },
-        "estatisticas": {
-        "vida": 2500,
-        "mana": 0,
-        "stamina": 0,
-        "forca": 180,
-        "armadura": 120,
-        "agilidade": 65,
-        "inteligencia": 85,
-        "carisma": 0,
-        "percepcao": 0,
-        "maestria": 0,
-        "resistencias": {
-          "fogo": "fraco", 
-          "agua": "forte",    
-          "terra": "muito_forte", 
-          "sombra": "muito_fraco",
-          "luz": "neutro",
-          "eletrico": "neutro",
-          "gelo": "neutro",
-          "veneno": "fraco"
-        }
-      },
-      "habilidades": {
-        "xpGanho": 1500,
-        "listaHabilidades": [
-          {
-            "nome": "Pisão Devastador",
-            "descricao": "Um ataque de pisão que causa dano em área e pode atordoar os inimigos atingidos",
-            "cooldown": "45 segundos"
-          },
-          {
-            "nome": "Arremesso",
-            "descricao": "Um ataque que arremessa o inimigo para longe, causando dano e pode atordoar o alvo",
-            "cooldown": "20 segundos"
-          }
-        ]
-      },
-      "recompensas": [
-        {
-          "item": "Coração de Titã",
-          "raridade": "Imortal",
-          "quantidade": 1
-        },
-        {
-          "item": "Olhos de Titã",
-          "raridade": "Imortal",
-          "quantidade": 2
-        },
-        {
-          "item": "Dente de Titã",
-          "raridade": "Imortal",
-          "quantidade": "10-15"
-        },
-        {
-          "item": "Nucleo de Titã",
-          "raridade": "Lendario",
-          "quantidade": 1
-        }
-      ],"hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Titã Berstial",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de titã bestial, uma versão de titã com uma aparência mais animal e habilidades de combate aprimoradas."
-        },
-        {
-          "name": "Jotunn",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de jotunn, uma versão de titã com uma aparência mais nórdica e habilidades de controle do gelo aprimoradas."
-        },
-        {
-          "name": "Titã Zombie",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de titã zumbi, uma versão de titã que foi reanimada."
-        },
-        {
-          "name": "Titã Corrompido",
-          "image": "img/LogoRPG.jpg",
-          "raridade": "Imortal",
-          "info": "Versão de titã corrompido, uma versão de titã que foi corrompida por forças sombrias, com habilidades de magia negra aprimoradas."
-        }
-
-      ]
-
     }
   ]
 }

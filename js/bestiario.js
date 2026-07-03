@@ -1,11 +1,11 @@
 /*Lista de Raridade de monstros
-    comum
-    incomum
-    raro
+    Comum
+    Incomum
+    Raro
     Épico
-    lendário
-    deus
-    imortal
+    Lendário
+    Deus
+    Imortal
 
 
 ------- Elementos ------- 

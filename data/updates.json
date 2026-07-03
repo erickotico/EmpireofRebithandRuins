@@ -1,41 +1,87 @@
 {
   "updates": [
     {
-      "version": "v0.0.4", 
-      "date": "2026-03-26",
-      "title": "Adição de atributos de subclasses",
+      "version": "0.0.8",
+      "date": "2026-04-03",
+      "title": "Mapa",
       "changes": [
-        "Escolha de subclasses agora concede bônus de atributos",
-        "Subclasses reequilibradas para melhor se encaixar com os bônus de atributos", 
-        "Adição de novos atributos como 'Velocidade' e 'Resistência'"
+        "- Criação da blocagem do primeiro mapa",
+        "- Blocagem da Vila Inicial",
+        "- Blocagem da floresta"
       ],
-      "link": "../updates.html"
+      "link": "#"
     },
-      {
-      "version": "v0.0.5", 
-      "date": "2026-03-30",
-      "title": "Adição dos atributos verdadeiros das classes",
+    {
+      "version": "0.0.7",
+      "date": "2026-04-02",
+      "title": "IA Inimiga",
       "changes": [
-        "Adicionando os detalhes dos atributos verdadeiros para cada classe",
-        "Revisão dos atributos para melhor refletir as características únicas de cada classe",
-        "Correção de erros nos atributos anteriores e ajustes para melhor equilíbrio",
-        "Adição e melhoria no Site para exibir os atributos de forma clara e informativa"
-
+        "- Novos compontamentos dos inimigos",
+        "- Novas arvores de comportamento"
       ],
-      "link": "../updates.html"
+      "link": "#"
     },
-      {
-      "version": "v0.0.6", 
-      "date": "2026-04-17",
-      "title": "Atualização do site",
+    {
+      "version": "0.0.6",
+      "date": "2026-03-28",
+      "title": "Bestiario",
       "changes": [
-        "Adição de nova pagina de atualizações para exibir as mudanças recentes",
-        "Melhoria na navegação do site para facilitar o acesso às informações sobre as classes e subclasses",
-        "Melhoria da pagina de detalhes para novos jogadores",
-        "Adição de informações na pagina para novos jogadores com informações sobre o mundo, masmorras e itens"
-
+        "- Criação do bestiario",
+        "- Atributos dos Monstros",
+        "- Fix Atributo não fixa no personagem"
       ],
-      "link": "../updates.html"
+      "link": "#"
+    },
+    {
+      "version": "0.0.5",
+      "date": "2026-03-24",
+      "title": "Escolha de Classe",
+      "changes": [
+        "- Escolhas entre classes e subclasses",
+        "- Atributos personalizado dependendo da classe"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.4",
+      "date": "2026-03-14",
+      "title": "Inimigo",
+      "changes": [
+        "- Prototipo da IA Inimiga",
+        "- Possiveis rotas inimigas",
+        "- Ataques basicos"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.3",
+      "date": "2026-03-06",
+      "title": "Progressão de level",
+      "changes": [
+        "- Sistema de progreção de level",
+        "- Habilidades base"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.2",
+      "date": "2026-02-27",
+      "title": "Sistema ",
+      "changes": [
+        "- Implementação do sistema para RPG",
+        "- Criação dos atributos"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.1",
+      "date": "2026-01-22",
+      "title": "Inicio do projeto",
+      "changes": [
+        "- Idealização do projeto",
+        "- Concept dos personagens"
+      ],
+      "link": "#"
     }
   ]
 }

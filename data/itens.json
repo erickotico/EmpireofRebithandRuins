@@ -1,55 +1,72 @@
-[
+{
+  "items": [
     {
-        "nome": "Espada de Ferro",
-        "imagem": "img/LogoRPG.jpg",
-        "utilizavel": true,
-        "craftavel": true,
-        "raridade": ["Comum", "Incomum", "Raro", "Épico"],
-        "versoes": {
-            "Comum": {
-                "descricao": "Uma espada básica feita de ferro.",
-                "para_que_serve": "Usada para combate corpo a corpo.",
-                "craft_resultado": "Espada de Aço"
-            },
-            "Incomum": {
-                "descricao": "Uma espada de ferro bem forjada, com melhor equilíbrio.",
-                "para_que_serve": "Usada para combate melhorado. Causa 15% mais dano.",
-                "craft_resultado": "Espada de Aço Reforçada"
-            },
-            "Raro": {
-                "descricao": "Uma espada de ferro lendária, brilha levemente.",
-                "para_que_serve": "Usada para combate letal. Causa 30% mais dano e ignora 10% da armadura.",
-                "craft_resultado": "Espada de Aço Encantada"
-            },
-            "Épico": {
-                "descricao": "Uma espada de ferro mítica, infundida com energia antiga.",
-                "para_que_serve": "Usada para combate épico. Causa 50% mais dano, ignora 20% da armadura e tem chance de crítico aumentada.",
-                "craft_resultado": "Espada de Aço Divina"
-            }
+      "nome": "item02",
+      "imagem": "item2.jpg",
+      "utilizavel": true,
+      "craftavel": true,
+      "raridades": [
+        "Comum",
+        "Incomum",
+        "Raro",
+        "Épico",
+        "Lendário"
+      ],
+      "versoes": {
+        "Comum": {
+          "descricao": "alguam coisa",
+          "para_que_serve": "alguam coisa",
+          "craft_resultado": "alguam coisa"
+        },
+        "Incomum": {
+          "descricao": "alguam coisa",
+          "para_que_serve": "alguam coisa",
+          "craft_resultado": "alguam coisa"
+        },
+        "Raro": {
+          "descricao": "alguam coisa",
+          "para_que_serve": "alguam coisa",
+          "craft_resultado": "alguam coisa"
+        },
+        "Épico": {
+          "descricao": "alguam coisa",
+          "para_que_serve": "alguam coisa",
+          "craft_resultado": "alguam coisa"
+        },
+        "Lendário": {
+          "descricao": "alguam coisa",
+          "para_que_serve": "alguam coisa",
+          "craft_resultado": "alguam coisa"
         }
+      }
     },
     {
-        "nome": "Poção de Cura",
-        "imagem": "img/LogoRPG.jpg",
-        "utilizavel": true,
-        "craftavel": true,
-        "raridade": ["Incomum", "Raro", "Épico"],
-        "versoes": {
-            "Incomum": {
-                "descricao": "Uma poção que restaura vida com eficácia normal.",
-                "para_que_serve": "Restaura 50 pontos de vida.",
-                "craft_resultado": "Poção de Cura Maior"
-            },
-            "Raro": {
-                "descricao": "Uma poção que restaura vida com grande eficácia.",
-                "para_que_serve": "Restaura 100 pontos de vida e remove efeitos negativos menores.",
-                "craft_resultado": "Poção de Cura Suprema"
-            },
-            "Épico": {
-                "descricao": "Uma poção lendária que restaura vida com poder divino.",
-                "para_que_serve": "Restaura 200 pontos de vida, remove todos os efeitos negativos e concede regeneração temporária.",
-                "craft_resultado": "Elixir de Vida"
-            }
+      "nome": "item01",
+      "imagem": "item.jpg",
+      "utilizavel": true,
+      "craftavel": true,
+      "raridades": [
+        "Comum",
+        "Incomum",
+        "Raro"
+      ],
+      "versoes": {
+        "Comum": {
+          "descricao": "faz as coisas de itens",
+          "para_que_serve": "server como item",
+          "craft_resultado": "utilizando outro item"
+        },
+        "Incomum": {
+          "descricao": "fjasjdfajsf",
+          "para_que_serve": "jskjfkasj",
+          "craft_resultado": "ksjkajdfk"
+        },
+        "Raro": {
+          "descricao": "ksdjfkajlsdk",
+          "para_que_serve": "aslkfjalksjd",
+          "craft_resultado": "slakdjaklsf"
         }
+      }
     }
-]
+  ]
+}
