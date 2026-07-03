@@ -1,6 +1,133 @@
 {
   "updates": [
     {
+      "version": "0.0.20",
+      "date": "2026-06-29",
+      "title": "Melhorias",
+      "changes": [
+        "- Aprimoramento do Lock on",
+        "- Mapa Vila"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.19",
+      "date": "2026-06-14",
+      "title": "Update e melhoria",
+      "changes": [
+        "- Adição de novas animações",
+        "- Motion Warp",
+        "- Lock On",
+        "- Novas armas",
+        "- Debuffs"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.18",
+      "date": "2026-05-24",
+      "title": "Fix Dano, Inventario",
+      "changes": [
+        "- Ajustando o dano do ataque base",
+        "- Ajustando tamanho do inventario",
+        "- Aumento de velocidade do lobo",
+        "- Habilidade do jogador aprimorada",
+        "- Distancia de ataque do lobo melhorada"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.17",
+      "date": "2026-05-11",
+      "title": "Atributos do primeiro inimigo",
+      "changes": [
+        "- Adição dos valores dos atributos do monstros.",
+        "- Variação de atributo e level para o mesmo monstro."
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.16",
+      "date": "2026-05-04",
+      "title": "Animações",
+      "changes": [
+        "- Animações de ataque do personagem com a espada",
+        "- Fix: Equipar arma (GreatSword)"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.15",
+      "date": "2026-04-28",
+      "title": "Fix Bestiario",
+      "changes": [
+        "- Arrumando interação com o bestiario",
+        "- Aprimoramento do bestiario"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.14",
+      "date": "2026-04-27",
+      "title": "Inimigos",
+      "changes": [
+        "- Adicionando primeiro inimigo",
+        "- Comportamento do primeiro inimigo",
+        "- Primeiros ataques dos inimigos"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.13",
+      "date": "2026-04-23",
+      "title": "Fix Bug Atributos",
+      "changes": [
+        "- Fix Debuff Renacimento"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.12",
+      "date": "2026-04-22",
+      "title": "Menu",
+      "changes": [
+        "- Adicionando Widget de menu",
+        "- Adicionando widget de Configurações"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.11",
+      "date": "2026-04-14",
+      "title": "Penalidade",
+      "changes": [
+        "- Penalidade de atributos pós morte",
+        "- Fix: Renacimento",
+        "- debuff pós morte"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.10",
+      "date": "2026-04-12",
+      "title": "Atributos",
+      "changes": [
+        "- Regen de vida e mana após gasto",
+        "- Distribuição de pontos"
+      ],
+      "link": "#"
+    },
+    {
+      "version": "0.0.9",
+      "date": "2026-04-10",
+      "title": "Fix Atributos",
+      "changes": [
+        "- Ajustando os atributos corretos para as classes e subclasses",
+        "- Ajustando o bug de level up"
+      ],
+      "link": "#"
+    },
+    {
       "version": "0.0.8",
       "date": "2026-04-03",
       "title": "Mapa",
