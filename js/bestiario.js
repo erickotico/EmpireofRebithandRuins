@@ -35,8 +35,10 @@ function getDropChance(rarity) {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+(() => {
     const monsterGrid = document.querySelector('.monster-grid');
+    if (!monsterGrid) return;
+
     let monsters = [];
 
     // Função para criar estrelas
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para renderizar card
     function createMonsterCard(monster) {
         return `
-            <article class="monster-card ${monster.rarity}" data-monster-id="${monster.id}">
+            <article class="monster-card ${monster.rarity}" data-monster-id="${monster.id}" role="button" tabindex="0" onclick="window.openMonsterModalById(${monster.id})" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.openMonsterModalById(${monster.id}); }">
                 <div class="monster-card-image">
                     <img src="${monster.image}" alt="${monster.name}">
                     <span class="monster-rarity">${monster.rarity}</span>
@@ -264,13 +266,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Substituir evento de clique no grid para usar a nova criação/setup
-    monsterGrid.addEventListener('click', (e) => {
-        const card = e.target.closest('.monster-card');
-        if (!card) return;
-        const monsterId = card.dataset.monsterId;
-        const monster = monsters.find(m => m.id === monsterId);
-        if (!monster) return;
+    window.openMonsterModalById = function(monsterId) {
+        const parsedMonsterId = Number(monsterId);
+        const monster = monsters.find(m => Number(m.id) === parsedMonsterId);
+        if (!monster) {
+            console.warn('Monstro não encontrado para o card clicado:', monsterId);
+            return;
+        }
+
+        const existingModal = document.querySelector('.monster-modal');
+        existingModal?.remove();
 
         document.body.insertAdjacentHTML('beforeend', createMonsterModal(monster));
         document.body.style.overflow = 'hidden';
@@ -304,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = '';
             }
         });
-    });
+    };
 
     // Carregar monstros
     async function loadMonsters() {
@@ -367,4 +372,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('searchButton').addEventListener('click', applyFilters);
 
     loadMonsters();
-});
+})();
