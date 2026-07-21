@@ -1,6 +1,138 @@
 {
   "classes": [
     {
+      "id": "cl002",
+      "name": "Arqueiro",
+      "image": "Arqueiro.jpg",
+      "descricao": "Um Combatente especializado em armas de ataque à distância, com sua agilidade, precisção e taticas de evasão.",
+      "cor": "#388e3c",
+      "estatisticas": {
+        "vida": 50,
+        "mana": 30,
+        "forca": 10,
+        "armadura": 30,
+        "agilidade": 100,
+        "inteligencia": 50,
+        "carisma": 30,
+        "percepcao": 90,
+        "maestria": 70
+      },
+      "habilidades": [
+        {
+          "nome": "Tiro Rapido",
+          "descricao": "Atira uma flecha numa velocidade imprecionante",
+          "cooldown": 3
+        },
+        {
+          "nome": "Tiro Triplo",
+          "descricao": "Atira três flechas de uma vez acertando o inimigo e dando o triplo de dano.",
+          "cooldown": 5
+        },
+        {
+          "nome": "Aumento de Velocidade",
+          "descricao": "O Arqueiro recebe uma velocidade a mais conseguindo atacar mais rapido ou fugir",
+          "cooldown": 10
+        },
+        {
+          "nome": "Chuva de Flecha",
+          "descricao": "Uma Saraivada de flechas que saem do céu acertando uma grande area e acertando todos que estiver no caminho",
+          "cooldown": 15
+        },
+        {
+          "nome": "Flecha de veneno",
+          "descricao": "Uma Flecha envenenada que pode causar dano por tempo nos alvos atingidos",
+          "cooldown": 5
+        }
+      ],
+      "subclasses": [
+        {
+          "id": "sc001",
+          "name": "Ranger",
+          "descricao": "Um Aventureiro solo focado na sobrevivencia e no combate na natureza, Atuando como um guardião nas fronteiras servindo como uma mistura de guerreiro e druida.",
+          "imagem": "Ranger.jpg",
+          "estatisticas": {
+            "vida": 6,
+            "mana": 4,
+            "forca": 4,
+            "armadura": 4,
+            "agilidade": 15,
+            "inteligencia": 2,
+            "carisma": 1,
+            "percepcao": 13,
+            "maestria": 11
+          }
+        },
+        {
+          "id": "sc002",
+          "name": "Assassino",
+          "descricao": "Um matador implacável e furtivo, especializado em infiltração, disfarce e eliminação cirúrgica de alvos",
+          "imagem": "Assassino.jpg",
+          "estatisticas": {
+            "vida": 6,
+            "mana": 2,
+            "forca": 8,
+            "armadura": 4,
+            "agilidade": 14,
+            "inteligencia": 4,
+            "carisma": 3,
+            "percepcao": 9,
+            "maestria": 10
+          }
+        },
+        {
+          "id": "sc003",
+          "name": "Arqueiro Arcano",
+          "descricao": "Esses guerreiros de elite infundem seus arcos e flechas com energia sobrenatural, disparando projéteis que podem explodir, rastrear inimigos ou paralisar alvos à distância.",
+          "imagem": "ArcArcano.jpg",
+          "estatisticas": {
+            "vida": 6,
+            "mana": 8,
+            "forca": 4,
+            "armadura": 5,
+            "agilidade": 10,
+            "inteligencia": 10,
+            "carisma": 3,
+            "percepcao": 8,
+            "maestria": 6
+          }
+        },
+        {
+          "id": "sc004",
+          "name": "GloomStalker",
+          "descricao": "Especialistas em emboscadas, eles se tornam invisíveis na escuridão para criaturas que dependem de visão no escuro e causam dano explosivo devastador no primeiro turno de combate",
+          "imagem": "GloomStalker.jpg",
+          "estatisticas": {
+            "vida": 7,
+            "mana": 4,
+            "forca": 6,
+            "armadura": 5,
+            "agilidade": 12,
+            "inteligencia": 6,
+            "carisma": 2,
+            "percepcao": 11,
+            "maestria": 7
+          }
+        },
+        {
+          "id": "sc005",
+          "name": "Arqueiro de Sangue",
+          "descricao": "É um mestre da arquearia que funde a precisão cirúrgica do disparo à distância com as artes proibidas da magia de sangue.",
+          "imagem": "ArcSangue.jpg",
+          "estatisticas": {
+            "vida": 10,
+            "mana": 6,
+            "forca": 8,
+            "armadura": 6,
+            "agilidade": 10,
+            "inteligencia": 5,
+            "carisma": 2,
+            "percepcao": 7,
+            "maestria": 6
+          }
+        }
+      ]
+    },
+    {
       "id": "cl001",
       "name": "Guerreiro",
       "image": "guerreiro.jpg",
@@ -9,7 +141,6 @@
       "estatisticas": {
         "vida": 100,
         "mana": 10,
-        "stamina": 70,
         "forca": 90,
         "armadura": 80,
         "agilidade": 50,
@@ -20,28 +151,115 @@
       },
       "habilidades": [
         {
-          "nome": "habilidade01",
-          "descricao": "uma habilidade qe faz alguma coisa que eu n sei dizer o que",
+          "nome": "Golpe Fulminante",
+          "descricao": "Um ataque poderoso que quebra a defesa inimiga.",
           "cooldown": 5
+        },
+        {
+          "nome": "Pele de Ferro",
+          "descricao": "Aumenta a resistência a ataques físicos por 30s.",
+          "cooldown": 10
+        },
+        {
+          "nome": "Investida",
+          "descricao": "Avança rapidamente contra o alvo, causando atordoamento.",
+          "cooldown": 12
+        },
+        {
+          "nome": "Fúria Incontrolável",
+          "descricao": "Aumenta drasticamente a velocidade e dano por 10s.",
+          "cooldown": 60
+        },
+        {
+          "nome": "Golpe Sangrento",
+          "descricao": "Causa dano e aplica efeito de sangramento.",
+          "cooldown": 15
         }
       ],
       "subclasses": [
         {
           "id": "sc001",
-          "name": "umasubclasse",
-          "descricao": "uma subclasse que complementa a classe principal, só n é classe por ser fraca",
-          "imagem": "sublcasse.jpg",
+          "name": "Berseker",
+          "descricao": "Um guerreiro nórdico de elite conhecido por sua fúria incontrolável e implacável em combate",
+          "imagem": "Berserker.jpg",
           "estatisticas": {
-            "vida": 6,
-            "mana": 5,
-            "stamina": 4,
-            "forca": 4,
-            "armadura": 4,
-            "agilidade": 4,
-            "inteligencia": 4,
-            "carisma": 5,
+            "vida": 14,
+            "mana": 0,
+            "forca": 16,
+            "armadura": 8,
+            "agilidade": 8,
+            "inteligencia": 2,
+            "carisma": 2,
             "percepcao": 4,
-            "maestria": 2
+            "maestria": 6
+          }
+        },
+        {
+          "id": "sc002",
+          "name": "BloodKnight",
+          "descricao": "Uma subclasse hibrida que mistura combate corpo a corpo com magia e habilidades vampíricas.",
+          "imagem": "BloodKnight.jpg",
+          "estatisticas": {
+            "vida": 14,
+            "mana": 5,
+            "forca": 12,
+            "armadura": 9,
+            "agilidade": 3,
+            "inteligencia": 6,
+            "carisma": 1,
+            "percepcao": 2,
+            "maestria": 8
+          }
+        },
+        {
+          "id": "sc003",
+          "name": "DeadKnight",
+          "descricao": "Eles são tradicionalmente retratados como guerreiros caídos de elite que foram ressuscitados por forças sombrias, combinando maestria em combate físico com magia negra profana",
+          "imagem": "Deadknight.jpg",
+          "estatisticas": {
+            "vida": 14,
+            "mana": 5,
+            "forca": 12,
+            "armadura": 12,
+            "agilidade": 1,
+            "inteligencia": 8,
+            "carisma": 1,
+            "percepcao": 2,
+            "maestria": 5
+          }
+        },
+        {
+          "id": "sc004",
+          "name": "Paladino",
+          "descricao": "É um guerreiro sagrado que combina habilidades de combate corpo a corpo com magia divina e forte código moral. Ele é movido por um Juramento Sagrado para proteger os indefesos, combater a corrupção e defender ideais de justiça e verdade",
+          "imagem": "Paladino.jpg",
+          "estatisticas": {
+            "vida": 11,
+            "mana": 6,
+            "forca": 9,
+            "armadura": 12,
+            "agilidade": 1,
+            "inteligencia": 4,
+            "carisma": 10,
+            "percepcao": 2,
+            "maestria": 5
+          }
+        },
+        {
+          "id": "sc005",
+          "name": "DragonKnight",
+          "descricao": "É focada em combate corpo a corpo, magia elemental e defesa é conhecido por sua alta resistência, capacidade de assumir a linha de frente e transformações drásticas.",
+          "imagem": "DragonKnight.jpg",
+          "estatisticas": {
+            "vida": 9,
+            "mana": 5,
+            "forca": 12,
+            "armadura": 11,
+            "agilidade": 5,
+            "inteligencia": 6,
+            "carisma": 1,
+            "percepcao": 3,
+            "maestria": 8
           }
         }
       ]
