@@ -2,19 +2,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const classesGrid = document.getElementById('classesGrid');
     let classes = [];
 
+    function getClassColor(classe) {
+        return typeof window.normalizeClassColor === 'function'
+            ? window.normalizeClassColor(classe.cor, '#8B5CF6')
+            : (classe.cor && classe.cor.trim() ? classe.cor : '#8B5CF6');
+    }
 
     // Cria os cards das classes
     function createClassCard(classe) {
+        const corClasse = getClassColor(classe);
+
         return `
-            <article class="class-card" data-class-id="${classe.id}" style="position: relative; overflow: hidden; border-radius: 8px; background: #1a1a1a; border: 2px solid ${classe.cor}40; transition: all 0.3s;">
+            <article class="class-card" data-class-id="${classe.id}" style="position: relative; overflow: hidden; border-radius: 8px; background: #1a1a1a; border: 2px solid ${corClasse}40; transition: all 0.3s;">
                 <div class="class-card-image" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
                     <img src="${classe.image}" alt="${classe.name}" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 0%, ${classe.cor}80 100%);"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 0%, ${corClasse}80 100%);"></div>
                 </div>
                 <div class="class-card-body" style="padding: 20px; background: #0f0f0f; position: relative; z-index: 2;">
-                    <h3 class="class-name" style="margin: 0 0 10px 0; color: ${classe.cor}; font-size: 22px; font-weight: 700;">${classe.name}</h3>
+                    <h3 class="class-name" style="margin: 0 0 10px 0; color: ${corClasse}; font-size: 22px; font-weight: 700;">${classe.name}</h3>
                     <p class="class-desc" style="margin: 0 0 15px 0; color: #aaa; font-size: 13px; line-height: 1.5;">${classe.descricao}</p>
-                    <button class="btn btn-primary" style="width: 100%; padding: 12px; background: ${classe.cor}; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 14px;" aria-label="Ver detalhes de ${classe.name}">Ver Detalhes</button>
+                    <button class="btn btn-primary" style="width: 100%; padding: 12px; background: ${corClasse}; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 14px;" aria-label="Ver detalhes de ${classe.name}">Ver Detalhes</button>
                 </div>
             </article>
         `;
@@ -77,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cria o modal das classes com as abas
     function createClassModal(classe) {
-        const corClasse = classe.cor || '#333';
+        const corClasse = typeof window.normalizeClassColor === 'function'
+            ? window.normalizeClassColor(classe.cor, '#8B5CF6')
+            : (classe.cor && classe.cor.trim() ? classe.cor : '#8B5CF6');
         
         const tabsHtml = `
             <div class="modal-tabs" style="display: flex; border-bottom: 2px solid ${corClasse}; background: #1a1a1a;">
@@ -389,7 +398,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sumStats[key] = (sumStats[key] || 0) + val;
         });
         
-        const corClasse = classe.cor || '#333';
+        const corClasse = typeof window.normalizeClassColor === 'function'
+            ? window.normalizeClassColor(classe.cor, '#8B5CF6')
+            : (classe.cor && classe.cor.trim() ? classe.cor : '#8B5CF6');
         createSumModal(sumStats, corClasse, classe.name, sub1.name, sub2.name);
     }
 
