@@ -17,24 +17,24 @@
         "dificuldade": "Muito Fácil"
       },
       "estatisticas": {
-        "vida": 45,
-        "mana": 0,
-        "forca": 4,
-        "armadura": 2,
-        "agilidade": 3,
-        "inteligencia": 1,
-        "carisma": 1,
-        "percepcao": 8,
-        "maestria": 2,
+        "vida": 50,
+        "mana": 20,
+        "forca": 15,
+        "armadura": 10,
+        "agilidade": 10,
+        "inteligencia": 5,
+        "carisma": 5,
+        "percepcao": 10,
+        "maestria": 5,
         "resistencias": {
-          "fogo": 0,
+          "fogo": 1,
           "agua": 8,
-          "terra": 4,
-          "sombra": 0,
-          "luz": 0,
-          "eletrico": 0,
-          "gelo": 0,
-          "veneno": 10
+          "terra": 3,
+          "sombra": 4,
+          "luz": 4,
+          "eletrico": 1,
+          "gelo": 5,
+          "veneno": 8
         }
       },
       "habilidades": {
@@ -48,6 +48,11 @@
           {
             "nome": "Divisão Celular",
             "descricao": "Ao receber um dano cortante critico o slime se divide em dois slimes menores com 50% da sua vida original.",
+            "cooldown": 0
+          },
+          {
+            "nome": "Corrosão",
+            "descricao": "Ao ser atingido com golpes fisicos com armas fracas elas serão corriodas por acidos, fazendo sua durabilidades cair mais rapido.",
             "cooldown": 0
           }
         ]
@@ -109,56 +114,56 @@
     {
       "id": 2,
       "name": "Goblin",
-      "image": "goblin.jpg",
+      "image": "Goblin.jpg",
       "level": 5,
       "levelMin": 5,
       "levelMax": 25,
-      "stars": 1,
+      "stars": 2,
       "rarity": "Comum",
       "informacoes": {
-        "historia": "Pequenos humanoides de pele esverdeada, conhecidos por viverem em grandes tribos desorganizadas. Sobrevivem de furtos, saques e pequenas emboscadas nas estradas. São fracos individualmente, mas perigosos quando se reúnem em bando. Utilizam armas enferrujadas, armadilhas rudimentares e equipamentos roubados de viajantes.",
-        "regiao": "Florestas densas, vales, acampamentos improvisados em planícies e entradas de cavernas.",
-        "comportamento": "Hostil",
-        "tipo": "Humanoid",
+        "historia": "Os goblins possuem grande força. Normalmente por serem seres de pouca inteligência e hábitos selvagens.Os goblins possuem grande força. Normalmente por serem seres de pouca inteligência e hábitos selvagens, por isso existem variações desta mesma espécie",
+        "regiao": "Cavernas úmidas, Masmorras abandonadas, Pântanos escuros, Florestas Densas",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoide",
         "dificuldade": "Fácil"
       },
       "estatisticas": {
-        "vida": 60,
+        "vida": 30,
         "mana": 10,
-        "forca": 5,
-        "armadura": 3,
-        "agilidade": 7,
-        "inteligencia": 4,
-        "carisma": 2,
-        "percepcao": 6,
-        "maestria": 3,
+        "forca": 20,
+        "armadura": 15,
+        "agilidade": 45,
+        "inteligencia": 15,
+        "carisma": 10,
+        "percepcao": 35,
+        "maestria": 20,
         "resistencias": {
-          "fogo": 1,
-          "agua": 2,
-          "terra": 5,
-          "sombra": 2,
-          "luz": 0,
-          "eletrico": 1,
-          "gelo": 0,
-          "veneno": 4
+          "fogo": 3,
+          "agua": 3,
+          "terra": 4,
+          "sombra": 5,
+          "luz": 2,
+          "eletrico": 2,
+          "gelo": 3,
+          "veneno": 6
         }
       },
       "habilidades": {
-        "xpGanho": 20,
+        "xpGanho": 25,
         "listaHabilidades": [
           {
-            "nome": "Estocada Traiçoeira",
-            "descricao": "Avança rapidamente em linha reta para desferir um ataque frontal pesado com sua arma.",
+            "nome": "Golpe Sujo",
+            "descricao": "Um ataque rápido e desleal que visa pontos vitais, causando dano extra e chance de atordoar.",
             "cooldown": 5
           },
           {
-            "nome": "Golpe Sujo",
-            "descricao": "Um ataque rapido focado nas pernas do jogador causando lentidão nos movimentos do alvo",
-            "cooldown": 3
+            "nome": "Esconderijo",
+            "descricao": "O monstro se funde com o ambiente, tornando-se invisível até atacar.",
+            "cooldown": 4
           },
           {
-            "nome": "Arremesso de sucata",
-            "descricao": "Um ataque a distância onde arremessa a primeira coisa que encontrar no alvo, causando um dano fisico.",
+            "nome": "Ataque Rapido",
+            "descricao": "Aumenta a velocidade do monstro realizando varios ataques em sequencia",
             "cooldown": 2
           }
         ]
@@ -167,124 +172,92 @@
         {
           "item": "Tesouro",
           "raridades": [
-            "Comum",
-            "Incomum"
+            "Comum"
           ],
-          "quantidade": 10
+          "quantidade": 100,
+          "raridade": "Comum"
         },
         {
           "item": "Nucleo de Goblin",
           "raridades": [
-            "Comum",
-            "Incomum",
             "Raro",
             "Épico",
             "Lendário"
           ],
           "quantidade": 1
+        },
+        {
+          "item": "Arma Goblin",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
         }
       ],
-      "hasVariantes": true,
-      "listaVariantes": [
-        {
-          "name": "Goblin de Ambiente",
-          "image": "GAmbiente.jpg",
-          "raridade": "Comum",
-          "info": "Uma versão do goblin de acordo com o ambiente onde o encontrar"
-        },
-        {
-          "name": "Hobgoblin",
-          "image": "hobgoblin.jpg",
-          "raridade": "Incomum",
-          "info": "Os hobgoblins são primos maiores, mais fortes, inteligentes e organizados dos goblins normais."
-        },
-        {
-          "name": "Goblin Pirata",
-          "image": "GobPirata.jpg",
-          "raridade": "Raro",
-          "info": "Um combatente em batalhas navais mais comuns encontrados em alto mar buscando tesouros em ilhas perdidas"
-        },
-        {
-          "name": "Goblin Xamã",
-          "image": "GobXama.jpg",
-          "raridade": "Épico",
-          "info": "Um lider mitico dos goblins usando seus poderes espirituais para atacar seus alvos."
-        },
-        {
-          "name": "Goblin King",
-          "image": "Gobking.jpg",
-          "raridade": "Lendário",
-          "info": "O lider dos goblins, seu poder passa de geração em geração aumentando a força dos proximos goblins que se tornam reis"
-        },
-        {
-          "name": "Goblin Zombie",
-          "image": "GobZombie.jpg",
-          "raridade": "Épico",
-          "info": "Todos os tipos de goblins que existem pode ter suas versões zombies tendo sua velocidade reduzida."
-        },
-        {
-          "name": "Goblin Corrompido",
-          "image": "GobCorrompido.jpg",
-          "raridade": "Épico",
-          "info": "Todos os tipos de goblins que existem pode ter suas versões corrompidas, tento seus atributos aumentados."
-        }
-      ]
+      "hasVariantes": false,
+      "listaVariantes": []
     },
     {
       "id": 3,
-      "name": "Lagarto",
-      "image": "lagarto.jpg",
-      "level": 5,
-      "levelMin": 5,
+      "name": "Aguia",
+      "image": "Aguia.jpg",
+      "level": 15,
+      "levelMin": 15,
       "levelMax": 25,
-      "stars": 1,
+      "stars": 2,
       "rarity": "Comum",
       "informacoes": {
-        "historia": "Um réptil de grande porte coberto por escamas espessas que funcionam como uma armadura natural. Ele passa a maior parte do dia deitado sobre pedras, absorvendo o calor do sol para manter sua energia. Embora prefira evitar conflitos desnecessários, torna-se uma fera incrivelmente agressiva quando ameaçado ou quando seu território é invadido, utilizando sua cauda pesada para esmagar ameaças.",
-        "regiao": "Desertos, cânions, áreas rochosas, savanas e planícies áridas.",
-        "comportamento": "Normal",
-        "tipo": "Fera / Réptil",
+        "historia": "Um animal rápido e feroz, consegue enxergar suas presas numa longa distância, suas garras afiadas cortam até o aço mais duro.",
+        "regiao": "Montanhas, Florestas Abertas",
+        "comportamento": "Territorialista, Hostil",
+        "tipo": "Animal",
         "dificuldade": "Fácil"
       },
       "estatisticas": {
-        "vida": 120,
-        "mana": 0,
-        "forca": 12,
-        "armadura": 8,
-        "agilidade": 4,
-        "inteligencia": 2,
-        "carisma": 1,
-        "percepcao": 7,
-        "maestria": 2,
+        "vida": 25,
+        "mana": 10,
+        "forca": 20,
+        "armadura": 10,
+        "agilidade": 60,
+        "inteligencia": 45,
+        "carisma": 10,
+        "percepcao": 60,
+        "maestria": 20,
         "resistencias": {
-          "fogo": 6,
-          "agua": 2,
-          "terra": 8,
-          "sombra": 0,
-          "luz": 4,
-          "eletrico": 3,
-          "gelo": 0,
-          "veneno": 5
+          "fogo": 3,
+          "agua": 3,
+          "terra": 2,
+          "sombra": 2,
+          "luz": 6,
+          "eletrico": 5,
+          "gelo": 3,
+          "veneno": 2
         }
       },
       "habilidades": {
         "xpGanho": 30,
         "listaHabilidades": [
           {
-            "nome": "Mordida",
-            "descricao": "Abrindo sua boca projetando a cabeça mais para frente em um ataque frontal telegrafado.",
-            "cooldown": 3
+            "nome": "Mergulho Rasante",
+            "descricao": "Um ataque aéreo rápido que causa dano e permite ao monstro recuar em segurança.",
+            "cooldown": 5
           },
           {
-            "nome": "Chicotada de cauda",
-            "descricao": "O monstro gira o próprio corpo rapidamente, desferindo um golpe em arco amplo à sua frente e nas laterais com sua cauda espinhosa.",
+            "nome": "Corte de vento",
+            "descricao": "Balança suas asas criando um corte de vento em direção ao alvo.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Garras Afiadas",
+            "descricao": "Voa rapido cravando suas garras ao alvo podendo causar sangramento.",
             "cooldown": 10
           }
         ]
       },
       "recompensas": [
         {
-          "item": "Cauda de Lagarto",
+          "item": "Bico de Aguia",
           "raridades": [
             "Comum",
             "Incomum",
@@ -294,7 +267,17 @@
           "quantidade": 1
         },
         {
-          "item": "Olho de Lagarto",
+          "item": "Asas de Aguia",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Garra de Aguia",
           "raridades": [
             "Comum",
             "Incomum",
@@ -303,17 +286,18 @@
           "quantidade": 2
         },
         {
-          "item": "Escama de lagarto",
+          "item": "Pena de Aguia",
           "raridades": [
             "Comum",
             "Incomum",
             "Raro",
-            "Épico"
+            "Épico",
+            "Lendário"
           ],
-          "quantidade": 10
+          "quantidade": 5
         },
         {
-          "item": "Nucleo de Lagarto",
+          "item": "Nucleo de Aguia",
           "raridades": [
             "Raro",
             "Épico",
@@ -325,10 +309,248 @@
       "hasVariantes": true,
       "listaVariantes": [
         {
-          "name": "alguma variante",
-          "image": "varianet.jpg",
+          "name": "Harpia",
+          "image": "Harpia.jpg",
+          "raridade": "Raro",
+          "info": "É uma das maiores e mais poderosas aves de rapina do mundo. Destaca-se pelo seu topete marcante na cabeça,"
+        },
+        {
+          "name": "Rapina",
+          "image": "Rapina.jpg",
+          "raridade": "Raro",
+          "info": "Aves carnívoras e predadoras que caçam ativamente outros animais."
+        },
+        {
+          "name": "Zombie",
+          "image": "aveZombie.jpg",
           "raridade": "Épico",
-          "info": "jksldhfklsafbçasldfkajhsdfjkhbgdsf"
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        },
+        {
+          "name": "Corrompido",
+          "image": "aveCorrompido.jpg",
+          "raridade": "Épico",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Aranha",
+      "image": "aranha.jpg",
+      "level": 20,
+      "levelMin": 20,
+      "levelMax": 40,
+      "stars": 2,
+      "rarity": "Incomum",
+      "informacoes": {
+        "historia": "São monstros que gostam de ambientes escuros e umidos para criar suas teias e aguardar suas presas, algumas especies pode matar uma pessoa com um unico ataque",
+        "regiao": "Cavernas, Pantanos, Masmorras",
+        "comportamento": "Hostil",
+        "tipo": "Araquinidio",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 35,
+        "mana": 15,
+        "forca": 25,
+        "armadura": 15,
+        "agilidade": 45,
+        "inteligencia": 10,
+        "carisma": 5,
+        "percepcao": 40,
+        "maestria": 20,
+        "resistencias": {
+          "fogo": 1,
+          "agua": 3,
+          "terra": 4,
+          "sombra": 7,
+          "luz": 1,
+          "eletrico": 2,
+          "gelo": 2,
+          "veneno": 9
+        }
+      },
+      "habilidades": {
+        "xpGanho": 50,
+        "listaHabilidades": [
+          {
+            "nome": "Teia Pegajosa",
+            "descricao": "Lança uma teia que prende o alvo, impedindo sua movimentação.",
+            "cooldown": 3
+          },
+          {
+            "nome": "Mordida Paralizante",
+            "descricao": "Uma mordida que tem chance de deixar o alvo incapaz de agir por alguns segundos",
+            "cooldown": 4
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Saco de Veneno",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Patas de Aranha",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 6
+        },
+        {
+          "item": "Pelo de Aranha",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Aranha",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Aranha Gigante",
+          "image": "aranhagigante.jpg",
+          "raridade": "Raro",
+          "info": "É uma criatura monstruosa de corpo quitinoso. Ela possui presas venenosas mortais, capacidade de escalar tetos e paredes, e pode arremessar teias pegajosas para imobilizar heróis"
+        },
+        {
+          "name": "Aranha de Fase",
+          "image": "aranhafase.jpg",
+          "raridade": "Raro",
+          "info": "Visualmente, ela se assemelha a uma enorme aranha-lobo com uma coloração em tons de azul, cinza e branco. Possui uma cabeça um pouco maior que a das aranhas comuns e oito olhos prateados. O seu nome vem da sua habilidade inata de \"deslocamento de fase\"."
+        },
+        {
+          "name": "Aranha Lobo",
+          "image": "aranhalobo.jpg",
+          "raridade": "Raro",
+          "info": "Ela persegue e caça ativamente. São monstros ágeis, agressivos, que se destacam por dar saltos mortais para desorientar e atacar suas presas"
+        },
+        {
+          "name": "Drider",
+          "image": "drider.jpg",
+          "raridade": "Épico",
+          "info": "Possui o torso e a cabeça de um humano e a parte inferior de uma aranha gigante. Eles são retratados como caçadores implacáveis, ágeis e mortais, vagando por labirintos e cavernas."
+        },
+        {
+          "name": "Mini Aranha",
+          "image": "miniaranha.jpg",
+          "raridade": "Incomum",
+          "info": "Elas costumam ser criaturas do tipo \"enxame\" ou filhotes de aranhas gigantes."
+        },
+        {
+          "name": "Zombie",
+          "image": "aranZombie.jpg",
+          "raridade": "Raro",
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        },
+        {
+          "name": "Corrompido",
+          "image": "aracorrompido.jpg",
+          "raridade": "Raro",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Bruxa",
+      "image": "bruxa.jpg",
+      "level": 25,
+      "levelMin": 25,
+      "levelMax": 50,
+      "stars": 3,
+      "rarity": "Raro",
+      "informacoes": {
+        "historia": "São criaturas que possuem conhecimentos sobre poderes ocultos da natureza, encantamentos e magias, que foram  corrompidas pela magia das trevas.",
+        "regiao": "Pantanos",
+        "comportamento": "Hostil",
+        "tipo": "humanoide",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 40,
+        "mana": 80,
+        "forca": 15,
+        "armadura": 10,
+        "agilidade": 30,
+        "inteligencia": 70,
+        "carisma": 40,
+        "percepcao": 50,
+        "maestria": 60,
+        "resistencias": {
+          "fogo": 6,
+          "agua": 5,
+          "terra": 5,
+          "sombra": 8,
+          "luz": 2,
+          "eletrico": 6,
+          "gelo": 6,
+          "veneno": 8
+        }
+      },
+      "habilidades": {
+        "xpGanho": 100,
+        "listaHabilidades": [
+          {
+            "nome": "Maldição",
+            "descricao": "Aplica um efeito negativo duradouro que reduz os atributos do alvo.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Poção Explosiva",
+            "descricao": "Arremessa um frasco alquímico que explode, causando dano elemental em área.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Raio Sombrio",
+            "descricao": "Dispara um feixe de energia necromântica que causa dano e drena vida.",
+            "cooldown": 10
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Nucleo de Bruxa",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Bruxa de Ambiente",
+          "image": "bruxaambiente.jpg",
+          "raridade": "Incomum",
+          "info": "Dependendo do local que a bruxa morar terá tipos diferente."
+        },
+        {
+          "name": "Corrompida",
+          "image": "bruxacorrompida.jpg",
+          "raridade": "Raro",
+          "info": "São monstros que morreram em ambientes com auras malignas"
         }
       ]
     }
