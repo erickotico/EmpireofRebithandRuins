@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body class="auth-page">
+    <header style="padding: 12px 20px; display:flex; justify-content:flex-end;">
+        <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
+    </header>
     <main class="auth-layout container">
         
         <div class="auth-image" aria-hidden="false">
@@ -16,35 +19,35 @@
         </div>
         <aside class="auth-panel" role="region" aria-label="Formulário de login">
             <div class="login-brand">
-                <img src="./img/LogoRPG.jpg" alt="Logo do jogo">
-                <h2>Bem-vindo de volta</h2>
-                <p class="login-desc">Entre para continuar sua jornada em Empire of Rebirth & Ruins.</p>
+                <img src="./img/LogoRPG.jpg" alt="Game logo">
+                <h2>Welcome back</h2>
+                <p class="login-desc">Sign in to continue your journey in Empire of Rebirth & Ruins.</p>
             </div>
 
             <form id="loginForm" class="login-form" action="login.php" method="POST" novalidate>
                 <div class="form-group">
-                    <label for="username">E‑mail ou usuário</label>
+                    <label for="username">Email or username</label>
                     <input id="username" name="username" type="text" autocomplete="username" required>
                 </div>
 
                   <div class="form-group">
-                    <label for="password">Senha</label>
+                    <label for="password">Password</label>
                     <div class="password-wrap">
                         <input id="password" name="password" type="password" autocomplete="current-password" required>
-                            <button type="button" class="toggle-password" aria-label="Mostrar senha">
-                                <img src="./img/icons/closed-eye.png" alt="Mostrar/Ocultar senha" class="eye-icon">
+                            <button type="button" class="toggle-password" aria-label="Show password">
+                                <img src="./img/icons/closed-eye.png" alt="Show/Hide password" class="eye-icon">
                             </button>
                     </div>  
                 </div>
                 <div class="form-row">
                     <label class="checkbox">
-                        <input type="checkbox" id="rememberMe" name="rememberMe"> Lembrar-me
+                        <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
                     </label>
-                    <a class="small-link" href="contato.html">Esqueceu a senha?</a>
+                    <a class="small-link" href="contato.html">Forgot password?</a>
                 </div>
  <div class="form-actions">
-                    <button class="btn btn-download" type="submit">Entrar</button>
-                    <a class="btn btn-login" href="index.html">Voltar</a>
+                    <button class="btn btn-download" type="submit">Sign in</button>
+                    <a class="btn btn-login" href="index.html">Back</a>
                 </div>
 
                 <div class="auth-divider">
@@ -57,74 +60,74 @@
                 <div class="social-login">
                     <button type="button" class="btn btn-google" onclick="loginWithGoogle()">
                         <img src="./img/icons/google.png" alt="Google" class="google-icon">
-                        Continuar com Google
+                        Continue with Google
                     </button>
                 </div>
                 <p class="signup-prompt">
-                    Não tem uma conta? <a href="#" id="openSignup" type="button" class="signup-link">Criar conta</link>
+                    Don't have an account? <a href="#" id="openSignup" type="button" class="signup-link">Create account</a>
                 </p>
                 </form>
 
     <footer class="site-footer auth-footer">
-        <p>&copy; 2025 Empire of Rebirth & Ruins. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Empire of Rebirth & Ruins. All rights reserved.</p>
     </footer>
 
     <!-- Modal de cadastro -->
     <div id="signupModal" class="modal-overlay" hidden aria-hidden="true">
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
-            <button class="modal-close" id="closeSignup" aria-label="Fechar">×</button>
-            <h3 id="signupTitle">Criar conta</h3>
+            <button class="modal-close" id="closeSignup" aria-label="Close">×</button>
+            <h3 id="signupTitle">Create account</h3>
             <form id="signupForm" class="signup-form" novalidate>
                 <div class="form-group">
-                   <label for="fullName">Nome completo</label>
+                   <label for="fullName">Full name</label>
                     <input id="fullName" name="fullName" type="text" required>
                     <div class="form-error" data-for="fullName"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="signupEmail">E‑mail</label>
+                    <label for="signupEmail">Email</label>
                     <input id="signupEmail" name="email" type="email" required>
                     <div class="form-error" data-for="signupEmail"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Número de telefone</label>
+                    <label for="phone">Phone number</label>
                     <input id="phone" name="phone" type="tel" placeholder="+55 11 9xxxx-xxxx">
                     <div class="form-error" data-for="phone"></div>
                 </div>
 
                 <div class="form-row dob-row">
                     <div>
-                        <label for="birthDay">Dia</label>
+                        <label for="birthDay">Day</label>
                         <input id="birthDay" name="day" type="number" min="1" max="31" required>
                     </div>
                     <div>
-                        <label for="birthMonth">Mês</label>
+                        <label for="birthMonth">Month</label>
                         <input id="birthMonth" name="month" type="number" min="1" max="12" required>
                     </div>
                     <div>
-                        <label for="birthYear">Ano</label>
+                        <label for="birthYear">Year</label>
                         <input id="birthYear" name="year" type="number" min="1900" max="2025" required>
                     </div>
                     <div class="form-error" data-for="dob"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="signupPassword">Senha</label>
+                    <label for="signupPassword">Password</label>
                     <input id="signupPassword" name="password" type="password" minlength="6" required>
                     <div class="form-error" data-for="signupPassword"></div>
                 </div>
 
                 <div class="form-group">
                     <label class="checkbox">
-                        <input type="checkbox" id="agreeTerms" required> Eu li e concordo com os <a href="#" target="_blank">termos de privacidade</a>
+                        <input type="checkbox" id="agreeTerms" required> I have read and agree to the <a href="#" target="_blank">privacy terms</a>
                     </label>
                     <div class="form-error" data-for="agreeTerms"></div>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-download">Criar conta</button>
-                    <button type="button" class="btn btn-login" id="cancelSignup">Cancelar</button>
+                    <button type="submit" class="btn btn-download">Create account</button>
+                    <button type="button" class="btn btn-login" id="cancelSignup">Cancel</button>
                 </div>
             </form>
         </div>
@@ -132,6 +135,7 @@
 
     </aside>
     </main>
+<script src="js/langSwitcher.js"></script>
 <script src="js/login.js"></script>
  </body>
 </html>

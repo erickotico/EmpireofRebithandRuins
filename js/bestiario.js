@@ -58,7 +58,7 @@ function getDropChance(rarity) {
                 <div class="monster-card-body">
                     <div class="monster-basic-left">
                         <h3 class="monster-name">${monster.name}</h3>
-                        <div class="monster-level">Nível ${monster.level}</div>
+                        <div class="monster-level">Level ${monster.level}</div>
                     </div>
 
                     <div class="monster-basic-right">
@@ -69,19 +69,19 @@ function getDropChance(rarity) {
 
                     <div class="monster-stats-row" aria-hidden="false">
                         <div class="stat-block">
-                            <span class="stat-label">Vida</span>
+                            <span class="stat-label">HP</span>
                             <span class="stat-value">${monster.estatisticas.vida}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Força</span>
+                            <span class="stat-label">Strength</span>
                             <span class="stat-value">${monster.estatisticas.forca}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Agilidade</span>
+                            <span class="stat-label">Agility</span>
                             <span class="stat-value">${monster.estatisticas.agilidade}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Armadura</span>
+                            <span class="stat-label">Armor</span>
                             <span class="stat-value">${monster.estatisticas.armadura}</span>
                         </div>
                     </div>
@@ -104,10 +104,10 @@ function getDropChance(rarity) {
 
     function createMonsterModal(monster) {
         const baseTabs = [
-            { key: 'info', label: 'Informações' },
-            { key: 'stats', label: 'Estatísticas' },
-            { key: 'skills', label: 'Habilidades' },
-            { key: 'rewards', label: 'Recompensas' }
+            { key: 'info', label: 'Information' },
+            { key: 'stats', label: 'Statistics' },
+            { key: 'skills', label: 'Skills' },
+            { key: 'rewards', label: 'Rewards' }
         ];
 
         // Extras dinâmicos
@@ -176,7 +176,7 @@ function getDropChance(rarity) {
                         <div class="modal-title">
                             <h2>${monster.name}</h2>
                             <div class="modal-meta">
-                                <span class="modal-level">Nível ${monster.level}</span>
+                                <span class="modal-level">Level ${monster.level}</span>
                                 <div class="modal-stars">${'★'.repeat(monster.stars)}${'☆'.repeat(7 - monster.stars)}</div>
                                 <span class="modal-rarity ${monster.rarity}">${monster.rarity}</span>
                             </div>
@@ -197,7 +197,7 @@ function getDropChance(rarity) {
                         </div>
 
                         <div class="tab-content stats">
-                            <h3 style="color: #fff; margin-bottom: 20px; font-size: 20px;">Estatísticas</h3>
+                            <h3 style="color: #fff; margin-bottom: 20px; font-size: 20px;">Statistics</h3>
                             <div class="stats-container">
                                 ${Object.entries(monster.estatisticas).filter(([key]) => key !== 'resistencias').map(([key, value]) => `
                                     <div class="stat-bar" style="margin-bottom: 15px;">
@@ -212,7 +212,7 @@ function getDropChance(rarity) {
                                 `).join('')}
                             </div>
                             <div class="resistances">
-                                <h4>Resistências e Fraquezas</h4>
+                                <h4>Resistances and Weaknesses</h4>
                                 <div class="resistances-grid">
                                     ${resistenciasHtml || '<p class="muted">Neutro em todos os atributos.</p>'}
                                 </div>
@@ -220,15 +220,15 @@ function getDropChance(rarity) {
                         </div>
 
                         <div class="tab-content skills">
-                            <div class="xp-info">XP por Abate: ${monster.habilidades?.xpGanho ?? 0}</div>
+                            <div class="xp-info">XP gained on defeat: ${monster.habilidades?.xpGanho ?? 0}</div>
                             <div class="skills-list">${skillsHtml}</div>
                         </div>
 
                         <div class="tab-content rewards">
                             <div class="rarity-filter">
-                                <label for="rarity-select">Filtrar por Raridade:</label>
+                                <label for="rarity-select">Filter by rarity:</label>
                                 <select id="rarity-select">
-                                    <option value="all">Todas as Raridades</option>
+                                    <option value="all">All rarities</option>
                                     <option value="Comum">Comum</option>
                                     <option value="Incomum">Incomum</option>
                                     <option value="Raro">Raro</option>

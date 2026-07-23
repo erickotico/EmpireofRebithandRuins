@@ -11,23 +11,25 @@
 <body>
     <header>
         <div class="brand">
-            <img src="./img/LogoRPG.jpg" alt="Logo do jogo">
-            <h1>Guia Para Iniciantes</h1>
+            <img src="./img/LogoRPG.jpg" alt="Game logo">
+            <h1>Beginner's Guide</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="bestiario.html">Bestiário</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bestiario.html">Bestiary</a></li>
                 <li><a href="classes.html">Classes</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-               
+                <li><a href="sobre.html">About</a></li>
             </ul>
         </nav>
+        <div class="header-actions">
+            <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
+        </div>
     </header>
-        <!-- Imagem do mapa -->
+        <!-- Game map -->
     <section id="mapa">
-        <h2>Mapa do Jogo</h2>
-        <img id="mapa-img" src="img/LogoRPG.jpg" alt="Mapa do Jogo" onclick="abrirPopup()">
+        <h2>Game Map</h2>
+        <img id="mapa-img" src="img/LogoRPG.jpg" alt="Game map" onclick="abrirPopup()">
     </section>
 
     <!-- Popup para imagem ampliada -->
@@ -36,36 +38,37 @@
         <img id="popup-img" src="img/LogoRPG.jpg" alt="Mapa Ampliada">
     </div>
 
-    <!-- Seção de Reinos -->
+    <!-- Kingdom section -->
     <section id="reinos">
-        <h2>Reinos</h2>
+        <h2>Kingdoms</h2>
         <div class="search-container">
-            <input type="text" id="filtro-reinos" placeholder="Buscar reinos...">
-            <button onclick="filtrarReinos(document.getElementById('filtro-reinos').value)">Pesquisar</button>
+            <input type="text" id="filtro-reinos" placeholder="Search kingdoms...">
+            <button onclick="filtrarReinos(document.getElementById('filtro-reinos').value)">Search</button>
         </div>
         <div id="lista-reinos" class="scroll-box"></div>
     </section>
 
-    <!-- Seção de Masmorras -->
+    <!-- Dungeon section -->
     <section id="masmorras">
-        <h2>Tipos de Masmorras</h2>
+        <h2>Dungeon Types</h2>
         <div class="search-container">
-            <input type="text" id="filtro-masmorras" placeholder="Buscar masmorras...">
-            <button onclick="filtrarMasmorras(document.getElementById('filtro-masmorras').value)">Pesquisar</button>
+            <input type="text" id="filtro-masmorras" placeholder="Search dungeons...">
+            <button onclick="filtrarMasmorras(document.getElementById('filtro-masmorras').value)">Search</button>
         </div>
         <div id="lista-masmorras" class="scroll-box"></div>
     </section>
 
-    <!-- Seção de Itens -->
+    <!-- Items section -->
     <section id="itens">
-        <h2>Itens</h2>
+        <h2>Items</h2>
         <div class="search-container">
-            <input type="text" id="filtro-itens" placeholder="Buscar itens...">
-            <button onclick="filtrarItens(document.getElementById('filtro-itens').value)">Pesquisar</button>
+            <input type="text" id="filtro-itens" placeholder="Search items...">
+            <button onclick="filtrarItens(document.getElementById('filtro-itens').value)">Search</button>
         </div>
         <div id="lista-itens" class="scroll-box"></div>
     </section>
 
+    <script src="js/langSwitcher.js"></script>
     <script src="js/beguinnersguide.js"></script>
 </body>
 </html>

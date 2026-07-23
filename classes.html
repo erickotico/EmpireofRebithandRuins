@@ -16,30 +16,32 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="bestiario.html">Bestiário</a></li>
-                <li><a href="classes.html">Classes</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-              
+                <li><a href="index.html" data-i18n="home">Home</a></li>
+                <li><a href="bestiario.html" data-i18n="bestiary">Bestiary</a></li>
+                <li><a href="classes.html" data-i18n="classes">Classes</a></li>
+                <li><a href="sobre.html" data-i18n="about">About</a></li>
             </ul>
         </nav>
+        <div class="header-actions">
+            <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
+        </div>
     </header>
 
     <main>
         <section class="classes-hero">
             <div class="container">
-                <h1>Classes e Subclasses</h1>
-                <p>Escolha sua classe e desenvolva suas habilidades únicas</p>
+                <h1>Classes & Subclasses</h1>
+                <p>Choose your class and develop your unique abilities</p>
             </div>
         </section>
 
         <section class="classes-section">
             <div class="container">
                 <div class="search-container">
-                    <input type="text" id="searchClasses" placeholder="Buscar classes...">
-                    <button id="searchClassesButton">Pesquisar</button>
+                    <input type="text" id="searchClasses" placeholder="Search classes...">
+                    <button id="searchClassesButton">Search</button>
                 </div>
-                <div class="classes-grid" id="classesGrid" role="region" aria-label="Grid de classes">
+                <div class="classes-grid" id="classesGrid" role="region" aria-label="Classes grid">
                     <!-- Carregado via JavaScript -->
                 </div>
             </div>
@@ -47,30 +49,30 @@
 
         <section class="attribute-calculator">
             <div class="container">
-                <h2>Calculadora de Atributos</h2>
-                <p>Selecione uma classe e duas subclasses para calcular os atributos somados.</p>
+                <h2>Attribute Calculator</h2>
+                <p>Select a class and two subclasses to calculate the combined attributes.</p>
                 <div class="calculator-controls" style="display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 200px;">
-                        <label for="classSelect" style="display: block; margin-bottom: 5px; color: #ddd; font-weight: 600;">Classe:</label>
+                        <label for="classSelect" style="display: block; margin-bottom: 5px; color: #ddd; font-weight: 600;">Class:</label>
                         <select id="classSelect" style="width: 100%; padding: 10px; background: #1a1a1a; border: 2px solid #333; border-radius: 4px; color: #fff;">
-                            <option value="">Selecione uma classe</option>
+                            <option value="">Select a class</option>
                         </select>
                     </div>
                     <div style="flex: 1; min-width: 200px;">
-                        <label for="subclass1Select" style="display: block; margin-bottom: 5px; color: #ddd; font-weight: 600;">Primeira Subclasse:</label>
+                        <label for="subclass1Select" style="display: block; margin-bottom: 5px; color: #ddd; font-weight: 600;">First subclass:</label>
                         <select id="subclass1Select" style="width: 100%; padding: 10px; background: #1a1a1a; border: 2px solid #333; border-radius: 4px; color: #fff;">
-                            <option value="">Selecione subclasse</option>
+                            <option value="">Select subclass</option>
                         </select>
                     </div>
                     <div style="flex: 1; min-width: 200px;">
-                        <label for="subclass2Select" style="display: block; margin-bottom: 5px; color: #ddd; font-weight: 600;">Segunda Subclasse:</label>
+                        <label for="subclass2Select" style="display: block; margin-bottom: 5px; color: #ddd; font-weight: 600;">Second subclass:</label>
                         <select id="subclass2Select" style="width: 100%; padding: 10px; background: #1a1a1a; border: 2px solid #333; border-radius: 4px; color: #fff;">
-                            <option value="">Selecione subclasse</option>
+                            <option value="">Select subclass</option>
                         </select>
                     </div>
                 </div>
                 <div id="summedStats" class="stats-display" style="display: none; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 2px solid #333;">
-                    <!-- Atributos somados serão exibidos aqui -->
+                    <!-- Combined attributes will be displayed here -->
                 </div>
             </div>
         </section>
@@ -81,25 +83,25 @@
                 <img src="./img/LogoRPG.jpg" alt="Logo Empire of Rebirth & Ruins">
                 <div>
                     <h3>Empire of Rebirth & Ruins</h3>
-                    <p class="footer-desc">Explore dungeons, derrote monstros e torne-se uma lenda.</p>
+                    <p class="footer-desc">Explore dungeons, defeat monsters, and become a legend.</p>
                 </div>
             </div>
 
             <div class="footer-links" aria-hidden="false">
                 <div class="footer-col">
-                    <h4>Jogo</h4>
+                    <h4>Game</h4>
                     <ul>
-                        <li><a href="beguinnersguide.html">Guia para Iniciantes</a></li>
-                        <li><a href="features.html">Características</a></li>
-                        <li><a href="requirements.html">Requisitos</a></li>
+                        <li><a href="beguinnersguide.html">Beginner's Guide</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="requirements.html">Requirements</a></li>
                         <li><a href="patchnotes.html">Patch notes</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Comunidade</h4>
+                    <h4>Community</h4>
                     <ul>
-                        <li><a href="forum.html">Fórum</a></li>
+                        <li><a href="forum.html">Forum</a></li>
                         <li><a href="discord.html">Discord</a></li>
                         <li><a href="wiki.html">Wiki</a></li>
                         <li><a href="fanart.html">FanArt</a></li>
@@ -107,21 +109,22 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Suporte</h4>
+                    <h4>Support</h4>
                     <ul>
-                        <li><a href="contact.html">Contato</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="report-bug.html">Relatar bug</a></li>
-                        <li><a href="privacy-policy.html">Política de privacidade</a></li>
+                        <li><a href="report-bug.html">Report a bug</a></li>
+                        <li><a href="privacy-policy.html">Privacy policy</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-           <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Empire of Rebirth & Ruins. Todos os direitos reservados.</p>
+           <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Empire of Rebirth & Ruins. All rights reserved.</p>
         </div>
     </footer>
     <script src="js/colorUtils.js"></script>
+    <script src="js/langSwitcher.js"></script>
     <script src="js/classes.js"></script>
 </body>
 </html>

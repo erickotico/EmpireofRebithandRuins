@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="class-card-body" style="padding: 20px; background: #0f0f0f; position: relative; z-index: 2;">
                     <h3 class="class-name" style="margin: 0 0 10px 0; color: ${corClasse}; font-size: 22px; font-weight: 700;">${classe.name}</h3>
                     <p class="class-desc" style="margin: 0 0 15px 0; color: #aaa; font-size: 13px; line-height: 1.5;">${classe.descricao}</p>
-                    <button class="btn btn-primary" style="width: 100%; padding: 12px; background: ${corClasse}; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 14px;" aria-label="Ver detalhes de ${classe.name}">Ver Detalhes</button>
+                    <button class="btn btn-primary" style="width: 100%; padding: 12px; background: ${corClasse}; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 14px;" aria-label="View details for ${classe.name}">View Details</button>
                 </div>
             </article>
         `;
@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const tabsHtml = `
             <div class="modal-tabs" style="display: flex; border-bottom: 2px solid ${corClasse}; background: #1a1a1a;">
-                <button class="tab-btn active" data-tab="info" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #fff; border-bottom: 3px solid ${corClasse}; transition: 0.3s;">Informações</button>
-                <button class="tab-btn" data-tab="stats" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Estatísticas</button>
-                <button class="tab-btn" data-tab="skills" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Habilidades</button>
+                <button class="tab-btn active" data-tab="info" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #fff; border-bottom: 3px solid ${corClasse}; transition: 0.3s;">Information</button>
+                <button class="tab-btn" data-tab="stats" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Statistics</button>
+                <button class="tab-btn" data-tab="skills" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Skills</button>
                 <button class="tab-btn" data-tab="subclasses" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Subclasses</button>
             </div>
         `;
@@ -149,22 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div class="modal-body" style="padding: 30px; background: #0f0f0f;">
                         <div class="tab-content info active">
-                            <h3 style="color: ${corClasse}; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Descrição da Classe</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Class Description</h3>
                             <p style="color: #bbb; line-height: 1.8; font-size: 15px;">${classe.descricao}</p>
                         </div>
 
                         <div class="tab-content stats" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Estatísticas</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Statistics</h3>
                             <div class="stats-container">${statsHtml}</div>
                         </div>
 
                         <div class="tab-content skills" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Habilidades</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Skills</h3>
                             <div class="skills-list">${skillsHtml}</div>
                         </div>
 
                         <div class="tab-content subclasses" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Subclasses Disponíveis</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Available Subclasses</h3>
                             <div class="subclasses-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">${subclassesHtml}</div>
                         </div>
                     </div>
