@@ -553,6 +553,477 @@
           "info": "São monstros que morreram em ambientes com auras malignas"
         }
       ]
+    },
+    {
+      "id": 6,
+      "name": "Centauro",
+      "image": "centauro.jpg",
+      "level": 60,
+      "levelMin": 60,
+      "levelMax": 100,
+      "stars": 5,
+      "rarity": "Comum",
+      "informacoes": {
+        "historia": "Grandes e fortes monstros muitos dizem que são um exército de um só, são habilidosos com e sem armas, seu surgimento são nas ilhas distantes, vivem em sociedade criada por eles mas não gostam de estrangeiros e defendem seu território com unhas e dentes.",
+        "regiao": "Florestas Densas, Montanhas, Labirintos",
+        "comportamento": "Agressivo",
+        "tipo": "Humanoid / Equino",
+        "dificuldade": "Difícil"
+      },
+      "estatisticas": {
+        "vida": 65,
+        "mana": 25,
+        "forca": 50,
+        "armadura": 30,
+        "agilidade": 55,
+        "inteligencia": 30,
+        "carisma": 20,
+        "percepcao": 45,
+        "maestria": 45,
+        "resistencias": {
+          "fogo": 4,
+          "agua": 4,
+          "terra": 6,
+          "sombra": 3,
+          "luz": 6,
+          "eletrico": 4,
+          "gelo": 4,
+          "veneno": 4
+        }
+      },
+      "habilidades": {
+        "xpGanho": 500,
+        "listaHabilidades": [
+          {
+            "nome": "Tiro Preciso",
+            "descricao": "Um ataque à distância com precisão letal, ignorando cobertura parcial.",
+            "cooldown": 2
+          },
+          {
+            "nome": "Coice Poderoso",
+            "descricao": "Um golpe defensivo com as pernas traseiras que causa dano e empurra inimigos atrás do monstro.",
+            "cooldown": 3
+          },
+          {
+            "nome": "Carga de lança",
+            "descricao": "Uma investida montada ou a pé que causa dano perfurante extremo.",
+            "cooldown": 3
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Casco de Cavalo",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 4
+        },
+        {
+          "item": "Rabo de Cavalo",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de centauro",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Zombie",
+          "image": "centaurozombie.jpg",
+          "raridade": "Lendário",
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        },
+        {
+          "name": "Corrompido",
+          "image": "centaurocorrompido.jpg",
+          "raridade": "Lendário",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Demonio",
+      "image": "demonio.jpg",
+      "level": 90,
+      "levelMin": 90,
+      "levelMax": 120,
+      "stars": 5,
+      "rarity": "Raro",
+      "informacoes": {
+        "historia": "São as almas dos humanos que foram corrompidos pelo rei demônio, são ardilosos e manipuladores se divertem matando suas vítimas.",
+        "regiao": "Ruinas, Submundo, Labirinto",
+        "comportamento": "Assassino",
+        "tipo": "humanoide",
+        "dificuldade": "Difícil"
+      },
+      "estatisticas": {
+        "vida": 85,
+        "mana": 80,
+        "forca": 70,
+        "armadura": 45,
+        "agilidade": 50,
+        "inteligencia": 55,
+        "carisma": 40,
+        "percepcao": 45,
+        "maestria": 70,
+        "resistencias": {
+          "fogo": 10,
+          "agua": 1,
+          "terra": 5,
+          "sombra": 9,
+          "luz": 0,
+          "eletrico": 6,
+          "gelo": 2,
+          "veneno": 7
+        }
+      },
+      "habilidades": {
+        "xpGanho": 450,
+        "listaHabilidades": [
+          {
+            "nome": "Fogo Infernal",
+            "descricao": "Conjura chamas profanas que ignoram resistências normais a fogo.",
+            "cooldown": 4
+          },
+          {
+            "nome": "Garras Demoniacas",
+            "descricao": "Ataques com garras causam dano mágico adicional e podem amaldiçoar o alvo.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Aura do medo",
+            "descricao": "Invoca uma aura, que desestabiliza o seu oponente, fazendo perder sua força e defesa",
+            "cooldown": 10
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Asas de Demonio",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Sangue de Demonio",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Chifres de Demonio",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Colar das Trevas",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Anel das Trevas",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Demonio",
+          "raridades": [
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Marilith",
+          "image": "marilith.jpg",
+          "raridade": "Lendário",
+          "info": "A Marilith é um demônio temível e estrategista genial, famosa por sua aparência híbrida de mulher e serpente com seis braços. Servindo como generais e comandantes nas legiões abissais, elas são a personificação da fúria em combate, desferindo múltiplos ataques rápidos com espadas enquanto imobilizam oponentes com a cauda."
+        },
+        {
+          "name": "Luxuria",
+          "image": "luxuria.jpg",
+          "raridade": "Lendário",
+          "info": "Um Demonio magico com a habilidade de manipulação de mentes"
+        },
+        {
+          "name": "Soberba",
+          "image": "soberba.jpg",
+          "raridade": "Lendário",
+          "info": "O orgulho excessivo tem a tendência de se achar superior aos outros."
+        },
+        {
+          "name": "Avareza",
+          "image": "avareza.jpg",
+          "raridade": "Lendário",
+          "info": "O apego extremo e egoísta ao dinheiro e bens materiais"
+        },
+        {
+          "name": "Inveja",
+          "image": "inveja,jpg",
+          "raridade": "Lendário",
+          "info": "O ressentimento pelas conquistas, posses ou qualidades alheias."
+        },
+        {
+          "name": "Ira",
+          "image": "ira.jpg",
+          "raridade": "Lendário",
+          "info": "O sentimento de raiva e ódio incontroláveis, muitas vezes associado à vingança."
+        },
+        {
+          "name": "Gula",
+          "image": "gula.jpg",
+          "raridade": "Lendário",
+          "info": "O consumo excessivo e descontrolado de comida ou bebida."
+        },
+        {
+          "name": "Preguiça",
+          "image": "preguica.jpg",
+          "raridade": "Lendário",
+          "info": "A aversão ao esforço, caracterizada pela apatia e negligência"
+        },
+        {
+          "name": "Lord Demonio",
+          "image": "lorddemonio.jpg",
+          "raridade": "Deus",
+          "info": "O ápice do poder dos demonios ficando apenas abaixo do deus demonio que é o soberano no mundo demoniaco"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Dragão",
+      "image": "dragão.jpg",
+      "level": 200,
+      "levelMin": 200,
+      "levelMax": 300,
+      "stars": 5,
+      "rarity": "Deus",
+      "informacoes": {
+        "historia": "Um ser grande e temido por todos, são enormes lagartos alados que riscam os céus com sua velocidade, atualmente existem várias espécies de dragões.",
+        "regiao": "Montanhas, Cavernas, Florestas",
+        "comportamento": "Hostil",
+        "tipo": "Dragão",
+        "dificuldade": "Muito Difícil"
+      },
+      "estatisticas": {
+        "vida": 100,
+        "mana": 90,
+        "forca": 95,
+        "armadura": 85,
+        "agilidade": 50,
+        "inteligencia": 80,
+        "carisma": 60,
+        "percepcao": 75,
+        "maestria": 90,
+        "resistencias": {
+          "fogo": 10,
+          "agua": 5,
+          "terra": 8,
+          "sombra": 6,
+          "luz": 5,
+          "eletrico": 7,
+          "gelo": 4,
+          "veneno": 6
+        }
+      },
+      "habilidades": {
+        "xpGanho": 10000,
+        "listaHabilidades": [
+          {
+            "nome": "Sopro de Fogo",
+            "descricao": "Exala um cone massivo de chamas devastadoras que incinera tudo no caminho.",
+            "cooldown": 4
+          },
+          {
+            "nome": "Ataque de Calda",
+            "descricao": "Vira seu corpo gigantesco, atacando com a calda lançando seu oponente para longe",
+            "cooldown": 10
+          },
+          {
+            "nome": "Rajada de Vento",
+            "descricao": "Balança suas asas causando um grande tornado de vento",
+            "cooldown": 5
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Asas de Dragão",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Dentes de Dragão",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Ovo de Dragão",
+          "raridades": [
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Escama de Dragão",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 20
+        },
+        {
+          "item": "Osso de Dragão",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 40
+        },
+        {
+          "item": "Cabeça de Dragão",
+          "raridades": [
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Sangue de Dragão",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 5
+        },
+        {
+          "item": "Bafo de Dragão",
+          "raridades": [
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Ouro",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 500
+        },
+        {
+          "item": "Nucleo de Dragão",
+          "raridades": [
+            "Imortal"
+          ],
+          "quantidade": 1,
+          "raridade": "Imortal"
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Draco Lich",
+          "image": "dracolich.jpg",
+          "raridade": "Deus",
+          "info": "um poderoso dragão morto-vivo que evitou a morte ligando sua alma a uma filacteria"
+        },
+        {
+          "name": "Dragão de Floresta",
+          "image": "dracofloresta.jpg",
+          "raridade": "Deus",
+          "info": "Um tipo mais fraco de dragão que vive em florestas abertas"
+        },
+        {
+          "name": "Dragão de Fogo",
+          "image": "dracofogo.jpg",
+          "raridade": "Deus",
+          "info": "Um tipo mais fraco de dragão que vive pertos de enconstas de vulcões"
+        },
+        {
+          "name": "Dragão de Gelo",
+          "image": "dracogelo.jpg",
+          "raridade": "Deus",
+          "info": "Um tipo mais fraco de dragão que vive em ambientes congelados."
+        },
+        {
+          "name": "Dragão de Veneno",
+          "image": "dracoveneno.jpg",
+          "raridade": "Deus",
+          "info": "Um tipo mais fraco de dragão que vive ambientes toxico"
+        },
+        {
+          "name": "Wyverns",
+          "image": "wyverns.jpg",
+          "raridade": "Deus",
+          "info": "Uma versão mais rapidas de um dragão, andam em bandos causando terror por onde passa, são extremamente territorialistas."
+        },
+        {
+          "name": "Dragão Zombie",
+          "image": "dracozombie.jpg",
+          "raridade": "Deus",
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        },
+        {
+          "name": "Dragão Corrompido",
+          "image": "dracocorrompido.jpg",
+          "raridade": "Deus",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
     }
   ]
 }
