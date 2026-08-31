@@ -1024,6 +1024,713 @@
           "info": "São monstros que morreram em ambientes com auras malignas"
         }
       ]
+    },
+    {
+      "id": 9,
+      "name": "Elfo Negro",
+      "image": "ElfoNegro.jpg",
+      "level": 85,
+      "levelMin": 85,
+      "levelMax": 145,
+      "stars": 5,
+      "rarity": "Épico",
+      "informacoes": {
+        "historia": "Eram elfos normais, com passar do tempo e pelas ações humanas foram corrompidos pelo ódio que foi passado por gerações abraçando as trevas dentro de si, são habilidosos com todos os tipos de arma e magia nata.",
+        "regiao": "Florestas, Montanhas, Cavernas",
+        "comportamento": "Hostil",
+        "tipo": "Humanoide",
+        "dificuldade": "Difícil"
+      },
+      "estatisticas": {
+        "vida": 50,
+        "mana": 60,
+        "forca": 35,
+        "armadura": 25,
+        "agilidade": 65,
+        "inteligencia": 55,
+        "carisma": 30,
+        "percepcao": 50,
+        "maestria": 60,
+        "resistencias": {
+          "fogo": 4,
+          "agua": 4,
+          "terra": 4,
+          "sombra": 9,
+          "luz": 1,
+          "eletrico": 5,
+          "gelo": 5,
+          "veneno": 7
+        }
+      },
+      "habilidades": {
+        "xpGanho": 500,
+        "listaHabilidades": [
+          {
+            "nome": "Magia Sombria",
+            "descricao": "Conjura magia das trevas causando uma maldição aleatoria toda vez que o alvo for acertado.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Tiro Envenenado",
+            "descricao": "Dispara projeteis revestido de veneno que causam dano ao longo do tempo",
+            "cooldown": 2
+          },
+          {
+            "nome": "Ataque Rapido",
+            "descricao": "Dispara em direção ao alvo rapidamente infligindo um ataque rapido poderoso",
+            "cooldown": 2
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Arco Negro",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Espada Negra",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Orbe Magico Negro",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Orelha de Elfo Negro",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Colar Sagrado Negro",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Cajado Magico Negro",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Coração de Elfo Negro",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Elfo Negro",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Drows",
+          "image": "Drows.jpg",
+          "raridade": "Lendário",
+          "info": "Vivem isolados em cidades dentro de cavernas, são sensiveis a luz fortes"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Golem",
+      "image": "Golem.jpg",
+      "level": 50,
+      "levelMin": 50,
+      "levelMax": 110,
+      "stars": 5,
+      "rarity": "Épico",
+      "informacoes": {
+        "historia": "Um ser vivo embudo por uma magia misteriosa, são grandes criaturas com um imenso poder de combate.",
+        "regiao": "Deserto, Montanhas, Cavernas, Vulcões, Florestas",
+        "comportamento": "Hostil",
+        "tipo": "humanoide",
+        "dificuldade": "Difícil"
+      },
+      "estatisticas": {
+        "vida": 1,
+        "mana": 1,
+        "forca": 1,
+        "armadura": 1,
+        "agilidade": 1,
+        "inteligencia": 1,
+        "carisma": 1,
+        "percepcao": 1,
+        "maestria": 1,
+        "resistencias": {
+          "fogo": 1,
+          "agua": 1,
+          "terra": 1,
+          "sombra": 1,
+          "luz": 1,
+          "eletrico": 1,
+          "gelo": 1,
+          "veneno": 1
+        }
+      },
+      "habilidades": {
+        "xpGanho": 400,
+        "listaHabilidades": []
+      },
+      "recompensas": [],
+      "hasVariantes": false,
+      "listaVariantes": []
+    },
+    {
+      "id": 11,
+      "name": "Hydra",
+      "image": "hydra.jpg",
+      "level": 150,
+      "levelMin": 150,
+      "levelMax": 250,
+      "stars": 5,
+      "rarity": "Lendário",
+      "informacoes": {
+        "historia": "Uma criatura gigantesca com três cabeças iniciais, possui uma alta velocidade de regeneração e seu bafo de veneno é um perigo até mesmo para as criaturas mais fortes que existem",
+        "regiao": "Cavernas, Florestas, Montanhas",
+        "comportamento": "Hostil",
+        "tipo": "Dragão / Reptil",
+        "dificuldade": "Muito Difícil"
+      },
+      "estatisticas": {
+        "vida": 100,
+        "mana": 40,
+        "forca": 85,
+        "armadura": 60,
+        "agilidade": 30,
+        "inteligencia": 20,
+        "carisma": 10,
+        "percepcao": 40,
+        "maestria": 50,
+        "resistencias": {
+          "fogo": 0,
+          "agua": 8,
+          "terra": 6,
+          "sombra": 5,
+          "luz": 3,
+          "eletrico": 4,
+          "gelo": 6,
+          "veneno": 9
+        }
+      },
+      "habilidades": {
+        "xpGanho": 1000,
+        "listaHabilidades": [
+          {
+            "nome": "Regeneração de Cabeça",
+            "descricao": "Caso perca uma cabeça e não tenha sido por fogo, sua cabeça volta ao normal adicionando mais uma aumentando seu numero de cabeças, max: 10 cabeças",
+            "cooldown": 0
+          },
+          {
+            "nome": "Sopro Multiplo",
+            "descricao": "Cada cabeça tem um poder belico individual podendo disparar jatos de diferentes elementos simultaneamente",
+            "cooldown": 4
+          },
+          {
+            "nome": "Mordida Venenosa",
+            "descricao": "Uma mordida letal que injeta uma toxina capaz paralizar o alvo causando sua morte.",
+            "cooldown": 5
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Dente de Hydra",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 5
+        },
+        {
+          "item": "Escama de Hydra",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 10
+        },
+        {
+          "item": "Bafo de Hydra",
+          "raridades": [
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Cabeça de Hydra",
+          "raridades": [
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 3
+        },
+        {
+          "item": "Nucleo de Hydra",
+          "raridades": [
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": false,
+      "listaVariantes": []
+    },
+    {
+      "id": 12,
+      "name": "Javali",
+      "image": "javali.jpg",
+      "level": 10,
+      "levelMin": 10,
+      "levelMax": 30,
+      "stars": 1,
+      "rarity": "Comum",
+      "informacoes": {
+        "historia": "Grande porco selvagem que andam pelas pradarias, são territorialistas e não gostam que ninguem invadam seu espaço",
+        "regiao": "Prado, Florestas, Montanhas",
+        "comportamento": "Hostil",
+        "tipo": "Suino",
+        "dificuldade": "Fácil"
+      },
+      "estatisticas": {
+        "vida": 45,
+        "mana": 5,
+        "forca": 35,
+        "armadura": 25,
+        "agilidade": 30,
+        "inteligencia": 10,
+        "carisma": 5,
+        "percepcao": 35,
+        "maestria": 15,
+        "resistencias": {
+          "fogo": 3,
+          "agua": 4,
+          "terra": 6,
+          "sombra": 2,
+          "luz": 3,
+          "eletrico": 2,
+          "gelo": 3,
+          "veneno": 4
+        }
+      },
+      "habilidades": {
+        "xpGanho": 20,
+        "listaHabilidades": [
+          {
+            "nome": "Investida",
+            "descricao": "Um ataque de corrida que causa dano e pode deixar o alvo atordoado.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Presa Afiada",
+            "descricao": "Ataque basico que tem a chance aumentada de causar um dano critico no proximo ataque.",
+            "cooldown": 3
+          },
+          {
+            "nome": "Rugido de Fera",
+            "descricao": "Aumenta seu dano de ataque consideravelmente durante 20 segundos, o deixando mais rapido e furioso.",
+            "cooldown": 30
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Pele de Javali",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Presa de Javali",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Casco de Javali",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 4
+        },
+        {
+          "item": "Carne de Javali",
+          "raridades": [
+            "Comum"
+          ],
+          "quantidade": 5,
+          "raridade": "Comum"
+        },
+        {
+          "item": "Coração de Javali",
+          "raridades": [
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Javali",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Zombie",
+          "image": "Javalizombie.jpg",
+          "raridade": "Raro",
+          "info": ""
+        },
+        {
+          "name": "Corrompido",
+          "image": "javalicorrompido.jpg",
+          "raridade": "Raro",
+          "info": ""
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Lagarto",
+      "image": "lagarto.jpg",
+      "level": 2,
+      "levelMin": 2,
+      "levelMax": 20,
+      "stars": 2,
+      "rarity": "Comum",
+      "informacoes": {
+        "historia": "Répteis subdesenvolvidos que amam lugares úmidos e quentes, são muito territorialistas e com ótimo senso de localização, se tornam hostis quando se sentem ameaçados.",
+        "regiao": "Pântano, Florestas, Cavernas",
+        "comportamento": "Neutro",
+        "tipo": "Reptil / Humanoide",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 40,
+        "mana": 5,
+        "forca": 30,
+        "armadura": 35,
+        "agilidade": 35,
+        "inteligencia": 10,
+        "carisma": 5,
+        "percepcao": 30,
+        "maestria": 14,
+        "resistencias": {
+          "fogo": 2,
+          "agua": 6,
+          "terra": 5,
+          "sombra": 3,
+          "luz": 3,
+          "eletrico": 1,
+          "gelo": 2,
+          "veneno": 5
+        }
+      },
+      "habilidades": {
+        "xpGanho": 15,
+        "listaHabilidades": [
+          {
+            "nome": "Mordida Feroz",
+            "descricao": "Uma mordida profunda que causa sangramento no alvo durante 10 segundos",
+            "cooldown": 2
+          },
+          {
+            "nome": "Calda Chicote",
+            "descricao": "Um golpe de giro rapido com a calda podendo acertar diversos inimigos.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Regenração Rapida",
+            "descricao": "Quando sua vida chega a um nivel critico eles saem correndo pera tentar recurperar um pouco sua vida.",
+            "cooldown": 10
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Calda de lagarto",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Olho de Lagarto",
+          "raridades": [
+            "Comum"
+          ],
+          "quantidade": 2,
+          "raridade": "Comum"
+        },
+        {
+          "item": "Escama de Lagarto",
+          "raridades": [
+            "Comum"
+          ],
+          "quantidade": 10,
+          "raridade": "Comum"
+        },
+        {
+          "item": "Dente de Lagarto",
+          "raridades": [
+            "Comum"
+          ],
+          "quantidade": 8,
+          "raridade": "Comum"
+        },
+        {
+          "item": "Coração de Lagarto",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Lagarto",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Homem Lagarto",
+          "image": "homemLagarto.jpg",
+          "raridade": "Incomum",
+          "info": "Os Homens Lagarto, é uma subespecie dos largartos podendo andar sobre duas pernas."
+        },
+        {
+          "name": "Lagarto Xamã",
+          "image": "lagartoxama.jpg",
+          "raridade": "Épico",
+          "info": "Os Lagartos Xamã é a evolução principal dos lagartos, alem de ganhar uma grande quantidade de mana ainda são bastante inteligentes."
+        },
+        {
+          "name": "Rei Lagarto",
+          "image": "reilagarto.jpg",
+          "raridade": "Lendário",
+          "info": "Uma Conquista dedicada aos melhores lagartos, podendo comandar um pequeno exercito de soldados lagartos."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Lobo",
+      "image": "Lobo.jpg",
+      "level": 25,
+      "levelMin": 25,
+      "levelMax": 50,
+      "stars": 2,
+      "rarity": "Comum",
+      "informacoes": {
+        "historia": "São cães selvagens, veloz e voraz, andam em matilhas causado destruição aos que tentarem ameaçar alguem do bando, habilidosos e sobreviventes, se adaptam em qualquer região e clima.",
+        "regiao": "Artico, Deserto, Florestas, Montanhas, Cavernas, Prado",
+        "comportamento": "Normal",
+        "tipo": "Canino",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 35,
+        "mana": 10,
+        "forca": 30,
+        "armadura": 15,
+        "agilidade": 30,
+        "inteligencia": 15,
+        "carisma": 10,
+        "percepcao": 45,
+        "maestria": 24,
+        "resistencias": {
+          "fogo": 3,
+          "agua": 4,
+          "terra": 5,
+          "sombra": 4,
+          "luz": 3,
+          "eletrico": 3,
+          "gelo": 6,
+          "veneno": 3
+        }
+      },
+      "habilidades": {
+        "xpGanho": 40,
+        "listaHabilidades": [
+          {
+            "nome": "Mordida",
+            "descricao": "Um golpe que causa sangramento ao alvo",
+            "cooldown": 5
+          },
+          {
+            "nome": "Arranhão",
+            "descricao": "Um grande golpe de patas que o alvo sofre causando sangramento.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Uivo de intimidação",
+            "descricao": "Causa uma rapida paralisia ao seus alvos",
+            "cooldown": 10
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Pele de lobo",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Presa de Lobo",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 4
+        },
+        {
+          "item": "Coração de Lobo",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Olho de Lobo",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Nucleo de Lobo",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Lobo de Neve",
+          "image": "Loboneve.jpg",
+          "raridade": "Incomum",
+          "info": "Igual ao lobo comum porrem adaptado ao ambiente gelado."
+        },
+        {
+          "name": "Lobo de Lava",
+          "image": "lobolava.jpg",
+          "raridade": "Incomum",
+          "info": "Igual ao lobo comum porrem adaptado ao ambientes muito quentes."
+        },
+        {
+          "name": "Lobo Florestal",
+          "image": "lobofloresta.jpg",
+          "raridade": "Incomum",
+          "info": "Igual ao lobo comum porrem adaptado ao ambiente de Florestas"
+        },
+        {
+          "name": "Lobo Gigante",
+          "image": "lobogigante.jpg",
+          "raridade": "Raro",
+          "info": "Igual ao lobo comum tendo todas as suas variantes, pois sendo bem maior e intimidador."
+        },
+        {
+          "name": "Lobo Espiritual",
+          "image": "loboespirito.jpg",
+          "raridade": "Raro",
+          "info": "Um espirito de lobo no qual ataques fisicos não funcionam."
+        },
+        {
+          "name": "Wrog",
+          "image": "wrog.jpg",
+          "raridade": "Épico",
+          "info": "Informações incompletas"
+        },
+        {
+          "name": "Lobo Infernal",
+          "image": "loboinferno.jpg",
+          "raridade": "Lendário",
+          "info": "Igual ao lobo comum porrem sua localização ainda é incerta podendo aparecer em ambientes de vulcões"
+        },
+        {
+          "name": "Lobo Zombie",
+          "image": "lobozombie.jpg",
+          "raridade": "Épico",
+          "info": ""
+        },
+        {
+          "name": "Lobo Corrompido",
+          "image": "loboCorrompido",
+          "raridade": "Épico",
+          "info": ""
+        }
+      ]
     }
   ]
 }

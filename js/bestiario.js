@@ -20,8 +20,65 @@
 
 */
 
+const RARITY_LABELS = {
+    comum: 'Comum',
+    incomum: 'Incomum',
+    raro: 'Raro',
+    epico: 'Épico',
+    lendario: 'Lendário',
+    deus: 'Deus',
+    imortal: 'Imortal'
+};
+
+function normalizeRarityKey(value) {
+    const raw = typeof value === 'string' ? value.trim() : '';
+    if (!raw) return 'comum';
+
+    const compact = raw
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z]/g, '');
+
+    const aliases = {
+        comum: 'comum',
+        incomum: 'incomum',
+        raro: 'raro',
+        epico: 'epico',
+        lendario: 'lendario',
+        deus: 'deus',
+        divindade: 'deus',
+        imortal: 'imortal'
+    };
+
+    return aliases[compact] || 'comum';
+}
+
+function normalizeRarityLabel(value) {
+    const key = normalizeRarityKey(value);
+    return RARITY_LABELS[key] || 'Comum';
+}
+
+function resolveRewardRarity(reward = {}) {
+    const candidates = [];
+
+    if (Array.isArray(reward.raridades)) {
+        candidates.push(...reward.raridades);
+    }
+    if (reward.raridade) candidates.push(reward.raridade);
+    if (reward.rarity) candidates.push(reward.rarity);
+
+    for (const candidate of candidates) {
+        const label = normalizeRarityLabel(candidate);
+        if (label) return label;
+    }
+
+    return 'Comum';
+}
+
 // Função para obter chance de drop baseada na raridade
 function getDropChance(rarity) {
+    const label = normalizeRarityLabel(rarity);
     const chances = {
         'Comum': 100,
         'Incomum': 75,
@@ -31,10 +88,19 @@ function getDropChance(rarity) {
         'Deus': 10,
         'Imortal': 5
     };
-    return chances[rarity] || 0;
+    return chances[label] || 0;
 }
 
+if (typeof module !== 'undefined') {
+    module.exports = {
+        normalizeRarityKey,
+        normalizeRarityLabel,
+        resolveRewardRarity,
+        getDropChance
+    };
+}
 
+if (typeof document !== 'undefined') {
 (() => {
     const monsterGrid = document.querySelector('.monster-grid');
     if (!monsterGrid) return;
@@ -48,11 +114,14 @@ function getDropChance(rarity) {
 
     // Função para renderizar card
     function createMonsterCard(monster) {
+        const rarityKey = normalizeRarityKey(monster.rarity);
+        const rarityLabel = normalizeRarityLabel(monster.rarity);
+
         return `
-            <article class="monster-card ${monster.rarity}" data-monster-id="${monster.id}" role="button" tabindex="0" onclick="window.openMonsterModalById(${monster.id})" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.openMonsterModalById(${monster.id}); }">
+            <article class="monster-card ${rarityKey}" data-monster-id="${monster.id}" role="button" tabindex="0" onclick="window.openMonsterModalById(${monster.id})" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.openMonsterModalById(${monster.id}); }">
                 <div class="monster-card-image">
                     <img src="${monster.image}" alt="${monster.name}">
-                    <span class="monster-rarity">${monster.rarity}</span>
+                    <span class="monster-rarity ${rarityKey}">${rarityLabel}</span>
                 </div>
 
                 <div class="monster-card-body">
@@ -141,21 +210,28 @@ function getDropChance(rarity) {
             </div>
         `).join('') || '<p class="muted">Nenhuma habilidade listada.</p>';
 
-        const rewardsHtml = (monster.recompensas || []).map(r => `
-            <div class="reward-item" data-rarity="${r.raridade}">
+        const rewardsHtml = (monster.recompensas || []).map(r => {
+            const rewardRarity = resolveRewardRarity(r);
+            const rewardClass = normalizeRarityKey(rewardRarity);
+
+            return `
+            <div class="reward-item" data-rarity="${rewardClass}">
                 <span class="reward-name">${r.item}</span>
-                <span class="reward-rarity">${r.raridade}</span>
-                <span class="reward-chance">${getDropChance(r.raridade)}%</span>
+                <span class="reward-rarity ${rewardClass}">${rewardRarity}</span>
+                <span class="reward-chance">${getDropChance(rewardRarity)}%</span>
                 <span class="reward-qty">Qtd: ${r.quantidade}</span>
             </div>
-        `).join('') || '<p class="muted">Nenhuma recompensa listada.</p>';
+        `;
+        }).join('') || '<p class="muted">Nenhuma recompensa listada.</p>';
 
         // Variantes html (lista)
         const variantesHtml = (monster.listaVariantes || [])
             .map(v => {
-                const rarityLabel = v.raridade ? `<span class="variant-rarity ${v.raridade.toLowerCase()}">${v.raridade}</span>` : '';
+                const variantRarity = normalizeRarityLabel(v.raridade);
+                const variantClass = normalizeRarityKey(v.raridade);
+                const rarityLabel = v.raridade ? `<span class="variant-rarity ${variantClass}">${variantRarity}</span>` : '';
                 return `
-                <div class="variant-card ${v.raridade ? v.raridade.toLowerCase() : ''}">
+                <div class="variant-card ${variantClass}">
                     <div class="variant-image"><img src="${v.image}" alt="${v.name}"></div>
                     <div class="variant-info">
                         <h4>${v.name}</h4>
@@ -165,6 +241,9 @@ function getDropChance(rarity) {
                 </div>
             `;
             }).join('') || '<p class="muted">Sem variantes.</p>';
+
+        const monsterRarityKey = normalizeRarityKey(monster.rarity);
+        const monsterRarity = normalizeRarityLabel(monster.rarity);
 
         return `
             <div class="monster-modal">
@@ -178,7 +257,7 @@ function getDropChance(rarity) {
                             <div class="modal-meta">
                                 <span class="modal-level">Level ${monster.level}</span>
                                 <div class="modal-stars">${'★'.repeat(monster.stars)}${'☆'.repeat(7 - monster.stars)}</div>
-                                <span class="modal-rarity ${monster.rarity}">${monster.rarity}</span>
+                                <span class="modal-rarity ${monsterRarityKey}">${monsterRarity}</span>
                             </div>
                         </div>
                     </div>
@@ -229,13 +308,13 @@ function getDropChance(rarity) {
                                 <label for="rarity-select">Filter by rarity:</label>
                                 <select id="rarity-select">
                                     <option value="all">All rarities</option>
-                                    <option value="Comum">Comum</option>
-                                    <option value="Incomum">Incomum</option>
-                                    <option value="Raro">Raro</option>
-                                    <option value="Épico">Épico</option>
-                                    <option value="lendario">lendario</option>
-                                    <option value="deus">deus</option>
-                                    <option value="imortal">imortal</option>
+                                    <option value="comum">Comum</option>
+                                    <option value="incomum">Incomum</option>
+                                    <option value="raro">Raro</option>
+                                    <option value="epico">Épico</option>
+                                    <option value="lendario">Lendário</option>
+                                    <option value="deus">Deus</option>
+                                    <option value="imortal">Imortal</option>
                                 </select>
                             </div>
                             <div class="rewards-list">${rewardsHtml}</div>
@@ -373,3 +452,4 @@ function getDropChance(rarity) {
 
     loadMonsters();
 })();
+}

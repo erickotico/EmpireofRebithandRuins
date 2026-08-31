@@ -1,16 +1,44 @@
 /* Cores de raridade */
-.comum { border-color: #808080; }
-.comum .monster-rarity { background: #808080; color: #fff; }
-.incomum { border-color: #2e7d32; }
-.incomum .monster-rarity { background: #2e7d32; color: #fff; }
-.raro { border-color: #1976d2; }
-.raro .monster-rarity { background: #1976d2; color: #fff; }
-.epico { border-color: #ff5722; }
-.epico .monster-rarity { background: #ff5722; color: #fff; }
-.lendario { border-color: #9c27b0; }
-.lendario .monster-rarity { background: #9c27b0; color: #fff; }
-.divindade { border-color: #ffd700; }
-.divindade .monster-rarity { background: #ffd700; color: #000; }
+.comum { border-color: #808080; border-radius: 20%; padding: 10px; }
+.comum .monster-rarity,
+.modal-rarity.comum,
+.variant-rarity.comum,
+.reward-rarity.comum { background: #808080; color: #fff; }
+.incomum { border-color: #2e7d32; border-radius: 20%; padding: 10px;  }
+.incomum .monster-rarity,
+.modal-rarity.incomum,
+.variant-rarity.incomum,
+.reward-rarity.incomum { background: #2e7d32; color: #fff; }
+.raro { border-color: #1976d2; border-radius: 20%; padding: 10px; }
+.raro .monster-rarity,
+.modal-rarity.raro,
+.variant-rarity.raro,
+.reward-rarity.raro { background: #1976d2; color: #fff; }
+.epico { border-color: #ff5722; border-radius: 20%; padding: 10px;  }
+.epico .monster-rarity,
+.modal-rarity.epico,
+.variant-rarity.epico,
+.reward-rarity.epico { background: #ff5722; color: #fff; }
+.lendario { border-color: #9c27b0;border-radius: 20%; padding: 10px;  }
+.lendario .monster-rarity,
+.modal-rarity.lendario,
+.variant-rarity.lendario,
+.reward-rarity.lendario { background: #9c27b0; color: #fff; }
+.deus { border-color: #f57c00; border-radius: 20%; padding: 10px; }
+.deus .monster-rarity,
+.modal-rarity.deus,
+.variant-rarity.deus,
+.reward-rarity.deus { background: #f57c00; color: #fff; }
+.imortal { border-color: #c2185b; border-radius: 20%; padding: 10px; }
+.imortal .monster-rarity,
+.modal-rarity.imortal,
+.variant-rarity.imortal,
+.reward-rarity.imortal { background: #c2185b; color: #fff; }
+.divindade { border-color: #ffd700; border-radius: 20%; padding: 10px; }
+.divindade .monster-rarity,
+.modal-rarity.divindade,
+.variant-rarity.divindade,
+.reward-rarity.divindade { background: #ffd700; color: #000; }
 
 /* Container */
 .bestiary-container {
@@ -448,7 +476,7 @@
 .variant-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
 .variant-info h4 { margin: 0 0 0.35rem 0; color: var(--accent); }
 .variant-rarity { display: inline-block; margin-bottom: 0.35rem; font-size: 0.88rem; font-weight: 700; color: #fff; padding: 0.25rem 0.55rem; border-radius: 999px; }
-.variant-rarity.comum { background: #808080; }
+.variant-rarity.comum { background: #808080; border-radius: 50%;}
 .variant-rarity.incomum { background: #2e7d32; }
 .variant-rarity.raro { background: #1976d2; }
 .variant-rarity.epico { background: #ff5722; }
