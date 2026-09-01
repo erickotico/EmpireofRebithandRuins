@@ -91,12 +91,28 @@ function getDropChance(rarity) {
     return chances[label] || 0;
 }
 
+function setupModalCloseHandlers(modal, onClose) {
+    if (!modal || typeof onClose !== 'function') return;
+
+    modal.addEventListener('click', (event) => {
+        const target = event.target;
+        const clickedCloseButton = target && typeof target.closest === 'function'
+            ? target.closest('.modal-close')
+            : null;
+
+        if (target === modal || clickedCloseButton) {
+            onClose();
+        }
+    });
+}
+
 if (typeof module !== 'undefined') {
     module.exports = {
         normalizeRarityKey,
         normalizeRarityLabel,
         resolveRewardRarity,
-        getDropChance
+        getDropChance,
+        setupModalCloseHandlers
     };
 }
 
@@ -381,12 +397,9 @@ if (typeof document !== 'undefined') {
             });
         }
 
-        // Fechar modal
-        modal.addEventListener('click', (ev) => {
-            if (ev.target === modal || ev.target.matches('.modal-close')) {
-                modal.remove();
-                document.body.style.overflow = '';
-            }
+        setupModalCloseHandlers(modal, () => {
+            modal.remove();
+            document.body.style.overflow = '';
         });
     };
 

@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const classesGrid = document.getElementById('classesGrid');
     let classes = [];
 
+    function setupModalCloseHandlers(modal, onClose) {
+        if (!modal || typeof onClose !== 'function') return;
+
+        modal.addEventListener('click', (event) => {
+            const target = event.target;
+            const clickedCloseButton = target && typeof target.closest === 'function'
+                ? target.closest('.modal-close')
+                : null;
+
+            if (target === modal || clickedCloseButton) {
+                onClose();
+            }
+        });
+    }
+
     function getClassColor(classe) {
         return typeof window.normalizeClassColor === 'function'
             ? window.normalizeClassColor(classe.cor, '#8B5CF6')
@@ -231,12 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Fecha o modal
-        modal.addEventListener('click', (ev) => {
-            if (ev.target === modal || ev.target.matches('.modal-close')) {
-                modal.remove();
-                document.body.style.overflow = '';
-            }
+        setupModalCloseHandlers(modal, () => {
+            modal.remove();
+            document.body.style.overflow = '';
         });
     });
 
