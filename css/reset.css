@@ -1,3 +1,11 @@
-/* 
-This file is intentionally left blank. 
-*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+	max-width: 100%;
+}

@@ -97,7 +97,7 @@
 /* Responsividade para cards */
 @media (min-width: 768px) and (max-width: 1199px) {
     .monster-grid {
-        grid-template-columns: repeat(2, 385px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .monster-card {
         min-height: 455px;
@@ -106,7 +106,7 @@
 
 @media (min-width: 1200px) {
     .monster-grid {
-        grid-template-columns: repeat(3, 385px);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .monster-card {
         min-height: 455px;

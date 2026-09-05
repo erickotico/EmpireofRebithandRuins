@@ -486,6 +486,10 @@ section input::placeholder {
         padding: 16px;
     }
 
+    .scroll-box {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .item {
         flex-direction: column;
     }

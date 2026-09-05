@@ -1731,6 +1731,417 @@
           "info": ""
         }
       ]
+    },
+    {
+      "id": 15,
+      "name": "Mimic",
+      "image": "Mimic.jpg",
+      "level": 15,
+      "levelMin": 15,
+      "levelMax": 25,
+      "stars": 2,
+      "rarity": "Incomum",
+      "informacoes": {
+        "historia": "Um ser misterioso que se disfarça de baú em masmorras e labirintos, vivem toda sua vida parado até tentar ser aberto por pessoas descuidadas eles atacam sem dó.",
+        "regiao": "Masmorras, Labirinto",
+        "comportamento": "Normal",
+        "tipo": "Mimico",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 55,
+        "mana": 25,
+        "forca": 40,
+        "armadura": 30,
+        "agilidade": 25,
+        "inteligencia": 30,
+        "carisma": 10,
+        "percepcao": 20,
+        "maestria": 20,
+        "resistencias": {
+          "fogo": 3,
+          "agua": 4,
+          "terra": 5,
+          "sombra": 6,
+          "luz": 3,
+          "eletrico": 3,
+          "gelo": 4,
+          "veneno": 5
+        }
+      },
+      "habilidades": {
+        "xpGanho": 25,
+        "listaHabilidades": [
+          {
+            "nome": "Mordida Surpresa",
+            "descricao": "Quando alguem encostar no mimic pensando ser um bau, o mimic avança abrindo sua boca e dando uma grande mordida no adversario.",
+            "cooldown": 20
+          },
+          {
+            "nome": "Ácido Estomacal",
+            "descricao": "Atira um ácido na direção do alvo, causando um evento de veneno causando 10 de dano quando acertado e 5 por segundo",
+            "cooldown": 5
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Dinheiro",
+          "raridades": [
+            "Comum"
+          ],
+          "quantidade": 200,
+          "raridade": "Comum"
+        },
+        {
+          "item": "Item Aleatorio",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Armaduras",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Armas",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Jóias",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Mimic",
+          "raridades": [
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Mimic de armas",
+          "image": "mimicarma.jpg",
+          "raridade": "Incomum",
+          "info": "Uma variante do mimic comum, porem seus drops são focados em armas."
+        },
+        {
+          "name": "Mimic de Tesouso",
+          "image": "mimictesouro.jpg",
+          "raridade": "Incomum",
+          "info": "Uma variante do mimic comum, porem seus drops são focados em Tesouros."
+        },
+        {
+          "name": "Mimic  de Armaduras",
+          "image": "mimicarmaduras.jpg",
+          "raridade": "Incomum",
+          "info": "Uma variante do mimic comum, porem seus drops são focados em armaduras."
+        },
+        {
+          "name": "Mimic de itens",
+          "image": "mimicitens.jpg",
+          "raridade": "Incomum",
+          "info": "Uma variante do mimic comum, porem seus drops são focados em itens aleatorios."
+        },
+        {
+          "name": "Mimic Corrompido",
+          "image": "mimiccorrompido.jpg",
+          "raridade": "Raro",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        },
+        {
+          "name": "Mimic Zombie",
+          "image": "mimiczombie.jpg",
+          "raridade": "Raro",
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Minotauro",
+      "image": "minotauro.jpg",
+      "level": 65,
+      "levelMin": 65,
+      "levelMax": 100,
+      "stars": 7,
+      "rarity": "Épico",
+      "informacoes": {
+        "historia": "Enormes e pesados e uma força extraordinária foram trancafiados por muito tempo, tem sede de vingança pouco sociáveis não gostam que ninguém entrem em seu território.",
+        "regiao": "Labirinto",
+        "comportamento": "Assassino",
+        "tipo": "Humanoid / Bovino",
+        "dificuldade": "Difícil"
+      },
+      "estatisticas": {
+        "vida": 80,
+        "mana": 15,
+        "forca": 75,
+        "armadura": 45,
+        "agilidade": 25,
+        "inteligencia": 20,
+        "carisma": 10,
+        "percepcao": 30,
+        "maestria": 40,
+        "resistencias": {
+          "fogo": 5,
+          "agua": 4,
+          "terra": 7,
+          "sombra": 4,
+          "luz": 3,
+          "eletrico": 3,
+          "gelo": 4,
+          "veneno": 5
+        }
+      },
+      "habilidades": {
+        "xpGanho": 200,
+        "listaHabilidades": [
+          {
+            "nome": "Investida de Chifre",
+            "descricao": "Um ataque de corrida focando os chifres no alvo, com alta chance de empalar.",
+            "cooldown": 1
+          },
+          {
+            "nome": "Machado Devastador",
+            "descricao": "Um golpe amplo com uma arma pesada que pode atingir múltiplos inimigos próximos.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Ataque corporal",
+            "descricao": "Uma investida poderosa que causa atordoamento se acertar o alvo",
+            "cooldown": 6
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Cabeça de minotauro",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Calda de minotauro",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Coração de minotauro",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Casco de minotauro",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Chifre de minotauro",
+          "raridades": [
+            "Épico",
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Minotauro",
+          "raridades": [
+            "Deus",
+            "Imortal"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Minotauro Zombie",
+          "image": "minotaurozombie.jpg",
+          "raridade": "Lendário",
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        },
+        {
+          "name": "Minotauro Corrompido",
+          "image": "minotaurocorrompido.jpg",
+          "raridade": "Lendário",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Morto Vivo",
+      "image": "Mortovivo.jpg",
+      "level": 20,
+      "levelMin": 20,
+      "levelMax": 70,
+      "stars": 3,
+      "rarity": "Comum",
+      "informacoes": {
+        "historia": "Seres sem alma que vagam pelas terras de ninguém são inimigos dos seres humanos por terem uma vida. os cadáveres de seres humanos antigos, foram reanimados com magia oculta e criou por conta própria uma sede de matar os humanos.",
+        "regiao": "Cemiterio, Masmorras, Pantanos, Labirintos",
+        "comportamento": "Hostil",
+        "tipo": "Humanoid",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 35,
+        "mana": 0,
+        "forca": 25,
+        "armadura": 10,
+        "agilidade": 15,
+        "inteligencia": 5,
+        "carisma": 0,
+        "percepcao": 10,
+        "maestria": 10,
+        "resistencias": {
+          "fogo": 0,
+          "agua": 5,
+          "terra": 6,
+          "sombra": 9,
+          "luz": 0,
+          "eletrico": 3,
+          "gelo": 7,
+          "veneno": 10
+        }
+      },
+      "habilidades": {
+        "xpGanho": 80,
+        "listaHabilidades": [
+          {
+            "nome": "Golpe de Espada",
+            "descricao": "Um ataque com uma espada enferrujada que pode causar infecção ou sangramento.",
+            "cooldown": 2
+          },
+          {
+            "nome": "Estocada Sombria",
+            "descricao": "Um ataque perfurante rápido com a espada, imbuído de energia necrótica.",
+            "cooldown": 5
+          },
+          {
+            "nome": "Lâmina Fúnebre",
+            "descricao": "Um golpe de espada que drena a energia vital do alvo, curando parcialmente o monstro.",
+            "cooldown": 10
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Ossos",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 10
+        },
+        {
+          "item": "Armas",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Armaduras",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Morto vivo",
+          "raridades": [
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Zombie",
+          "image": "zombie.jpg",
+          "raridade": "Comum",
+          "info": "Um monstro morto vivo bastante encontrados em cemiterios."
+        },
+        {
+          "name": "Esqueleto",
+          "image": "esqueleto.jpg",
+          "raridade": "Comum",
+          "info": "Um monstro morto vivo mais encontrado em cemiterios, masmorras e labirintos"
+        },
+        {
+          "name": "Ghoul",
+          "image": "ghoul..jpg",
+          "raridade": "Raro",
+          "info": "É retratado como um monstro morto-vivo capaz de paralisar e devorar os vivos."
+        },
+        {
+          "name": "Mumias",
+          "image": "mumias.jpg",
+          "raridade": "Raro",
+          "info": "Um morto vivo egipcio"
+        },
+        {
+          "name": "Lich",
+          "image": "lich.jpg",
+          "raridade": "Épico",
+          "info": "O rei dos mortos vivos, capas de controlar uma pequena horda de mortos vivos"
+        },
+        {
+          "name": "Espectro",
+          "image": "espectro.jpg",
+          "raridade": "Raro",
+          "info": "Um ser incorporeo não sofre danos fisicos."
+        },
+        {
+          "name": "Corrompidos",
+          "image": "corrompido.jpg",
+          "raridade": "Raro",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
     }
   ]
 }

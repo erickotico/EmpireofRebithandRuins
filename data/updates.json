@@ -1,6 +1,17 @@
 {
   "updates": [
     {
+      "version": "0.0.22",
+      "date": "2026-08-31",
+      "title": "Habilidades",
+      "changes": [
+        "- Criando 3 habilidades da espada grande",
+        "- Criando 3 habilidades do arco",
+        "- Criando 3 habilidades da lança"
+      ],
+      "link": "#"
+    },
+    {
       "version": "0.0.21",
       "date": "2026-07-27",
       "title": "Drop e Item",
