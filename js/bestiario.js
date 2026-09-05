@@ -121,6 +121,14 @@ if (typeof document !== 'undefined') {
     const monsterGrid = document.querySelector('.monster-grid');
     if (!monsterGrid) return;
 
+    const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
+        ? window.getSiteTranslation(key, fallback)
+        : fallback;
+    const translatedRarity = (key, fallback) => translate({
+        comum: 'common', incomum: 'uncommon', raro: 'rare', epico: 'epic',
+        lendario: 'legendary', deus: 'god', imortal: 'immortal'
+    }[key] || key, fallback);
+
     let monsters = [];
 
     // Função para criar estrelas
@@ -131,7 +139,7 @@ if (typeof document !== 'undefined') {
     // Função para renderizar card
     function createMonsterCard(monster) {
         const rarityKey = normalizeRarityKey(monster.rarity);
-        const rarityLabel = normalizeRarityLabel(monster.rarity);
+        const rarityLabel = translatedRarity(rarityKey, normalizeRarityLabel(monster.rarity));
 
         return `
             <article class="monster-card ${rarityKey}" data-monster-id="${monster.id}" role="button" tabindex="0" onclick="window.openMonsterModalById(${monster.id})" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.openMonsterModalById(${monster.id}); }">
@@ -143,7 +151,7 @@ if (typeof document !== 'undefined') {
                 <div class="monster-card-body">
                     <div class="monster-basic-left">
                         <h3 class="monster-name">${monster.name}</h3>
-                        <div class="monster-level">Level ${monster.level}</div>
+                        <div class="monster-level">${translate('level', 'Level')} ${monster.level}</div>
                     </div>
 
                     <div class="monster-basic-right">
@@ -158,15 +166,15 @@ if (typeof document !== 'undefined') {
                             <span class="stat-value">${monster.estatisticas.vida}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Strength</span>
+                            <span class="stat-label">${translate('strength', 'Strength')}</span>
                             <span class="stat-value">${monster.estatisticas.forca}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Agility</span>
+                            <span class="stat-label">${translate('agility', 'Agility')}</span>
                             <span class="stat-value">${monster.estatisticas.agilidade}</span>
                         </div>
                         <div class="stat-block">
-                            <span class="stat-label">Armor</span>
+                            <span class="stat-label">${translate('armor', 'Armor')}</span>
                             <span class="stat-value">${monster.estatisticas.armadura}</span>
                         </div>
                     </div>
@@ -189,10 +197,10 @@ if (typeof document !== 'undefined') {
 
     function createMonsterModal(monster) {
         const baseTabs = [
-            { key: 'info', label: 'Information' },
-            { key: 'stats', label: 'Statistics' },
-            { key: 'skills', label: 'Skills' },
-            { key: 'rewards', label: 'Rewards' }
+            { key: 'info', label: translate('informationTab', 'Information') },
+            { key: 'stats', label: translate('statistics', 'Statistics') },
+            { key: 'skills', label: translate('skills', 'Skills') },
+            { key: 'rewards', label: translate('rewards', 'Rewards') }
         ];
 
         // Extras dinâmicos
@@ -200,7 +208,7 @@ if (typeof document !== 'undefined') {
         
         // Verifica se tem variantes
         if (monster.hasVariantes) {
-            extraTabs.push({ key: 'variantes', label: 'Variantes' });
+            extraTabs.push({ key: 'variantes', label: translate('variants', 'Variants') });
         }
 
         const allTabs = [...baseTabs, ...extraTabs];
@@ -229,13 +237,14 @@ if (typeof document !== 'undefined') {
         const rewardsHtml = (monster.recompensas || []).map(r => {
             const rewardRarity = resolveRewardRarity(r);
             const rewardClass = normalizeRarityKey(rewardRarity);
+            const translatedRewardRarity = translatedRarity(rewardClass, rewardRarity);
 
             return `
             <div class="reward-item" data-rarity="${rewardClass}">
                 <span class="reward-name">${r.item}</span>
-                <span class="reward-rarity ${rewardClass}">${rewardRarity}</span>
+                <span class="reward-rarity ${rewardClass}">${translatedRewardRarity}</span>
                 <span class="reward-chance">${getDropChance(rewardRarity)}%</span>
-                <span class="reward-qty">Qtd: ${r.quantidade}</span>
+                <span class="reward-qty">${translate('quantity', 'Qty')}: ${r.quantidade}</span>
             </div>
         `;
         }).join('') || '<p class="muted">Nenhuma recompensa listada.</p>';
@@ -243,8 +252,8 @@ if (typeof document !== 'undefined') {
         // Variantes html (lista)
         const variantesHtml = (monster.listaVariantes || [])
             .map(v => {
-                const variantRarity = normalizeRarityLabel(v.raridade);
                 const variantClass = normalizeRarityKey(v.raridade);
+                const variantRarity = translatedRarity(variantClass, normalizeRarityLabel(v.raridade));
                 const rarityLabel = v.raridade ? `<span class="variant-rarity ${variantClass}">${variantRarity}</span>` : '';
                 return `
                 <div class="variant-card ${variantClass}">
@@ -292,7 +301,7 @@ if (typeof document !== 'undefined') {
                         </div>
 
                         <div class="tab-content stats">
-                            <h3 style="color: #fff; margin-bottom: 20px; font-size: 20px;">Statistics</h3>
+                            <h3 style="color: #fff; margin-bottom: 20px; font-size: 20px;">${translate('statistics', 'Statistics')}</h3>
                             <div class="stats-container">
                                 ${Object.entries(monster.estatisticas).filter(([key]) => key !== 'resistencias').map(([key, value]) => `
                                     <div class="stat-bar" style="margin-bottom: 15px;">
@@ -307,7 +316,7 @@ if (typeof document !== 'undefined') {
                                 `).join('')}
                             </div>
                             <div class="resistances">
-                                <h4>Resistances and Weaknesses</h4>
+                                <h4>${translate('resistances', 'Resistances and Weaknesses')}</h4>
                                 <div class="resistances-grid">
                                     ${resistenciasHtml || '<p class="muted">Neutro em todos os atributos.</p>'}
                                 </div>
@@ -315,15 +324,15 @@ if (typeof document !== 'undefined') {
                         </div>
 
                         <div class="tab-content skills">
-                            <div class="xp-info">XP gained on defeat: ${monster.habilidades?.xpGanho ?? 0}</div>
+                            <div class="xp-info">${translate('xpGained', 'XP gained on defeat')}: ${monster.habilidades?.xpGanho ?? 0}</div>
                             <div class="skills-list">${skillsHtml}</div>
                         </div>
 
                         <div class="tab-content rewards">
                             <div class="rarity-filter">
-                                <label for="rarity-select">Filter by rarity:</label>
+                                <label for="rarity-select">${translate('filterRarity', 'Filter by rarity')}:</label>
                                 <select id="rarity-select">
-                                    <option value="all">All rarities</option>
+                                    <option value="all">${translate('allRarities', 'All rarities')}</option>
                                     <option value="comum">Comum</option>
                                     <option value="incomum">Incomum</option>
                                     <option value="raro">Raro</option>
@@ -377,6 +386,7 @@ if (typeof document !== 'undefined') {
 
         const modal = document.querySelector('.monster-modal');
         if (!modal) return;
+        window.translateDynamicContent?.(modal);
 
         const dialog = modal.querySelector('.modal-content');
         setupModalTabs(dialog);
@@ -439,7 +449,13 @@ if (typeof document !== 'undefined') {
     // Função para renderizar monstros com filtros
     function renderMonsters(monsterList) {
         monsterGrid.innerHTML = monsterList.map(createMonsterCard).join('');
+        window.translateDynamicContent?.(monsterGrid);
     }
+
+    document.addEventListener('site-language-changed', () => {
+        document.querySelector('.monster-modal')?.remove();
+        renderMonsters(monsters);
+    });
 
     // Implementar filtros
     const searchInput = document.getElementById('searchMonster');

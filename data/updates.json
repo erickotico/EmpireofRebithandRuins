@@ -47,13 +47,13 @@
     {
       "version": "0.0.18",
       "date": "2026-05-24",
-      "title": "Fix Dano, Inventario",
+      "title": "Correção de dano e inventário",
       "changes": [
         "- Ajustando o dano do ataque base",
-        "- Ajustando tamanho do inventario",
+        "- Ajustando o tamanho do inventário",
         "- Aumento de velocidade do lobo",
         "- Habilidade do jogador aprimorada",
-        "- Distancia de ataque do lobo melhorada"
+        "- Distância de ataque do lobo melhorada"
       ],
       "link": "#"
     },
@@ -62,8 +62,8 @@
       "date": "2026-05-11",
       "title": "Atributos do primeiro inimigo",
       "changes": [
-        "- Adição dos valores dos atributos do monstros.",
-        "- Variação de atributo e level para o mesmo monstro."
+        "- Adição dos valores dos atributos dos monstros.",
+        "- Variação de atributos e nível para o mesmo monstro."
       ],
       "link": "#"
     },
@@ -80,10 +80,10 @@
     {
       "version": "0.0.15",
       "date": "2026-04-28",
-      "title": "Fix Bestiario",
+      "title": "Correções no bestiário",
       "changes": [
-        "- Arrumando interação com o bestiario",
-        "- Aprimoramento do bestiario"
+        "- Corrigindo a interação com o bestiário",
+        "- Aprimorando o bestiário"
       ],
       "link": "#"
     },
@@ -101,9 +101,9 @@
     {
       "version": "0.0.13",
       "date": "2026-04-23",
-      "title": "Fix Bug Atributos",
+      "title": "Correção de bug nos atributos",
       "changes": [
-        "- Fix Debuff Renacimento"
+        "- Correção do debuff de renascimento"
       ],
       "link": "#"
     },
@@ -122,9 +122,9 @@
       "date": "2026-04-14",
       "title": "Penalidade",
       "changes": [
-        "- Penalidade de atributos pós morte",
-        "- Fix: Renacimento",
-        "- debuff pós morte"
+        "- Penalidade de atributos após a morte",
+        "- Correção do renascimento",
+        "- Debuff após a morte"
       ],
       "link": "#"
     },
@@ -141,10 +141,10 @@
     {
       "version": "0.0.9",
       "date": "2026-04-10",
-      "title": "Fix Atributos",
+      "title": "Correção de atributos",
       "changes": [
         "- Ajustando os atributos corretos para as classes e subclasses",
-        "- Ajustando o bug de level up"
+        "- Corrigindo o problema de subida de nível"
       ],
       "link": "#"
     },
@@ -164,19 +164,19 @@
       "date": "2026-04-02",
       "title": "IA Inimiga",
       "changes": [
-        "- Novos compontamentos dos inimigos",
-        "- Novas arvores de comportamento"
+        "- Novos comportamentos dos inimigos",
+        "- Novas árvores de comportamento"
       ],
       "link": "#"
     },
     {
       "version": "0.0.6",
       "date": "2026-03-28",
-      "title": "Bestiario",
+      "title": "Bestiário",
       "changes": [
-        "- Criação do bestiario",
-        "- Atributos dos Monstros",
-        "- Fix Atributo não fixa no personagem"
+        "- Criação do bestiário",
+        "- Atributos dos monstros",
+        "- Correção de atributo que não permanecia no personagem"
       ],
       "link": "#"
     },
@@ -186,7 +186,7 @@
       "title": "Escolha de Classe",
       "changes": [
         "- Escolhas entre classes e subclasses",
-        "- Atributos personalizado dependendo da classe"
+        "- Atributos personalizados de acordo com a classe"
       ],
       "link": "#"
     },
@@ -195,18 +195,18 @@
       "date": "2026-03-14",
       "title": "Inimigo",
       "changes": [
-        "- Prototipo da IA Inimiga",
-        "- Possiveis rotas inimigas",
-        "- Ataques basicos"
+        "- Protótipo da IA inimiga",
+        "- Possíveis rotas inimigas",
+        "- Ataques básicos"
       ],
       "link": "#"
     },
     {
       "version": "0.0.3",
       "date": "2026-03-06",
-      "title": "Progressão de level",
+      "title": "Progressão de nível",
       "changes": [
-        "- Sistema de progreção de level",
+        "- Sistema de progressão de nível",
         "- Habilidades base"
       ],
       "link": "#"
@@ -224,7 +224,7 @@
     {
       "version": "0.0.1",
       "date": "2026-01-22",
-      "title": "Inicio do projeto",
+      "title": "Início do projeto",
       "changes": [
         "- Idealização do projeto",
         "- Concept dos personagens"

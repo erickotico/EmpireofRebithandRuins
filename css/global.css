@@ -68,6 +68,8 @@ nav ul li {
 
 nav a:hover {
     background: var(--accent);
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* ========== HEADER ACTIONS ========== */
@@ -95,6 +97,9 @@ nav a:hover {
 .lang-switcher:hover {
     transform: translateY(-1px);
     background: rgba(255, 255, 255, 0.09);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 0 2px rgba(122, 73, 255, 0.35);
 }
 
 .lang-switcher:focus-visible {
@@ -120,6 +125,17 @@ nav a:hover {
     background: transparent;
     color: var(--text);
     border-color: rgba(255, 255, 255, 0.08);
+}
+
+.header-actions .btn:hover,
+.header-actions .btn:hover a {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+}
+
+.header-actions .btn-login:hover {
+    background: rgba(122, 73, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.35);
 }
 
 .btn-download {

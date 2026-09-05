@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestiário - Empire of Rebirth & Ruins</title>
+    <title data-i18n="bestiary">Bestiary</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/bestiario.css">
@@ -12,7 +12,7 @@
     <header>
         <div class="brand">
             <img src="./img/LogoRPG.jpg" alt="Logo do jogo">
-            <h1>Empire of Rebirth & Ruins</h1>
+            <h1 data-i18n="brandName">Empire of Rebirth & Ruins</h1>
         </div>
         <nav>
             <ul>
@@ -28,15 +28,15 @@
     </header>
 
     <main class="bestiary-container">
-        <h2 class="section-title">Bestiary</h2>
+        <h2 class="section-title" data-i18n="bestiary">Bestiary</h2>
         
         <div class="bestiary-filters">
             <div class="search-container">
-                <input type="text" id="searchMonster" placeholder="Search monster...">
-                <button id="searchButton">Search</button>
+                <input type="text" id="searchMonster" data-i18n="searchMonster" placeholder="Search monster...">
+                <button id="searchButton" data-i18n="search">Search</button>
             </div>
-            <select id="filterType">
-                <option value="">All types</option>
+            <select id="filterType" aria-label="All types">
+                <option value="" data-i18n="allTypes">All types</option>
             </select>
         </div>
 
@@ -66,45 +66,45 @@
             <div class="footer-brand" aria-label="Marca do jogo">
                 <img src="./img/LogoRPG.jpg" alt="Logo Empire of Rebirth & Ruins">
                 <div>
-                    <h3>Empire of Rebirth & Ruins</h3>
-                    <p class="footer-desc">Explore dungeons, defeat monsters, and become a legend.</p>
+                    <h3 data-i18n="brandName">Empire of Rebirth & Ruins</h3>
+                    <p class="footer-desc" data-i18n="footerDescription">Explore dungeons, defeat monsters, and become a legend.</p>
                 </div>
             </div>
 
             <div class="footer-links" aria-hidden="false">
                 <div class="footer-col">
-                    <h4>Game</h4>
+                    <h4 data-i18n="game">Game</h4>
                     <ul>
-                        <li><a href="beguinnersguide.html">Beginner's Guide</a></li>
-                        <li><a href="features.html">Features</a></li>
-                        <li><a href="requirements.html">Requirements</a></li>
-                        <li><a href="patchnotes.html">Patch notes</a></li>
+                        <li><a href="beguinnersguide.html" data-i18n="beginnerGuide">Beginner's Guide</a></li>
+                        <li><a href="features.html" data-i18n="features">Features</a></li>
+                        <li><a href="requirements.html" data-i18n="requirements">Requirements</a></li>
+                        <li><a href="patchnotes.html" data-i18n="patchNotes">Patch notes</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Community</h4>
+                    <h4 data-i18n="community">Community</h4>
                     <ul>
-                        <li><a href="forum.html">Forum</a></li>
-                        <li><a href="discord.html">Discord</a></li>
-                        <li><a href="wiki.html">Wiki</a></li>
-                        <li><a href="fanart.html">FanArt</a></li>
+                        <li><a href="forum.html" data-i18n="forum">Forum</a></li>
+                        <li><a href="discord.html" data-i18n="discord">Discord</a></li>
+                        <li><a href="wiki.html" data-i18n="wiki">Wiki</a></li>
+                        <li><a href="fanart.html" data-i18n="fanArt">FanArt</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Support</h4>
+                    <h4 data-i18n="support">Support</h4>
                     <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="report-bug.html">Report a bug</a></li>
-                        <li><a href="privacy-policy.html">Privacy policy</a></li>
+                        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+                        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+                        <li><a href="report-bug.html" data-i18n="reportBug">Report a bug</a></li>
+                        <li><a href="privacy-policy.html" data-i18n="privacy">Privacy policy</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-           <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Empire of Rebirth & Ruins. All rights reserved.</p>
+           <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> <span data-i18n="brandName">Empire of Rebirth & Ruins</span>. <span data-i18n="allRights">All rights reserved.</span></p>
         </div>
     </footer>
 

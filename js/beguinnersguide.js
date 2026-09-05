@@ -4,6 +4,10 @@ let reinos = [];
 let masmorras = [];
 let itens = [];
 
+const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
+    ? window.getSiteTranslation(key, fallback)
+    : fallback;
+
 
 
 // Função para abrir o popup da imagem ampliada
@@ -26,7 +30,7 @@ function renderReinos(listaReinos) {
     lista.innerHTML = '';
 
     if (!listaReinos.length) {
-        lista.innerHTML = '<p class="nenhum-resultado">Nenhum reino encontrado.</p>';
+        lista.innerHTML = `<p class="nenhum-resultado">${translate('noKingdom', 'No kingdom found.')}</p>`;
         return;
     }
 
@@ -51,6 +55,7 @@ function renderReinos(listaReinos) {
 
         lista.appendChild(div);
     });
+    window.translateDynamicContent?.(lista);
 }
 
 function abrirModalReino(reino) {
@@ -68,23 +73,23 @@ function abrirModalReino(reino) {
             </div>
             <div class="reino-modal-body">
                 <div class="reino-info">
-                    <h3>Localização</h3>
+                    <h3>${translate('location', 'Location')}</h3>
                     <p>${reino.localizacao}</p>
                 </div>
                 <div class="reino-info">
-                    <h3>História</h3>
+                    <h3>${translate('history', 'History')}</h3>
                     <p>${reino.historia}</p>
                 </div>
                 <div class="reino-info">
-                    <h3>Cultura</h3>
+                    <h3>${translate('culture', 'Culture')}</h3>
                     <p>${reino.cultura}</p>
                 </div>
                 <div class="reino-info">
-                    <h3>Costumes</h3>
+                    <h3>${translate('customs', 'Customs')}</h3>
                     <p>${reino.costumes}</p>
                 </div>
                 <div class="reino-info">
-                    <h3>Festivais</h3>
+                    <h3>${translate('festivals', 'Festivals')}</h3>
                     <p>${reino.festivais}</p>
                 </div>
             </div>
@@ -99,6 +104,7 @@ function abrirModalReino(reino) {
     });
 
     document.body.appendChild(modal);
+    window.translateDynamicContent?.(modal);
     document.body.style.overflow = 'hidden';
 }
 
@@ -107,7 +113,7 @@ function renderMasmorras(listaMasmorras) {
     lista.innerHTML = '';
 
     if (!listaMasmorras.length) {
-        lista.innerHTML = '<p class="nenhum-resultado">Nenhuma masmorra encontrada.</p>';
+        lista.innerHTML = `<p class="nenhum-resultado">${translate('noDungeon', 'No dungeon found.')}</p>`;
         return;
     }
 
@@ -131,6 +137,7 @@ function renderMasmorras(listaMasmorras) {
 
         lista.appendChild(div);
     });
+    window.translateDynamicContent?.(lista);
 }
 
 function abrirModalMasmorra(masmorra) {
@@ -147,10 +154,10 @@ function abrirModalMasmorra(masmorra) {
                 </div>
             </div>
             <div class="masmorra-modal-body">
-                <p><strong>Andares:</strong> ${masmorra.andares}</p>
-                <p><strong>Tipos de inimigos:</strong> ${masmorra.tipos_inimigos.join(', ')}</p>
-                <p><strong>Salas escondidas:</strong> ${masmorra.tem_salas_escondidas ? masmorra.salas_escondidas : 'Não'}</p>
-                <p><strong>Tem boss:</strong> ${masmorra.tem_boss ? 'Sim' : 'Não'}</p>
+                <p><strong>${translate('floors', 'Floors')}:</strong> ${masmorra.andares}</p>
+                <p><strong>${translate('enemyTypes', 'Enemy types')}:</strong> ${masmorra.tipos_inimigos.join(', ')}</p>
+                <p><strong>${translate('hiddenRooms', 'Hidden rooms')}:</strong> ${masmorra.tem_salas_escondidas ? masmorra.salas_escondidas : translate('no', 'No')}</p>
+                <p><strong>${translate('hasBoss', 'Has boss')}:</strong> ${masmorra.tem_boss ? translate('yes', 'Yes') : translate('no', 'No')}</p>
                 ${masmorra.tem_boss ? `<p><strong>Boss:</strong> ${masmorra.boss}</p>` : ''}
             </div>
         </div>
@@ -164,6 +171,7 @@ function abrirModalMasmorra(masmorra) {
     });
 
     document.body.appendChild(modal);
+    window.translateDynamicContent?.(modal);
     document.body.style.overflow = 'hidden';
 }
 
@@ -172,7 +180,7 @@ function renderItens(listaItens) {
     lista.innerHTML = '';
 
     if (!listaItens.length) {
-        lista.innerHTML = '<p class="nenhum-resultado">Nenhum item encontrado.</p>';
+        lista.innerHTML = `<p class="nenhum-resultado">${translate('noItem', 'No item found.')}</p>`;
         return;
     }
 
@@ -198,6 +206,7 @@ function renderItens(listaItens) {
 
         lista.appendChild(div);
     });
+    window.translateDynamicContent?.(lista);
 }
 
 function abrirModalItem(item) {
@@ -220,15 +229,15 @@ function abrirModalItem(item) {
             </div>
             <div class="item-modal-body">
                 <div class="item-info">
-                    <h3>Descrição</h3>
+                    <h3>${translate('description', 'Description')}</h3>
                     <p id="item-descricao">${versaoAtual.descricao}</p>
                 </div>
                 <div class="item-info">
-                    <h3>Utilidade</h3>
+                    <h3>${translate('usefulness', 'Usefulness')}</h3>
                     <p id="item-utilidade">${versaoAtual.para_que_serve}</p>
                 </div>
-                ${item.utilizavel ? '<div class="item-info"><h3>Utilizável</h3><p>Sim</p></div>' : ''}
-                ${item.craftavel ? `<div class="item-info"><h3>Craftável</h3><p id="item-craft">Pode ser usado para craftar: ${versaoAtual.craft_resultado}</p></div>` : ''}
+                ${item.utilizavel ? `<div class="item-info"><h3>${translate('usable', 'Usable')}</h3><p>${translate('yes', 'Yes')}</p></div>` : ''}
+                ${item.craftavel ? `<div class="item-info"><h3>${translate('craftable', 'Craftable')}</h3><p id="item-craft">${translate('craftResult', 'Can be used to craft')}: ${versaoAtual.craft_resultado}</p></div>` : ''}
             </div>
         </div>
     `;
@@ -248,7 +257,7 @@ function abrirModalItem(item) {
             utilidadeDiv.textContent = novaVersao.para_que_serve;
             
             if (craftDiv) {
-                craftDiv.textContent = `Pode ser usado para craftar: ${novaVersao.craft_resultado}`;
+                craftDiv.textContent = `${translate('craftResult', 'Can be used to craft')}: ${novaVersao.craft_resultado}`;
             }
         }
     });
@@ -261,6 +270,7 @@ function abrirModalItem(item) {
     });
 
     document.body.appendChild(modal);
+    window.translateDynamicContent?.(modal);
     document.body.style.overflow = 'hidden';
 }
 
@@ -312,6 +322,11 @@ function filtrarItens(query) {
     });
     renderItens(filtrados);
 }
+
+document.addEventListener('site-language-changed', () => {
+    document.querySelectorAll('.reino-modal, .masmorra-modal, .item-modal').forEach(modal => modal.remove());
+    document.body.style.overflow = '';
+});
 
 // Função para carregar dados de masmorras do JSON
 async function carregarMasmorras() {

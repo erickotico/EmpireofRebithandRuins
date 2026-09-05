@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
+        ? window.getSiteTranslation(key, fallback)
+        : fallback;
     const togglePassword = document.querySelector('.toggle-password');
     const password = document.getElementById('password');
     const eyeIcon = document.querySelector('.eye-icon');
@@ -98,27 +101,27 @@ document.addEventListener('DOMContentLoaded', () => {
         let valid = true;
 
         if (!vals.fullName) {
-            signupForm.querySelector('[data-for="fullName"]').textContent = 'Informe seu nome.';
+            signupForm.querySelector('[data-for="fullName"]').textContent = translate('nameRequired', 'Enter your name.');
             valid = false;
         }
 
         if (!vals.email || !/\S+@\S+\.\S+/.test(vals.email)) {
-            signupForm.querySelector('[data-for="signupEmail"]').textContent = 'E‑mail inválido.';
+            signupForm.querySelector('[data-for="signupEmail"]').textContent = translate('invalidEmail', 'Invalid email.');
             valid = false;
         }
 
         if (!isValidDate(vals.day, vals.month, vals.year)) {
-            signupForm.querySelector('[data-for="dob"]').textContent = 'Data de nascimento inválida.';
+            signupForm.querySelector('[data-for="dob"]').textContent = translate('invalidBirthDate', 'Invalid date of birth.');
             valid = false;
         }
 
         if (!vals.password || vals.password.length < 6) {
-            signupForm.querySelector('[data-for="signupPassword"]').textContent = 'Senha deve ter pelo menos 6 caracteres.';
+            signupForm.querySelector('[data-for="signupPassword"]').textContent = translate('passwordLength', 'Password must be at least 6 characters.');
             valid = false;
         }
 
         if (!vals.agree) {
-            signupForm.querySelector('[data-for="agreeTerms"]').textContent = 'Você deve aceitar os termos.';
+            signupForm.querySelector('[data-for="agreeTerms"]').textContent = translate('acceptTerms', 'You must accept the terms.');
             valid = false;
         }
 
@@ -137,16 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const submitBtn = signupForm.querySelector('button[type="submit"]');
         if (submitBtn) {
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Criando...';
+            submitBtn.textContent = translate('creating', 'Creating...');
         }
 
         setTimeout(() => {
             if (submitBtn) {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Criar conta';
+                submitBtn.textContent = translate('createAccountButton', 'Create account');
             }
             closeModal();
-            alert('Conta criada (simulado). Você pode agora fazer login.');
+            alert(translate('accountCreated', 'Account created (simulated). You can now log in.'));
             signupForm.reset();
         }, 900);
     });

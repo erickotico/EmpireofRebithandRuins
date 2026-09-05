@@ -19,6 +19,9 @@ class UpdatesManager {
     
     // Renderiza um card de atualização
     createUpdateCard(update) {
+        const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
+            ? window.getSiteTranslation(key, fallback)
+            : fallback;
         return `
             <article class="update-card">
                 <div class="update-header">
@@ -29,7 +32,7 @@ class UpdatesManager {
                 <ul class="update-list">
                     ${update.changes.map(change => `<li>${change}</li>`).join('')}
                 </ul>
-                <a href="${update.link}" class="update-link">Ver detalhes completos</a>
+                <a href="${update.link}" class="update-link">${translate('updateDetails', 'View full details')}</a>
             </article>
         `;
     }
@@ -73,6 +76,7 @@ class UpdatesManager {
     displayUpdates(updates) {
         const html = updates.map(update => this.createUpdateCard(update)).join('');
         this.updatesContainer.innerHTML = html;
+        window.translateDynamicContent?.(this.updatesContainer);
     }
 
     filterUpdates() {
@@ -107,5 +111,6 @@ class UpdatesManager {
 document.addEventListener('DOMContentLoaded', () => {
     const updatesManager = new UpdatesManager();
     updatesManager.loadLocalUpdates(); // este para dados locais
+    document.addEventListener('site-language-changed', () => updatesManager.filterUpdates());
     // updatesManager.loadFromAPI(); // este quando tiver uma API
 });

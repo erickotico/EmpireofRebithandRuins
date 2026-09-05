@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const classesGrid = document.getElementById('classesGrid');
     let classes = [];
+    const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
+        ? window.getSiteTranslation(key, fallback)
+        : fallback;
 
     function setupModalCloseHandlers(modal, onClose) {
         if (!modal || typeof onClose !== 'function') return;
@@ -36,10 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="class-card-body" style="padding: 20px; background: #0f0f0f; position: relative; z-index: 2;">
                     <h3 class="class-name" style="margin: 0 0 10px 0; color: ${corClasse}; font-size: 22px; font-weight: 700;">${classe.name}</h3>
                     <p class="class-desc" style="margin: 0 0 15px 0; color: #aaa; font-size: 13px; line-height: 1.5;">${classe.descricao}</p>
-                    <button class="btn btn-primary" style="width: 100%; padding: 12px; background: ${corClasse}; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 14px;" aria-label="View details for ${classe.name}">View Details</button>
+                    <button class="btn btn-primary" style="width: 100%; padding: 12px; background: ${corClasse}; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 14px;" aria-label="${translate('viewDetails', 'View Details')} for ${classe.name}">${translate('viewDetails', 'View Details')}</button>
                 </div>
             </article>
         `;
+    }
+
+    function renderClassCards(list = classes) {
+        classesGrid.innerHTML = list.map(createClassCard).join('');
+        window.translateDynamicContent?.(classesGrid);
     }
 
     // Função para mostrar painel flutuante de estatísticas da subclasse
@@ -105,10 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const tabsHtml = `
             <div class="modal-tabs" style="display: flex; border-bottom: 2px solid ${corClasse}; background: #1a1a1a;">
-                <button class="tab-btn active" data-tab="info" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #fff; border-bottom: 3px solid ${corClasse}; transition: 0.3s;">Information</button>
-                <button class="tab-btn" data-tab="stats" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Statistics</button>
-                <button class="tab-btn" data-tab="skills" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Skills</button>
-                <button class="tab-btn" data-tab="subclasses" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">Subclasses</button>
+                <button class="tab-btn active" data-tab="info" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #fff; border-bottom: 3px solid ${corClasse}; transition: 0.3s;">${translate('information', 'Information')}</button>
+                <button class="tab-btn" data-tab="stats" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">${translate('statistics', 'Statistics')}</button>
+                <button class="tab-btn" data-tab="skills" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">${translate('skills', 'Skills')}</button>
+                <button class="tab-btn" data-tab="subclasses" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">${translate('subclasses', 'Subclasses')}</button>
             </div>
         `;
 
@@ -132,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p style="margin: 0 0 8px 0; color: #bbb; font-size: 14px;">${skill.descricao}</p>
                     <span class="skill-cooldown" style="display: inline-block; background: ${corClasse}30; color: ${corClasse}; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600;">CD: ${skill.cooldown}</span>
                 </div>
-            `).join('') || '<p style="color: #999;">Nenhuma habilidade disponível</p>';
+            `).join('') || `<p style="color: #999;">${translate('noSkills', 'No skills available')}</p>`;
 
         const subclassesHtml = (classe.subclasses || [])
             .map(sub => `
@@ -145,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p style="margin: 0; color: #aaa; font-size: 13px;">${sub.descricao}</p>
                     </div>
                 </div>
-            `).join('') || '<p style="color: #999;">Nenhuma subclasse disponível</p>';
+            `).join('') || `<p style="color: #999;">${translate('noSubclasses', 'No subclasses available')}</p>`;
 
         return `
             <div class="class-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000;">
@@ -164,22 +172,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div class="modal-body" style="padding: 30px; background: #0f0f0f;">
                         <div class="tab-content info active">
-                            <h3 style="color: ${corClasse}; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Class Description</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('classDescription', 'Class Description')}</h3>
                             <p style="color: #bbb; line-height: 1.8; font-size: 15px;">${classe.descricao}</p>
                         </div>
 
                         <div class="tab-content stats" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Statistics</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('statistics', 'Statistics')}</h3>
                             <div class="stats-container">${statsHtml}</div>
                         </div>
 
                         <div class="tab-content skills" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Skills</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('skills', 'Skills')}</h3>
                             <div class="skills-list">${skillsHtml}</div>
                         </div>
 
                         <div class="tab-content subclasses" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">Available Subclasses</h3>
+                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('availableSubclasses', 'Available Subclasses')}</h3>
                             <div class="subclasses-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">${subclassesHtml}</div>
                         </div>
                     </div>
@@ -230,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const modal = document.querySelector('.class-modal');
         if (!modal) return;
+        window.translateDynamicContent?.(modal);
 
         const dialog = modal.querySelector('.modal-content');
         setupModalTabs(dialog);
@@ -262,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Dados carregados:', data);
             classes = data.classes;
             console.log('Classes definidas:', classes);
-            classesGrid.innerHTML = classes.map(createClassCard).join('');
+            renderClassCards();
 
             // Preenche o select das classes após carregar
             const classSelect = document.getElementById('classSelect');
@@ -287,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return classe.name.toLowerCase().includes(termo)
                 || classe.descricao.toLowerCase().includes(termo);
         });
-        classesGrid.innerHTML = filtrados.map(createClassCard).join('');
+        renderClassCards(filtrados);
     }
 
     // Event listeners para busca
@@ -297,6 +306,12 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', (e) => filtrarClasses(e.target.value));
 
     loadClasses();
+
+    document.addEventListener('site-language-changed', () => {
+        document.querySelector('.class-modal')?.remove();
+        document.querySelector('.sum-modal')?.remove();
+        renderClassCards();
+    });
 
     // Calculadora de atributos
     const subclass1Select = document.getElementById('subclass1Select');
@@ -344,8 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.innerHTML = `
             <div class="sum-modal-content" style="width: 100%; max-width: 520px; background: #0f0f0f; border-radius: 16px; padding: 28px; position: relative; border: 2px solid ${corClasse}; box-shadow: 0 18px 50px rgba(0,0,0,0.55);">
                 <button class="modal-close" aria-label="Fechar resultado" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: none; border-radius: 50%; background: ${corClasse}; color: white; font-size: 20px; cursor: pointer;">×</button>
-                <h2 style="margin: 0 0 8px 0; color: ${corClasse}; font-size: 24px;">Atributos calculados</h2>
-                <p style="margin: 0 0 10px 0; color: #bbb; font-size: 14px;">Classe: <strong>${classeName}</strong> + Subclasses: <strong>${sub1Name}</strong>, <strong>${sub2Name}</strong></p>
+                <h2 style="margin: 0 0 8px 0; color: ${corClasse}; font-size: 24px;">${translate('calculatedAttributes', 'Calculated attributes')}</h2>
+                <p style="margin: 0 0 10px 0; color: #bbb; font-size: 14px;">${translate('classLabel', 'Class')}: <strong>${classeName}</strong> + ${translate('subclassesLabel', 'Subclasses')}: <strong>${sub1Name}</strong>, <strong>${sub2Name}</strong></p>
                 <div class="stats-container">${statsHtml}</div>
             </div>
         `;
@@ -367,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const subclasses = selectedClass ? selectedClass.subclasses || [] : [];
         
         [subclass1Select, subclass2Select].forEach(select => {
-            select.innerHTML = '<option value="">Selecione subclasse</option>';
+            select.innerHTML = `<option value="">${translate('selectSubclass', 'Select subclass')}</option>`;
             subclasses.forEach(sub => {
                 const option = document.createElement('option');
                 option.value = sub.id;

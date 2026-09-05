@@ -20,38 +20,38 @@
         <aside class="auth-panel" role="region" aria-label="Formulário de login">
             <div class="login-brand">
                 <img src="./img/LogoRPG.jpg" alt="Game logo">
-                <h2>Welcome back</h2>
-                <p class="login-desc">Sign in to continue your journey in Empire of Rebirth & Ruins.</p>
+                <h2 data-i18n="welcomeBack">Welcome back</h2>
+                <p class="login-desc" data-i18n="loginDesc">Sign in to continue your journey in Empire of Rebirth & Ruins.</p>
             </div>
 
             <form id="loginForm" class="login-form" action="login.php" method="POST" novalidate>
                 <div class="form-group">
-                    <label for="username">Email or username</label>
+                    <label for="username" data-i18n="emailOrUser">Email or username</label>
                     <input id="username" name="username" type="text" autocomplete="username" required>
                 </div>
 
                   <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password" data-i18n="password">Password</label>
                     <div class="password-wrap">
                         <input id="password" name="password" type="password" autocomplete="current-password" required>
-                            <button type="button" class="toggle-password" aria-label="Show password">
+                            <button type="button" class="toggle-password" aria-label="Show password" data-i18n-aria="showPassword">
                                 <img src="./img/icons/closed-eye.png" alt="Show/Hide password" class="eye-icon">
                             </button>
                     </div>  
                 </div>
                 <div class="form-row">
                     <label class="checkbox">
-                        <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
+                        <input type="checkbox" id="rememberMe" name="rememberMe"> <span data-i18n="rememberMe">Remember me</span>
                     </label>
-                    <a class="small-link" href="contato.html">Forgot password?</a>
+                    <a class="small-link" href="contato.html" data-i18n="forgotPassword">Forgot password?</a>
                 </div>
  <div class="form-actions">
-                    <button class="btn btn-download" type="submit">Sign in</button>
-                    <a class="btn btn-login" href="index.html">Back</a>
+                    <button class="btn btn-download" type="submit" data-i18n="signIn">Sign in</button>
+                    <a class="btn btn-login" href="index.html" data-i18n="back">Back</a>
                 </div>
 
                 <div class="auth-divider">
-                    <span>ou</span>
+                    <span data-i18n="or">or</span>
                 </div>
                 <div class="social-login">  
                 </div>
@@ -60,74 +60,74 @@
                 <div class="social-login">
                     <button type="button" class="btn btn-google" onclick="loginWithGoogle()">
                         <img src="./img/icons/google.png" alt="Google" class="google-icon">
-                        Continue with Google
+                        <span data-i18n="continueGoogle">Continue with Google</span>
                     </button>
                 </div>
                 <p class="signup-prompt">
-                    Don't have an account? <a href="#" id="openSignup" type="button" class="signup-link">Create account</a>
+                    <span data-i18n="noAccount">Don't have an account?</span> <a href="#" id="openSignup" type="button" class="signup-link" data-i18n="createAccount">Create account</a>
                 </p>
                 </form>
 
     <footer class="site-footer auth-footer">
-        <p>&copy; 2025 Empire of Rebirth & Ruins. All rights reserved.</p>
+        <p>&copy; 2025 <span data-i18n="brandName">Empire of Rebirth & Ruins</span>. <span data-i18n="allRights">All rights reserved.</span></p>
     </footer>
 
     <!-- Modal de cadastro -->
     <div id="signupModal" class="modal-overlay" hidden aria-hidden="true">
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
-            <button class="modal-close" id="closeSignup" aria-label="Close">×</button>
-            <h3 id="signupTitle">Create account</h3>
+            <button class="modal-close" id="closeSignup" data-i18n-aria="closeModal" aria-label="Close">×</button>
+            <h3 id="signupTitle" data-i18n="createAccountTitle">Create account</h3>
             <form id="signupForm" class="signup-form" novalidate>
                 <div class="form-group">
-                   <label for="fullName">Full name</label>
+                   <label for="fullName" data-i18n="fullName">Full name</label>
                     <input id="fullName" name="fullName" type="text" required>
                     <div class="form-error" data-for="fullName"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="signupEmail">Email</label>
+                    <label for="signupEmail" data-i18n="email">Email</label>
                     <input id="signupEmail" name="email" type="email" required>
                     <div class="form-error" data-for="signupEmail"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone number</label>
+                    <label for="phone" data-i18n="phone">Phone number</label>
                     <input id="phone" name="phone" type="tel" placeholder="+55 11 9xxxx-xxxx">
                     <div class="form-error" data-for="phone"></div>
                 </div>
 
                 <div class="form-row dob-row">
                     <div>
-                        <label for="birthDay">Day</label>
+                        <label for="birthDay" data-i18n="day">Day</label>
                         <input id="birthDay" name="day" type="number" min="1" max="31" required>
                     </div>
                     <div>
-                        <label for="birthMonth">Month</label>
+                        <label for="birthMonth" data-i18n="month">Month</label>
                         <input id="birthMonth" name="month" type="number" min="1" max="12" required>
                     </div>
                     <div>
-                        <label for="birthYear">Year</label>
+                        <label for="birthYear" data-i18n="year">Year</label>
                         <input id="birthYear" name="year" type="number" min="1900" max="2025" required>
                     </div>
                     <div class="form-error" data-for="dob"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="signupPassword">Password</label>
+                    <label for="signupPassword" data-i18n="password">Password</label>
                     <input id="signupPassword" name="password" type="password" minlength="6" required>
                     <div class="form-error" data-for="signupPassword"></div>
                 </div>
 
                 <div class="form-group">
                     <label class="checkbox">
-                        <input type="checkbox" id="agreeTerms" required> I have read and agree to the <a href="#" target="_blank">privacy terms</a>
+                        <input type="checkbox" id="agreeTerms" required> <span data-i18n="agreeTerms">I have read and agree to the</span> <a href="#" target="_blank" data-i18n="privacyTerms">privacy terms</a>
                     </label>
                     <div class="form-error" data-for="agreeTerms"></div>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-download">Create account</button>
-                    <button type="button" class="btn btn-login" id="cancelSignup">Cancel</button>
+                    <button type="submit" class="btn btn-download" data-i18n="createAccountButton">Create account</button>
+                    <button type="button" class="btn btn-login" id="cancelSignup" data-i18n="cancel">Cancel</button>
                 </div>
             </form>
         </div>
