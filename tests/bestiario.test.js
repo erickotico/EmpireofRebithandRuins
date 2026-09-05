@@ -5,7 +5,9 @@ const {
   normalizeRarityKey,
   resolveRewardRarity,
   getDropChance,
-  setupModalCloseHandlers
+  setupModalCloseHandlers,
+  normalizeHostilityKey,
+  resolveMonsterHostility
 } = require('../js/bestiario.js');
 
 test('normaliza raridades com acentos e caixa', () => {
@@ -42,4 +44,17 @@ test('setupModalCloseHandlers fecha ao clicar no botão X e no fundo do overlay'
   const closeButton = { closest: (selector) => selector === '.modal-close' ? true : null };
   modal.listeners.click({ target: closeButton, stopPropagation() {} });
   assert.equal(closed, 2);
+});
+
+test('hostilidade do JSON é normalizada corretamente com os valores do projeto', () => {
+  assert.equal(normalizeHostilityKey('Pacifico'), 'pacifico');
+  assert.equal(normalizeHostilityKey('Passifico'), 'pacifico');
+  assert.equal(normalizeHostilityKey('Hostil'), 'hostil');
+  assert.equal(normalizeHostilityKey('Hotil'), 'hostil');
+  assert.equal(normalizeHostilityKey('Neeutro'), 'neutro');
+  assert.equal(normalizeHostilityKey('Assassino'), 'assassino');
+  assert.equal(resolveMonsterHostility({ informacoes: { hostilidade: 'Pacifico' } }), 'Pacífico');
+  assert.equal(resolveMonsterHostility({ hostilidade: 'Hostil' }), 'Hostil');
+  assert.equal(resolveMonsterHostility({ informacoes: { hostilidade: 'Assassino' } }), 'Assassino');
+  assert.equal(resolveMonsterHostility({ informacoes: { comportamento: 'Assassino' } }), 'Assassino');
 });

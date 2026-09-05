@@ -12,7 +12,8 @@
       "informacoes": {
         "historia": "Nas úmidas cavernas subterrâneas, uma poça translúcida aguarda pacientemente no chão de pedra escurecida. Aventureiros incautos frequentemente a confundem com água estagnada até sentirem a queimação ácida corroendo suas botas. Sem olhos ou boca, essa massa gelatinosa se move furtivamente, guiada apenas pelo tremor dos passos alheios. Movida por uma fome silenciosa e implacável, a criatura não morde, mas engolfa e dissolve lentamente tudo o que ousa cruzar seu caminho.",
         "regiao": "Cavernas úmidas, masmorras abandonadas, pântanos escuros e redes de esgoto subterrâneas.",
-        "comportamento": "Paciente e sorrateiro",
+        "comportamento": "Sorrateiro",
+        "hostilidade": "Pacifico",
         "tipo": "Gosma",
         "dificuldade": "Muito Fácil"
       },
@@ -124,6 +125,7 @@
         "historia": "Os goblins possuem grande força. Normalmente por serem seres de pouca inteligência e hábitos selvagens.Os goblins possuem grande força. Normalmente por serem seres de pouca inteligência e hábitos selvagens, por isso existem variações desta mesma espécie",
         "regiao": "Cavernas úmidas, Masmorras abandonadas, Pântanos escuros, Florestas Densas",
         "comportamento": "Agressivo",
+        "hostilidade": "Hostil",
         "tipo": "Humanoide",
         "dificuldade": "Fácil"
       },

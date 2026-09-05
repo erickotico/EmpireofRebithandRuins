@@ -76,6 +76,72 @@ function resolveRewardRarity(reward = {}) {
     return 'Comum';
 }
 
+function normalizeHostilityKey(value) {
+    const raw = typeof value === 'string' ? value.trim() : '';
+    if (!raw) return 'neutro';
+
+    const compact = raw
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z]/g, '');
+
+    const aliases = {
+        pacifico: 'pacifico',
+        passivo: 'pacifico',
+        passifica: 'pacifico',
+        passifico: 'pacifico',
+        agressivo: 'agressivo',
+        hostil: 'hostil',
+        hotil: 'hostil',
+        neutro: 'neutro',
+        neeutro: 'neutro',
+        neutral: 'neutro',
+        normal: 'neutro',
+        assassino: 'assassino',
+        assassin: 'assassino'
+    };
+
+    return aliases[compact] || 'neutro';
+}
+
+function resolveMonsterHostility(monster = {}) {
+    const rawValue = monster?.informacoes?.hostilidade ?? monster?.hostilidade ?? '';
+    const behaviorValue = monster?.informacoes?.comportamento ?? '';
+    const candidates = [rawValue, behaviorValue, 'Neutro'];
+
+    for (const candidate of candidates) {
+        const key = normalizeHostilityKey(candidate);
+        if (key !== 'neutro' || candidate && String(candidate).toLowerCase().includes('neutro')) {
+            const labels = {
+                pacifico: 'Pacífico',
+                agressivo: 'Agressivo',
+                hostil: 'Hostil',
+                neutro: 'Neutro',
+                assassino: 'Assassino'
+            };
+            return labels[key] || 'Neutro';
+        }
+    }
+
+    return 'Neutro';
+}
+
+function sanitizeMonsterData(monsters = []) {
+    return monsters.map(monster => {
+        if (!monster) return monster;
+
+        const normalizedHostility = resolveMonsterHostility(monster);
+        if (monster.informacoes) {
+            monster.informacoes.hostilidade = normalizedHostility;
+        } else {
+            monster.informacoes = { hostilidade: normalizedHostility };
+        }
+
+        return monster;
+    });
+}
+
 // Função para obter chance de drop baseada na raridade
 function getDropChance(rarity) {
     const label = normalizeRarityLabel(rarity);
@@ -111,7 +177,10 @@ if (typeof module !== 'undefined') {
         normalizeRarityKey,
         normalizeRarityLabel,
         resolveRewardRarity,
+        normalizeHostilityKey,
+        resolveMonsterHostility,
         getDropChance,
+        sanitizeMonsterData,
         setupModalCloseHandlers
     };
 }
@@ -128,6 +197,12 @@ if (typeof document !== 'undefined') {
         comum: 'common', incomum: 'uncommon', raro: 'rare', epico: 'epic',
         lendario: 'legendary', deus: 'god', imortal: 'immortal'
     }[key] || key, fallback);
+    const translatedHostility = value => {
+        const key = normalizeHostilityKey(value);
+        return translate({
+            pacifico: 'peaceful', agressivo: 'aggressive', hostil: 'hostile', neutro: 'neutral', assassino: 'assassin'
+        }[key] || 'neutral', resolveMonsterHostility({ hostilidade: value }));
+    };
 
     let monsters = [];
 
@@ -140,12 +215,14 @@ if (typeof document !== 'undefined') {
     function createMonsterCard(monster) {
         const rarityKey = normalizeRarityKey(monster.rarity);
         const rarityLabel = translatedRarity(rarityKey, normalizeRarityLabel(monster.rarity));
+        const hostilityLabel = translatedHostility(monster.informacoes?.hostilidade ?? monster.hostilidade);
 
         return `
             <article class="monster-card ${rarityKey}" data-monster-id="${monster.id}" role="button" tabindex="0" onclick="window.openMonsterModalById(${monster.id})" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.openMonsterModalById(${monster.id}); }">
                 <div class="monster-card-image">
                     <img src="${monster.image}" alt="${monster.name}">
                     <span class="monster-rarity ${rarityKey}">${rarityLabel}</span>
+                    <span class="monster-hostility">${hostilityLabel}</span>
                 </div>
 
                 <div class="monster-card-body">
@@ -268,7 +345,8 @@ if (typeof document !== 'undefined') {
             }).join('') || '<p class="muted">Sem variantes.</p>';
 
         const monsterRarityKey = normalizeRarityKey(monster.rarity);
-        const monsterRarity = normalizeRarityLabel(monster.rarity);
+        const monsterRarity = translatedRarity(monsterRarityKey, normalizeRarityLabel(monster.rarity));
+        const monsterHostility = translatedHostility(monster.informacoes?.hostilidade ?? monster.hostilidade);
 
         return `
             <div class="monster-modal">
@@ -280,9 +358,10 @@ if (typeof document !== 'undefined') {
                         <div class="modal-title">
                             <h2>${monster.name}</h2>
                             <div class="modal-meta">
-                                <span class="modal-level">Level ${monster.level}</span>
+                                <span class="modal-level">${translate('level', 'Level')} ${monster.level}</span>
                                 <div class="modal-stars">${'★'.repeat(monster.stars)}${'☆'.repeat(7 - monster.stars)}</div>
                                 <span class="modal-rarity ${monsterRarityKey}">${monsterRarity}</span>
+                                <span class="modal-hostility">${monsterHostility}</span>
                             </div>
                         </div>
                     </div>
@@ -418,7 +497,7 @@ if (typeof document !== 'undefined') {
         try {
             const response = await fetch('./data/monsterData.json');
             const data = await response.json();
-            monsters = data.monsters;
+            monsters = sanitizeMonsterData(data.monsters || []);
             
             // Coletar tipos únicos divididos
             const allTypes = new Set();

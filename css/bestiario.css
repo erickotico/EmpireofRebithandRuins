@@ -166,6 +166,21 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.35);
 }
 
+.monster-hostility {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 6px;
+    background: rgba(120, 26, 26, 0.88);
+    color: #fff;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
 /* Corpo do card */
 .monster-card-body {
     padding: 0.85rem 1rem 1rem;
@@ -312,7 +327,14 @@
 
 .modal-level { font-size: 0.95rem; color: #fff; opacity: 0.95; }
 .modal-stars { color: #ffd700; }
-.modal-rarity { padding: 0.18rem 0.5rem; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; }
+.modal-rarity,
+.modal-hostility { padding: 0.18rem 0.5rem; border-radius: 6px; font-size: 0.8rem; text-transform: uppercase; }
+
+.modal-hostility {
+    background: rgba(120, 26, 26, 0.88);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
 /* Tabs */
 .modal-tabs {
