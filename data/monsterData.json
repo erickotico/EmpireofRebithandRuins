@@ -2144,6 +2144,446 @@
           "info": "São monstros que morreram em ambientes com auras malignas"
         }
       ]
+    },
+    {
+      "id": 18,
+      "name": "Ogro",
+      "image": "ogro.jpg",
+      "level": 20,
+      "levelMin": 20,
+      "levelMax": 50,
+      "stars": 4,
+      "rarity": "Raro",
+      "informacoes": {
+        "historia": "De aparencia humanoide monstro gigante costumam viver em cavernas, possuem temperamento explosivo demonstrando grande força bruta com pouca sutileza",
+        "regiao": "Cavernas, Florestas",
+        "comportamento": "Agressivo",
+        "hostilidade": "Hostil",
+        "tipo": "humanoid",
+        "dificuldade": "Difícil"
+      },
+      "estatisticas": {
+        "vida": 90,
+        "mana": 5,
+        "forca": 75,
+        "armadura": 45,
+        "agilidade": 15,
+        "inteligencia": 8,
+        "carisma": 5,
+        "percepcao": 15,
+        "maestria": 20,
+        "resistencias": {
+          "fogo": 4,
+          "agua": 4,
+          "terra": 8,
+          "sombra": 3,
+          "luz": 3,
+          "eletrico": 3,
+          "gelo": 5,
+          "veneno": 6
+        }
+      },
+      "habilidades": {
+        "xpGanho": 70,
+        "listaHabilidades": [
+          {
+            "nome": "Golpe Esmagador",
+            "descricao": "Um Golpe lento porem devastador capaz de derrubar o alvo.",
+            "cooldown": 3
+          },
+          {
+            "nome": "Carga Brutal",
+            "descricao": "Corre em linha reta causando um dano massivo e empurrando quem estiver no caminho",
+            "cooldown": 10
+          },
+          {
+            "nome": "Fome Insaciável",
+            "descricao": "Quando o ataque for bem sucessido causa um alto dano no seu alvo curando si mesmo com base no dano causado.",
+            "cooldown": 20
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Bastão",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Olho de Ogro",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Couro de Ogro",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 3
+        },
+        {
+          "item": "Coração de Ogro",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Ogro",
+          "raridades": [
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Ogro da Floresta",
+          "image": "ogrofloresta.jpg",
+          "raridade": "Lendário",
+          "info": "Uma Variante do ogro normal porem vivem em ambientes florestais"
+        },
+        {
+          "name": "Ogro de Lava",
+          "image": "ogrolava.jpg",
+          "raridade": "Lendário",
+          "info": "Uma Variante do ogro normal porem vivem em ambientes de lava"
+        },
+        {
+          "name": "Oni",
+          "image": "oni.jpg",
+          "raridade": "Deus",
+          "info": "Uma Evolução dos ogros, com um grande aumento de poder"
+        },
+        {
+          "name": "Ogro Tormenta",
+          "image": "tormenta.jpg",
+          "raridade": "Deus",
+          "info": "Uma linha evolutiva dos ogros, são maiores e mais espaçosos tendo um maior alcance em seus ataques"
+        },
+        {
+          "name": "Ogro Pigmeu",
+          "image": "pigmeu.jpg",
+          "raridade": "Épico",
+          "info": "Uma evolução menor e mais inteligentes dos ogros, são mais capazes de utilizar magia"
+        },
+        {
+          "name": "Ogro Ogrillon",
+          "image": "ogrillon.jpg",
+          "raridade": "Lendário",
+          "info": "Os ogrillons puxam a maior parte de suas características físicas da linhagem dos orcs, mas com o tamanho massivo e a deformidade de um ogro"
+        },
+        {
+          "name": "Ogro Zombie",
+          "image": "ogrozombie.jpg",
+          "raridade": "Épico",
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        },
+        {
+          "name": "Ogro Corrompido",
+          "image": "ogrocorrompido.jpg",
+          "raridade": "Épico",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Orc",
+      "image": "orc.jpg",
+      "level": 35,
+      "levelMin": 35,
+      "levelMax": 75,
+      "stars": 4,
+      "rarity": "Raro",
+      "informacoes": {
+        "historia": "Com instinto animal e forma humanoide deformada são criaturas realmente forte e suportam qualquer ataque, preferem torturar suas vítimas antes de matá-las de uma forma brutal, essa criatura se encontra em diversas regiões tendo alteração de espécie.",
+        "regiao": "Florestas, Montanhas, Cavernas",
+        "comportamento": "Agressivo",
+        "hostilidade": "Hostil",
+        "tipo": "Humanoid",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 60,
+        "mana": 15,
+        "forca": 55,
+        "armadura": 35,
+        "agilidade": 25,
+        "inteligencia": 15,
+        "carisma": 15,
+        "percepcao": 25,
+        "maestria": 35,
+        "resistencias": {
+          "fogo": 5,
+          "agua": 4,
+          "terra": 6,
+          "sombra": 5,
+          "luz": 3,
+          "eletrico": 4,
+          "gelo": 4,
+          "veneno": 5
+        }
+      },
+      "habilidades": {
+        "xpGanho": 75,
+        "listaHabilidades": [
+          {
+            "nome": "Golpe Brutal",
+            "descricao": "Um Ataque selvagem com armas ou punhos que causa dano massivo a um unico alvo.",
+            "cooldown": 3
+          },
+          {
+            "nome": "Treme Terra",
+            "descricao": "Um golpe poderoso que solta no chão causando uma onda de choque causando atordoamento no alvo.",
+            "cooldown": 10
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Machado Primitivo",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Dente de Orc",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 4
+        },
+        {
+          "item": "Olho de Orc",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Couro de Orc",
+          "raridades": [
+            "Incomum",
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Coração de Orc",
+          "raridades": [
+            "Raro",
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Orc",
+          "raridades": [
+            "Lendário",
+            "Deus"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Ogrillon",
+          "image": "ogrillon.jpg",
+          "raridade": "Raro",
+          "info": "Os ogrillons puxam a maior parte de suas características físicas da linhagem dos orcs, mas com o tamanho massivo e a deformidade de um ogro"
+        },
+        {
+          "name": "Orc da Caverna",
+          "image": "orccaverna.jpg",
+          "raridade": "Raro",
+          "info": "São cegos por conta de falta de iluminação dentro das cavernas, mas são bastante sensiveis aos sons."
+        },
+        {
+          "name": "Orc da Montanha",
+          "image": "orcmontanha.jpg",
+          "raridade": "Raro",
+          "info": "São mais calmos e inteligentes porem territorialistas, podendo utilizar algumas magias de fortificação"
+        },
+        {
+          "name": "Druidas",
+          "image": "druidas.jpg",
+          "raridade": "Lendário",
+          "info": "Uma evolução magica dos orcs podendo utilizar tanto magias ofensivas quanto defensivas."
+        },
+        {
+          "name": "Lord Orc",
+          "image": "lordorc.jpg",
+          "raridade": "Deus",
+          "info": "O rei dos orcs, podendo controlar e invocar diversos orcs, quanto mais poderoso o lord orc mais poderosos serão os seus lacaios que forem invocados."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Urso Gigante",
+      "image": "ursogigante.jpg",
+      "level": 50,
+      "levelMin": 50,
+      "levelMax": 80,
+      "stars": 4,
+      "rarity": "Comum",
+      "informacoes": {
+        "historia": "Grandes e destemidos ursos da raça Helarctus, que sofreram experiências impiedosas pelos humanos criou se uma grande rivalidade com a humanidade, suas enormes garras e dentes brutais rasgam até o aço mais resistente.",
+        "regiao": "Cavernas, Florestas",
+        "comportamento": "Territorialistas",
+        "hostilidade": "Hostil",
+        "tipo": "Animal",
+        "dificuldade": "Normal"
+      },
+      "estatisticas": {
+        "vida": 85,
+        "mana": 10,
+        "forca": 70,
+        "armadura": 40,
+        "agilidade": 20,
+        "inteligencia": 15,
+        "carisma": 10,
+        "percepcao": 30,
+        "maestria": 25,
+        "resistencias": {
+          "fogo": 4,
+          "agua": 5,
+          "terra": 7,
+          "sombra": 3,
+          "luz": 3,
+          "eletrico": 3,
+          "gelo": 7,
+          "veneno": 4
+        }
+      },
+      "habilidades": {
+        "xpGanho": 65,
+        "listaHabilidades": [
+          {
+            "nome": "Golpe de Pata",
+            "descricao": "um Golpe pesado com a pata que pode empurrar e atordoar o alvo.",
+            "cooldown": 2
+          },
+          {
+            "nome": "Investida Furiosa",
+            "descricao": "Corre na direção a um inimigo e desfere um golpe poderoso que quebra escudo.",
+            "cooldown": 5
+          }
+        ]
+      },
+      "recompensas": [
+        {
+          "item": "Pele de Urso",
+          "raridades": [
+            "Comum",
+            "Incomum"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Presas de Urso",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 4
+        },
+        {
+          "item": "Cabeça de Urso",
+          "raridades": [
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Garra de Urso",
+          "raridades": [
+            "Comum",
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Olho de Urso",
+          "raridades": [
+            "Incomum",
+            "Raro"
+          ],
+          "quantidade": 2
+        },
+        {
+          "item": "Coração de Urso",
+          "raridades": [
+            "Raro",
+            "Épico"
+          ],
+          "quantidade": 1
+        },
+        {
+          "item": "Nucleo de Urso",
+          "raridades": [
+            "Épico",
+            "Lendário"
+          ],
+          "quantidade": 1
+        }
+      ],
+      "hasVariantes": true,
+      "listaVariantes": [
+        {
+          "name": "Urso da Caverna",
+          "image": "ursocaverna.jpg",
+          "raridade": "Incomum",
+          "info": "Grandes e pesados ursos que preferem ficar no escuro das cavernas"
+        },
+        {
+          "name": "Urso de Magma",
+          "image": "ursomagma.jpg",
+          "raridade": "Raro",
+          "info": "Vivem em ambientes de lava ou em outra dimensão"
+        },
+        {
+          "name": "Urso Zombie",
+          "image": "ursozombie.jpg",
+          "raridade": "Raro",
+          "info": "São monstros Zombieficados por morrer em ambientes toxicos."
+        },
+        {
+          "name": "Urso Corrompido",
+          "image": "ursocorrompido.jpg",
+          "raridade": "Raro",
+          "info": "São monstros que morreram em ambientes com auras malignas"
+        }
+      ]
     }
   ]
 }
