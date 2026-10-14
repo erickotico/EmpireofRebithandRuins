@@ -27,7 +27,7 @@
         "physicalResistance": 75,
         "magicResistance": 45,
         "criticalChance": 15,
-        "criticalDamage": 40,
+        "criticalDamage": 1.4,
         "posture": 120
       },
       "skills": [
@@ -197,7 +197,7 @@
         "physicalResistance": 60,
         "magicResistance": 20,
         "criticalChance": 25,
-        "criticalDamage": 60,
+        "criticalDamage": 1.6,
         "posture": 130
       },
       "skills": [
@@ -366,7 +366,7 @@
         "physicalResistance": 55,
         "magicResistance": 40,
         "criticalChance": 40,
-        "criticalDamage": 75,
+        "criticalDamage": 1.75,
         "posture": 100
       },
       "skills": [
@@ -535,7 +535,7 @@
         "physicalResistance": 60,
         "magicResistance": 35,
         "criticalChance": 30,
-        "criticalDamage": 65,
+        "criticalDamage": 1.65,
         "posture": 110
       },
       "skills": [
@@ -704,7 +704,7 @@
         "physicalResistance": 40,
         "magicResistance": 30,
         "criticalChance": 50,
-        "criticalDamage": 90,
+        "criticalDamage": 1.9,
         "posture": 100
       },
       "skills": [
@@ -873,7 +873,7 @@
         "physicalResistance": 25,
         "magicResistance": 80,
         "criticalChance": 30,
-        "criticalDamage": 50,
+        "criticalDamage": 1.5,
         "posture": 70
       },
       "skills": [
