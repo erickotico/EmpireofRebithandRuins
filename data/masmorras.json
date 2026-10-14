@@ -1,1 +1,847 @@
-[]
+[
+  {
+    "id": "dungeon-01",
+    "order": 1,
+    "name": {
+      "pt": "Floresta Sussurrante",
+      "en": "Whispering Forest"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-01.jpg",
+    "rank": "H",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Espíritos fracos",
+        "en": "Weak spirits"
+      },
+      {
+        "pt": "Lobos",
+        "en": "Wolves"
+      },
+      {
+        "pt": "Criaturas ilusórias",
+        "en": "Illusory creatures"
+      }
+    ],
+    "monsters": [
+      "wolf"
+    ],
+    "hasBoss": false,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-02",
+    "order": 2,
+    "name": {
+      "pt": "Cripta de Atena",
+      "en": "Crypt of Athena"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-02.jpg",
+    "rank": "G",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Esqueletos",
+        "en": "Skeletons"
+      },
+      {
+        "pt": "Guardiões antigos",
+        "en": "Ancient guardians"
+      },
+      {
+        "pt": "Estátuas vivas",
+        "en": "Living statues"
+      }
+    ],
+    "monsters": [
+      "undead-skeleton"
+    ],
+    "hasBoss": false,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-03",
+    "order": 3,
+    "name": {
+      "pt": "Grutas de Cristal",
+      "en": "Crystal Grottoes"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-03.jpg",
+    "rank": "G",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Slimes de cristal",
+        "en": "Crystal slimes"
+      },
+      {
+        "pt": "Morcegos",
+        "en": "Bats"
+      },
+      {
+        "pt": "Elementais de luz",
+        "en": "Light elementals"
+      }
+    ],
+    "monsters": [
+      "slime"
+    ],
+    "hasBoss": false,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-04",
+    "order": 4,
+    "name": {
+      "pt": "Ruínas do Guardião Antigo",
+      "en": "Ruins of the Ancient Guardian"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-04.jpg",
+    "rank": "F",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Golems",
+        "en": "Golems"
+      },
+      {
+        "pt": "Sentinelas",
+        "en": "Sentinels"
+      },
+      {
+        "pt": "Construtos",
+        "en": "Constructs"
+      }
+    ],
+    "monsters": [
+      "golem"
+    ],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-05",
+    "order": 5,
+    "name": {
+      "pt": "Biblioteca do Conhecimento Proibido",
+      "en": "Library of Forbidden Knowledge"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-05.jpg",
+    "rank": "F",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Magos corrompidos",
+        "en": "Corrupted mages"
+      },
+      {
+        "pt": "Livros vivos",
+        "en": "Living books"
+      },
+      {
+        "pt": "Sombras",
+        "en": "Shadows"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": false,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-06",
+    "order": 6,
+    "name": {
+      "pt": "Labirinto de Minos",
+      "en": "Labyrinth of Minos"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-06.jpg",
+    "rank": "E",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Minotauros menores",
+        "en": "Lesser minotaurs"
+      },
+      {
+        "pt": "Bestas",
+        "en": "Beasts"
+      },
+      {
+        "pt": "Armadilhas vivas",
+        "en": "Living traps"
+      }
+    ],
+    "monsters": [
+      "minotaur"
+    ],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-07",
+    "order": 7,
+    "name": {
+      "pt": "Templo Submerso",
+      "en": "Sunken Temple"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-07.jpg",
+    "rank": "D",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Criaturas aquáticas",
+        "en": "Aquatic creatures"
+      },
+      {
+        "pt": "Serpentes marinhas",
+        "en": "Sea serpents"
+      },
+      {
+        "pt": "Espectros",
+        "en": "Specters"
+      }
+    ],
+    "monsters": [
+      "serpent",
+      "undead-specter"
+    ],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-08",
+    "order": 8,
+    "name": {
+      "pt": "Torre do Julgamento",
+      "en": "Tower of Judgment"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-08.jpg",
+    "rank": "D",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Cavaleiros espectrais",
+        "en": "Spectral knights"
+      },
+      {
+        "pt": "Juízes mágicos",
+        "en": "Magic judges"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-09",
+    "order": 9,
+    "name": {
+      "pt": "Domínio do Rei Esquecido",
+      "en": "Domain of the Forgotten King"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-09.jpg",
+    "rank": "C",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Soldados amaldiçoados",
+        "en": "Cursed soldiers"
+      },
+      {
+        "pt": "Elites",
+        "en": "Elites"
+      },
+      {
+        "pt": "Espectros",
+        "en": "Specters"
+      }
+    ],
+    "monsters": [
+      "undead-specter"
+    ],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-10",
+    "order": 10,
+    "name": {
+      "pt": "Abismo das Almas",
+      "en": "Abyss of Souls"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-10.jpg",
+    "rank": "C",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Almas penadas",
+        "en": "Lost souls"
+      },
+      {
+        "pt": "Demônios menores",
+        "en": "Lesser demons"
+      },
+      {
+        "pt": "Sombras",
+        "en": "Shadows"
+      }
+    ],
+    "monsters": [
+      "demon"
+    ],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-11",
+    "order": 11,
+    "name": {
+      "pt": "Fenda do Submundo",
+      "en": "Underworld Rift"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-11.jpg",
+    "rank": "B",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Demônios",
+        "en": "Demons"
+      },
+      {
+        "pt": "Infernais",
+        "en": "Infernals"
+      },
+      {
+        "pt": "Invocadores",
+        "en": "Summoners"
+      }
+    ],
+    "monsters": [
+      "demon"
+    ],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-12",
+    "order": 12,
+    "name": {
+      "pt": "Jardim das Realidades Partidas",
+      "en": "Garden of Shattered Realities"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-12.jpg",
+    "rank": "B",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Mutantes",
+        "en": "Mutants"
+      },
+      {
+        "pt": "Distorções vivas",
+        "en": "Living distortions"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-13",
+    "order": 13,
+    "name": {
+      "pt": "Labirinto Demoníaco",
+      "en": "Demonic Labyrinth"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-13.jpg",
+    "rank": "A",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Demônios de elite",
+        "en": "Elite demons"
+      },
+      {
+        "pt": "Bestas infernais",
+        "en": "Infernal beasts"
+      }
+    ],
+    "monsters": [
+      "demon"
+    ],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-14",
+    "order": 14,
+    "name": {
+      "pt": "Templo da Morte Silenciosa",
+      "en": "Temple of Silent Death"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-14.jpg",
+    "rank": "A",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Assassinos espectrais",
+        "en": "Spectral assassins"
+      },
+      {
+        "pt": "Sombras rápidas",
+        "en": "Swift shadows"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-15",
+    "order": 15,
+    "name": {
+      "pt": "Pico dos Deuses Caídos",
+      "en": "Peak of the Fallen Gods"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-15.jpg",
+    "rank": "S",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Semideuses corrompidos",
+        "en": "Corrupted demigods"
+      },
+      {
+        "pt": "Celestiais",
+        "en": "Celestials"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-16",
+    "order": 16,
+    "name": {
+      "pt": "Domínio dos Imortais",
+      "en": "Domain of the Immortals"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-16.jpg",
+    "rank": "S",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Guardiões divinos",
+        "en": "Divine guardians"
+      },
+      {
+        "pt": "Entidades superiores",
+        "en": "Higher entities"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-17",
+    "order": 17,
+    "name": {
+      "pt": "Portal do Fim Infinito",
+      "en": "Portal of the Endless End"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-17.jpg",
+    "rank": "SS",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Criaturas dimensionais",
+        "en": "Dimensional creatures"
+      },
+      {
+        "pt": "Hordas infinitas",
+        "en": "Endless hordes"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-18",
+    "order": 18,
+    "name": {
+      "pt": "Palácio das Ilusões Infinitas",
+      "en": "Palace of Endless Illusions"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-18.jpg",
+    "rank": "SS",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Ilusionistas",
+        "en": "Illusionists"
+      },
+      {
+        "pt": "Clones",
+        "en": "Clones"
+      },
+      {
+        "pt": "Entidades mentais",
+        "en": "Mental entities"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-19",
+    "order": 19,
+    "name": {
+      "pt": "Labirinto do Destino Fragmentado",
+      "en": "Labyrinth of Shattered Fate"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-19.jpg",
+    "rank": "SSS",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Criaturas do tempo e do espaço",
+        "en": "Creatures of time and space"
+      },
+      {
+        "pt": "Paradoxos",
+        "en": "Paradoxes"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  },
+  {
+    "id": "dungeon-20",
+    "order": 20,
+    "name": {
+      "pt": "Abismo Primordial",
+      "en": "Primordial Abyss"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "image": "img/masmorras/dungeon-20.jpg",
+    "rank": "SSS+",
+    "floors": null,
+    "enemies": [
+      {
+        "pt": "Primordiais",
+        "en": "Primordials"
+      },
+      {
+        "pt": "Horrores cósmicos",
+        "en": "Cosmic horrors"
+      }
+    ],
+    "monsters": [],
+    "hasBoss": true,
+    "boss": {
+      "name": {
+        "pt": "",
+        "en": ""
+      },
+      "description": {
+        "pt": "",
+        "en": ""
+      },
+      "image": ""
+    },
+    "hiddenRooms": []
+  }
+]

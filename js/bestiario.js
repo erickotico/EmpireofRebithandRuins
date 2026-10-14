@@ -1,563 +1,450 @@
-/*Lista de Raridade de monstros
-    Comum
-    Incomum
-    Raro
-    Épico
-    Lendário
-    Deus
-    Imortal
-
-
-------- Elementos ------- 
-    "fogo"
-    "agua"  
-    "terra"
-    "sombra"
-    "luz"
-    "eletrico"
-    "gelo"
-    "veneno"
-
-*/
-
-const RARITY_LABELS = {
-    comum: 'Comum',
-    incomum: 'Incomum',
-    raro: 'Raro',
-    epico: 'Épico',
-    lendario: 'Lendário',
-    deus: 'Deus',
-    imortal: 'Imortal'
-};
-
-function normalizeRarityKey(value) {
-    const raw = typeof value === 'string' ? value.trim() : '';
-    if (!raw) return 'comum';
-
-    const compact = raw
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-        .replace(/[^a-z]/g, '');
-
-    const aliases = {
-        comum: 'comum',
-        incomum: 'incomum',
-        raro: 'raro',
-        epico: 'epico',
-        lendario: 'lendario',
-        deus: 'deus',
-        divindade: 'deus',
-        imortal: 'imortal'
-    };
-
-    return aliases[compact] || 'comum';
-}
-
-function normalizeRarityLabel(value) {
-    const key = normalizeRarityKey(value);
-    return RARITY_LABELS[key] || 'Comum';
-}
-
-function resolveRewardRarity(reward = {}) {
-    const candidates = [];
-
-    if (Array.isArray(reward.raridades)) {
-        candidates.push(...reward.raridades);
-    }
-    if (reward.raridade) candidates.push(reward.raridade);
-    if (reward.rarity) candidates.push(reward.rarity);
-
-    for (const candidate of candidates) {
-        const label = normalizeRarityLabel(candidate);
-        if (label) return label;
-    }
-
-    return 'Comum';
-}
-
-function normalizeHostilityKey(value) {
-    const raw = typeof value === 'string' ? value.trim() : '';
-    if (!raw) return 'neutro';
-
-    const compact = raw
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-        .replace(/[^a-z]/g, '');
-
-    const aliases = {
-        pacifico: 'pacifico',
-        passivo: 'pacifico',
-        passifica: 'pacifico',
-        passifico: 'pacifico',
-        agressivo: 'agressivo',
-        hostil: 'hostil',
-        hotil: 'hostil',
-        neutro: 'neutro',
-        neeutro: 'neutro',
-        neutral: 'neutro',
-        normal: 'neutro',
-        assassino: 'assassino',
-        assassin: 'assassino'
-    };
-
-    return aliases[compact] || 'neutro';
-}
-
-function resolveMonsterHostility(monster = {}) {
-    const rawValue = monster?.informacoes?.hostilidade ?? monster?.hostilidade ?? '';
-    const behaviorValue = monster?.informacoes?.comportamento ?? '';
-    const candidates = [rawValue, behaviorValue, 'Neutro'];
-
-    for (const candidate of candidates) {
-        const key = normalizeHostilityKey(candidate);
-        if (key !== 'neutro' || candidate && String(candidate).toLowerCase().includes('neutro')) {
-            const labels = {
-                pacifico: 'Pacífico',
-                agressivo: 'Agressivo',
-                hostil: 'Hostil',
-                neutro: 'Neutro',
-                assassino: 'Assassino'
-            };
-            return labels[key] || 'Neutro';
-        }
-    }
-
-    return 'Neutro';
-}
-
-function sanitizeMonsterData(monsters = []) {
-    return monsters.map(monster => {
-        if (!monster) return monster;
-
-        const normalizedHostility = resolveMonsterHostility(monster);
-        if (monster.informacoes) {
-            monster.informacoes.hostilidade = normalizedHostility;
-        } else {
-            monster.informacoes = { hostilidade: normalizedHostility };
-        }
-
-        return monster;
-    });
-}
-
-// Função para obter chance de drop baseada na raridade
-function getDropChance(rarity) {
-    const label = normalizeRarityLabel(rarity);
-    const chances = {
-        'Comum': 100,
-        'Incomum': 75,
-        'Raro': 50,
-        'Épico': 35,
-        'Lendário': 25,
-        'Deus': 10,
-        'Imortal': 5
-    };
-    return chances[label] || 0;
-}
-
-function setupModalCloseHandlers(modal, onClose) {
-    if (!modal || typeof onClose !== 'function') return;
-
-    modal.addEventListener('click', (event) => {
-        const target = event.target;
-        const clickedCloseButton = target && typeof target.closest === 'function'
-            ? target.closest('.modal-close')
-            : null;
-
-        if (target === modal || clickedCloseButton) {
-            onClose();
-        }
-    });
-}
-
-if (typeof module !== 'undefined') {
-    module.exports = {
-        normalizeRarityKey,
-        normalizeRarityLabel,
-        resolveRewardRarity,
-        normalizeHostilityKey,
-        resolveMonsterHostility,
-        getDropChance,
-        sanitizeMonsterData,
-        setupModalCloseHandlers
-    };
-}
-
-if (typeof document !== 'undefined') {
+// Bestiário: monstros, variantes (cada uma com card próprio), estados e elementos.
+// Dados: data/monsterData.json + data/gameRules.json. Textos nos dois idiomas.
 (() => {
-    const monsterGrid = document.querySelector('.monster-grid');
-    if (!monsterGrid) return;
+    const G = window.GameData;
+    const { esc, t, txt } = G;
 
-    const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
-        ? window.getSiteTranslation(key, fallback)
-        : fallback;
-    const translatedRarity = (key, fallback) => translate({
-        comum: 'common', incomum: 'uncommon', raro: 'rare', epico: 'epic',
-        lendario: 'legendary', deus: 'god', imortal: 'immortal'
-    }[key] || key, fallback);
-    const translatedHostility = value => {
-        const key = normalizeHostilityKey(value);
-        return translate({
-            pacifico: 'peaceful', agressivo: 'aggressive', hostil: 'hostile', neutro: 'neutral', assassino: 'assassin'
-        }[key] || 'neutral', resolveMonsterHostility({ hostilidade: value }));
-    };
+    const grid = document.querySelector('.monster-grid');
+    if (!grid) return;
 
+    const searchInput = document.getElementById('searchMonster');
+    const typeSelect = document.getElementById('filterType');
+    const elementSelect = document.getElementById('filterElement');
+    const variantsToggle = document.getElementById('showVariants');
+    const countLabel = document.getElementById('monsterCount');
+
+    let rules = null;
     let monsters = [];
+    let byId = {};
 
-    // Função para criar estrelas
-    function createStars(count) {
-        return `<div class="monster-stars">${'★'.repeat(count)}${'☆'.repeat(7 - count)}</div>`;
+    const CARD_STATS = ['health', 'physicalPower', 'magicPower', 'armor'];
+
+    function statLabel(attributeId) {
+        return G.labelOf(rules, 'attributes', attributeId);
     }
 
-    // Função para renderizar card
-    function createMonsterCard(monster) {
-        const rarityKey = normalizeRarityKey(monster.rarity);
-        const rarityLabel = translatedRarity(rarityKey, normalizeRarityLabel(monster.rarity));
-        const hostilityLabel = translatedHostility(monster.informacoes?.hostilidade ?? monster.hostilidade);
+    function statValue(attributeId, value) {
+        return G.formatStat(attributeId, value, window.SiteI18n?.lang) ?? '—';
+    }
+
+    function levelText(monster) {
+        if (monster.levelMin == null) return '';
+        const range = monster.levelMax != null && monster.levelMax !== monster.levelMin
+            ? `${monster.levelMin}–${monster.levelMax}`
+            : `${monster.levelMin}`;
+        return `${t('level', 'Level')} ${range}`;
+    }
+
+    function starsHtml(count) {
+        if (!count) return '';
+        return `<span class="monster-stars" aria-label="${count}/7">${'★'.repeat(count)}${'☆'.repeat(Math.max(0, 7 - count))}</span>`;
+    }
+
+    function stateBadges(monster) {
+        return (monster.states || [])
+            .map((stateId) => G.findById(rules.monsterStates, stateId))
+            .filter(Boolean)
+            .map((state) => `<span class="state-badge" title="${esc(txt(state.name))}">${state.icon}</span>`)
+            .join('');
+    }
+
+    function createCard(raw) {
+        const monster = G.resolveMonster(raw, byId);
+        const base = monster.variantOf ? byId[monster.variantOf] : null;
+        const hostility = G.labelOf(rules, 'hostilities', monster.hostility);
+        const stats = monster.stats || {};
 
         return `
-            <article class="monster-card ${rarityKey}" data-monster-id="${monster.id}" role="button" tabindex="0" onclick="window.openMonsterModalById(${monster.id})" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.openMonsterModalById(${monster.id}); }">
+            <article class="monster-card${base ? ' is-variant' : ''}" data-monster-id="${esc(monster.id)}" role="button" tabindex="0"
+                aria-label="${esc(txt(monster.name))}">
                 <div class="monster-card-image">
-                    <img src="${monster.image}" alt="${monster.name}">
-                    <span class="monster-rarity ${rarityKey}">${rarityLabel}</span>
-                    <span class="monster-hostility">${hostilityLabel}</span>
+                    ${G.renderImage(monster.image, txt(monster.name))}
+                    ${G.rarityBadge(rules, monster.rarity, 'monster-rarity')}
+                    ${hostility ? `<span class="monster-hostility hostility-${esc(monster.hostility)}">${esc(hostility)}</span>` : ''}
+                    <div class="monster-card-element">${G.elementBadge(rules, monster.element)}</div>
                 </div>
-
                 <div class="monster-card-body">
-                    <div class="monster-basic-left">
-                        <h3 class="monster-name">${monster.name}</h3>
-                        <div class="monster-level">${translate('level', 'Level')} ${monster.level}</div>
+                    <div class="monster-basic-info">
+                        <div>
+                            <h3 class="monster-name">${esc(txt(monster.name))}</h3>
+                            ${base ? `<div class="monster-variant-of">${esc(t('variantOf', 'Variant of'))} ${esc(txt(base.name))}</div>` : ''}
+                            <div class="monster-level">${esc(levelText(monster))}</div>
+                        </div>
+                        <div class="monster-card-side">
+                            ${starsHtml(monster.stars)}
+                            <div class="monster-states">${stateBadges(monster)}</div>
+                        </div>
                     </div>
-
-                    <div class="monster-basic-right">
-                        <div class="monster-stars">${'★'.repeat(monster.stars)}${'☆'.repeat(7 - monster.stars)}</div>
-                    </div>
-
-                    <div class="monster-location">${monster.informacoes.regiao}</div>
-
-                    <div class="monster-stats-row" aria-hidden="false">
-                        <div class="stat-block">
-                            <span class="stat-label">HP</span>
-                            <span class="stat-value">${monster.estatisticas.vida}</span>
-                        </div>
-                        <div class="stat-block">
-                            <span class="stat-label">${translate('strength', 'Strength')}</span>
-                            <span class="stat-value">${monster.estatisticas.forca}</span>
-                        </div>
-                        <div class="stat-block">
-                            <span class="stat-label">${translate('agility', 'Agility')}</span>
-                            <span class="stat-value">${monster.estatisticas.agilidade}</span>
-                        </div>
-                        <div class="stat-block">
-                            <span class="stat-label">${translate('armor', 'Armor')}</span>
-                            <span class="stat-value">${monster.estatisticas.armadura}</span>
-                        </div>
+                    ${txt(monster.region) ? `<div class="monster-location">${esc(txt(monster.region))}</div>` : ''}
+                    <div class="monster-stats-row">
+                        ${CARD_STATS.map((id) => `
+                            <div class="stat-block">
+                                <span class="stat-label">${esc(statLabel(id))}</span>
+                                <span class="stat-value">${esc(statValue(id, stats[id]))}</span>
+                            </div>`).join('')}
                     </div>
                 </div>
             </article>
         `;
     }
 
-    // Status de resistência
-    function getResistanceIcon(value) {
-        const icons = {
-            'muito_forte': '<span class="resistance-icon muito-forte">⯅⯅</span>',
-            'forte': '<span class="resistance-icon forte">⯅</span>',
-            'neutro': '<span class="resistance-icon neutro">−</span>',
-            'fraco': '<span class="resistance-icon fraco">⯆</span>',
-            'muito_fraco': '<span class="resistance-icon muito-fraco">⯆⯆</span>'
-        };
-        return icons[value] || '';
-    }
-
-    function createMonsterModal(monster) {
-        const baseTabs = [
-            { key: 'info', label: translate('informationTab', 'Information') },
-            { key: 'stats', label: translate('statistics', 'Statistics') },
-            { key: 'skills', label: translate('skills', 'Skills') },
-            { key: 'rewards', label: translate('rewards', 'Rewards') }
-        ];
-
-        // Extras dinâmicos
-        const extraTabs = [];
-        
-        // Verifica se tem variantes
-        if (monster.hasVariantes) {
-            extraTabs.push({ key: 'variantes', label: translate('variants', 'Variants') });
-        }
-
-        const allTabs = [...baseTabs, ...extraTabs];
-
-        // Criar html dos botões
-        const tabsHtml = allTabs.map((t, i) => `<button class="tab-btn ${i === 0 ? 'active' : ''}" data-tab="${t.key}">${t.label}</button>`).join('');
-
-        // Resistências, skills, rewards
-        const resistenciasHtml = Object.entries(monster.estatisticas.resistencias || {})
-            .filter(([, v]) => v && v !== 'neutro')
-            .map(([tipo, valor]) => `
-                <div class="resistance-row">
-                    <span class="resistance-type">${tipo}</span>
-                    ${getResistanceIcon(valor)}
-                </div>
-            `).join('') || '';
-
-        const skillsHtml = (monster.habilidades?.listaHabilidades || []).map(skill => `
-            <div class="skill-item">
-                <h4 class="skill-name">${skill.nome}</h4>
-                <p class="skill-desc">${skill.descricao}</p>
-                <div class="skill-cd">Cooldown: ${skill.cooldown}</div>
-            </div>
-        `).join('') || '<p class="muted">Nenhuma habilidade listada.</p>';
-
-        const rewardsHtml = (monster.recompensas || []).map(r => {
-            const rewardRarity = resolveRewardRarity(r);
-            const rewardClass = normalizeRarityKey(rewardRarity);
-            const translatedRewardRarity = translatedRarity(rewardClass, rewardRarity);
-
-            return `
-            <div class="reward-item" data-rarity="${rewardClass}">
-                <span class="reward-name">${r.item}</span>
-                <span class="reward-rarity ${rewardClass}">${translatedRewardRarity}</span>
-                <span class="reward-chance">${getDropChance(rewardRarity)}%</span>
-                <span class="reward-qty">${translate('quantity', 'Qty')}: ${r.quantidade}</span>
+    // ---------- Modal ----------
+    function matchupsHtml(elementId) {
+        if (elementId === 'family') return `<p class="muted">${esc(t('familyNote'))}</p>`;
+        const element = G.findById(rules.elements, elementId);
+        if (!element) return '';
+        const { strong, weak } = G.getMatchups(rules, elementId);
+        const list = (ids) => ids.map((id) => G.elementBadge(rules, id)).join(' ') || '—';
+        return `
+            <div class="matchups">
+                <div class="matchup-row"><span class="matchup-label">${esc(t('strongAgainst'))}</span><span>${list(strong)}</span></div>
+                <div class="matchup-row"><span class="matchup-label">${esc(t('weakAgainst'))}</span><span>${list(weak)}</span></div>
             </div>
         `;
-        }).join('') || '<p class="muted">Nenhuma recompensa listada.</p>';
+    }
 
-        // Variantes html (lista)
-        const variantesHtml = (monster.listaVariantes || [])
-            .map(v => {
-                const variantClass = normalizeRarityKey(v.raridade);
-                const variantRarity = translatedRarity(variantClass, normalizeRarityLabel(v.raridade));
-                const rarityLabel = v.raridade ? `<span class="variant-rarity ${variantClass}">${variantRarity}</span>` : '';
-                return `
-                <div class="variant-card ${variantClass}">
-                    <div class="variant-image"><img src="${v.image}" alt="${v.name}"></div>
-                    <div class="variant-info">
-                        <h4>${v.name}</h4>
-                        ${rarityLabel}
-                        <p>${v.info || ''}</p>
+    let cachedMaxima = null;
+    function maxStats() {
+        if (cachedMaxima) return cachedMaxima;
+        cachedMaxima = {};
+        monsters.forEach((monster) => {
+            Object.entries(monster.stats || {}).forEach(([key, value]) => {
+                if (typeof value === 'number') cachedMaxima[key] = Math.max(cachedMaxima[key] || 0, value);
+            });
+        });
+        return cachedMaxima;
+    }
+
+    function statsTabHtml(monster) {
+        const base = monster.variantOf ? byId[monster.variantOf] : null;
+        const stats = monster.stats;
+        const source = monster.inherited.stats ? base?.statsNote : monster.statsNote;
+        let note;
+        if (!stats) note = t('statsPending');
+        else if (monster.inherited.stats && base) note = t('statsInherited', '', { base: txt(base.name) });
+        else if (source === 'unreal') note = t('statsUnreal');
+        else note = t('statsConverted');
+
+        const maxima = maxStats();
+        const rows = stats ? rules.attributes.map((attribute) => {
+            const value = stats[attribute.id];
+            const shown = G.formatStat(attribute.id, value, window.SiteI18n?.lang);
+            const percent = shown && maxima[attribute.id] ? Math.round((Number(value) / maxima[attribute.id]) * 100) : 0;
+            return `
+                <div class="stat-bar">
+                    <div class="stat-bar-head">
+                        <span class="stat-name">${esc(txt(attribute.name))}</span>
+                        <span class="stat-number${shown ? '' : ' is-pending'}">${esc(shown ?? t('toBeDefined'))}</span>
                     </div>
-                </div>
-            `;
-            }).join('') || '<p class="muted">Sem variantes.</p>';
+                    <div class="stat-progress"><div class="stat-fill" style="width:${percent}%"></div></div>
+                </div>`;
+        }).join('') : '';
 
-        const monsterRarityKey = normalizeRarityKey(monster.rarity);
-        const monsterRarity = translatedRarity(monsterRarityKey, normalizeRarityLabel(monster.rarity));
-        const monsterHostility = translatedHostility(monster.informacoes?.hostilidade ?? monster.hostilidade);
+        return `
+            <p class="stats-note">${esc(note)}</p>
+            <div class="stats-container">${rows}</div>
+            <div class="resistances">
+                <h4>${esc(t('element'))}: ${G.elementBadge(rules, monster.element)}</h4>
+                ${matchupsHtml(monster.element)}
+            </div>
+        `;
+    }
+
+    function inheritedNote(monster, key) {
+        const base = monster.variantOf ? byId[monster.variantOf] : null;
+        return monster.inherited[key] && base
+            ? `<p class="inherited-note">${esc(t('inheritedFrom', '', { base: txt(base.name) }))}</p>`
+            : '';
+    }
+
+    function skillsTabHtml(monster) {
+        const skills = (monster.skills || []).map((skill) => `
+            <div class="skill-item">
+                <h4 class="skill-name">${esc(txt(skill.name))}</h4>
+                ${txt(skill.description) ? `<p class="skill-desc">${esc(txt(skill.description))}</p>` : ''}
+                ${skill.cooldown != null ? `<div class="skill-cd">${esc(t('cooldown'))}: ${esc(skill.cooldown)} s</div>` : ''}
+            </div>`).join('') || `<p class="muted">${esc(t('noSkills'))}</p>`;
+        return `
+            ${monster.xp != null ? `<div class="xp-info">${esc(t('xpGained'))}: ${esc(monster.xp)}</div>` : ''}
+            ${inheritedNote(monster, 'skills')}
+            <div class="skills-list">${skills}</div>
+        `;
+    }
+
+    function rewardsTabHtml(monster) {
+        const drops = monster.drops || [];
+        if (!drops.length) return `<p class="muted">${esc(t('noRewards'))}</p>`;
+        const rarityOptions = rules.rarities
+            .filter((rarity) => drops.some((drop) => (drop.rarities || []).includes(rarity.id)))
+            .map((rarity) => `<option value="${esc(rarity.id)}">${esc(txt(rarity.name))}</option>`).join('');
+        const items = drops.map((drop) => `
+            <div class="reward-item" data-rarities="${esc((drop.rarities || []).join(' '))}">
+                <span class="reward-name">${esc(txt(drop.item))}</span>
+                <span class="reward-rarities">${(drop.rarities || []).map((id) => G.rarityBadge(rules, id, 'rarity-badge--small')).join('')}</span>
+                <span class="reward-qty">${drop.quantity != null ? `${esc(t('quantity'))}: ${esc(drop.quantity)}` : ''}</span>
+            </div>`).join('');
+        return `
+            ${inheritedNote(monster, 'drops')}
+            ${rarityOptions ? `
+            <div class="rarity-filter">
+                <label for="rarity-select">${esc(t('filterRarity'))}:</label>
+                <select id="rarity-select">
+                    <option value="all">${esc(t('allRarities'))}</option>
+                    ${rarityOptions}
+                </select>
+            </div>` : ''}
+            <div class="rewards-list">${items}</div>
+        `;
+    }
+
+    function variantsTabHtml(monster) {
+        const variants = monsters.filter((other) => other.variantOf === monster.id);
+        if (!variants.length) return `<p class="muted">${esc(t('noVariants'))}</p>`;
+        return `
+            ${monster.element === 'family' ? `<p class="muted">${esc(t('familyNote'))}</p>` : ''}
+            <div class="variant-list">
+                ${variants.map((variant) => `
+                    <button type="button" class="variant-card" data-open-monster="${esc(variant.id)}">
+                        <div class="variant-image">${G.renderImage(variant.image, txt(variant.name))}</div>
+                        <div class="variant-info">
+                            <h4>${esc(txt(variant.name))}</h4>
+                            <div class="variant-badges">${G.rarityBadge(rules, variant.rarity, 'rarity-badge--small')} ${G.elementBadge(rules, variant.element, 'element-badge--small')}</div>
+                            ${txt(variant.lore) ? `<p>${esc(txt(variant.lore))}</p>` : ''}
+                        </div>
+                    </button>`).join('')}
+            </div>
+        `;
+    }
+
+    function infoTabHtml(monster) {
+        const base = monster.variantOf ? byId[monster.variantOf] : null;
+        const types = (monster.types || []).map((id) => G.labelOf(rules, 'monsterTypes', id)).filter(Boolean).join(', ');
+        const states = (monster.states || []).map((id) => G.findById(rules.monsterStates, id)).filter(Boolean);
+        const levels = levelText(monster);
+        const info = [
+            [t('region'), txt(monster.region)],
+            [t('behavior'), txt(monster.behavior)],
+            [t('type'), types],
+            [t('difficulty'), G.labelOf(rules, 'difficulties', monster.difficulty)],
+            [t('hostility'), G.labelOf(rules, 'hostilities', monster.hostility)],
+            [t('levels'), levels ? levels.slice(t('level', 'Level').length + 1) : '']
+        ].filter(([, value]) => value);
+
+        return `
+            ${base ? `<p class="variant-of-link">${esc(t('variantOf'))} <button type="button" class="link-button" data-open-monster="${esc(base.id)}">${esc(txt(base.name))}</button></p>` : ''}
+            ${txt(monster.lore) ? `<p class="monster-history">${esc(txt(monster.lore))}</p>` : ''}
+            <div class="info-grid">
+                ${info.map(([label, value]) => `<div class="info-item"><span class="info-label">${esc(label)}</span><span>${esc(value)}</span></div>`).join('')}
+            </div>
+            ${states.length ? `
+            <div class="modal-states">
+                <h4>${esc(t('possibleStates'))}</h4>
+                ${states.map((state) => `<div class="state-row"><span class="state-icon">${state.icon}</span><div><strong>${esc(txt(state.name))}</strong><p>${esc(txt(state.description))}</p></div></div>`).join('')}
+            </div>` : ''}
+        `;
+    }
+
+    function createModal(monster) {
+        const hasVariants = monsters.some((other) => other.variantOf === monster.id);
+        const tabs = [
+            ['info', t('informationTab', 'Information')],
+            ['stats', t('attributes', 'Attributes')],
+            ['skills', t('skills', 'Skills')],
+            ['rewards', t('rewards', 'Rewards')],
+            ...(hasVariants ? [['variants', t('variants', 'Variants')]] : [])
+        ];
+        const hostility = G.labelOf(rules, 'hostilities', monster.hostility);
+        const panels = {
+            info: infoTabHtml(monster),
+            stats: statsTabHtml(monster),
+            skills: skillsTabHtml(monster),
+            rewards: rewardsTabHtml(monster),
+            variants: hasVariants ? variantsTabHtml(monster) : ''
+        };
 
         return `
             <div class="monster-modal">
-                <div class="modal-content" role="dialog" aria-modal="true" aria-label="${monster.name}">
-                    <button class="modal-close" aria-label="Fechar">×</button>
-
+                <div class="modal-content" role="dialog" aria-modal="true" aria-label="${esc(txt(monster.name))}">
+                    <button type="button" class="modal-close" aria-label="${esc(t('close', 'Close'))}">×</button>
                     <div class="modal-header">
-                        <img src="${monster.image}" alt="${monster.name}">
+                        ${G.renderImage(monster.image, txt(monster.name))}
                         <div class="modal-title">
-                            <h2>${monster.name}</h2>
+                            <h2>${esc(txt(monster.name))}</h2>
                             <div class="modal-meta">
-                                <span class="modal-level">${translate('level', 'Level')} ${monster.level}</span>
-                                <div class="modal-stars">${'★'.repeat(monster.stars)}${'☆'.repeat(7 - monster.stars)}</div>
-                                <span class="modal-rarity ${monsterRarityKey}">${monsterRarity}</span>
-                                <span class="modal-hostility">${monsterHostility}</span>
+                                ${levelText(monster) ? `<span class="modal-level">${esc(levelText(monster))}</span>` : ''}
+                                ${starsHtml(monster.stars)}
+                                ${G.rarityBadge(rules, monster.rarity)}
+                                ${hostility ? `<span class="modal-hostility hostility-${esc(monster.hostility)}">${esc(hostility)}</span>` : ''}
+                                ${G.elementBadge(rules, monster.element)}
                             </div>
                         </div>
                     </div>
-
-                    <div class="modal-tabs">${tabsHtml}</div>
-
+                    <div class="modal-tabs" role="tablist">
+                        ${tabs.map(([key, label], index) => `<button type="button" class="tab-btn${index === 0 ? ' active' : ''}" role="tab" aria-selected="${index === 0}" data-tab="${key}">${esc(label)}</button>`).join('')}
+                    </div>
                     <div class="modal-body">
-                        <div class="tab-content info active">
-                            <p class="monster-history">${monster.informacoes.historia}</p>
-                            <div class="info-grid">
-                                <div class="info-item"><span class="info-label">Região:</span><span>${monster.informacoes.regiao}</span></div>
-                                <div class="info-item"><span class="info-label">Comportamento:</span><span>${monster.informacoes.comportamento}</span></div>
-                                <div class="info-item"><span class="info-label">Tipo:</span><span>${monster.informacoes.tipo}</span></div>
-                                <div class="info-item"><span class="info-label">Dificuldade:</span><span>${monster.informacoes.dificuldade}</span></div>
-                            </div>
-                        </div>
-
-                        <div class="tab-content stats">
-                            <h3 style="color: #fff; margin-bottom: 20px; font-size: 20px;">${translate('statistics', 'Statistics')}</h3>
-                            <div class="stats-container">
-                                ${Object.entries(monster.estatisticas).filter(([key]) => key !== 'resistencias').map(([key, value]) => `
-                                    <div class="stat-bar" style="margin-bottom: 15px;">
-                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                                            <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
-                                            <span class="stat-value" style="font-weight: 600; color: #fff;">${value}</span>
-                                        </div>
-                                        <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
-                                            <div class="stat-fill" style="width: ${value}%; height: 100%; background: #fff; transition: width 0.3s;"></div>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <div class="resistances">
-                                <h4>${translate('resistances', 'Resistances and Weaknesses')}</h4>
-                                <div class="resistances-grid">
-                                    ${resistenciasHtml || '<p class="muted">Neutro em todos os atributos.</p>'}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-content skills">
-                            <div class="xp-info">${translate('xpGained', 'XP gained on defeat')}: ${monster.habilidades?.xpGanho ?? 0}</div>
-                            <div class="skills-list">${skillsHtml}</div>
-                        </div>
-
-                        <div class="tab-content rewards">
-                            <div class="rarity-filter">
-                                <label for="rarity-select">${translate('filterRarity', 'Filter by rarity')}:</label>
-                                <select id="rarity-select">
-                                    <option value="all">${translate('allRarities', 'All rarities')}</option>
-                                    <option value="comum">Comum</option>
-                                    <option value="incomum">Incomum</option>
-                                    <option value="raro">Raro</option>
-                                    <option value="epico">Épico</option>
-                                    <option value="lendario">Lendário</option>
-                                    <option value="deus">Deus</option>
-                                    <option value="imortal">Imortal</option>
-                                </select>
-                            </div>
-                            <div class="rewards-list">${rewardsHtml}</div>
-                        </div>
-
-                        <div class="tab-content variantes">
-                            ${variantesHtml}
-                        </div>
+                        ${tabs.map(([key], index) => `<div class="tab-content${index === 0 ? ' active' : ''}" data-tab="${key}">${panels[key]}</div>`).join('')}
                     </div>
                 </div>
             </div>
         `;
     }
 
-    function setupModalTabs(modal) {
-        const tabs = Array.from(modal.querySelectorAll('.tab-btn'));
-        const contents = Array.from(modal.querySelectorAll('.tab-content'));
+    let openMonsterId = null;
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = tab.dataset.tab;
-                tabs.forEach(t => t.classList.remove('active'));
-                contents.forEach(c => c.classList.remove('active'));
-                tab.classList.add('active');
-                const content = modal.querySelector(`.tab-content.${target}`);
-                if (content) content.classList.add('active');
-            });
-        });
+    function closeModal() {
+        const modal = document.querySelector('.monster-modal');
+        openMonsterId = null;
+        if (!modal) return;
+        modal.remove();
+        document.body.style.overflow = '';
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     }
 
-    window.openMonsterModalById = function(monsterId) {
-        const parsedMonsterId = Number(monsterId);
-        const monster = monsters.find(m => Number(m.id) === parsedMonsterId);
-        if (!monster) {
-            console.warn('Monstro não encontrado para o card clicado:', monsterId);
-            return;
-        }
-
-        const existingModal = document.querySelector('.monster-modal');
-        existingModal?.remove();
-
-        document.body.insertAdjacentHTML('beforeend', createMonsterModal(monster));
+    function openMonster(id) {
+        const raw = byId[id];
+        if (!raw) return;
+        document.querySelector('.monster-modal')?.remove();
+        const monster = G.resolveMonster(raw, byId);
+        document.body.insertAdjacentHTML('beforeend', createModal(monster));
         document.body.style.overflow = 'hidden';
+        openMonsterId = id;
+        history.replaceState(null, '', `#${encodeURIComponent(id)}`);
 
         const modal = document.querySelector('.monster-modal');
-        if (!modal) return;
-        window.translateDynamicContent?.(modal);
+        G.setupTabs(modal);
+        G.setupModalClose(modal, closeModal);
+        modal.querySelector('.modal-close')?.focus();
 
-        const dialog = modal.querySelector('.modal-content');
-        setupModalTabs(dialog);
-
-        // Adicionar listener para filtro de raridade
-        const select = modal.querySelector('#rarity-select');
-        if (select) {
-            select.addEventListener('change', () => {
-                const selected = select.value;
-                const items = modal.querySelectorAll('.reward-item');
-                items.forEach(item => {
-                    if (selected === 'all' || item.dataset.rarity === selected) {
-                        item.style.display = '';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        }
-
-        setupModalCloseHandlers(modal, () => {
-            modal.remove();
-            document.body.style.overflow = '';
+        modal.querySelectorAll('[data-open-monster]').forEach((button) => {
+            button.addEventListener('click', () => openMonster(button.dataset.openMonster));
         });
-    };
 
-    // Carregar monstros
-    async function loadMonsters() {
-        try {
-            const response = await fetch('./data/monsterData.json');
-            const data = await response.json();
-            monsters = sanitizeMonsterData(data.monsters || []);
-            
-            // Coletar tipos únicos divididos
-            const allTypes = new Set();
-            monsters.forEach(monster => {
-                const types = monster.informacoes.tipo.split(' / ');
-                types.forEach(type => allTypes.add(type.trim()));
+        const select = modal.querySelector('#rarity-select');
+        select?.addEventListener('change', () => {
+            modal.querySelectorAll('.reward-item').forEach((item) => {
+                const rarities = item.dataset.rarities.split(' ');
+                item.style.display = select.value === 'all' || rarities.includes(select.value) ? '' : 'none';
             });
-            const uniqueTypes = Array.from(allTypes).sort();
-            
-            // Popular o select de tipo
-            const filterTypeSelect = document.getElementById('filterType');
-            filterTypeSelect.innerHTML = '<option value="">Todos os tipos</option>';
-            uniqueTypes.forEach(type => {
-                const option = document.createElement('option');
-                option.value = type.toLowerCase();
-                option.textContent = type;
-                filterTypeSelect.appendChild(option);
-            });
-            
-            // Renderizar cards
-            renderMonsters(monsters);
-        } catch (error) {
-            console.error('Erro ao carregar monstros:', error);
-            monsterGrid.innerHTML = '<p class="error">Erro ao carregar monstros: ' + error.message + '</p>';
+        });
+    }
+
+    // ---------- Lista e filtros ----------
+    function filteredMonsters() {
+        const term = searchInput?.value || '';
+        const type = typeSelect?.value || '';
+        const element = elementSelect?.value || '';
+        const showVariants = variantsToggle ? variantsToggle.checked : true;
+
+        return monsters.filter((raw) => {
+            if (!showVariants && raw.variantOf) return false;
+            const monster = G.resolveMonster(raw, byId);
+            const base = monster.variantOf ? byId[monster.variantOf] : null;
+            if (type && !(monster.types || []).includes(type)) return false;
+            if (element && monster.element !== element) return false;
+            return G.matchesSearch(term, [monster.name, base?.name, monster.region]);
+        });
+    }
+
+    function render() {
+        const list = filteredMonsters();
+        grid.innerHTML = list.length
+            ? list.map(createCard).join('')
+            : `<p class="muted grid-message">${esc(t('noResults'))}</p>`;
+        if (countLabel) countLabel.textContent = t('monsterCount', '{n}', { n: list.length });
+    }
+
+    function fillFilters() {
+        if (typeSelect) {
+            const used = new Set(monsters.flatMap((monster) => monster.types || []));
+            const current = typeSelect.value;
+            typeSelect.innerHTML = `<option value="">${esc(t('allTypes'))}</option>` + rules.monsterTypes
+                .filter((type) => used.has(type.id))
+                .map((type) => ({ id: type.id, label: txt(type.name) }))
+                .sort((a, b) => a.label.localeCompare(b.label))
+                .map((type) => `<option value="${esc(type.id)}">${esc(type.label)}</option>`).join('');
+            typeSelect.value = current;
+        }
+        if (elementSelect) {
+            const current = elementSelect.value;
+            elementSelect.innerHTML = `<option value="">${esc(t('allElements'))}</option>` +
+                [...rules.elements, ...rules.specialElements]
+                    .map((element) => `<option value="${esc(element.id)}">${element.icon ? `${element.icon} ` : ''}${esc(txt(element.name))}</option>`).join('');
+            elementSelect.value = current;
         }
     }
 
-    // Função para renderizar monstros com filtros
-    function renderMonsters(monsterList) {
-        monsterGrid.innerHTML = monsterList.map(createMonsterCard).join('');
-        window.translateDynamicContent?.(monsterGrid);
+    function renderStatesSection() {
+        const container = document.getElementById('monsterStates');
+        if (!container) return;
+        container.innerHTML = rules.monsterStates.map((state) => `
+            <div class="state-card">
+                <div class="state-card-icon">${state.icon}</div>
+                <h3>${esc(txt(state.name))}</h3>
+                <p>${esc(txt(state.description))}</p>
+            </div>`).join('');
     }
 
-    document.addEventListener('site-language-changed', () => {
-        document.querySelector('.monster-modal')?.remove();
-        renderMonsters(monsters);
+    function renderElementsSection() {
+        const container = document.getElementById('elementChart');
+        if (!container) return;
+        container.innerHTML = rules.elements.map((element) => {
+            const { strong, weak } = G.getMatchups(rules, element.id);
+            return `
+                <div class="element-card" style="--element-color:${esc(element.color)}">
+                    <h3>${element.icon} ${esc(txt(element.name))}</h3>
+                    <div class="matchup-row"><span class="matchup-label">${esc(t('strongAgainst'))}</span><span>${strong.map((id) => G.elementBadge(rules, id, 'element-badge--small')).join(' ') || '—'}</span></div>
+                    <div class="matchup-row"><span class="matchup-label">${esc(t('weakAgainst'))}</span><span>${weak.map((id) => G.elementBadge(rules, id, 'element-badge--small')).join(' ') || '—'}</span></div>
+                </div>`;
+        }).join('');
+    }
+
+    function renderAll() {
+        fillFilters();
+        render();
+        renderStatesSection();
+        renderElementsSection();
+    }
+
+    grid.addEventListener('click', (event) => {
+        const card = event.target.closest('.monster-card');
+        if (card) openMonster(card.dataset.monsterId);
+    });
+    grid.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        const card = event.target.closest('.monster-card');
+        if (!card) return;
+        event.preventDefault();
+        openMonster(card.dataset.monsterId);
     });
 
-    // Implementar filtros
-    const searchInput = document.getElementById('searchMonster');
-    const filterTypeSelect = document.getElementById('filterType');
+    searchInput?.addEventListener('input', render);
+    document.getElementById('searchButton')?.addEventListener('click', render);
+    typeSelect?.addEventListener('change', render);
+    elementSelect?.addEventListener('change', render);
+    variantsToggle?.addEventListener('change', render);
 
-    function applyFilters() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const selectedType = filterTypeSelect.value.toLowerCase();
-        
-        const filtered = monsters.filter(monster => {
-            const matchesSearch = monster.name.toLowerCase().includes(searchTerm);
-            const monsterTypes = monster.informacoes.tipo.split(' / ').map(t => t.trim().toLowerCase());
-            const matchesType = !selectedType || monsterTypes.includes(selectedType);
-            return matchesSearch && matchesType;
-        });
-        
-        renderMonsters(filtered);
+    document.addEventListener('site-language-changed', () => {
+        if (!rules) return;
+        const reopen = openMonsterId;
+        renderAll();
+        if (reopen) openMonster(reopen);
+    });
+
+    async function load() {
+        try {
+            const [loadedRules, data] = await Promise.all([G.loadRules(), G.loadJson('data/monsterData.json')]);
+            rules = loadedRules;
+            monsters = data.monsters || [];
+            byId = Object.fromEntries(monsters.map((monster) => [monster.id, monster]));
+            renderAll();
+            const fromHash = decodeURIComponent(location.hash.slice(1));
+            if (fromHash && byId[fromHash]) openMonster(fromHash);
+        } catch (error) {
+            console.error('Erro ao carregar o bestiário:', error);
+            grid.innerHTML = `<p class="error grid-message">${esc(t('loadError'))}</p>`;
+        }
     }
 
-    searchInput.addEventListener('input', applyFilters);
-    filterTypeSelect.addEventListener('change', applyFilters);
-    document.getElementById('searchButton').addEventListener('click', applyFilters);
-
-    loadMonsters();
+    load();
 })();
-}

@@ -1,793 +1,1017 @@
 {
   "classes": [
     {
-      "id": "cl006",
-      "name": "Espadachim",
-      "image": "Espadachim.jpg",
-      "descricao": "Em vez de usar armaduras pesadas e força bruta, ele confia em sua velocidade, reflexos e na maestria com lâminas para desviar de ataques e desferir golpes mortais",
-      "cor": "#c2185b",
-      "estatisticas": {
-        "vida": 80,
-        "mana": 40,
-        "forca": 70,
-        "armadura": 60,
-        "agilidade": 80,
-        "inteligencia": 10,
-        "carisma": 20,
-        "percepcao": 50,
-        "maestria": 40
+      "id": "warrior",
+      "unrealAsset": "DA_Class_Guerreiro",
+      "name": {
+        "pt": "Guerreiro",
+        "en": "Warrior"
       },
-      "habilidades": [
+      "color": "#d32f2f",
+      "image": "img/classes/warrior.jpg",
+      "description": {
+        "pt": "Um combatente armado, soldado ou pessoa especializada em combate. Corajoso e resiliente, enfrenta desafios diários, luta por ideais e supera adversidades.",
+        "en": "An armed fighter, soldier or combat specialist. Brave and resilient, he faces daily challenges, fights for ideals and overcomes adversity."
+      },
+      "weapons": [
+        "sword",
+        "greatsword"
+      ],
+      "stats": {
+        "health": 130,
+        "mana": 20,
+        "stamina": 80,
+        "armor": 75,
+        "physicalPower": 90,
+        "magicPower": 5,
+        "physicalResistance": 75,
+        "magicResistance": 45,
+        "criticalChance": 15,
+        "criticalDamage": 40,
+        "posture": 120
+      },
+      "skills": [
         {
-          "nome": "Corte Rapido",
-          "descricao": "Um corte simples e rápido.",
-          "cooldown": 2
+          "name": {
+            "pt": "Golpe Fulminante",
+            "en": "Devastating Blow"
+          },
+          "description": {
+            "pt": "Um ataque poderoso que quebra a defesa inimiga.",
+            "en": "A powerful attack that breaks the enemy's guard."
+          },
+          "cooldown": 5
         },
         {
-          "nome": "Dança das Laminas",
-          "descricao": "Realiza uma série de ataques rápidos em área.",
-          "cooldown": 25
+          "name": {
+            "pt": "Pele de Ferro",
+            "en": "Iron Skin"
+          },
+          "description": {
+            "pt": "Aumenta a resistência a ataques físicos por 30 s.",
+            "en": "Increases resistance to physical attacks for 30 s."
+          },
+          "cooldown": 10
         },
         {
-          "nome": "Lâmina Sombria",
-          "descricao": "Um corte imbuído com energia sombria.",
-          "cooldown": 15
+          "name": {
+            "pt": "Investida",
+            "en": "Charge"
+          },
+          "description": {
+            "pt": "Avança rapidamente contra o alvo, causando atordoamento.",
+            "en": "Rushes at the target, stunning it."
+          },
+          "cooldown": 12
         },
         {
-          "nome": "Golpe de Vento",
-          "descricao": "Um corte tão rápido que lança uma rajada de vento.",
-          "cooldown": 20
-        },
-        {
-          "nome": "Corte Final",
-          "descricao": "Um ataque finalizador poderoso, mas que deixa o usuário exausto.",
+          "name": {
+            "pt": "Fúria Incontrolável",
+            "en": "Uncontrollable Fury"
+          },
+          "description": {
+            "pt": "Aumenta drasticamente a velocidade e o dano por 10 s.",
+            "en": "Drastically increases speed and damage for 10 s."
+          },
           "cooldown": 60
+        },
+        {
+          "name": {
+            "pt": "Golpe Sangrento",
+            "en": "Bloody Strike"
+          },
+          "description": {
+            "pt": "Causa dano e aplica efeito de sangramento.",
+            "en": "Deals damage and applies bleeding."
+          },
+          "cooldown": 15
         }
       ],
       "subclasses": [
         {
-          "id": "sc001",
-          "name": "Samurai",
-          "descricao": "um mestre da autodisciplina, representa o combatente que canaliza sua força de vontade para superar a dor, focar seus ataques com precisão mortal e resistir a efeitos mentais que derrubariam outros guerreiros.",
-          "imagem": "Samurai.jpg",
-          "estatisticas": {
-            "vida": 8,
-            "mana": 3,
-            "forca": 10,
-            "armadura": 7,
-            "agilidade": 10,
-            "inteligencia": 4,
-            "carisma": 5,
-            "percepcao": 5,
-            "maestria": 8
+          "id": "warrior-berserker",
+          "name": {
+            "pt": "Berserker",
+            "en": "Berserker"
+          },
+          "description": {
+            "pt": "Um guerreiro nórdico de elite conhecido pela fúria incontrolável e implacável em combate.",
+            "en": "An elite Norse warrior known for uncontrollable, relentless fury in battle."
+          },
+          "image": "img/classes/warrior-berserker.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc002",
-          "name": "Spell Blade",
-          "descricao": "Canalizando feitiços diretamente através de suas armas brancas, atacando a curta distância enquanto manifesta poderes elementais ou arcanos.",
-          "imagem": "Spellblade.jpg",
-          "estatisticas": {
-            "vida": 7,
-            "mana": 9,
-            "forca": 9,
-            "armadura": 6,
-            "agilidade": 7,
-            "inteligencia": 10,
-            "carisma": 3,
-            "percepcao": 4,
-            "maestria": 5
+          "id": "warrior-bloodknight",
+          "name": {
+            "pt": "BloodKnight",
+            "en": "BloodKnight"
+          },
+          "description": {
+            "pt": "Uma subclasse híbrida que mistura combate corpo a corpo com magia e habilidades vampíricas.",
+            "en": "A hybrid subclass that mixes melee combat with magic and vampiric abilities."
+          },
+          "image": "img/classes/warrior-bloodknight.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc003",
-          "name": "Hex Blade",
-          "descricao": "Focada em combate corpo a corpo. Seu patrono é uma entidade sombria ligada a armas mágicas sencientes. Em vez de depender de Força ou Destreza, o Hexblade usa o seu Carisma para atacar",
-          "imagem": "Hexblade.jpg",
-          "estatisticas": {
-            "vida": 7,
-            "mana": 8,
-            "forca": 9,
-            "armadura": 6,
-            "agilidade": 6,
-            "inteligencia": 4,
-            "carisma": 10,
-            "percepcao": 4,
-            "maestria": 6
+          "id": "warrior-deadknight",
+          "name": {
+            "pt": "DeadKnight",
+            "en": "DeadKnight"
+          },
+          "description": {
+            "pt": "Guerreiros de elite caídos que foram ressuscitados por forças sombrias, combinando maestria em combate físico com magia negra profana.",
+            "en": "Fallen elite warriors raised by dark forces, combining mastery of physical combat with unholy black magic."
+          },
+          "image": "img/classes/warrior-deadknight.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc004",
-          "name": "Blade Dancer",
-          "descricao": "Combina a arte da dança com a letalidade do combate com armas. Diferente de um guerreiro tradicional que usa armadura pesada e força bruta, o Dançarino das Lâminas depende de agilidade, graça e ritmo para esquivar de ataques e desferir golpes precisos.",
-          "imagem": "Bladedancer.jpg",
-          "estatisticas": {
-            "vida": 6,
-            "mana": 4,
-            "forca": 6,
-            "armadura": 5,
-            "agilidade": 14,
-            "inteligencia": 4,
-            "carisma": 8,
-            "percepcao": 5,
-            "maestria": 8
+          "id": "warrior-paladin",
+          "name": {
+            "pt": "Paladino",
+            "en": "Paladin"
+          },
+          "description": {
+            "pt": "É um guerreiro sagrado que combina combate corpo a corpo, magia divina e um forte código moral. É movido por um Juramento Sagrado de proteger os indefesos, combater a corrupção e defender a justiça e a verdade.",
+            "en": "A holy warrior who combines melee combat, divine magic and a strong moral code, driven by a Sacred Oath to protect the defenseless, fight corruption and uphold justice and truth."
+          },
+          "image": "img/classes/warrior-paladin.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc005",
-          "name": "Blade Master",
-          "descricao": "Diferente de um guerreiro comum, que confia na força bruta ou em armaduras pesadas, o Blade Master transforma o combate em uma dança letal e elegante.",
-          "imagem": "Blademaster.jpg",
-          "estatisticas": {
-            "vida": 8,
-            "mana": 2,
-            "forca": 11,
-            "armadura": 7,
-            "agilidade": 10,
-            "inteligencia": 3,
-            "carisma": 4,
-            "percepcao": 5,
-            "maestria": 10
+          "id": "warrior-dragonknight",
+          "name": {
+            "pt": "DragonKnight",
+            "en": "DragonKnight"
+          },
+          "description": {
+            "pt": "Focada em combate corpo a corpo, magia elemental e defesa. É conhecida pela alta resistência, pela capacidade de assumir a linha de frente e por transformações drásticas.",
+            "en": "Focused on melee combat, elemental magic and defense. Known for high toughness, holding the front line and drastic transformations."
+          },
+          "image": "img/classes/warrior-dragonknight.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         }
       ]
     },
     {
-      "id": "cl005",
-      "name": "Lanceiro",
-      "image": "Lanceiro.jpg",
-      "descricao": "Um combatente especializado no uso de armas de haste, como lanças e tridentes. Eles se destacam pelo alcance e por habilidades de ataque à distância, além de combinar grandes saltos com investidas devastadoras montado em sua cavalaria",
-      "cor": "#f57c00",
-      "estatisticas": {
-        "vida": 60,
-        "mana": 50,
-        "forca": 70,
-        "armadura": 40,
-        "agilidade": 70,
-        "inteligencia": 30,
-        "carisma": 10,
-        "percepcao": 60,
-        "maestria": 60
+      "id": "barbarian",
+      "unrealAsset": "DA_Class_Barbaro",
+      "name": {
+        "pt": "Bárbaro",
+        "en": "Barbarian"
       },
-      "habilidades": [
-        {
-          "nome": "Estocada Rapida",
-          "descricao": "Um ataque veloz com a lança.",
-          "cooldown": 3
-        },
-        {
-          "nome": "Salto do Dragão",
-          "descricao": "Salta e aterrissa com força, causando dano em área.",
-          "cooldown": 18
-        },
-        {
-          "nome": "Barreira de Lanças",
-          "descricao": "Cria uma barreira giratória que destrói projéteis.",
-          "cooldown": 25
-        },
-        {
-          "nome": "Investida Perfurantes",
-          "descricao": "Avança em linha reta causando dano a todos no caminho.",
-          "cooldown": 20
-        },
-        {
-          "nome": "Empalamento",
-          "descricao": "Um ataque fatal contra um único alvo.",
-          "cooldown": 45
-        }
+      "color": "#8B4513",
+      "image": "img/classes/barbarian.jpg",
+      "description": {
+        "pt": "É um guerreiro movido por forças primitivas. Especialista em combate corpo a corpo, compensa a falta de armaduras pesadas com uma resistência física descomunal e a habilidade de entrar em fúria, tornando-se uma máquina de matar incrivelmente feroz e resistente.",
+        "en": "A warrior driven by primal forces. A melee expert, he makes up for the lack of heavy armor with enormous physical toughness and the ability to fly into a rage, becoming an incredibly fierce and resilient killing machine."
+      },
+      "weapons": [
+        "axe",
+        "greatsword"
       ],
-      "subclasses": [
-        {
-          "id": "sc001",
-          "name": "Hoplite",
-          "descricao": "A personificação da parede intransponível. Diferente de outros guerreiros que buscam a glória individual, o Hoplite brilha quando luta ao lado de seus aliados.",
-          "imagem": "Hoplite.jpg",
-          "estatisticas": {
-            "vida": 10,
-            "mana": 2,
-            "forca": 10,
-            "armadura": 12,
-            "agilidade": 6,
-            "inteligencia": 4,
-            "carisma": 5,
-            "percepcao": 4,
-            "maestria": 7
-          }
-        },
-        {
-          "id": "sc002",
-          "name": "Halberd",
-          "descricao": "Um combatente que domina a Alabarda é um especialista em controle de área e combate a média distância.",
-          "imagem": "Halberd.jpg",
-          "estatisticas": {
-            "vida": 10,
-            "mana": 2,
-            "forca": 10,
-            "armadura": 12,
-            "agilidade": 6,
-            "inteligencia": 4,
-            "carisma": 5,
-            "percepcao": 4,
-            "maestria": 7
-          }
-        },
-        {
-          "id": "sc003",
-          "name": "Celestial Lancer",
-          "descricao": "Combina a alta mobilidade e o alcance do combate com lanças à magia divina, transformando o personagem em um guerreiro sagrado que singra os céus para punir o mal.",
-          "imagem": "Celestiallancer.jpg",
-          "estatisticas": {
-            "vida": 8,
-            "mana": 6,
-            "forca": 10,
-            "armadura": 8,
-            "agilidade": 9,
-            "inteligencia": 4,
-            "carisma": 8,
-            "percepcao": 3,
-            "maestria": 4
-          }
-        },
-        {
-          "id": "sc004",
-          "name": "Assyrian Elite Spearman",
-          "descricao": "Estes guerreiros combinam disciplina de ferro, armadura pesada e maestria absoluta com lanças longas e escudos maciços. Eles não apenas defendem posições.",
-          "imagem": "AssyrianEliteSpearman.jpg",
-          "estatisticas": {
-            "vida": 9,
-            "mana": 2,
-            "forca": 11,
-            "armadura": 10,
-            "agilidade": 8,
-            "inteligencia": 4,
-            "carisma": 4,
-            "percepcao": 5,
-            "maestria": 7
-          }
-        },
-        {
-          "id": "sc005",
-          "name": "Dragon Slayer",
-          "descricao": "É focada em combater e rastrear criaturas dracônicas. Ela combina alta resistência elemental com bônus de dano massivos contra monstros gigantes.",
-          "imagem": "Dragonslayer.jpg",
-          "estatisticas": {
-            "vida": 12,
-            "mana": 2,
-            "forca": 14,
-            "armadura": 10,
-            "agilidade": 6,
-            "inteligencia": 3,
-            "carisma": 3,
-            "percepcao": 4,
-            "maestria": 6
-          }
-        }
-      ]
-    },
-    {
-      "id": "cl004",
-      "name": "Barbaro",
-      "image": "Barbaro.jpg",
-      "descricao": "É um guerreiro impulsionado por forças primitivas. Especialista em combate corpo a corpo, ele compensa a falta de armaduras pesadas com uma resistência física descomunal e a habilidade de entrar em fúria, tornando-se uma máquina de matar incrivelmente feroz e resistente",
-      "cor": "#8B4513",
-      "estatisticas": {
-        "vida": 70,
+      "stats": {
+        "health": 150,
         "mana": 10,
-        "forca": 100,
-        "armadura": 80,
-        "agilidade": 50,
-        "inteligencia": 10,
-        "carisma": 10,
-        "percepcao": 50,
-        "maestria": 80
+        "stamina": 100,
+        "armor": 40,
+        "physicalPower": 110,
+        "magicPower": 0,
+        "physicalResistance": 60,
+        "magicResistance": 20,
+        "criticalChance": 25,
+        "criticalDamage": 60,
+        "posture": 130
       },
-      "habilidades": [
+      "skills": [
         {
-          "nome": "Golpe Brutal",
-          "descricao": "Um ataque poderoso com o Machado.",
+          "name": {
+            "pt": "Golpe Brutal",
+            "en": "Brutal Strike"
+          },
+          "description": {
+            "pt": "Um ataque poderoso com o machado.",
+            "en": "A powerful axe attack."
+          },
           "cooldown": 3
         },
         {
-          "nome": "Pele Grossa",
-          "descricao": "Aumenta a vida máxima por 60s.",
+          "name": {
+            "pt": "Pele Grossa",
+            "en": "Thick Skin"
+          },
+          "description": {
+            "pt": "Aumenta a vida máxima por 60 s.",
+            "en": "Increases maximum health for 60 s."
+          },
           "cooldown": 15
         },
         {
-          "nome": "Salto Esmagador",
-          "descricao": "Salta em direção aos inimigos causando dano na aterrissagem.",
+          "name": {
+            "pt": "Salto Esmagador",
+            "en": "Crushing Leap"
+          },
+          "description": {
+            "pt": "Salta em direção aos inimigos causando dano na aterrissagem.",
+            "en": "Leaps at enemies, dealing damage on landing."
+          },
           "cooldown": 20
         },
         {
-          "nome": "Machado Giratório",
-          "descricao": "Gira a arma atacando todos os inimigos ao redor.",
+          "name": {
+            "pt": "Machado Giratório",
+            "en": "Whirling Axe"
+          },
+          "description": {
+            "pt": "Gira a arma atacando todos os inimigos ao redor.",
+            "en": "Spins the weapon, hitting every enemy around."
+          },
           "cooldown": 25
         },
         {
-          "nome": "Golpe Sismico",
-          "descricao": "Bate no chão criando uma onda de choque que atordoa.",
+          "name": {
+            "pt": "Golpe Sísmico",
+            "en": "Seismic Strike"
+          },
+          "description": {
+            "pt": "Bate no chão criando uma onda de choque que atordoa.",
+            "en": "Slams the ground, creating a stunning shockwave."
+          },
           "cooldown": 30
         }
       ],
       "subclasses": [
         {
-          "id": "sc001",
-          "name": "Totem Warrior",
-          "descricao": "destaca-se pela sua alta versatilidade e adaptação de acordo com o nível do totem.",
-          "imagem": "Totemwarrior.jpg",
-          "estatisticas": {
-            "vida": 15,
-            "mana": 0,
-            "forca": 15,
-            "armadura": 10,
-            "agilidade": 6,
-            "inteligencia": 2,
-            "carisma": 3,
-            "percepcao": 5,
-            "maestria": 4
+          "id": "barbarian-totem-warrior",
+          "name": {
+            "pt": "Totem Warrior",
+            "en": "Totem Warrior"
+          },
+          "description": {
+            "pt": "Destaca-se pela alta versatilidade e pela adaptação de acordo com o nível do totem.",
+            "en": "Stands out for high versatility, adapting according to the totem's level."
+          },
+          "image": "img/classes/barbarian-totem-warrior.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc002",
-          "name": "Ancestral Guardian",
-          "descricao": "Ele invoca espíritos de antepassados para proteger seus aliados, tornando-se o defensor supremo do grupo",
-          "imagem": "AncGuardian.jpg",
-          "estatisticas": {
-            "vida": 14,
-            "mana": 4,
-            "forca": 14,
-            "armadura": 9,
-            "agilidade": 5,
-            "inteligencia": 3,
-            "carisma": 4,
-            "percepcao": 4,
-            "maestria": 3
+          "id": "barbarian-ancestral-guardian",
+          "name": {
+            "pt": "Ancestral Guardian",
+            "en": "Ancestral Guardian"
+          },
+          "description": {
+            "pt": "Invoca espíritos dos antepassados para proteger os aliados, tornando-se o defensor supremo do grupo.",
+            "en": "Summons ancestral spirits to protect allies, becoming the group's ultimate defender."
+          },
+          "image": "img/classes/barbarian-ancestral-guardian.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc003",
-          "name": "Storm Herald",
-          "descricao": "Em vez de canalizar a fúria apenas para força física, o bárbaro transforma sua raiva em uma aura mágica com temática elemental que afeta o campo de batalha",
-          "imagem": "Stormherald.jpg",
-          "estatisticas": {
-            "vida": 13,
-            "mana": 5,
-            "forca": 13,
-            "armadura": 8,
-            "agilidade": 6,
-            "inteligencia": 3,
-            "carisma": 3,
-            "percepcao": 4,
-            "maestria": 5
+          "id": "barbarian-storm-herald",
+          "name": {
+            "pt": "Storm Herald",
+            "en": "Storm Herald"
+          },
+          "description": {
+            "pt": "Em vez de canalizar a fúria só para a força física, o bárbaro transforma a raiva numa aura mágica elemental que afeta o campo de batalha.",
+            "en": "Instead of channeling rage into raw strength alone, the barbarian turns it into an elemental magic aura that affects the battlefield."
+          },
+          "image": "img/classes/barbarian-storm-herald.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc004",
-          "name": "Zealot",
-          "descricao": "Em vez de recorrer à fúria primitiva, o Zelote canaliza um fervor religioso fanático e o poder dos deuses para se tornar uma força destrutiva quase imortal no campo de batalha",
-          "imagem": "Zealot.jpg",
-          "estatisticas": {
-            "vida": 12,
-            "mana": 2,
-            "forca": 16,
-            "armadura": 8,
-            "agilidade": 5,
-            "inteligencia": 2,
-            "carisma": 5,
-            "percepcao": 3,
-            "maestria": 7
+          "id": "barbarian-zealot",
+          "name": {
+            "pt": "Zealot",
+            "en": "Zealot"
+          },
+          "description": {
+            "pt": "Em vez de recorrer à fúria primitiva, o Zelote canaliza um fervor religioso fanático e o poder dos deuses para se tornar uma força destrutiva quase imortal no campo de batalha.",
+            "en": "Instead of primal rage, the Zealot channels fanatical religious fervor and the power of the gods to become a nearly immortal destructive force on the battlefield."
+          },
+          "image": "img/classes/barbarian-zealot.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc005",
-          "name": "Beast",
-          "descricao": "destaca-se por seu combate brutal e sem grades e por exigir escolhas morais difíceis",
-          "imagem": "Beast.jpg",
-          "estatisticas": {
-            "vida": 14,
-            "mana": 0,
-            "forca": 14,
-            "armadura": 7,
-            "agilidade": 9,
-            "inteligencia": 2,
-            "carisma": 2,
-            "percepcao": 6,
-            "maestria": 6
+          "id": "barbarian-beast",
+          "name": {
+            "pt": "Beast",
+            "en": "Beast"
+          },
+          "description": {
+            "pt": "Destaca-se pelo combate brutal e sem amarras e por exigir escolhas morais difíceis.",
+            "en": "Stands out for brutal, unrestrained combat and for demanding hard moral choices."
+          },
+          "image": "img/classes/barbarian-beast.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         }
       ]
     },
     {
-      "id": "cl003",
-      "name": "Feiticeiro",
-      "image": "Feiticeiro.jpg",
-      "descricao": "Possui o poder correndo nas veias, vindo de um ancestral dragão, benção feérica ou intervenção cósmica. Eles usam o atributo Carisma para moldar a realidade",
-      "cor": "",
-      "estatisticas": {
-        "vida": 40,
-        "mana": 100,
-        "forca": 20,
-        "armadura": 15,
-        "agilidade": 20,
-        "inteligencia": 80,
-        "carisma": 40,
-        "percepcao": 90,
-        "maestria": 90
+      "id": "swordsman",
+      "unrealAsset": "DA_Class_Espadachim",
+      "name": {
+        "pt": "Espadachim",
+        "en": "Swordsman"
       },
-      "habilidades": [
+      "color": "#c2185b",
+      "image": "img/classes/swordsman.jpg",
+      "description": {
+        "pt": "Em vez de usar armaduras pesadas e força bruta, ele confia em sua velocidade, reflexos e maestria com lâminas para desviar de ataques e desferir golpes mortais.",
+        "en": "Instead of heavy armor and brute force, he relies on speed, reflexes and mastery of blades to dodge attacks and deliver deadly blows."
+      },
+      "weapons": [
+        "sword"
+      ],
+      "stats": {
+        "health": 100,
+        "mana": 20,
+        "stamina": 90,
+        "armor": 55,
+        "physicalPower": 90,
+        "magicPower": 10,
+        "physicalResistance": 55,
+        "magicResistance": 40,
+        "criticalChance": 40,
+        "criticalDamage": 75,
+        "posture": 100
+      },
+      "skills": [
         {
-          "nome": "Bola de Fogo",
-          "descricao": "Lança uma esfera de fogo explosiva.",
-          "cooldown": 6
+          "name": {
+            "pt": "Corte Rápido",
+            "en": "Quick Slash"
+          },
+          "description": {
+            "pt": "Um corte simples e rápido.",
+            "en": "A simple, quick slash."
+          },
+          "cooldown": 2
         },
         {
-          "nome": "Escudo de Gelo",
-          "descricao": "Cria um escudo de gelo ao redor do conjurador.",
+          "name": {
+            "pt": "Dança das Lâminas",
+            "en": "Blade Dance"
+          },
+          "description": {
+            "pt": "Realiza uma série de ataques rápidos em área.",
+            "en": "Performs a series of quick attacks in an area."
+          },
+          "cooldown": 25
+        },
+        {
+          "name": {
+            "pt": "Lâmina Sombria",
+            "en": "Shadow Blade"
+          },
+          "description": {
+            "pt": "Um corte imbuído de energia sombria.",
+            "en": "A slash imbued with shadow energy."
+          },
           "cooldown": 15
         },
         {
-          "nome": "Tempestade de Raio",
-          "descricao": "Dispara um feixe de energia pura.",
-          "cooldown": 12
+          "name": {
+            "pt": "Golpe de Vento",
+            "en": "Wind Strike"
+          },
+          "description": {
+            "pt": "Um corte tão rápido que lança uma rajada de vento.",
+            "en": "A slash so fast it sends out a gust of wind."
+          },
+          "cooldown": 20
         },
         {
-          "nome": "Jato de Agua",
-          "descricao": "Atira um jato de agua em direção ao inimigo",
-          "cooldown": 6
-        },
-        {
-          "nome": "Chuva de Meteoro",
-          "descricao": "Evoca uma chuva de meteoros devastador do céu.",
+          "name": {
+            "pt": "Corte Final",
+            "en": "Final Cut"
+          },
+          "description": {
+            "pt": "Um ataque finalizador poderoso, mas que deixa o usuário exausto.",
+            "en": "A powerful finishing attack that leaves the user exhausted."
+          },
           "cooldown": 60
         }
       ],
       "subclasses": [
         {
-          "id": "sc001",
-          "name": "Necromance",
-          "descricao": "um conjurador que domina a energia da morte e das almas.",
-          "imagem": "necromance.jpg",
-          "estatisticas": {
-            "vida": 4,
-            "mana": 12,
-            "forca": 3,
-            "armadura": 4,
-            "agilidade": 5,
-            "inteligencia": 12,
-            "carisma": 2,
-            "percepcao": 8,
-            "maestria": 10
+          "id": "swordsman-samurai",
+          "name": {
+            "pt": "Samurai",
+            "en": "Samurai"
+          },
+          "description": {
+            "pt": "Um mestre da autodisciplina: o combatente que canaliza sua força de vontade para superar a dor, focar os ataques com precisão mortal e resistir a efeitos mentais que derrubariam outros guerreiros.",
+            "en": "A master of self-discipline: the fighter who channels willpower to overcome pain, focus attacks with deadly precision and resist mental effects that would bring down other warriors."
+          },
+          "image": "img/classes/swordsman-samurai.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc002",
-          "name": "VoidWalker",
-          "descricao": "Um feiticeiro solitario, que usa o poder do vazio para ganhar forças",
-          "imagem": "VoidWalker.jpg",
-          "estatisticas": {
-            "vida": 3,
-            "mana": 10,
-            "forca": 6,
-            "armadura": 5,
-            "agilidade": 6,
-            "inteligencia": 11,
-            "carisma": 1,
-            "percepcao": 11,
-            "maestria": 7
+          "id": "swordsman-spell-blade",
+          "name": {
+            "pt": "Spell Blade",
+            "en": "Spell Blade"
+          },
+          "description": {
+            "pt": "Canaliza feitiços diretamente pelas suas armas brancas, atacando a curta distância enquanto manifesta poderes elementais ou arcanos.",
+            "en": "Channels spells directly through bladed weapons, attacking at close range while manifesting elemental or arcane powers."
+          },
+          "image": "img/classes/swordsman-spell-blade.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc003",
-          "name": "ShadowCaster",
-          "descricao": "Com habilidade de se transformar em algumas criaturas especificas conseguem sobreviver contra as diversidades.",
-          "imagem": "Shadowcaster.jpg",
-          "estatisticas": {
-            "vida": 5,
-            "mana": 10,
-            "forca": 5,
-            "armadura": 5,
-            "agilidade": 4,
-            "inteligencia": 10,
-            "carisma": 9,
-            "percepcao": 9,
-            "maestria": 3
+          "id": "swordsman-hex-blade",
+          "name": {
+            "pt": "Hex Blade",
+            "en": "Hex Blade"
+          },
+          "description": {
+            "pt": "Focada em combate corpo a corpo. Seu patrono é uma entidade sombria ligada a armas mágicas sencientes. Em vez de depender de Força ou Destreza, o Hexblade usa o Carisma para atacar.",
+            "en": "Focused on melee combat. Its patron is a dark entity bound to sentient magic weapons. Instead of relying on Strength or Dexterity, the Hexblade attacks with Charisma."
+          },
+          "image": "img/classes/swordsman-hex-blade.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc004",
-          "name": "Chaos Sorcerior",
-          "descricao": "Um canalizador de energias mágicas brutas, imprevisíveis e corrompidas, geralmente ligadas a divindades sombrias ou forças cósmicas da destruição.",
-          "imagem": "Chaossorcerior.jpg",
-          "estatisticas": {
-            "vida": 2,
-            "mana": 12,
-            "forca": 2,
-            "armadura": 7,
-            "agilidade": 6,
-            "inteligencia": 9,
-            "carisma": 6,
-            "percepcao": 7,
-            "maestria": 9
+          "id": "swordsman-blade-dancer",
+          "name": {
+            "pt": "Blade Dancer",
+            "en": "Blade Dancer"
+          },
+          "description": {
+            "pt": "Combina a arte da dança com a letalidade do combate com armas. Diferente de um guerreiro tradicional que usa armadura pesada e força bruta, o Dançarino das Lâminas depende de agilidade, graça e ritmo para esquivar de ataques e desferir golpes precisos.",
+            "en": "Combines the art of dance with the lethality of armed combat. Unlike a traditional warrior with heavy armor and brute force, the Blade Dancer relies on agility, grace and rhythm to dodge attacks and land precise blows."
+          },
+          "image": "img/classes/swordsman-blade-dancer.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc005",
-          "name": "BloodSorcerior",
-          "descricao": "Utilizando magia sombria focada em sacrifício e manipulação de energia vital.",
-          "imagem": "Bloodsorcerior.jpg",
-          "estatisticas": {
-            "vida": 9,
-            "mana": 12,
-            "forca": 7,
-            "armadura": 3,
-            "agilidade": 7,
-            "inteligencia": 10,
-            "carisma": 3,
-            "percepcao": 6,
-            "maestria": 3
+          "id": "swordsman-blade-master",
+          "name": {
+            "pt": "Blade Master",
+            "en": "Blade Master"
+          },
+          "description": {
+            "pt": "Diferente de um guerreiro comum, que confia na força bruta ou em armaduras pesadas, o Blade Master transforma o combate em uma dança letal e elegante.",
+            "en": "Unlike a common warrior who trusts brute force or heavy armor, the Blade Master turns combat into a deadly, elegant dance."
+          },
+          "image": "img/classes/swordsman-blade-master.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         }
       ]
     },
     {
-      "id": "cl002",
-      "name": "Arqueiro",
-      "image": "Arqueiro.jpg",
-      "descricao": "Um Combatente especializado em armas de ataque à distância, com sua agilidade, precisção e taticas de evasão.",
-      "cor": "#388e3c",
-      "estatisticas": {
-        "vida": 50,
-        "mana": 30,
-        "forca": 10,
-        "armadura": 30,
-        "agilidade": 100,
-        "inteligencia": 50,
-        "carisma": 30,
-        "percepcao": 90,
-        "maestria": 70
+      "id": "lancer",
+      "unrealAsset": "DA_Class_Lanceiro",
+      "name": {
+        "pt": "Lanceiro",
+        "en": "Lancer"
       },
-      "habilidades": [
+      "color": "#f57c00",
+      "image": "img/classes/lancer.jpg",
+      "description": {
+        "pt": "Um combatente especializado em armas de haste, como lanças e tridentes. Destaca-se pelo alcance e pelas habilidades de ataque à distância, além de combinar grandes saltos com investidas devastadoras montado em sua cavalaria.",
+        "en": "A fighter specialized in polearms such as spears and tridents. Lancers stand out for their reach and ranged attack skills, combining great leaps with devastating mounted charges."
+      },
+      "weapons": [
+        "spear"
+      ],
+      "stats": {
+        "health": 110,
+        "mana": 20,
+        "stamina": 90,
+        "armor": 60,
+        "physicalPower": 95,
+        "magicPower": 10,
+        "physicalResistance": 60,
+        "magicResistance": 35,
+        "criticalChance": 30,
+        "criticalDamage": 65,
+        "posture": 110
+      },
+      "skills": [
         {
-          "nome": "Tiro Rapido",
-          "descricao": "Atira uma flecha numa velocidade imprecionante",
+          "name": {
+            "pt": "Estocada Rápida",
+            "en": "Quick Thrust"
+          },
+          "description": {
+            "pt": "Um ataque veloz com a lança.",
+            "en": "A swift attack with the spear."
+          },
           "cooldown": 3
         },
         {
-          "nome": "Tiro Triplo",
-          "descricao": "Atira três flechas de uma vez acertando o inimigo e dando o triplo de dano.",
-          "cooldown": 5
+          "name": {
+            "pt": "Salto do Dragão",
+            "en": "Dragon Leap"
+          },
+          "description": {
+            "pt": "Salta e aterrissa com força, causando dano em área.",
+            "en": "Leaps and lands hard, dealing area damage."
+          },
+          "cooldown": 18
         },
         {
-          "nome": "Aumento de Velocidade",
-          "descricao": "O Arqueiro recebe uma velocidade a mais conseguindo atacar mais rapido ou fugir",
-          "cooldown": 10
+          "name": {
+            "pt": "Barreira de Lanças",
+            "en": "Spear Barrier"
+          },
+          "description": {
+            "pt": "Cria uma barreira giratória que destrói projéteis.",
+            "en": "Creates a spinning barrier that destroys projectiles."
+          },
+          "cooldown": 25
         },
         {
-          "nome": "Chuva de Flecha",
-          "descricao": "Uma Saraivada de flechas que saem do céu acertando uma grande area e acertando todos que estiver no caminho",
-          "cooldown": 15
+          "name": {
+            "pt": "Investida Perfurante",
+            "en": "Piercing Charge"
+          },
+          "description": {
+            "pt": "Avança em linha reta causando dano a todos no caminho.",
+            "en": "Charges in a straight line, damaging everyone in the way."
+          },
+          "cooldown": 20
         },
         {
-          "nome": "Flecha de veneno",
-          "descricao": "Uma Flecha envenenada que pode causar dano por tempo nos alvos atingidos",
-          "cooldown": 5
+          "name": {
+            "pt": "Empalamento",
+            "en": "Impale"
+          },
+          "description": {
+            "pt": "Um ataque fatal contra um único alvo.",
+            "en": "A fatal attack against a single target."
+          },
+          "cooldown": 45
         }
       ],
       "subclasses": [
         {
-          "id": "sc001",
-          "name": "Ranger",
-          "descricao": "Um Aventureiro solo focado na sobrevivencia e no combate na natureza, Atuando como um guardião nas fronteiras servindo como uma mistura de guerreiro e druida.",
-          "imagem": "Ranger.jpg",
-          "estatisticas": {
-            "vida": 6,
-            "mana": 4,
-            "forca": 4,
-            "armadura": 4,
-            "agilidade": 15,
-            "inteligencia": 2,
-            "carisma": 1,
-            "percepcao": 13,
-            "maestria": 11
+          "id": "lancer-hoplite",
+          "name": {
+            "pt": "Hoplite",
+            "en": "Hoplite"
+          },
+          "description": {
+            "pt": "A personificação da parede intransponível. Diferente de outros guerreiros que buscam a glória individual, o Hoplite brilha quando luta ao lado de seus aliados.",
+            "en": "The embodiment of an impassable wall. Unlike warriors who seek personal glory, the Hoplite shines when fighting alongside allies."
+          },
+          "image": "img/classes/lancer-hoplite.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc002",
-          "name": "Assassino",
-          "descricao": "Um matador implacável e furtivo, especializado em infiltração, disfarce e eliminação cirúrgica de alvos",
-          "imagem": "Assassino.jpg",
-          "estatisticas": {
-            "vida": 6,
-            "mana": 2,
-            "forca": 8,
-            "armadura": 4,
-            "agilidade": 14,
-            "inteligencia": 4,
-            "carisma": 3,
-            "percepcao": 9,
-            "maestria": 10
+          "id": "lancer-halberd",
+          "name": {
+            "pt": "Halberd",
+            "en": "Halberd"
+          },
+          "description": {
+            "pt": "Um combatente que domina a alabarda: especialista em controle de área e combate a média distância.",
+            "en": "A fighter who has mastered the halberd: an expert in area control and mid-range combat."
+          },
+          "image": "img/classes/lancer-halberd.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc003",
-          "name": "Arqueiro Arcano",
-          "descricao": "Esses guerreiros de elite infundem seus arcos e flechas com energia sobrenatural, disparando projéteis que podem explodir, rastrear inimigos ou paralisar alvos à distância.",
-          "imagem": "ArcArcano.jpg",
-          "estatisticas": {
-            "vida": 6,
-            "mana": 8,
-            "forca": 4,
-            "armadura": 5,
-            "agilidade": 10,
-            "inteligencia": 10,
-            "carisma": 3,
-            "percepcao": 8,
-            "maestria": 6
+          "id": "lancer-celestial-lancer",
+          "name": {
+            "pt": "Celestial Lancer",
+            "en": "Celestial Lancer"
+          },
+          "description": {
+            "pt": "Combina a alta mobilidade e o alcance do combate com lanças à magia divina, transformando o personagem em um guerreiro sagrado que singra os céus para punir o mal.",
+            "en": "Combines the mobility and reach of spear combat with divine magic, becoming a holy warrior who sails the skies to punish evil."
+          },
+          "image": "img/classes/lancer-celestial-lancer.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc004",
-          "name": "GloomStalker",
-          "descricao": "Especialistas em emboscadas, eles se tornam invisíveis na escuridão para criaturas que dependem de visão no escuro e causam dano explosivo devastador no primeiro turno de combate",
-          "imagem": "GloomStalker.jpg",
-          "estatisticas": {
-            "vida": 7,
-            "mana": 4,
-            "forca": 6,
-            "armadura": 5,
-            "agilidade": 12,
-            "inteligencia": 6,
-            "carisma": 2,
-            "percepcao": 11,
-            "maestria": 7
+          "id": "lancer-assyrian-elite-spearman",
+          "name": {
+            "pt": "Assyrian Elite Spearman",
+            "en": "Assyrian Elite Spearman"
+          },
+          "description": {
+            "pt": "Estes guerreiros combinam disciplina de ferro, armadura pesada e maestria absoluta com lanças longas e escudos maciços. Eles não apenas defendem posições.",
+            "en": "These warriors combine iron discipline, heavy armor and absolute mastery of long spears and massive shields. They do more than hold the line."
+          },
+          "image": "img/classes/lancer-assyrian-elite-spearman.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc005",
-          "name": "Arqueiro de Sangue",
-          "descricao": "É um mestre da arquearia que funde a precisão cirúrgica do disparo à distância com as artes proibidas da magia de sangue.",
-          "imagem": "ArcSangue.jpg",
-          "estatisticas": {
-            "vida": 10,
-            "mana": 6,
-            "forca": 8,
-            "armadura": 6,
-            "agilidade": 10,
-            "inteligencia": 5,
-            "carisma": 2,
-            "percepcao": 7,
-            "maestria": 6
+          "id": "lancer-dragon-slayer",
+          "name": {
+            "pt": "Dragon Slayer",
+            "en": "Dragon Slayer"
+          },
+          "description": {
+            "pt": "É focada em combater e rastrear criaturas dracônicas. Ela combina alta resistência elemental com bônus de dano massivos contra monstros gigantes.",
+            "en": "Focused on tracking and fighting draconic creatures, combining high elemental resistance with massive damage bonuses against giant monsters."
+          },
+          "image": "img/classes/lancer-dragon-slayer.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         }
       ]
     },
     {
-      "id": "cl001",
-      "name": "Guerreiro",
-      "image": "guerreiro.jpg",
-      "descricao": "Um combatente armado, soldado ou indivíduo especializado em combate.  Corajosa e resiliente que enfrenta desafios diários, luta por ideais e supera adversidades",
-      "cor": "#d32f2f",
-      "estatisticas": {
-        "vida": 100,
-        "mana": 10,
-        "forca": 90,
-        "armadura": 80,
-        "agilidade": 50,
-        "inteligencia": 10,
-        "carisma": 50,
-        "percepcao": 50,
-        "maestria": 60
+      "id": "archer",
+      "unrealAsset": "DA_Class_Arqueiro",
+      "name": {
+        "pt": "Arqueiro",
+        "en": "Archer"
       },
-      "habilidades": [
+      "color": "#388e3c",
+      "image": "img/classes/archer.jpg",
+      "description": {
+        "pt": "Um combatente especializado em armas de ataque à distância, com agilidade, precisão e táticas de evasão.",
+        "en": "A fighter specialized in ranged weapons, relying on agility, precision and evasion tactics."
+      },
+      "weapons": [
+        "bow"
+      ],
+      "stats": {
+        "health": 80,
+        "mana": 30,
+        "stamina": 110,
+        "armor": 40,
+        "physicalPower": 95,
+        "magicPower": 10,
+        "physicalResistance": 40,
+        "magicResistance": 30,
+        "criticalChance": 50,
+        "criticalDamage": 90,
+        "posture": 100
+      },
+      "skills": [
         {
-          "nome": "Golpe Fulminante",
-          "descricao": "Um ataque poderoso que quebra a defesa inimiga.",
+          "name": {
+            "pt": "Tiro Rápido",
+            "en": "Quick Shot"
+          },
+          "description": {
+            "pt": "Atira uma flecha numa velocidade impressionante.",
+            "en": "Fires an arrow at impressive speed."
+          },
+          "cooldown": 3
+        },
+        {
+          "name": {
+            "pt": "Tiro Triplo",
+            "en": "Triple Shot"
+          },
+          "description": {
+            "pt": "Atira três flechas de uma vez acertando o inimigo e dando o triplo de dano.",
+            "en": "Fires three arrows at once, hitting the enemy for triple damage."
+          },
           "cooldown": 5
         },
         {
-          "nome": "Pele de Ferro",
-          "descricao": "Aumenta a resistência a ataques físicos por 30s.",
+          "name": {
+            "pt": "Aumento de Velocidade",
+            "en": "Speed Boost"
+          },
+          "description": {
+            "pt": "O arqueiro ganha velocidade extra para atacar mais rápido ou fugir.",
+            "en": "The archer gains extra speed to attack faster or escape."
+          },
           "cooldown": 10
         },
         {
-          "nome": "Investida",
-          "descricao": "Avança rapidamente contra o alvo, causando atordoamento.",
-          "cooldown": 12
-        },
-        {
-          "nome": "Fúria Incontrolável",
-          "descricao": "Aumenta drasticamente a velocidade e dano por 10s.",
-          "cooldown": 60
-        },
-        {
-          "nome": "Golpe Sangrento",
-          "descricao": "Causa dano e aplica efeito de sangramento.",
+          "name": {
+            "pt": "Chuva de Flechas",
+            "en": "Arrow Rain"
+          },
+          "description": {
+            "pt": "Uma saraivada de flechas cai do céu e acerta todos numa grande área.",
+            "en": "A volley of arrows rains from the sky, hitting everyone in a large area."
+          },
           "cooldown": 15
+        },
+        {
+          "name": {
+            "pt": "Flecha de Veneno",
+            "en": "Poison Arrow"
+          },
+          "description": {
+            "pt": "Uma flecha envenenada que pode causar dano ao longo do tempo nos alvos atingidos.",
+            "en": "A poisoned arrow that may deal damage over time to the targets it hits."
+          },
+          "cooldown": 5
         }
       ],
       "subclasses": [
         {
-          "id": "sc001",
-          "name": "Berseker",
-          "descricao": "Um guerreiro nórdico de elite conhecido por sua fúria incontrolável e implacável em combate",
-          "imagem": "Berserker.jpg",
-          "estatisticas": {
-            "vida": 14,
-            "mana": 0,
-            "forca": 16,
-            "armadura": 8,
-            "agilidade": 8,
-            "inteligencia": 2,
-            "carisma": 2,
-            "percepcao": 4,
-            "maestria": 6
+          "id": "archer-ranger",
+          "name": {
+            "pt": "Ranger",
+            "en": "Ranger"
+          },
+          "description": {
+            "pt": "Um aventureiro solitário focado na sobrevivência e no combate na natureza. Atua como guardião das fronteiras, uma mistura de guerreiro e druida.",
+            "en": "A lone adventurer focused on survival and combat in the wild. A guardian of the borders, part warrior and part druid."
+          },
+          "image": "img/classes/archer-ranger.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc002",
-          "name": "BloodKnight",
-          "descricao": "Uma subclasse hibrida que mistura combate corpo a corpo com magia e habilidades vampíricas.",
-          "imagem": "BloodKnight.jpg",
-          "estatisticas": {
-            "vida": 14,
-            "mana": 5,
-            "forca": 12,
-            "armadura": 9,
-            "agilidade": 3,
-            "inteligencia": 6,
-            "carisma": 1,
-            "percepcao": 2,
-            "maestria": 8
+          "id": "archer-assassin",
+          "name": {
+            "pt": "Assassino",
+            "en": "Assassin"
+          },
+          "description": {
+            "pt": "Um matador implacável e furtivo, especializado em infiltração, disfarce e eliminação cirúrgica de alvos.",
+            "en": "A relentless, stealthy killer specialized in infiltration, disguise and the surgical elimination of targets."
+          },
+          "image": "img/classes/archer-assassin.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc003",
-          "name": "DeadKnight",
-          "descricao": "Eles são tradicionalmente retratados como guerreiros caídos de elite que foram ressuscitados por forças sombrias, combinando maestria em combate físico com magia negra profana",
-          "imagem": "Deadknight.jpg",
-          "estatisticas": {
-            "vida": 14,
-            "mana": 5,
-            "forca": 12,
-            "armadura": 12,
-            "agilidade": 1,
-            "inteligencia": 8,
-            "carisma": 1,
-            "percepcao": 2,
-            "maestria": 5
+          "id": "archer-arcane-archer",
+          "name": {
+            "pt": "Arqueiro Arcano",
+            "en": "Arcane Archer"
+          },
+          "description": {
+            "pt": "Esses guerreiros de elite infundem seus arcos e flechas com energia sobrenatural, disparando projéteis que podem explodir, rastrear inimigos ou paralisar alvos à distância.",
+            "en": "These elite warriors infuse their bows and arrows with supernatural energy, firing projectiles that can explode, track enemies or paralyze targets from afar."
+          },
+          "image": "img/classes/archer-arcane-archer.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc004",
-          "name": "Paladino",
-          "descricao": "É um guerreiro sagrado que combina habilidades de combate corpo a corpo com magia divina e forte código moral. Ele é movido por um Juramento Sagrado para proteger os indefesos, combater a corrupção e defender ideais de justiça e verdade",
-          "imagem": "Paladino.jpg",
-          "estatisticas": {
-            "vida": 11,
-            "mana": 6,
-            "forca": 9,
-            "armadura": 12,
-            "agilidade": 1,
-            "inteligencia": 4,
-            "carisma": 10,
-            "percepcao": 2,
-            "maestria": 5
+          "id": "archer-gloomstalker",
+          "name": {
+            "pt": "GloomStalker",
+            "en": "GloomStalker"
+          },
+          "description": {
+            "pt": "Especialistas em emboscadas, ficam invisíveis na escuridão para criaturas que dependem de visão no escuro e causam dano explosivo devastador logo no início do combate.",
+            "en": "Ambush specialists who turn invisible in the dark to creatures relying on darkvision and deal devastating burst damage at the start of combat."
+          },
+          "image": "img/classes/archer-gloomstalker.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         },
         {
-          "id": "sc005",
-          "name": "DragonKnight",
-          "descricao": "É focada em combate corpo a corpo, magia elemental e defesa é conhecido por sua alta resistência, capacidade de assumir a linha de frente e transformações drásticas.",
-          "imagem": "DragonKnight.jpg",
-          "estatisticas": {
-            "vida": 9,
-            "mana": 5,
-            "forca": 12,
-            "armadura": 11,
-            "agilidade": 5,
-            "inteligencia": 6,
-            "carisma": 1,
-            "percepcao": 3,
-            "maestria": 8
+          "id": "archer-blood-archer",
+          "name": {
+            "pt": "Arqueiro de Sangue",
+            "en": "Blood Archer"
+          },
+          "description": {
+            "pt": "É um mestre da arquearia que funde a precisão cirúrgica do disparo à distância com as artes proibidas da magia de sangue.",
+            "en": "A master archer who fuses the surgical precision of ranged shots with the forbidden arts of blood magic."
+          },
+          "image": "img/classes/archer-blood-archer.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "sorcerer",
+      "unrealAsset": "DA_Class_Feiticeiro",
+      "name": {
+        "pt": "Feiticeiro",
+        "en": "Sorcerer"
+      },
+      "color": "#6E00B3",
+      "image": "img/classes/sorcerer.jpg",
+      "description": {
+        "pt": "Tem o poder correndo nas veias, vindo de um ancestral dragão, de uma bênção feérica ou de uma intervenção cósmica. Usa o atributo Carisma para moldar a realidade.",
+        "en": "Power runs through his veins, inherited from a dragon ancestor, a fey blessing or cosmic intervention. He uses the Charisma attribute to shape reality."
+      },
+      "weapons": [
+        "staff"
+      ],
+      "stats": {
+        "health": 60,
+        "mana": 140,
+        "stamina": 50,
+        "armor": 20,
+        "physicalPower": 10,
+        "magicPower": 110,
+        "physicalResistance": 25,
+        "magicResistance": 80,
+        "criticalChance": 30,
+        "criticalDamage": 50,
+        "posture": 70
+      },
+      "skills": [
+        {
+          "name": {
+            "pt": "Bola de Fogo",
+            "en": "Fireball"
+          },
+          "description": {
+            "pt": "Lança uma esfera de fogo explosiva.",
+            "en": "Hurls an explosive sphere of fire."
+          },
+          "cooldown": 6
+        },
+        {
+          "name": {
+            "pt": "Escudo de Gelo",
+            "en": "Ice Shield"
+          },
+          "description": {
+            "pt": "Cria um escudo de gelo ao redor do conjurador.",
+            "en": "Creates a shield of ice around the caster."
+          },
+          "cooldown": 15
+        },
+        {
+          "name": {
+            "pt": "Tempestade de Raios",
+            "en": "Lightning Storm"
+          },
+          "description": {
+            "pt": "Dispara um feixe de energia pura.",
+            "en": "Fires a beam of pure energy."
+          },
+          "cooldown": 12
+        },
+        {
+          "name": {
+            "pt": "Jato de Água",
+            "en": "Water Jet"
+          },
+          "description": {
+            "pt": "Atira um jato de água no inimigo.",
+            "en": "Shoots a jet of water at the enemy."
+          },
+          "cooldown": 6
+        },
+        {
+          "name": {
+            "pt": "Chuva de Meteoros",
+            "en": "Meteor Shower"
+          },
+          "description": {
+            "pt": "Evoca do céu uma chuva de meteoros devastadora.",
+            "en": "Calls down a devastating meteor shower from the sky."
+          },
+          "cooldown": 60
+        }
+      ],
+      "subclasses": [
+        {
+          "id": "sorcerer-necromance",
+          "name": {
+            "pt": "Necromance",
+            "en": "Necromance"
+          },
+          "description": {
+            "pt": "Um conjurador que domina a energia da morte e das almas.",
+            "en": "A caster who masters the energy of death and souls."
+          },
+          "image": "img/classes/sorcerer-necromance.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "sorcerer-voidwalker",
+          "name": {
+            "pt": "VoidWalker",
+            "en": "VoidWalker"
+          },
+          "description": {
+            "pt": "Um feiticeiro solitário que usa o poder do vazio para ganhar força.",
+            "en": "A solitary sorcerer who draws strength from the power of the void."
+          },
+          "image": "img/classes/sorcerer-voidwalker.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "sorcerer-shadowcaster",
+          "name": {
+            "pt": "ShadowCaster",
+            "en": "ShadowCaster"
+          },
+          "description": {
+            "pt": "Com a habilidade de se transformar em algumas criaturas específicas, consegue sobreviver às adversidades.",
+            "en": "Able to transform into certain specific creatures, it survives any adversity."
+          },
+          "image": "img/classes/sorcerer-shadowcaster.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "sorcerer-chaos-sorcerer",
+          "name": {
+            "pt": "Chaos Sorcerer",
+            "en": "Chaos Sorcerer"
+          },
+          "description": {
+            "pt": "Um canalizador de energias mágicas brutas, imprevisíveis e corrompidas, geralmente ligadas a divindades sombrias ou forças cósmicas da destruição.",
+            "en": "A channeler of raw, unpredictable and corrupted magic, usually tied to dark deities or cosmic forces of destruction."
+          },
+          "image": "img/classes/sorcerer-chaos-sorcerer.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "sorcerer-blood-sorcerer",
+          "name": {
+            "pt": "Blood Sorcerer",
+            "en": "Blood Sorcerer"
+          },
+          "description": {
+            "pt": "Usa magia sombria focada em sacrifício e na manipulação da energia vital.",
+            "en": "Wields dark magic centered on sacrifice and manipulating life energy."
+          },
+          "image": "img/classes/sorcerer-blood-sorcerer.jpg",
+          "unlock": {
+            "pt": "",
+            "en": ""
           }
         }
       ]

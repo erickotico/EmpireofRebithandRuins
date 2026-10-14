@@ -1,0 +1,172 @@
+# Imagens do site
+
+Coloque cada imagem com **exatamente** o nome abaixo (pode ser .jpg; se usar outro formato, mude o caminho no painel).
+Enquanto a imagem não existir, o site mostra uma imagem padrão.
+Tamanho sugerido: 1280×720 (16:9) para monstros, masmorras e reinos; 800×800 para classes.
+
+## Monstros (`img/monstros/`)
+
+- `eagle.jpg` — Águia
+- `eagle-harpy.jpg` — Harpia (variante de Águia)
+- `eagle-raptor.jpg` — Rapina (variante de Águia)
+- `spider.jpg` — Aranha
+- `spider-giant-spider.jpg` — Aranha Gigante (variante de Aranha)
+- `spider-phase-spider.jpg` — Aranha de Fase (variante de Aranha)
+- `spider-wolf-spider.jpg` — Aranha-Lobo (variante de Aranha)
+- `spider-drider.jpg` — Drider (variante de Aranha)
+- `spider-mini-spider.jpg` — Mini Aranha (variante de Aranha)
+- `witch.jpg` — Bruxa
+- `witch-environmental-witch.jpg` — Bruxa de Ambiente (variante de Bruxa)
+- `centaur.jpg` — Centauro
+- `demon.jpg` — Demônio
+- `demon-marilith.jpg` — Marilith (variante de Demônio)
+- `demon-lust.jpg` — Luxúria (variante de Demônio)
+- `demon-pride.jpg` — Soberba (variante de Demônio)
+- `demon-greed.jpg` — Avareza (variante de Demônio)
+- `demon-envy.jpg` — Inveja (variante de Demônio)
+- `demon-wrath.jpg` — Ira (variante de Demônio)
+- `demon-gluttony.jpg` — Gula (variante de Demônio)
+- `demon-sloth.jpg` — Preguiça (variante de Demônio)
+- `demon-demon-lord.jpg` — Lorde Demônio (variante de Demônio)
+- `dragon.jpg` — Dragão
+- `dragon-dracolich.jpg` — Draco Lich (variante de Dragão)
+- `dragon-forest-dragon.jpg` — Dragão da Floresta (variante de Dragão)
+- `dragon-fire-dragon.jpg` — Dragão de Fogo (variante de Dragão)
+- `dragon-ice-dragon.jpg` — Dragão de Gelo (variante de Dragão)
+- `dragon-poison-dragon.jpg` — Dragão de Veneno (variante de Dragão)
+- `dragon-wyvern.jpg` — Wyvern (variante de Dragão)
+- `dark-elf.jpg` — Elfo Negro
+- `dark-elf-drow.jpg` — Drow (variante de Elfo Negro)
+- `goblin.jpg` — Goblin
+- `golem.jpg` — Golem
+- `hydra.jpg` — Hidra
+- `boar.jpg` — Javali
+- `lizard.jpg` — Lagarto
+- `lizard-lizardfolk.jpg` — Homem-Lagarto (variante de Lagarto)
+- `lizard-lizard-shaman.jpg` — Lagarto Xamã (variante de Lagarto)
+- `lizard-lizard-king.jpg` — Rei Lagarto (variante de Lagarto)
+- `wolf.jpg` — Lobo
+- `wolf-snow-wolf.jpg` — Lobo da Neve (variante de Lobo)
+- `wolf-lava-wolf.jpg` — Lobo de Lava (variante de Lobo)
+- `wolf-forest-wolf.jpg` — Lobo Florestal (variante de Lobo)
+- `wolf-giant-wolf.jpg` — Lobo Gigante (variante de Lobo)
+- `wolf-spirit-wolf.jpg` — Lobo Espiritual (variante de Lobo)
+- `wolf-wrog.jpg` — Wrog (variante de Lobo)
+- `wolf-hellhound.jpg` — Lobo Infernal (variante de Lobo)
+- `mimic.jpg` — Mímico
+- `mimic-weapon-mimic.jpg` — Mímico de Armas (variante de Mímico)
+- `mimic-treasure-mimic.jpg` — Mímico de Tesouro (variante de Mímico)
+- `mimic-armor-mimic.jpg` — Mímico de Armaduras (variante de Mímico)
+- `mimic-item-mimic.jpg` — Mímico de Itens (variante de Mímico)
+- `minotaur.jpg` — Minotauro
+- `undead.jpg` — Morto-Vivo
+- `undead-zombie.jpg` — Zumbi (variante de Morto-Vivo)
+- `undead-skeleton.jpg` — Esqueleto (variante de Morto-Vivo)
+- `undead-ghoul.jpg` — Carniçal (variante de Morto-Vivo)
+- `undead-mummy.jpg` — Múmia (variante de Morto-Vivo)
+- `undead-lich.jpg` — Lich (variante de Morto-Vivo)
+- `undead-specter.jpg` — Espectro (variante de Morto-Vivo)
+- `ogre.jpg` — Ogro
+- `ogre-forest-ogre.jpg` — Ogro da Floresta (variante de Ogro)
+- `ogre-lava-ogre.jpg` — Ogro de Lava (variante de Ogro)
+- `ogre-oni.jpg` — Oni (variante de Ogro)
+- `ogre-storm-ogre.jpg` — Ogro da Tormenta (variante de Ogro)
+- `ogre-pygmy-ogre.jpg` — Ogro Pigmeu (variante de Ogro)
+- `ogre-ogrillon.jpg` — Ogrillon (variante de Ogro)
+- `orc.jpg` — Orc
+- `orc-ogrillon.jpg` — Ogrillon (variante de Orc)
+- `orc-cave-orc.jpg` — Orc da Caverna (variante de Orc)
+- `orc-mountain-orc.jpg` — Orc da Montanha (variante de Orc)
+- `orc-orc-druid.jpg` — Orc Druida (variante de Orc)
+- `orc-orc-lord.jpg` — Lorde Orc (variante de Orc)
+- `serpent.jpg` — Serpente
+- `serpent-anathema.jpg` — Anátema (variante de Serpente)
+- `serpent-gorgon.jpg` — Górgona (variante de Serpente)
+- `serpent-naga.jpg` — Naga (variante de Serpente)
+- `slime.jpg` — Slime
+- `slime-environmental-slime.jpg` — Slime de Ambiente (variante de Slime)
+- `slime-greater-slime.jpg` — Slime Maior (variante de Slime)
+- `slime-slime-king.jpg` — Slime Rei (variante de Slime)
+- `slime-glutton.jpg` — Glutão (variante de Slime)
+- `titan.jpg` — Titã
+- `titan-bestial-titan.jpg` — Titã Bestial (variante de Titã)
+- `titan-jotunn.jpg` — Jötunn (variante de Titã)
+- `treant.jpg` — Treant
+- `treant-environmental-treant.jpg` — Treant de Ambiente (variante de Treant)
+- `troll.jpg` — Troll
+- `giant-bear.jpg` — Urso Gigante
+- `giant-bear-cave-bear.jpg` — Urso das Cavernas (variante de Urso Gigante)
+- `giant-bear-magma-bear.jpg` — Urso de Magma (variante de Urso Gigante)
+- `vampire.jpg` — Vampiro
+- `giant-worm.jpg` — Verme Gigante
+- `wasp.jpg` — Vespa
+
+## Classes e subclasses (`img/classes/`)
+
+- `warrior.jpg` — Guerreiro
+  - `warrior-berserker.jpg` — Berserker
+  - `warrior-bloodknight.jpg` — BloodKnight
+  - `warrior-deadknight.jpg` — DeadKnight
+  - `warrior-paladin.jpg` — Paladino
+  - `warrior-dragonknight.jpg` — DragonKnight
+- `barbarian.jpg` — Bárbaro
+  - `barbarian-totem-warrior.jpg` — Totem Warrior
+  - `barbarian-ancestral-guardian.jpg` — Ancestral Guardian
+  - `barbarian-storm-herald.jpg` — Storm Herald
+  - `barbarian-zealot.jpg` — Zealot
+  - `barbarian-beast.jpg` — Beast
+- `swordsman.jpg` — Espadachim
+  - `swordsman-samurai.jpg` — Samurai
+  - `swordsman-spell-blade.jpg` — Spell Blade
+  - `swordsman-hex-blade.jpg` — Hex Blade
+  - `swordsman-blade-dancer.jpg` — Blade Dancer
+  - `swordsman-blade-master.jpg` — Blade Master
+- `lancer.jpg` — Lanceiro
+  - `lancer-hoplite.jpg` — Hoplite
+  - `lancer-halberd.jpg` — Halberd
+  - `lancer-celestial-lancer.jpg` — Celestial Lancer
+  - `lancer-assyrian-elite-spearman.jpg` — Assyrian Elite Spearman
+  - `lancer-dragon-slayer.jpg` — Dragon Slayer
+- `archer.jpg` — Arqueiro
+  - `archer-ranger.jpg` — Ranger
+  - `archer-assassin.jpg` — Assassino
+  - `archer-arcane-archer.jpg` — Arqueiro Arcano
+  - `archer-gloomstalker.jpg` — GloomStalker
+  - `archer-blood-archer.jpg` — Arqueiro de Sangue
+- `sorcerer.jpg` — Feiticeiro
+  - `sorcerer-necromance.jpg` — Necromance
+  - `sorcerer-voidwalker.jpg` — VoidWalker
+  - `sorcerer-shadowcaster.jpg` — ShadowCaster
+  - `sorcerer-chaos-sorcerer.jpg` — Chaos Sorcerer
+  - `sorcerer-blood-sorcerer.jpg` — Blood Sorcerer
+
+## Masmorras (`img/masmorras/`)
+
+- `dungeon-01.jpg` — Floresta Sussurrante
+- `dungeon-02.jpg` — Cripta de Atena
+- `dungeon-03.jpg` — Grutas de Cristal
+- `dungeon-04.jpg` — Ruínas do Guardião Antigo
+- `dungeon-05.jpg` — Biblioteca do Conhecimento Proibido
+- `dungeon-06.jpg` — Labirinto de Minos
+- `dungeon-07.jpg` — Templo Submerso
+- `dungeon-08.jpg` — Torre do Julgamento
+- `dungeon-09.jpg` — Domínio do Rei Esquecido
+- `dungeon-10.jpg` — Abismo das Almas
+- `dungeon-11.jpg` — Fenda do Submundo
+- `dungeon-12.jpg` — Jardim das Realidades Partidas
+- `dungeon-13.jpg` — Labirinto Demoníaco
+- `dungeon-14.jpg` — Templo da Morte Silenciosa
+- `dungeon-15.jpg` — Pico dos Deuses Caídos
+- `dungeon-16.jpg` — Domínio dos Imortais
+- `dungeon-17.jpg` — Portal do Fim Infinito
+- `dungeon-18.jpg` — Palácio das Ilusões Infinitas
+- `dungeon-19.jpg` — Labirinto do Destino Fragmentado
+- `dungeon-20.jpg` — Abismo Primordial
+
+## Reinos (`img/reinos/`)
+
+- `thalor.jpg` — Thalor
+- `eriador.jpg` — Eriador
+- `sylvanor.jpg` — Sylvanor
+- `dracoria.jpg` — Dracória
+- `malakar.jpg` — Malakar

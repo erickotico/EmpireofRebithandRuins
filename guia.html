@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/guia.css">
+    <title data-i18n="beginnerGuide">Beginner's Guide</title>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="guide-page">
+        <h1 class="guide-title" data-i18n="beginnerGuide">Beginner's Guide</h1>
+        <!-- Mapa do jogo -->
+        <section id="mapa">
+            <h2 data-i18n="gameMap">Game Map</h2>
+            <img id="mapa-img" src="img/LogoRPG.jpg" alt="Game map" data-i18n-aria="gameMap" tabindex="0" role="button">
+        </section>
+
+        <!-- Mapa ampliado -->
+        <div id="popup" class="popup">
+            <span class="fechar" data-i18n-aria="closeImage" aria-label="Close enlarged image">&times;</span>
+            <img id="popup-img" src="img/LogoRPG.jpg" alt="Game map">
+        </div>
+
+        <!-- Reinos -->
+        <section id="reinos">
+            <h2 data-i18n="kingdoms">Kingdoms</h2>
+            <div class="search-container">
+                <input type="search" id="filtro-reinos" data-i18n="searchKingdoms" data-i18n-aria="searchKingdoms" placeholder="Search kingdoms..." aria-label="Search kingdoms">
+                <button type="button" data-i18n="search">Search</button>
+            </div>
+            <div id="lista-reinos" class="scroll-box"></div>
+        </section>
+
+        <!-- Masmorras -->
+        <section id="masmorras">
+            <h2 data-i18n="dungeons">Dungeons</h2>
+            <div class="search-container">
+                <input type="search" id="filtro-masmorras" data-i18n="searchDungeons" data-i18n-aria="searchDungeons" placeholder="Search dungeons..." aria-label="Search dungeons">
+                <button type="button" data-i18n="search">Search</button>
+            </div>
+            <div id="lista-masmorras" class="scroll-box"></div>
+            <div id="masmorras-regras" class="dungeon-notes"></div>
+        </section>
+
+        <!-- Itens -->
+        <section id="itens">
+            <h2 data-i18n="items">Items</h2>
+            <div class="search-container">
+                <input type="search" id="filtro-itens" data-i18n="searchItems" data-i18n-aria="searchItems" placeholder="Search items..." aria-label="Search items">
+                <button type="button" data-i18n="search">Search</button>
+            </div>
+            <div id="lista-itens" class="scroll-box"></div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/langSwitcher.js"></script>
+    <script src="js/gameData.js"></script>
+    <script src="js/guia.js"></script>
+</body>
+</html>

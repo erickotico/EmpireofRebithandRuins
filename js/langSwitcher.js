@@ -7,8 +7,6 @@
             classesAndSubclasses: 'Classes & Subclasses',
             chooseClass: 'Choose your class and develop your unique abilities',
             searchClasses: 'Search classes...',
-            attributeCalculator: 'Attribute Calculator',
-            selectClasses: 'Select a class and two subclasses to calculate the combined attributes.',
             viewDetails: 'View Details',
             information: 'Information',
             statistics: 'Statistics',
@@ -60,6 +58,9 @@
             heroTitle: 'Embark on a magical world',
             heroSubtitle: 'Explore dungeons, defeat monsters and become a legend in Empire of Rebirth & Ruins',
             heroCta: 'Start your journey now!',
+            guide: 'Guide',
+            itchPage: 'itch.io page',
+            fileProtocolWarning: 'This page was opened straight from the folder, so the browser blocks the game data. Open it with VS Code Live Server, or at http://localhost:3000/site/ while the admin panel is running.',
             latestUpdates: 'Latest Updates',
             game: 'Game',
             beginnerGuide: "Beginner's Guide",
@@ -88,10 +89,6 @@
             gameMap: 'Game Map',
             closeImage: 'Close enlarged image',
             class: 'Class',
-            firstSubclass: 'First subclass',
-            secondSubclass: 'Second subclass',
-            selectClass: 'Select a class',
-            selectSubclass: 'Select subclass',
             classesGrid: 'Classes grid',
             aboutStudioTitle: 'About the Studio',
             whoWeAreTitle: 'Who We Are',
@@ -139,9 +136,6 @@
             acceptTerms: 'You must accept the terms.',
             creating: 'Creating...',
             accountCreated: 'Account created (simulated). You can now log in.',
-            calculatedAttributes: 'Calculated attributes',
-            classLabel: 'Class',
-            subclassesLabel: 'Subclasses',
             classesPageTitle: 'Classes & Subclasses',
             aboutPageTitle: 'About',
             updatesPageTitle: 'Updates',
@@ -159,7 +153,7 @@
             creativity: 'Creativity',
             mapTitle: 'Game Map',
             kingdoms: 'Kingdoms',
-            dungeons: 'Dungeon Types',
+            dungeons: 'Dungeons',
             items: 'Items',
             searchKingdoms: 'Search kingdoms...',
             searchDungeons: 'Search dungeons...',
@@ -185,7 +179,50 @@
             cancel: 'Cancel',
             close: 'Close',
             privacyTerms: 'privacy terms',
-            allRights: 'All rights reserved.'
+            allRights: 'All rights reserved.',
+            attributes: 'Attributes',
+            element: 'Element',
+            allElements: 'All elements',
+            strongAgainst: 'Strong against',
+            weakAgainst: 'Weak against',
+            toBeDefined: 'To be defined',
+            variantOf: 'Variant of',
+            showVariants: 'Show variants',
+            monsterStatesTitle: 'Monster states',
+            monsterStatesIntro: 'These states can appear on many monsters. The badges on each card show which ones that monster can have.',
+            possibleStates: 'Possible states',
+            region: 'Region',
+            behavior: 'Behavior',
+            type: 'Type',
+            difficulty: 'Difficulty',
+            levels: 'Levels',
+            statsConverted: 'Provisional values converted from the design document. They will change during balancing.',
+            statsUnreal: 'Values taken straight from the game.',
+            statsInherited: 'Same values as {base} until this variant is balanced.',
+            statsPending: 'Attributes not defined yet.',
+            inheritedFrom: 'Same as {base}',
+            cooldown: 'Cooldown',
+            noRewards: 'No rewards listed.',
+            noVariants: 'No variants.',
+            familyNote: 'This is a family: each type below has its own element.',
+            weapons: 'Weapons',
+            rank: 'Rank',
+            boss: 'Boss',
+            monstersInBestiary: 'In the bestiary',
+            dungeonsHowItWorks: 'How dungeons work',
+            capital: 'Capital',
+            ruler: 'Ruler',
+            deity: 'Deity',
+            alliance: 'Alliance bonus',
+            itemsComingSoon: 'Items will be added soon.',
+            subclassUnlockPending: 'Unlock requirements to be defined.',
+            howToUnlock: 'How to unlock',
+            noResults: 'Nothing found.',
+            loadError: 'Could not load the data. Please try again later.',
+            monsterCount: '{n} monsters',
+            neutralMatchups: 'No elemental advantages or weaknesses.',
+            elementsTitle: 'Elements',
+            elementsIntro: 'Each creature has a dominant element. An attack that beats the target\'s element deals +30% damage; one that loses deals −30%.'
         },
         pt: {
             home: 'Início',
@@ -194,8 +231,6 @@
             classesAndSubclasses: 'Classes e subclasses',
             chooseClass: 'Escolha sua classe e desenvolva suas habilidades únicas',
             searchClasses: 'Buscar classes...',
-            attributeCalculator: 'Calculadora de atributos',
-            selectClasses: 'Selecione uma classe e duas subclasses para calcular os atributos combinados.',
             viewDetails: 'Ver detalhes',
             information: 'Informações',
             statistics: 'Atributos',
@@ -219,7 +254,7 @@
             rewards: 'Recompensas',
             variants: 'Variantes',
             resistances: 'Resistências e fraquezas',
-                xpGained: 'XP obtido ao derrotar',
+            xpGained: 'XP obtido ao derrotar',
             filterRarity: 'Filtrar por raridade',
             allRarities: 'Todas as raridades',
             quantity: 'Qtd.',
@@ -247,6 +282,9 @@
             heroTitle: 'Aventure-se em um mundo mágico',
             heroSubtitle: 'Explore masmorras, derrote monstros e torne-se uma lenda em Empire of Rebirth & Ruins',
             heroCta: 'Comece sua jornada agora!',
+            guide: 'Guia',
+            itchPage: 'Página no itch.io',
+            fileProtocolWarning: 'Esta página foi aberta direto da pasta, e assim o navegador bloqueia os dados do jogo. Abra pelo Live Server do VS Code ou em http://localhost:3000/site/ com o painel ligado.',
             latestUpdates: 'Últimas atualizações',
             game: 'Jogo',
             beginnerGuide: 'Guia para Iniciantes',
@@ -275,10 +313,6 @@
             gameMap: 'Mapa do jogo',
             closeImage: 'Fechar imagem ampliada',
             class: 'Classe',
-            firstSubclass: 'Primeira subclasse',
-            secondSubclass: 'Segunda subclasse',
-            selectClass: 'Selecione uma classe',
-            selectSubclass: 'Selecione uma subclasse',
             classesGrid: 'Grade de classes',
             aboutStudioTitle: 'Sobre o estúdio',
             whoWeAreTitle: 'Quem somos',
@@ -326,9 +360,6 @@
             acceptTerms: 'Você deve aceitar os termos.',
             creating: 'Criando...',
             accountCreated: 'Conta criada (simulação). Agora você pode fazer login.',
-            calculatedAttributes: 'Atributos calculados',
-            classLabel: 'Classe',
-            subclassesLabel: 'Subclasses',
             classesPageTitle: 'Classes e subclasses',
             aboutPageTitle: 'Sobre',
             updatesPageTitle: 'Atualizações',
@@ -346,7 +377,7 @@
             creativity: 'Criatividade',
             mapTitle: 'Mapa do Jogo',
             kingdoms: 'Reinos',
-                dungeons: 'Tipos de masmorras',
+            dungeons: 'Masmorras',
             items: 'Itens',
             searchKingdoms: 'Buscar reinos...',
             searchDungeons: 'Buscar masmorras...',
@@ -372,101 +403,108 @@
             cancel: 'Cancelar',
             close: 'Fechar',
             privacyTerms: 'termos de privacidade',
-            allRights: 'Todos os direitos reservados.'
+            allRights: 'Todos os direitos reservados.',
+            attributes: 'Atributos',
+            element: 'Elemento',
+            allElements: 'Todos os elementos',
+            strongAgainst: 'Forte contra',
+            weakAgainst: 'Fraco contra',
+            toBeDefined: 'A definir',
+            variantOf: 'Variante de',
+            showVariants: 'Mostrar variantes',
+            monsterStatesTitle: 'Estados dos monstros',
+            monsterStatesIntro: 'Estes estados podem aparecer em vários monstros. Os selos de cada card mostram quais aquele monstro pode ter.',
+            possibleStates: 'Estados possíveis',
+            region: 'Região',
+            behavior: 'Comportamento',
+            type: 'Tipo',
+            difficulty: 'Dificuldade',
+            levels: 'Níveis',
+            statsConverted: 'Valores provisórios convertidos do documento de design. Vão mudar no balanceamento.',
+            statsUnreal: 'Valores tirados direto do jogo.',
+            statsInherited: 'Mesmos valores de {base} até esta variante ser balanceada.',
+            statsPending: 'Atributos ainda não definidos.',
+            inheritedFrom: 'Igual a {base}',
+            cooldown: 'Recarga',
+            noRewards: 'Nenhuma recompensa listada.',
+            noVariants: 'Sem variantes.',
+            familyNote: 'Esta é uma família: cada tipo abaixo tem o seu próprio elemento.',
+            weapons: 'Armas',
+            rank: 'Rank',
+            boss: 'Chefe',
+            monstersInBestiary: 'No bestiário',
+            dungeonsHowItWorks: 'Como funcionam as masmorras',
+            capital: 'Capital',
+            ruler: 'Governante',
+            deity: 'Divindade',
+            alliance: 'Bônus de aliança',
+            itemsComingSoon: 'Os itens serão adicionados em breve.',
+            subclassUnlockPending: 'Requisitos de desbloqueio a definir.',
+            howToUnlock: 'Como desbloquear',
+            noResults: 'Nada encontrado.',
+            loadError: 'Não foi possível carregar os dados. Tente novamente mais tarde.',
+            monsterCount: '{n} monstros',
+            neutralMatchups: 'Sem vantagens nem fraquezas elementais.',
+            elementsTitle: 'Elementos',
+            elementsIntro: 'Cada criatura tem um elemento dominante. Um ataque que vence o elemento do alvo causa +30% de dano; um que perde causa −30%.'
         }
     };
 
-    const savedLanguage = window.localStorage.getItem('site-language');
-    const state = { current: savedLanguage === 'pt' ? 'pt' : 'en' };
-    const translationCacheKey = 'site-translation-cache-v3';
-    const translationCache = JSON.parse(window.localStorage.getItem(translationCacheKey) || '{}');
-    const pendingTranslations = new Map();
 
-    function saveTranslationCache() {
-        window.localStorage.setItem(translationCacheKey, JSON.stringify(translationCache));
+    // Idioma salvo pelo visitante; se não houver, segue o idioma do navegador.
+    function readSavedLanguage() {
+        try {
+            return window.localStorage.getItem('site-language');
+        } catch {
+            return null;
+        }
     }
 
-    async function translateWithApi(text, targetLanguage = state.current) {
-        const normalizedText = text.trim();
-        if (!normalizedText || normalizedText.length < 2) return text;
-
-        const sourceLanguage = 'autodetect';
-        const cacheKey = `${sourceLanguage}|${targetLanguage}|${normalizedText}`;
-        if (translationCache[cacheKey]) return translationCache[cacheKey];
-        if (pendingTranslations.has(cacheKey)) return pendingTranslations.get(cacheKey);
-
-        const request = fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(normalizedText)}&langpair=${sourceLanguage}|${targetLanguage}`)
-            .then(response => response.ok ? response.json() : null)
-            .then(data => {
-                const translatedText = data?.responseData?.translatedText;
-                if (!translatedText || data?.responseStatus !== 200) return text;
-                translationCache[cacheKey] = translatedText;
-                saveTranslationCache();
-                return translatedText;
-            })
-            .catch(() => text)
-            .finally(() => pendingTranslations.delete(cacheKey));
-
-        pendingTranslations.set(cacheKey, request);
-        return request;
+    function saveLanguage(lang) {
+        try {
+            window.localStorage.setItem('site-language', lang);
+        } catch {
+            // Sem localStorage (janela privada etc.): o idioma vale só para esta página.
+        }
     }
 
-    function isLikelyPortuguese(text) {
-        return /[áàâãçéêíóôõú]/i.test(text)
-            || /\b(de|do|da|dos|das|uma|um|que|para|com|não|e|em)\b/i.test(text);
+    const saved = readSavedLanguage();
+    const browserIsPortuguese = (navigator.language || '').toLowerCase().startsWith('pt');
+    const state = { current: saved === 'pt' || saved === 'en' ? saved : (browserIsPortuguese ? 'pt' : 'en') };
+
+    // Texto fixo da interface (botões, títulos). Aceita {nome} para substituir valores.
+    function t(key, fallback = key, vars) {
+        let value = translations[state.current][key] || translations.en[key] || fallback;
+        if (vars) {
+            Object.entries(vars).forEach(([name, replacement]) => {
+                value = value.replace(`{${name}}`, replacement);
+            });
+        }
+        return value;
     }
 
-    async function translateDynamicContent(root = document) {
-        if (state.current !== 'en') return;
-
-        const dynamicRoots = root.matches?.('.update-card, .class-card, .monster-card, .reino.card, .masmorra.card, .item.card, .modal-content, .sum-modal-content')
-            ? [root]
-            : [...root.querySelectorAll('.update-card, .class-card, .monster-card, .reino.card, .masmorra.card, .item.card, .modal-content, .sum-modal-content')];
-        const textNodes = [];
-
-        dynamicRoots.forEach(dynamicRoot => {
-            const walker = document.createTreeWalker(dynamicRoot, NodeFilter.SHOW_TEXT);
-            let node;
-            while ((node = walker.nextNode())) {
-                const parent = node.parentElement;
-                if (!parent || ['SCRIPT', 'STYLE', 'OPTION'].includes(parent.tagName)) continue;
-                if (parent.closest('[data-i18n]') || parent.classList.contains('update-version')) continue;
-                const knownValues = Object.values(translations.en).concat(Object.values(translations.pt));
-                if (knownValues.includes(node.nodeValue.trim())) continue;
-                const sourceIsPortuguese = isLikelyPortuguese(node.nodeValue.trim());
-                if ((state.current === 'pt' && sourceIsPortuguese)
-                    || (state.current === 'en' && !sourceIsPortuguese)) continue;
-                if (node.nodeValue.trim().length >= 2) textNodes.push(node);
-            }
-        });
-
-        await Promise.all(textNodes.map(async node => {
-            const originalText = node.nodeValue;
-            const leadingWhitespace = originalText.match(/^\s*/)?.[0] || '';
-            const trailingWhitespace = originalText.match(/\s*$/)?.[0] || '';
-            const translatedText = await translateWithApi(originalText.trim());
-            if (translatedText !== originalText.trim() && node.isConnected) {
-                node.nodeValue = `${leadingWhitespace}${translatedText}${trailingWhitespace}`;
-            }
-        }));
+    // Texto vindo dos dados ({ pt, en }). Se faltar a tradução, mostra o português.
+    function text(field) {
+        if (field === null || field === undefined) return '';
+        if (typeof field !== 'object') return String(field);
+        return field[state.current] || field.pt || field.en || '';
     }
 
     function updateNodeText(el, key) {
-        const lang = translations[state.current];
-        if (!lang || !lang[key]) return;
+        const value = translations[state.current][key];
+        if (!value) return;
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.placeholder = lang[key];
+            el.placeholder = value;
         } else {
-            el.textContent = lang[key];
+            el.textContent = value;
         }
     }
 
     function applyTranslations() {
-        document.documentElement.lang = state.current;
+        document.documentElement.lang = state.current === 'pt' ? 'pt-BR' : 'en';
         document.querySelectorAll('[data-i18n]').forEach((el) => updateNodeText(el, el.dataset.i18n));
         document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
-            const key = el.dataset.i18nAria;
-            const value = translations[state.current][key];
+            const value = translations[state.current][el.dataset.i18nAria];
             if (value) el.setAttribute('aria-label', value);
         });
         document.querySelectorAll('.lang-switcher').forEach((button) => {
@@ -477,39 +515,36 @@
         });
     }
 
-    function observeDynamicContent() {
-        if (!document.body || !window.MutationObserver) return;
-
-        const observer = new MutationObserver(mutations => {
-            mutations.forEach(mutation => {
-                mutation.addedNodes.forEach(node => {
-                    if (node.nodeType === Node.ELEMENT_NODE) translateDynamicContent(node);
-                });
-            });
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
+    function setLanguage(lang) {
+        if (lang !== 'pt' && lang !== 'en') return;
+        state.current = lang;
+        saveLanguage(lang);
+        applyTranslations();
+        document.dispatchEvent(new CustomEvent('site-language-changed', { detail: lang }));
     }
 
     function toggleLanguage() {
-        state.current = state.current === 'en' ? 'pt' : 'en';
-        window.localStorage.setItem('site-language', state.current);
-        applyTranslations();
-        document.dispatchEvent(new CustomEvent('site-language-changed', { detail: state.current }));
-        translateDynamicContent();
+        setLanguage(state.current === 'en' ? 'pt' : 'en');
     }
 
-    window.getSiteTranslation = (key, fallback = key) => translations[state.current][key] || fallback;
-    window.translateDynamicContent = translateDynamicContent;
+    window.SiteI18n = {
+        get lang() { return state.current; },
+        t,
+        text,
+        setLanguage,
+        toggleLanguage
+    };
+    // Nome antigo, mantido para as páginas que ainda o usam.
+    window.getSiteTranslation = (key, fallback = key) => t(key, fallback);
+    window.toggleLanguage = toggleLanguage;
+
+    // Aplica já no carregamento do script, para a página não "piscar" no idioma errado.
+    document.documentElement.lang = state.current === 'pt' ? 'pt-BR' : 'en';
 
     document.addEventListener('DOMContentLoaded', () => {
-        const button = document.querySelector('.lang-switcher');
-        if (button) {
+        document.querySelectorAll('.lang-switcher').forEach((button) => {
             button.addEventListener('click', toggleLanguage);
-        }
+        });
         applyTranslations();
-        observeDynamicContent();
     });
-
-    window.toggleLanguage = toggleLanguage;
 })();

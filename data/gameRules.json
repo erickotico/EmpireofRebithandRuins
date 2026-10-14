@@ -1,0 +1,121 @@
+{
+  "_comment": "Regras gerais do jogo usadas pelo site. Espelha o projeto Unreal (DA_ElementChart, PDA_CharacterAttributes). Editar aqui só quando mudar no jogo.",
+  "elements": [
+    { "id": "fire", "unrealTag": "Element.Fire", "color": "#e4572e", "icon": "🔥", "name": { "pt": "Fogo", "en": "Fire" }, "beats": ["wind", "ice"] },
+    { "id": "water", "unrealTag": "Element.Water", "color": "#3b8beb", "icon": "💧", "name": { "pt": "Água", "en": "Water" }, "beats": ["fire", "earth"] },
+    { "id": "earth", "unrealTag": "Element.Earth", "color": "#a47148", "icon": "🪨", "name": { "pt": "Terra", "en": "Earth" }, "beats": ["fire", "lightning"] },
+    { "id": "wind", "unrealTag": "Element.Wind", "color": "#4fc3a1", "icon": "🌪️", "name": { "pt": "Vento", "en": "Wind" }, "beats": ["lightning"] },
+    { "id": "lightning", "unrealTag": "Element.Lightning", "color": "#f2c94c", "icon": "⚡", "name": { "pt": "Raio", "en": "Lightning" }, "beats": ["water", "shadow"] },
+    { "id": "ice", "unrealTag": "Element.Ice", "color": "#7fd3f7", "icon": "❄️", "name": { "pt": "Gelo", "en": "Ice" }, "beats": ["water", "earth", "wind"] },
+    { "id": "shadow", "unrealTag": "Element.Shadow", "color": "#8f8fa8", "icon": "🌑", "name": { "pt": "Sombrio", "en": "Shadow" }, "beats": ["light"] },
+    { "id": "light", "unrealTag": "Element.Light", "color": "#f7e7a1", "icon": "✨", "name": { "pt": "Luz", "en": "Light" }, "beats": ["darkness"] },
+    { "id": "darkness", "unrealTag": "Element.Darkness", "color": "#a66bd6", "icon": "🕳️", "name": { "pt": "Trevas", "en": "Darkness" }, "beats": ["shadow"] },
+    { "id": "poison", "unrealTag": "Element.Poison", "color": "#7cb342", "icon": "☠️", "name": { "pt": "Veneno", "en": "Poison" }, "beats": ["water", "earth", "light"] }
+  ],
+  "specialElements": [
+    { "id": "environment", "name": { "pt": "Varia com o ambiente", "en": "Varies with the environment" } },
+    { "id": "family", "name": { "pt": "Família (cada tipo tem o seu)", "en": "Family (each type has its own)" } }
+  ],
+  "elementMultipliers": { "strong": 1.3, "weak": 0.7, "ownElementResist": 0.9, "affinityBonus": 1.2 },
+
+  "attributes": [
+    { "id": "health", "unreal": "BaseMaxHealth", "name": { "pt": "Vida", "en": "Health" } },
+    { "id": "mana", "unreal": "BaseMaxMana", "name": { "pt": "Mana", "en": "Mana" } },
+    { "id": "stamina", "unreal": "BaseMaxStamina", "name": { "pt": "Stamina", "en": "Stamina" } },
+    { "id": "armor", "unreal": "BaseArmor", "name": { "pt": "Armadura", "en": "Armor" } },
+    { "id": "physicalPower", "unreal": "BasePhysicalPower", "name": { "pt": "Poder Físico", "en": "Physical Power" } },
+    { "id": "magicPower", "unreal": "BaseMagicPower", "name": { "pt": "Poder Mágico", "en": "Magic Power" } },
+    { "id": "physicalResistance", "unreal": "BasePhysicalResistance", "name": { "pt": "Resistência Física", "en": "Physical Resistance" } },
+    { "id": "magicResistance", "unreal": "BaseMagicResistance", "name": { "pt": "Resistência Mágica", "en": "Magic Resistance" } },
+    { "id": "criticalChance", "unreal": "BaseCriticalChance", "name": { "pt": "Chance de Crítico", "en": "Critical Chance" } },
+    { "id": "criticalDamage", "unreal": "BaseCriticalDamage", "name": { "pt": "Dano Crítico", "en": "Critical Damage" } },
+    { "id": "posture", "unreal": "BaseMaxPosture", "name": { "pt": "Postura", "en": "Posture" } }
+  ],
+
+  "monsterStates": [
+    { "id": "zombie", "icon": "🧟", "name": { "pt": "Zombie", "en": "Zombie" },
+      "description": { "pt": "Monstro que morreu em ambiente tóxico e voltou zumbificado. Tem nível maior, mas não dá drop.", "en": "A monster that died in a toxic place and came back zombified. Higher level, but drops nothing." } },
+    { "id": "corrupted", "icon": "💀", "name": { "pt": "Corrompido", "en": "Corrupted" },
+      "description": { "pt": "Monstro que morreu em ambiente com aura maligna. Tem nível maior, e os itens que dropa vêm com bônus de poder.", "en": "A monster that died in a place with an evil aura. Higher level, and its drops come with power bonuses." } },
+    { "id": "ancient", "icon": "👑", "name": { "pt": "Forma Anciã", "en": "Ancient Form" },
+      "description": { "pt": "Qualquer monstro pode surgir na forma anciã: carrega um brasão, tem de 10 a 30 níveis a mais e drops melhores.", "en": "Any monster can appear in its ancient form: it bears a crest, is 10 to 30 levels higher and has better drops." } }
+  ],
+
+  "rarities": [
+    { "id": "common", "color": "#9e9e9e", "name": { "pt": "Comum", "en": "Common" } },
+    { "id": "uncommon", "color": "#43a047", "name": { "pt": "Incomum", "en": "Uncommon" } },
+    { "id": "rare", "color": "#1e88e5", "name": { "pt": "Raro", "en": "Rare" } },
+    { "id": "epic", "color": "#f4511e", "name": { "pt": "Épico", "en": "Epic" } },
+    { "id": "legendary", "color": "#fbc02d", "name": { "pt": "Lendário", "en": "Legendary" } },
+    { "id": "god", "color": "#ff8f00", "name": { "pt": "Deus", "en": "God" } },
+    { "id": "immortal", "color": "#e91e63", "name": { "pt": "Imortal", "en": "Immortal" } }
+  ],
+
+  "hostilities": [
+    { "id": "peaceful", "name": { "pt": "Pacífico", "en": "Peaceful" } },
+    { "id": "neutral", "name": { "pt": "Neutro", "en": "Neutral" } },
+    { "id": "aggressive", "name": { "pt": "Agressivo", "en": "Aggressive" } },
+    { "id": "hostile", "name": { "pt": "Hostil", "en": "Hostile" } },
+    { "id": "assassin", "name": { "pt": "Assassino", "en": "Assassin" } }
+  ],
+
+  "difficulties": [
+    { "id": "very-easy", "name": { "pt": "Muito Fácil", "en": "Very Easy" } },
+    { "id": "easy", "name": { "pt": "Fácil", "en": "Easy" } },
+    { "id": "normal", "name": { "pt": "Normal", "en": "Normal" } },
+    { "id": "hard", "name": { "pt": "Difícil", "en": "Hard" } },
+    { "id": "very-hard", "name": { "pt": "Muito Difícil", "en": "Very Hard" } },
+    { "id": "impossible", "name": { "pt": "Impossível", "en": "Impossible" } }
+  ],
+
+  "monsterTypes": [
+    { "id": "humanoid", "name": { "pt": "Humanoide", "en": "Humanoid" } },
+    { "id": "animal", "name": { "pt": "Animal", "en": "Animal" } },
+    { "id": "arachnid", "name": { "pt": "Aracnídeo", "en": "Arachnid" } },
+    { "id": "equine", "name": { "pt": "Equino", "en": "Equine" } },
+    { "id": "bovine", "name": { "pt": "Bovino", "en": "Bovine" } },
+    { "id": "swine", "name": { "pt": "Suíno", "en": "Swine" } },
+    { "id": "canine", "name": { "pt": "Canino", "en": "Canine" } },
+    { "id": "dragon", "name": { "pt": "Dragão", "en": "Dragon" } },
+    { "id": "reptile", "name": { "pt": "Réptil", "en": "Reptile" } },
+    { "id": "serpent", "name": { "pt": "Serpentiforme", "en": "Serpentine" } },
+    { "id": "mimic", "name": { "pt": "Mímico", "en": "Mimic" } },
+    { "id": "slime", "name": { "pt": "Geleca", "en": "Ooze" } },
+    { "id": "plant", "name": { "pt": "Planta", "en": "Plant" } },
+    { "id": "undead", "name": { "pt": "Morto-vivo", "en": "Undead" } },
+    { "id": "insect", "name": { "pt": "Inseto", "en": "Insect" } },
+    { "id": "worm", "name": { "pt": "Verme", "en": "Worm" } },
+    { "id": "construct", "name": { "pt": "Construto", "en": "Construct" } },
+    { "id": "demon", "name": { "pt": "Demônio", "en": "Demon" } }
+  ],
+
+  "weapons": [
+    { "id": "sword", "unrealTag": "Weapons.Melee.Sword", "name": { "pt": "Espada", "en": "Sword" } },
+    { "id": "greatsword", "unrealTag": "Weapons.Melee.GreatSword", "name": { "pt": "Espada Grande", "en": "Greatsword" } },
+    { "id": "axe", "unrealTag": "Weapons.Melee.Axe", "name": { "pt": "Machado", "en": "Axe" } },
+    { "id": "spear", "unrealTag": "Weapons.Melee.Spear", "name": { "pt": "Lança", "en": "Spear" } },
+    { "id": "bow", "unrealTag": "Weapons.Range.Bow", "name": { "pt": "Arco", "en": "Bow" } },
+    { "id": "staff", "unrealTag": "Weapons.Range.Staff", "name": { "pt": "Cajado", "en": "Staff" } }
+  ],
+
+  "ranks": [
+    { "id": "H", "metal": { "pt": "Couro", "en": "Leather" } },
+    { "id": "G", "metal": { "pt": "Pedra", "en": "Stone" } },
+    { "id": "F", "metal": { "pt": "Mecrolatic", "en": "Mecrolatic" } },
+    { "id": "E", "metal": { "pt": "Cobre", "en": "Copper" } },
+    { "id": "D", "metal": { "pt": "Níquel", "en": "Nickel" } },
+    { "id": "C", "metal": { "pt": "Ferro", "en": "Iron" } },
+    { "id": "B", "metal": { "pt": "Aço", "en": "Steel" } },
+    { "id": "A", "metal": { "pt": "Diamantina", "en": "Diamantine" } },
+    { "id": "S", "metal": { "pt": "Platina", "en": "Platinum" } },
+    { "id": "SS", "metal": { "pt": "Mithril", "en": "Mithril" } },
+    { "id": "SSS", "metal": null },
+    { "id": "SSS+", "metal": null }
+  ],
+
+  "dungeonNotes": [
+    { "pt": "Algumas armadilhas teleportam o jogador para um andar mais fundo, nunca para cima.", "en": "Some traps teleport the player to a deeper floor, never upward." },
+    { "pt": "Monstros e chefes podem aplicar maldições. Para desfazer uma maldição, é preciso matar quem a aplicou.", "en": "Monsters and bosses can apply curses. To lift a curse, you must kill whoever applied it." },
+    { "pt": "As masmorras desta lista têm sempre o mesmo formato, com uma pequena chance de surgir uma sala extra. As pequenas masmorras espalhadas pelo mundo mudam de formato a cada entrada.", "en": "The dungeons on this list always keep the same layout, with a small chance of an extra room. The small dungeons scattered across the world change layout on every visit." }
+  ]
+}

@@ -1,116 +1,66 @@
-class UpdatesManager {
-    constructor() {
-        this.updatesContainer = document.querySelector('.updates-grid');
-        this.searchInput = document.getElementById('search-updates');
-        this.updates = [];
+// Lista de atualizações (página inicial e página de atualizações).
+// Dados: data/updates.json com título e mudanças nos dois idiomas.
+(() => {
+    const container = document.querySelector('.updates-grid');
+    if (!container) return;
+    const searchInput = document.getElementById('search-updates');
+
+    const i18n = () => window.SiteI18n;
+    const t = (key, fallback) => i18n()?.t(key, fallback) ?? fallback;
+    const txt = (field) => i18n()?.text(field) ?? (field?.pt ?? String(field ?? ''));
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    let updates = [];
+
+    function formatDate(dateString) {
+        const date = new Date(`${dateString}T00:00:00`);
+        if (Number.isNaN(date.getTime())) return dateString;
+        return date.toLocaleDateString(i18n()?.lang === 'en' ? 'en-US' : 'pt-BR');
     }
-/*    dados do Json local
-{
-      "version": "v1.2.0", -- versão da atualização
-      "date": "2023-11-04", -- data da atualização
-      "title": "Novo Conteúdo Disponível!", -- título da atualização
-      "changes": [  -- lista de mudanças
-        "Nova dungeon: Caverna dos Ancestrais", -- titulo da mudança
-        "Adicionado novo chefe: Guardião Ancestral", --descrição da mudança
-        "Sistema de crafting melhorado" -- descrição da mudança
-      ],
-      "link": "#" -- link para mais detalhes
-    },*/
-    
-    // Renderiza um card de atualização
-    createUpdateCard(update) {
-        const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
-            ? window.getSiteTranslation(key, fallback)
-            : fallback;
+
+    function createCard(update) {
         return `
             <article class="update-card">
                 <div class="update-header">
-                    <span class="update-version">${update.version}</span>
-                    <time class="update-date">${this.formatDate(update.date)}</time>
+                    <span class="update-version">v${esc(String(update.version).replace(/^v/i, ''))}</span>
+                    <time class="update-date" datetime="${esc(update.date)}">${esc(formatDate(update.date))}</time>
                 </div>
-                <h3>${update.title}</h3>
+                <h3>${esc(txt(update.title))}</h3>
                 <ul class="update-list">
-                    ${update.changes.map(change => `<li>${change}</li>`).join('')}
+                    ${(update.changes || []).map((change) => `<li>${esc(txt(change))}</li>`).join('')}
                 </ul>
-                <a href="${update.link}" class="update-link">${translate('updateDetails', 'View full details')}</a>
+                ${update.link ? `<a href="${esc(update.link)}" class="update-link" target="_blank" rel="noopener">${esc(t('updateDetails', 'View full details'))}</a>` : ''}
             </article>
         `;
     }
 
-    // Formata a data para DD/MM/YYYY
-    formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('pt-BR');
+    function render() {
+        const term = (searchInput?.value || '').trim().toLowerCase();
+        const list = updates.filter((update) => !term
+            || String(update.version).toLowerCase().includes(term)
+            || [update.title?.pt, update.title?.en, ...(update.changes || []).flatMap((c) => [c?.pt, c?.en])]
+                .some((value) => String(value || '').toLowerCase().includes(term)));
+        container.innerHTML = list.length
+            ? list.map(createCard).join('')
+            : `<p class="update-empty">${esc(t('noResults', 'Nothing found.'))}</p>`;
     }
 
-    // Carrega as atualizações do arquivo JSON local
-    async loadLocalUpdates() {
+    async function load() {
         try {
-            const response = await fetch('./data/updates.json');
+            const response = await fetch('data/updates.json', { cache: 'no-cache' });
+            if (!response.ok) throw new Error(response.status);
             const data = await response.json();
-            this.updates = data.updates || [];
-            this.displayUpdates(this.updates);
-
-            if (this.searchInput) {
-                this.searchInput.addEventListener('input', () => this.filterUpdates());
-            }
+            updates = data.updates || [];
+            render();
         } catch (error) {
             console.error('Erro ao carregar atualizações:', error);
-            this.displayFallbackUpdate();
+            container.innerHTML = `<p class="update-empty">${esc(t('loadError', 'Could not load the data.'))}</p>`;
         }
     }
 
-   // para utilizar uma API externa
-    async loadFromAPI() {
-        try {
-            const response = await fetch('https://api.seudominio.com/updates');
-            const data = await response.json();
-            this.displayUpdates(data.updates);
-        } catch (error) {
-            console.error('Erro ao carregar atualizações da API:', error);
-            this.displayFallbackUpdate();
-        }
-    }
+    searchInput?.addEventListener('input', render);
+    document.addEventListener('site-language-changed', render);
 
-    // Mostra as atualizações na página
-    displayUpdates(updates) {
-        const html = updates.map(update => this.createUpdateCard(update)).join('');
-        this.updatesContainer.innerHTML = html;
-        window.translateDynamicContent?.(this.updatesContainer);
-    }
-
-    filterUpdates() {
-        if (!this.searchInput) return;
-
-        const termo = this.searchInput.value.trim().toLowerCase();
-        const filtrados = this.updates.filter(update => {
-            return update.version.toLowerCase().includes(termo)
-                || update.title.toLowerCase().includes(termo);
-        });
-
-        this.displayUpdates(filtrados);
-    }
-
-    // Mostra um card padrão em caso de erro
-    displayFallbackUpdate() {
-        const fallbackUpdate = {
-            version: "v1.0.0",
-            date: new Date().toISOString(),
-            title: "Última Atualização",
-            changes: [
-                "Carregando atualizações...",
-                "Por favor, tente novamente mais tarde"
-            ],
-            link: "#"
-        };
-        this.updatesContainer.innerHTML = this.createUpdateCard(fallbackUpdate);
-    }
-}
-
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-    const updatesManager = new UpdatesManager();
-    updatesManager.loadLocalUpdates(); // este para dados locais
-    document.addEventListener('site-language-changed', () => updatesManager.filterUpdates());
-    // updatesManager.loadFromAPI(); // este quando tiver uma API
-});
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load);
+    else load();
+})();

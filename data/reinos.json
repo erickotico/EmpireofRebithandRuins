@@ -1,1 +1,227 @@
-[]
+[
+  {
+    "id": "thalor",
+    "name": {
+      "pt": "Thalor",
+      "en": "Thalor"
+    },
+    "image": "img/reinos/thalor.jpg",
+    "capital": "Valoria",
+    "ruler": {
+      "pt": "",
+      "en": ""
+    },
+    "deity": {
+      "pt": "Eryndor, o deus guerreiro",
+      "en": "Eryndor, the warrior god"
+    },
+    "location": {
+      "pt": "Planícies e montanhas",
+      "en": "Plains and mountains"
+    },
+    "description": {
+      "pt": "Reino de lanceiros e cavaleiros, devoto do deus guerreiro Eryndor.",
+      "en": "A kingdom of lancers and knights, devoted to the warrior god Eryndor."
+    },
+    "alliance": {
+      "pt": "Força",
+      "en": "Strength"
+    },
+    "history": {
+      "pt": "",
+      "en": ""
+    },
+    "culture": {
+      "pt": "",
+      "en": ""
+    },
+    "customs": {
+      "pt": "",
+      "en": ""
+    },
+    "festivals": {
+      "pt": "",
+      "en": ""
+    }
+  },
+  {
+    "id": "eriador",
+    "name": {
+      "pt": "Eriador",
+      "en": "Eriador"
+    },
+    "image": "img/reinos/eriador.jpg",
+    "capital": "Eldoria",
+    "ruler": {
+      "pt": "Rei Aldric, o Sábio",
+      "en": "King Aldric the Wise"
+    },
+    "deity": {
+      "pt": "",
+      "en": ""
+    },
+    "location": {
+      "pt": "Cidade portuária",
+      "en": "Port city"
+    },
+    "description": {
+      "pt": "Reino do comércio, governado pelo Rei Aldric, o Sábio, e sede da Guilda dos Mercadores.",
+      "en": "The kingdom of trade, ruled by King Aldric the Wise and home of the Merchants' Guild."
+    },
+    "alliance": {
+      "pt": "Colheita e Mineração",
+      "en": "Harvesting and Mining"
+    },
+    "history": {
+      "pt": "",
+      "en": ""
+    },
+    "culture": {
+      "pt": "",
+      "en": ""
+    },
+    "customs": {
+      "pt": "",
+      "en": ""
+    },
+    "festivals": {
+      "pt": "",
+      "en": ""
+    }
+  },
+  {
+    "id": "sylvanor",
+    "name": {
+      "pt": "Sylvanor",
+      "en": "Sylvanor"
+    },
+    "image": "img/reinos/sylvanor.jpg",
+    "capital": "Elunaria",
+    "ruler": {
+      "pt": "",
+      "en": ""
+    },
+    "deity": {
+      "pt": "Aelion",
+      "en": "Aelion"
+    },
+    "location": {
+      "pt": "No coração da floresta",
+      "en": "In the heart of the forest"
+    },
+    "description": {
+      "pt": "Reino dos elfos e druidas, protegido pelo deus Aelion.",
+      "en": "The kingdom of elves and druids, protected by the god Aelion."
+    },
+    "alliance": {
+      "pt": "Magia",
+      "en": "Magic"
+    },
+    "history": {
+      "pt": "",
+      "en": ""
+    },
+    "culture": {
+      "pt": "",
+      "en": ""
+    },
+    "customs": {
+      "pt": "",
+      "en": ""
+    },
+    "festivals": {
+      "pt": "",
+      "en": ""
+    }
+  },
+  {
+    "id": "dracoria",
+    "name": {
+      "pt": "Dracória",
+      "en": "Dracoria"
+    },
+    "image": "img/reinos/dracoria.jpg",
+    "capital": "Draconia",
+    "ruler": {
+      "pt": "",
+      "en": ""
+    },
+    "deity": {
+      "pt": "Zephyrinox, o deus-dragão",
+      "en": "Zephyrinox, the dragon god"
+    },
+    "location": {
+      "pt": "Montanhas Flamejantes e Floresta do Crepúsculo",
+      "en": "Flaming Mountains and Twilight Forest"
+    },
+    "description": {
+      "pt": "Reino do deus-dragão Zephyrinox e dos Dracomantes.",
+      "en": "The kingdom of the dragon god Zephyrinox and the Dracomancers."
+    },
+    "alliance": {
+      "pt": "Força e Magia",
+      "en": "Strength and Magic"
+    },
+    "history": {
+      "pt": "",
+      "en": ""
+    },
+    "culture": {
+      "pt": "",
+      "en": ""
+    },
+    "customs": {
+      "pt": "",
+      "en": ""
+    },
+    "festivals": {
+      "pt": "",
+      "en": ""
+    }
+  },
+  {
+    "id": "malakar",
+    "name": {
+      "pt": "Malakar",
+      "en": "Malakar"
+    },
+    "image": "img/reinos/malakar.jpg",
+    "capital": "Noxarus",
+    "ruler": {
+      "pt": "Lorde Demônio Thrazul",
+      "en": "Demon Lord Thrazul"
+    },
+    "deity": {
+      "pt": "",
+      "en": ""
+    },
+    "location": {
+      "pt": "Plano infernal",
+      "en": "Infernal plane"
+    },
+    "description": {
+      "pt": "Plano infernal governado pelo Lorde Demônio Thrazul, portador da Lança do Abismo.",
+      "en": "An infernal plane ruled by Demon Lord Thrazul, wielder of the Spear of the Abyss."
+    },
+    "alliance": {
+      "pt": "",
+      "en": ""
+    },
+    "history": {
+      "pt": "",
+      "en": ""
+    },
+    "culture": {
+      "pt": "",
+      "en": ""
+    },
+    "customs": {
+      "pt": "",
+      "en": ""
+    },
+    "festivals": {
+      "pt": "",
+      "en": ""
+    }
+  }
+]

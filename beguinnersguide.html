@@ -1,74 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/beguinnersguide.css"> 
-    <title>Guia para Iniciantes</title>
+    <title>Empire of Rebirth & Ruins</title>
+    <!-- Endereço antigo do guia: manda para guia.html (mantém o #âncora). -->
+    <meta http-equiv="refresh" content="0; url=guia.html">
+    <link rel="canonical" href="guia.html">
+    <script>window.location.replace('guia.html' + window.location.hash);</script>
 </head>
 <body>
-    <header>
-        <div class="brand">
-            <img src="./img/LogoRPG.jpg" alt="Game logo">
-            <h1 data-i18n="beginnerGuide">Beginner's Guide</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" data-i18n="home">Home</a></li>
-                <li><a href="bestiario.html" data-i18n="bestiary">Bestiary</a></li>
-                <li><a href="classes.html" data-i18n="classes">Classes</a></li>
-                <li><a href="sobre.html" data-i18n="about">About</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
-        </div>
-    </header>
-        <!-- Game map -->
-    <section id="mapa">
-        <h2 data-i18n="gameMap">Game Map</h2>
-        <img id="mapa-img" src="img/LogoRPG.jpg" alt="Game map" onclick="abrirPopup()">
-    </section>
-
-    <!-- Popup para imagem ampliada -->
-    <div id="popup" class="popup">
-        <span class="fechar" data-i18n-aria="closeImage" aria-label="Close enlarged image">&times;</span>
-        <img id="popup-img" src="img/LogoRPG.jpg" alt="Mapa Ampliada">
-    </div>
-
-    <!-- Kingdom section -->
-    <section id="reinos">
-        <h2 data-i18n="kingdoms">Kingdoms</h2>
-        <div class="search-container">
-            <input type="text" id="filtro-reinos" data-i18n="searchKingdoms" placeholder="Search kingdoms...">
-            <button data-i18n="search" onclick="filtrarReinos(document.getElementById('filtro-reinos').value)">Search</button>
-        </div>
-        <div id="lista-reinos" class="scroll-box"></div>
-    </section>
-
-    <!-- Dungeon section -->
-    <section id="masmorras">
-        <h2 data-i18n="dungeons">Dungeon Types</h2>
-        <div class="search-container">
-            <input type="text" id="filtro-masmorras" data-i18n="searchDungeons" placeholder="Search dungeons...">
-            <button data-i18n="search" onclick="filtrarMasmorras(document.getElementById('filtro-masmorras').value)">Search</button>
-        </div>
-        <div id="lista-masmorras" class="scroll-box"></div>
-    </section>
-
-    <!-- Items section -->
-    <section id="itens">
-        <h2 data-i18n="items">Items</h2>
-        <div class="search-container">
-            <input type="text" id="filtro-itens" data-i18n="searchItems" placeholder="Search items...">
-            <button data-i18n="search" onclick="filtrarItens(document.getElementById('filtro-itens').value)">Search</button>
-        </div>
-        <div id="lista-itens" class="scroll-box"></div>
-    </section>
-
-    <script src="js/langSwitcher.js"></script>
-    <script src="js/beguinnersguide.js"></script>
+    <p><a href="guia.html">Guia para Iniciantes / Beginner's Guide</a></p>
 </body>
 </html>

@@ -1,438 +1,178 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const classesGrid = document.getElementById('classesGrid');
+// Página de classes: cards + modal com atributos (valores do Unreal), habilidades e subclasses.
+// Dados: data/classesData.json + data/gameRules.json.
+(() => {
+    const G = window.GameData;
+    const { esc, t, txt } = G;
+
+    const grid = document.getElementById('classesGrid');
+    if (!grid) return;
+    const searchInput = document.getElementById('searchClasses');
+
+    let rules = null;
     let classes = [];
-    const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
-        ? window.getSiteTranslation(key, fallback)
-        : fallback;
+    let openClassId = null;
 
-    function setupModalCloseHandlers(modal, onClose) {
-        if (!modal || typeof onClose !== 'function') return;
+    const DEFAULT_COLOR = '#8B5CF6';
+    const colorOf = (classe) => (/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(String(classe.color || '').trim()) ? classe.color.trim() : DEFAULT_COLOR);
 
-        modal.addEventListener('click', (event) => {
-            const target = event.target;
-            const clickedCloseButton = target && typeof target.closest === 'function'
-                ? target.closest('.modal-close')
-                : null;
+    const weaponsHtml = (classe) => (classe.weapons || [])
+        .map((id) => G.labelOf(rules, 'weapons', id))
+        .filter(Boolean)
+        .map((label) => `<span class="weapon-tag">${esc(label)}</span>`)
+        .join('');
 
-            if (target === modal || clickedCloseButton) {
-                onClose();
-            }
-        });
-    }
-
-    function getClassColor(classe) {
-        return typeof window.normalizeClassColor === 'function'
-            ? window.normalizeClassColor(classe.cor, '#8B5CF6')
-            : (classe.cor && classe.cor.trim() ? classe.cor : '#8B5CF6');
-    }
-
-    // Cria os cards das classes
-    function createClassCard(classe) {
-        const corClasse = getClassColor(classe);
-
+    function createCard(classe) {
         return `
-            <article class="class-card" data-class-id="${classe.id}" style="position: relative; overflow: hidden; border-radius: 8px; background: #1a1a1a; border: 2px solid ${corClasse}40; transition: all 0.3s;">
-                <div class="class-card-image" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
-                    <img src="${classe.image}" alt="${classe.name}" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 0%, ${corClasse}80 100%);"></div>
-                </div>
-                <div class="class-card-body" style="padding: 20px; background: #0f0f0f; position: relative; z-index: 2;">
-                    <h3 class="class-name" style="margin: 0 0 10px 0; color: ${corClasse}; font-size: 22px; font-weight: 700;">${classe.name}</h3>
-                    <p class="class-desc" style="margin: 0 0 15px 0; color: #aaa; font-size: 13px; line-height: 1.5;">${classe.descricao}</p>
-                    <button class="btn btn-primary" style="width: 100%; padding: 12px; background: ${corClasse}; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 14px;" aria-label="${translate('viewDetails', 'View Details')} for ${classe.name}">${translate('viewDetails', 'View Details')}</button>
+            <article class="class-card" data-class-id="${esc(classe.id)}" style="--class-color:${esc(colorOf(classe))}">
+                <div class="class-card-image">${G.renderImage(classe.image, txt(classe.name))}</div>
+                <div class="class-card-body">
+                    <h3 class="class-name">${esc(txt(classe.name))}</h3>
+                    <p class="class-desc">${esc(txt(classe.description))}</p>
+                    <div class="class-weapons" aria-label="${esc(t('weapons'))}">${weaponsHtml(classe)}</div>
+                    <button type="button" class="btn btn-primary">${esc(t('viewDetails', 'View Details'))}</button>
                 </div>
             </article>
         `;
     }
 
-    function renderClassCards(list = classes) {
-        classesGrid.innerHTML = list.map(createClassCard).join('');
-        window.translateDynamicContent?.(classesGrid);
+    function maxStats() {
+        const maxima = {};
+        classes.forEach((classe) => Object.entries(classe.stats || {}).forEach(([key, value]) => {
+            if (typeof value === 'number') maxima[key] = Math.max(maxima[key] || 0, value);
+        }));
+        return maxima;
     }
 
-    // Função para mostrar painel flutuante de estatísticas da subclasse
-    function showSubclassStatsPanel(subclassItem, subclass, corClasse, dialog) {
-        // Remove any existing panel
-        const existingPanel = document.querySelector('.subclass-stats-panel');
-        if (existingPanel) existingPanel.remove();
-
-        const statsHtml = Object.entries(subclass.estatisticas)
-            .map(([key, value]) => `
-                <div class="stat-bar" style="margin-bottom: 15px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
-                        <span class="stat-value" style="font-weight: 600; color: ${corClasse};">${value}</span>
+    function statsHtml(classe) {
+        const maxima = maxStats();
+        return rules.attributes.map((attribute) => {
+            const value = classe.stats?.[attribute.id];
+            const shown = G.formatStat(attribute.id, value, window.SiteI18n?.lang);
+            const percent = shown && maxima[attribute.id] ? Math.round((Number(value) / maxima[attribute.id]) * 100) : 0;
+            return `
+                <div class="stat-bar">
+                    <div class="stat-bar-head">
+                        <span class="stat-name">${esc(txt(attribute.name))}</span>
+                        <span class="stat-number">${esc(shown ?? t('toBeDefined'))}</span>
                     </div>
-                    <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
-                        <div class="stat-fill" style="width: ${value}%; height: 100%; background: ${corClasse}; transition: width 0.3s;"></div>
-                    </div>
-                </div>
-            `).join('');
-
-        const panel = document.createElement('div');
-        panel.className = 'subclass-stats-panel';
-        panel.style = `
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #0f0f0f;
-            border: 2px solid ${corClasse};
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            z-index: 1001;
-            max-width: 300px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        `;
-        panel.innerHTML = `
-            <button class="panel-close" style="position: absolute; top: 10px; right: 10px; background: ${corClasse}; color: white; border: none; font-size: 20px; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">×</button>
-            <h4 style="margin: 0 0 15px 0; color: ${corClasse}; font-size: 18px;">${subclass.name}</h4>
-            <div class="stats-container">${statsHtml}</div>
-        `;
-
-        dialog.appendChild(panel);
-
-        // Fecha o painel ao clicar no botão de fechar ou fora do painel
-        panel.querySelector('.panel-close').addEventListener('click', () => panel.remove());
-        document.addEventListener('click', function closePanel(e) {
-            if (!panel.contains(e.target) && !subclassItem.contains(e.target)) {
-                panel.remove();
-                document.removeEventListener('click', closePanel);
-            }
-        });
+                    <div class="stat-progress"><div class="stat-fill" style="width:${percent}%"></div></div>
+                </div>`;
+        }).join('');
     }
 
-    // Cria o modal das classes com as abas
-    function createClassModal(classe) {
-        const corClasse = typeof window.normalizeClassColor === 'function'
-            ? window.normalizeClassColor(classe.cor, '#8B5CF6')
-            : (classe.cor && classe.cor.trim() ? classe.cor : '#8B5CF6');
-        
-        const tabsHtml = `
-            <div class="modal-tabs" style="display: flex; border-bottom: 2px solid ${corClasse}; background: #1a1a1a;">
-                <button class="tab-btn active" data-tab="info" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #fff; border-bottom: 3px solid ${corClasse}; transition: 0.3s;">${translate('information', 'Information')}</button>
-                <button class="tab-btn" data-tab="stats" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">${translate('statistics', 'Statistics')}</button>
-                <button class="tab-btn" data-tab="skills" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">${translate('skills', 'Skills')}</button>
-                <button class="tab-btn" data-tab="subclasses" style="flex: 1; padding: 12px; background: none; border: none; cursor: pointer; font-weight: 600; color: #999; transition: 0.3s;">${translate('subclasses', 'Subclasses')}</button>
-            </div>
-        `;
+    function createModal(classe) {
+        const skills = (classe.skills || []).map((skill) => `
+            <div class="skill-item">
+                <h4>${esc(txt(skill.name))}</h4>
+                ${txt(skill.description) ? `<p>${esc(txt(skill.description))}</p>` : ''}
+                ${skill.cooldown != null ? `<span class="skill-cooldown">${esc(t('cooldown'))}: ${esc(skill.cooldown)} s</span>` : ''}
+            </div>`).join('') || `<p class="muted">${esc(t('noSkills'))}</p>`;
 
-        const statsHtml = Object.entries(classe.estatisticas)
-            .map(([key, value]) => `
-                <div class="stat-bar" style="margin-bottom: 15px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
-                        <span class="stat-value" style="font-weight: 600; color: ${corClasse};">${value}</span>
-                    </div>
-                    <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
-                        <div class="stat-fill" style="width: ${value}%; height: 100%; background: ${corClasse}; transition: width 0.3s;"></div>
-                    </div>
+        const subclasses = (classe.subclasses || []).map((sub) => `
+            <div class="subclass-item">
+                <div class="subclass-image-wrapper">${G.renderImage(sub.image, txt(sub.name))}</div>
+                <div class="subclass-info">
+                    <h4>${esc(txt(sub.name))}</h4>
+                    <p>${esc(txt(sub.description))}</p>
+                    <div class="subclass-unlock">${esc(txt(sub.unlock) ? `${t('howToUnlock')}: ${txt(sub.unlock)}` : t('subclassUnlockPending'))}</div>
                 </div>
-            `).join('');
+            </div>`).join('') || `<p class="muted">${esc(t('noSubclasses'))}</p>`;
 
-        const skillsHtml = (classe.habilidades || [])
-            .map(skill => `
-                <div class="skill-item" style="padding: 15px; background: #222; border-left: 4px solid ${corClasse}; margin-bottom: 12px; border-radius: 4px;">
-                    <h4 style="margin: 0 0 8px 0; color: ${corClasse}; font-size: 16px;">${skill.nome}</h4>
-                    <p style="margin: 0 0 8px 0; color: #bbb; font-size: 14px;">${skill.descricao}</p>
-                    <span class="skill-cooldown" style="display: inline-block; background: ${corClasse}30; color: ${corClasse}; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600;">CD: ${skill.cooldown}</span>
-                </div>
-            `).join('') || `<p style="color: #999;">${translate('noSkills', 'No skills available')}</p>`;
-
-        const subclassesHtml = (classe.subclasses || [])
-            .map(sub => `
-                <div class="subclass-item" data-subclass-id="${sub.id}" style="border: 2px solid ${corClasse}40; border-radius: 8px; overflow: hidden; background: #1a1a1a; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.5); cursor: pointer;">
-                    <div class="subclass-image-wrapper" style="height: 150px; overflow: hidden; background: linear-gradient(135deg, ${corClasse}30, ${corClasse}10);">
-                        <img src="${sub.imagem}" alt="${sub.name}" class="subclass-image" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="subclass-info" style="padding: 15px;">
-                        <h4 style="margin: 0 0 8px 0; color: ${corClasse}; font-size: 16px; font-weight: 700;">${sub.name}</h4>
-                        <p style="margin: 0; color: #aaa; font-size: 13px;">${sub.descricao}</p>
-                    </div>
-                </div>
-            `).join('') || `<p style="color: #999;">${translate('noSubclasses', 'No subclasses available')}</p>`;
+        const tabs = [
+            ['info', t('information', 'Information')],
+            ['stats', t('attributes', 'Attributes')],
+            ['skills', t('skills', 'Skills')],
+            ['subclasses', t('subclasses', 'Subclasses')]
+        ];
+        const panels = {
+            info: `
+                <h3>${esc(t('classDescription'))}</h3>
+                <p class="tab-text">${esc(txt(classe.description))}</p>
+                <h3>${esc(t('weapons'))}</h3>
+                <div class="class-weapons">${weaponsHtml(classe)}</div>`,
+            stats: `
+                <h3>${esc(t('attributes'))}</h3>
+                <p class="stats-note">${esc(t('statsUnreal'))}</p>
+                <div class="stats-container">${statsHtml(classe)}</div>`,
+            skills: `<h3>${esc(t('skills'))}</h3><div class="skills-list">${skills}</div>`,
+            subclasses: `<h3>${esc(t('availableSubclasses'))}</h3><div class="subclasses-list">${subclasses}</div>`
+        };
 
         return `
-            <div class="class-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000;">
-                <div class="modal-content" style="background: #0f0f0f; border-radius: 12px; max-width: 900px; max-height: 90vh; overflow-y: auto; position: relative; width: 95%; box-shadow: 0 15px 50px rgba(0,0,0,0.8); border-top: 5px solid ${corClasse};">
-                    <button class="modal-close" aria-label="Fechar" style="position: absolute; top: 15px; right: 15px; background: ${corClasse}; color: white; border: none; font-size: 28px; cursor: pointer; z-index: 10; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">×</button>
-                    
-                    <div class="modal-header-compact" style="display: flex; align-items: center; gap: 20px; padding: 25px; background: linear-gradient(135deg, ${corClasse}20, ${corClasse}10); border-bottom: 3px solid ${corClasse};">
-                        <img src="${classe.image}" alt="${classe.name}" class="modal-header-img" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; flex-shrink: 0; border: 3px solid ${corClasse}; box-shadow: 0 4px 12px ${corClasse}50;">
+            <div class="class-modal" style="--class-color:${esc(colorOf(classe))}">
+                <div class="modal-content" role="dialog" aria-modal="true" aria-label="${esc(txt(classe.name))}">
+                    <button type="button" class="modal-close" aria-label="${esc(t('close', 'Close'))}">×</button>
+                    <div class="modal-header-compact">
+                        ${G.renderImage(classe.image, txt(classe.name), 'modal-header-img')}
                         <div class="modal-header-text">
-                            <h2 style="margin: 0 0 10px 0; font-size: 28px; color: ${corClasse}; font-weight: 700;">${classe.name}</h2>
-                            <p style="margin: 0; color: #aaa; font-size: 14px;">${classe.descricao}</p>
+                            <h2>${esc(txt(classe.name))}</h2>
+                            <p>${esc(txt(classe.description))}</p>
                         </div>
                     </div>
-
-                    ${tabsHtml}
-
-                    <div class="modal-body" style="padding: 30px; background: #0f0f0f;">
-                        <div class="tab-content info active">
-                            <h3 style="color: ${corClasse}; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('classDescription', 'Class Description')}</h3>
-                            <p style="color: #bbb; line-height: 1.8; font-size: 15px;">${classe.descricao}</p>
-                        </div>
-
-                        <div class="tab-content stats" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('statistics', 'Statistics')}</h3>
-                            <div class="stats-container">${statsHtml}</div>
-                        </div>
-
-                        <div class="tab-content skills" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('skills', 'Skills')}</h3>
-                            <div class="skills-list">${skillsHtml}</div>
-                        </div>
-
-                        <div class="tab-content subclasses" style="display: none;">
-                            <h3 style="color: ${corClasse}; margin-bottom: 20px; font-size: 20px; border-bottom: 2px solid ${corClasse}40; padding-bottom: 10px;">${translate('availableSubclasses', 'Available Subclasses')}</h3>
-                            <div class="subclasses-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">${subclassesHtml}</div>
-                        </div>
+                    <div class="modal-tabs" role="tablist">
+                        ${tabs.map(([key, label], index) => `<button type="button" class="tab-btn${index === 0 ? ' active' : ''}" role="tab" aria-selected="${index === 0}" data-tab="${key}">${esc(label)}</button>`).join('')}
+                    </div>
+                    <div class="modal-body">
+                        ${tabs.map(([key], index) => `<div class="tab-content${index === 0 ? ' active' : ''}" data-tab="${key}">${panels[key]}</div>`).join('')}
                     </div>
                 </div>
             </div>
         `;
     }
 
-    // Setup das abas do modal
-    function setupModalTabs(modal) {
-        const tabs = Array.from(modal.querySelectorAll('.tab-btn'));
-        const contents = Array.from(modal.querySelectorAll('.tab-content'));
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = tab.dataset.tab;
-                tabs.forEach(t => {
-                    t.classList.remove('active');
-                    t.style.color = '#999';
-                    t.style.borderBottom = 'none';
-                });
-                contents.forEach(c => c.style.display = 'none');
-                
-                tab.classList.add('active');
-                tab.style.color = '#fff';
-                const corClasse = modal.querySelector('.modal-header-img').style.borderColor;
-                tab.style.borderBottom = `3px solid ${corClasse}`;
-                
-                const content = modal.querySelector(`.tab-content.${target}`);
-                if (content) content.style.display = 'block';
-            });
-        });
-    }
-
-    // Evento de clique no grid
-    classesGrid.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn');
-        if (!btn) return;
-        
-        const card = btn.closest('.class-card');
-        const classId = card.dataset.classId;
-        const classe = classes.find(c => c.id === classId);
-        
-        if (!classe) return;
-
-        document.body.insertAdjacentHTML('beforeend', createClassModal(classe));
-        document.body.style.overflow = 'hidden';
-
+    function closeModal() {
+        openClassId = null;
         const modal = document.querySelector('.class-modal');
         if (!modal) return;
-        window.translateDynamicContent?.(modal);
+        modal.remove();
+        document.body.style.overflow = '';
+    }
 
-        const dialog = modal.querySelector('.modal-content');
-        setupModalTabs(dialog);
+    function openClass(id) {
+        const classe = classes.find((entry) => entry.id === id);
+        if (!classe) return;
+        document.querySelector('.class-modal')?.remove();
+        document.body.insertAdjacentHTML('beforeend', createModal(classe));
+        document.body.style.overflow = 'hidden';
+        openClassId = id;
+        const modal = document.querySelector('.class-modal');
+        G.setupTabs(modal);
+        G.setupModalClose(modal, closeModal);
+        modal.querySelector('.modal-close')?.focus();
+    }
 
-        // Evento para itens de subclasse
-        const subclassItems = dialog.querySelectorAll('.subclass-item');
-        subclassItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const subclassId = item.dataset.subclassId;
-                const subclass = classe.subclasses.find(sub => sub.id === subclassId);
-                if (subclass) {
-                    showSubclassStatsPanel(item, subclass, classe.cor || '#333', dialog);
-                }
-            });
-        });
+    function render() {
+        const term = searchInput?.value || '';
+        const list = classes.filter((classe) => G.matchesSearch(term, [classe.name, classe.description, ...(classe.subclasses || []).map((sub) => sub.name)]));
+        grid.innerHTML = list.length ? list.map(createCard).join('') : `<p class="grid-message">${esc(t('noResults'))}</p>`;
+    }
 
-        setupModalCloseHandlers(modal, () => {
-            modal.remove();
-            document.body.style.overflow = '';
-        });
+    grid.addEventListener('click', (event) => {
+        const card = event.target.closest('.class-card');
+        if (card) openClass(card.dataset.classId);
     });
 
-    // Carrega as classes
-    async function loadClasses() {
-        try {
-            console.log('Iniciando carregamento das classes...');
-            const response = await fetch('data/classesData.json');
-            console.log('Resposta do fetch:', response);
-            const data = await response.json();
-            console.log('Dados carregados:', data);
-            classes = data.classes;
-            console.log('Classes definidas:', classes);
-            renderClassCards();
-
-            // Preenche o select das classes após carregar
-            const classSelect = document.getElementById('classSelect');
-            console.log('Elemento classSelect:', classSelect);
-            classes.forEach(classe => {
-                const option = document.createElement('option');
-                option.value = classe.id;
-                option.textContent = classe.name;
-                classSelect.appendChild(option);
-                console.log('Adicionada classe:', classe.name);
-            });
-        } catch (error) {
-            console.error('Erro ao carregar classes:', error);
-            classesGrid.innerHTML = '<p class="error">Erro ao carregar classes: ' + error.message + '</p>';
-        }
-    }
-
-    // Função para filtrar classes
-    function filtrarClasses(query) {
-        const termo = query.trim().toLowerCase();
-        const filtrados = classes.filter(classe => {
-            return classe.name.toLowerCase().includes(termo)
-                || classe.descricao.toLowerCase().includes(termo);
-        });
-        renderClassCards(filtrados);
-    }
-
-    // Event listeners para busca
-    const searchInput = document.getElementById('searchClasses');
-    const searchButton = document.getElementById('searchClassesButton');
-    searchButton.addEventListener('click', () => filtrarClasses(searchInput.value));
-    searchInput.addEventListener('input', (e) => filtrarClasses(e.target.value));
-
-    loadClasses();
+    searchInput?.addEventListener('input', render);
+    document.getElementById('searchClassesButton')?.addEventListener('click', render);
 
     document.addEventListener('site-language-changed', () => {
-        document.querySelector('.class-modal')?.remove();
-        document.querySelector('.sum-modal')?.remove();
-        renderClassCards();
+        if (!rules) return;
+        const reopen = openClassId;
+        render();
+        if (reopen) openClass(reopen);
     });
 
-    // Calculadora de atributos
-    const subclass1Select = document.getElementById('subclass1Select');
-    const subclass2Select = document.getElementById('subclass2Select');
-    const summedStatsDiv = document.getElementById('summedStats');
-    const classSelect = document.getElementById('classSelect');
-
-    function closeSumModal() {
-        const existingModal = document.querySelector('.sum-modal');
-        if (existingModal) {
-            existingModal.remove();
-            document.body.style.overflow = '';
+    async function load() {
+        try {
+            const [loadedRules, data] = await Promise.all([G.loadRules(), G.loadJson('data/classesData.json')]);
+            rules = loadedRules;
+            classes = data.classes || [];
+            render();
+        } catch (error) {
+            console.error('Erro ao carregar as classes:', error);
+            grid.innerHTML = `<p class="grid-message">${esc(t('loadError'))}</p>`;
         }
     }
 
-    function createSumModal(sumStats, corClasse, classeName, sub1Name, sub2Name) {
-        closeSumModal();
-
-        const statsHtml = Object.entries(sumStats)
-            .map(([key, value]) => `
-                <div class="stat-bar" style="margin-bottom: 14px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span class="stat-name" style="font-weight: 600; color: #ddd; text-transform: capitalize;">${key}</span>
-                        <span class="stat-value" style="font-weight: 600; color: ${corClasse};">${value}</span>
-                    </div>
-                    <div class="stat-progress" style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
-                        <div class="stat-fill" style="width: ${Math.min(value / 50, 100)}%; height: 100%; background: ${corClasse}; transition: width 0.3s;"></div>
-                    </div>
-                </div>
-            `).join('');
-
-        const modal = document.createElement('div');
-        modal.className = 'sum-modal';
-        modal.style.cssText = `
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            padding: 20px;
-        `;
-
-        modal.innerHTML = `
-            <div class="sum-modal-content" style="width: 100%; max-width: 520px; background: #0f0f0f; border-radius: 16px; padding: 28px; position: relative; border: 2px solid ${corClasse}; box-shadow: 0 18px 50px rgba(0,0,0,0.55);">
-                <button class="modal-close" aria-label="Fechar resultado" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: none; border-radius: 50%; background: ${corClasse}; color: white; font-size: 20px; cursor: pointer;">×</button>
-                <h2 style="margin: 0 0 8px 0; color: ${corClasse}; font-size: 24px;">${translate('calculatedAttributes', 'Calculated attributes')}</h2>
-                <p style="margin: 0 0 10px 0; color: #bbb; font-size: 14px;">${translate('classLabel', 'Class')}: <strong>${classeName}</strong> + ${translate('subclassesLabel', 'Subclasses')}: <strong>${sub1Name}</strong>, <strong>${sub2Name}</strong></p>
-                <div class="stats-container">${statsHtml}</div>
-            </div>
-        `;
-
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal || event.target.closest('.modal-close')) {
-                closeSumModal();
-            }
-        });
-
-        document.body.appendChild(modal);
-        document.body.style.overflow = 'hidden';
-    }
-
-    // Função para preencher as subclasses com base na classe selecionada
-    function populateSubclasses() {
-        const selectedClassId = classSelect.value;
-        const selectedClass = classes.find(c => c.id === selectedClassId);
-        const subclasses = selectedClass ? selectedClass.subclasses || [] : [];
-        
-        [subclass1Select, subclass2Select].forEach(select => {
-            select.innerHTML = `<option value="">${translate('selectSubclass', 'Select subclass')}</option>`;
-            subclasses.forEach(sub => {
-                const option = document.createElement('option');
-                option.value = sub.id;
-                option.textContent = sub.name;
-                select.appendChild(option);
-            });
-        });
-        closeSumModal();
-    }
-
-    // Função para calcular a soma dos atributos
-    function calculateSum() {
-        const classId = classSelect.value;
-        const sub1Id = subclass1Select.value;
-        const sub2Id = subclass2Select.value;
-        
-        if (!classId || !sub1Id || !sub2Id) {
-            closeSumModal();
-            return;
-        }
-        
-        const classe = classes.find(c => c.id === classId);
-        const sub1 = classe.subclasses.find(s => s.id === sub1Id);
-        const sub2 = classe.subclasses.find(s => s.id === sub2Id);
-        
-        const sumStats = {};
-        
-        // Soma os atributos da classe
-        Object.entries(classe.estatisticas).forEach(([key, val]) => {
-            sumStats[key] = (sumStats[key] || 0) + val;
-        });
-        
-        // Soma a primeira subclasse
-        Object.entries(sub1.estatisticas).forEach(([key, val]) => {
-            sumStats[key] = (sumStats[key] || 0) + val;
-        });
-        
-        // Soma a segunda subclasse
-        Object.entries(sub2.estatisticas).forEach(([key, val]) => {
-            sumStats[key] = (sumStats[key] || 0) + val;
-        });
-        
-        const corClasse = typeof window.normalizeClassColor === 'function'
-            ? window.normalizeClassColor(classe.cor, '#8B5CF6')
-            : (classe.cor && classe.cor.trim() ? classe.cor : '#8B5CF6');
-        createSumModal(sumStats, corClasse, classe.name, sub1.name, sub2.name);
-    }
-
-    // Eventos
-    classSelect.addEventListener('change', populateSubclasses);
-    subclass1Select.addEventListener('change', calculateSum);
-    subclass2Select.addEventListener('change', calculateSum);
-});
+    load();
+})();

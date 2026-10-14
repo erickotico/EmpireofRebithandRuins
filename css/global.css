@@ -30,6 +30,8 @@ header {
 
 .brand {
     display: flex;
+    color: inherit;
+    text-decoration: none;
     align-items: center;
     gap: 15px;
 }
@@ -41,7 +43,8 @@ header {
     display: block;
 }
 
-.brand h1 {
+.brand-name {
+    font-weight: 700;
     margin: 0;
     font-size: 1.25rem;
     color: var(--title);
@@ -64,6 +67,11 @@ nav a {
 nav ul li {
     display: inline;
     margin-right: 10px;
+}
+
+nav a[aria-current="page"] {
+    color: var(--text);
+    border-bottom: 2px solid var(--accent);
 }
 
 nav a:hover {
@@ -252,6 +260,15 @@ nav a:hover {
 .auth-footer p {
     margin: 0;
     font-size: 0.8rem;
+}
+
+/* ========== AVISO: PÁGINA ABERTA SEM SERVIDOR ========== */
+.file-warning {
+    background: #7a2e00;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    text-align: center;
 }
 
 /* ========== CONTAINER ========== */

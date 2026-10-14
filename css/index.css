@@ -17,7 +17,7 @@
     margin: 0 auto;
 }
 
-.hero h2 {
+.hero h1 {
     font-size: 3.5rem;
     color: var(--text);
     margin-bottom: 1rem;
@@ -51,6 +51,17 @@
     max-height: 420px;
     overflow-y: auto;
     padding-right: 8px;
+}
+
+.updates-more {
+    max-width: 1200px;
+    margin: 1.25rem auto 0;
+    text-align: right;
+}
+
+.updates-more a {
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .updates-page .updates-grid {
@@ -170,7 +181,7 @@
 
 /* ========== MEDIA QUERIES ========== */
 @media (max-width: 768px) {
-    .hero h2 {
+    .hero h1 {
         font-size: 2.5rem;
     }
 

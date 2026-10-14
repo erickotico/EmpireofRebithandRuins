@@ -9,29 +9,11 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body class="updates-page">
-    <header>
-        <div class="brand">
-            <img src="./img/LogoRPG.jpg" alt="foto-logo">
-            <h1>Empire of Rebirth & Ruins</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" data-i18n="home">Home</a></li>
-                <li><a href="bestiario.html" data-i18n="bestiary">Bestiary</a></li>
-                <li><a href="classes.html" data-i18n="classes">Classes</a></li>
-                <li><a href="sobre.html" data-i18n="about">About</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
-            <button class="btn btn-login" type="button" aria-label="Login"><a href="./login.html" data-i18n="login">Login</a></button>
-            <a class="btn btn-download" href="./downloads/EmpireSetup.exe" download aria-label="Download the game" data-i18n="download">Download</a>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <main>
         <section class="updates">
-            <h2 class="section-title" data-i18n="allUpdates">All Updates</h2>
+            <h1 class="section-title" data-i18n="allUpdates">All Updates</h1>
             <div class="updates-search">
                 <input id="search-updates" type="search" data-i18n="searchUpdates" placeholder="Search updates..." aria-label="Search updates">
             </div>
@@ -39,51 +21,9 @@
         </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="container footer-grid">
-            <div class="footer-brand" aria-label="Marca do jogo">
-                <img src="./img/LogoRPG.jpg" alt="Logo Empire of Rebirth & Ruins">
-                <div>
-                    <h3 data-i18n="brandName">Empire of Rebirth & Ruins</h3>
-                    <p class="footer-desc" data-i18n="footerDescription">Explore dungeons, defeat monsters, and become a legend.</p>
-                </div>
-            </div>
-            <div class="footer-links" aria-hidden="false">
-                <div class="footer-col">
-                    <h4 data-i18n="game">Game</h4>
-                    <ul>
-                        <li><a href="beguinnersguide.html" data-i18n="beginnerGuide">Beginner's Guide</a></li>
-                        <li><a href="features.html" data-i18n="features">Features</a></li>
-                        <li><a href="requirements.html" data-i18n="requirements">Requirements</a></li>
-                        <li><a href="patchnotes.html" data-i18n="patchNotes">Patch notes</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 data-i18n="community">Community</h4>
-                    <ul>
-                        <li><a href="forum.html">Forum</a></li>
-                        <li><a href="discord.html">Discord</a></li>
-                        <li><a href="wiki.html">Wiki</a></li>
-                        <li><a href="fanart.html">FanArt</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 data-i18n="support">Support</h4>
-                    <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="report-bug.html">Report a bug</a></li>
-                        <li><a href="privacy-policy.html">Privacy policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> <span data-i18n="brandName">Empire of Rebirth & Ruins</span>. <span data-i18n="allRights">All rights reserved.</span></p>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 
-    <script src="js/utils.js"></script>
+    <script src="js/layout.js"></script>
     <script src="js/langSwitcher.js"></script>
     <script src="js/updates.js"></script>
 </body>

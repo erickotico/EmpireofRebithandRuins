@@ -9,23 +9,7 @@
     <link rel="stylesheet" href="css/sobre.css">
 </head>
 <body>
-        <header>
-        <div class="brand">
-            <img src="./img/LogoRPG.jpg" alt="Logo do jogo">
-            <h1 data-i18n="brandName">Empire of Rebirth & Ruins</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" data-i18n="home">Home</a></li>
-                <li><a href="bestiario.html" data-i18n="bestiary">Bestiary</a></li>
-                <li><a href="classes.html" data-i18n="classes">Classes</a></li>
-                <li><a href="sobre.html" data-i18n="about">About</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
-        </div>
-    </header>
+    <div id="site-header"></div>
     <main class="about-container">
         <h1 data-i18n="aboutStudioTitle">About the Studio</h1>
     <!-- Info do Estúdio -->
@@ -86,17 +70,8 @@
         <section class="contact-links" id="contactLinks">
             <h2 data-i18n="connectWithUs">Connect With Us</h2>
             <div class="social-media" id="socialMedia">
-                <a href="#" class="social-link" target="_blank">
-                    <span class="social-icon">𝕏</span> <span data-i18n="twitter">Twitter</span>
-                </a>
-                <a href="#" class="social-link" target="_blank">
-                    <span class="social-icon">💬</span> Discord
-                </a>
-                <a href="#" class="social-link" target="_blank">
-                    <span class="social-icon">📷</span> Instagram
-                </a>
-                <a href="#" class="social-link">
-                    <span class="social-icon">✉️</span> <span data-i18n="email">Email</span>
+                <a href="https://erickotico-dev.itch.io/" data-link="itch" class="social-link" target="_blank" rel="noopener">
+                    <span class="social-icon">🎮</span> <span data-i18n="itchPage">itch.io page</span>
                 </a>
             </div>
         </section>
@@ -124,54 +99,10 @@
         </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="container footer-grid">
-            <div class="footer-brand" aria-label="Marca do jogo">
-                <img src="./img/LogoRPG.jpg" alt="Logo Empire of Rebirth & Ruins">
-                <div>
-                    <h3 data-i18n="brandName">Empire of Rebirth & Ruins</h3>
-                    <p class="footer-desc" data-i18n="footerDescription">Explore dungeons, defeat monsters, and become a legend.</p>
-                </div>
-            </div>
-
-            <div class="footer-links" aria-hidden="false">
-                <div class="footer-col">
-                    <h4 data-i18n="game">Game</h4>
-                    <ul>
-                        <li><a href="beguinnersguide.html" data-i18n="beginnerGuide">Beginner's Guide</a></li>
-                        <li><a href="features.html" data-i18n="features">Features</a></li>
-                        <li><a href="requirements.html" data-i18n="requirements">Requirements</a></li>
-                        <li><a href="patchnotes.html" data-i18n="patchNotes">Patch notes</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4 data-i18n="community">Community</h4>
-                    <ul>
-                        <li><a href="forum.html" data-i18n="forum">Forum</a></li>
-                        <li><a href="discord.html" data-i18n="discord">Discord</a></li>
-                        <li><a href="wiki.html" data-i18n="wiki">Wiki</a></li>
-                        <li><a href="fanart.html" data-i18n="fanArt">FanArt</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4 data-i18n="support">Support</h4>
-                    <ul>
-                        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
-                        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
-                        <li><a href="report-bug.html" data-i18n="reportBug">Report a bug</a></li>
-                        <li><a href="privacy-policy.html" data-i18n="privacy">Privacy policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-           <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> <span data-i18n="brandName">Empire of Rebirth & Ruins</span>. <span data-i18n="allRights">All rights reserved.</span></p>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 
     <!-- Info para o JavaScript -->
+    <script src="js/layout.js"></script>
     <script src="js/langSwitcher.js"></script>
     <script src="js/sobre.js"></script>
 

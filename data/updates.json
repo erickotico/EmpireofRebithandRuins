@@ -3,233 +3,464 @@
     {
       "version": "0.0.22",
       "date": "2026-08-31",
-      "title": "Habilidades",
+      "title": {
+        "pt": "Habilidades",
+        "en": "Skills"
+      },
       "changes": [
-        "- Criando 3 habilidades da espada grande",
-        "- Criando 3 habilidades do arco",
-        "- Criando 3 habilidades da lança"
+        {
+          "pt": "Criação de 3 habilidades da espada grande",
+          "en": "Created 3 greatsword skills"
+        },
+        {
+          "pt": "Criação de 3 habilidades do arco",
+          "en": "Created 3 bow skills"
+        },
+        {
+          "pt": "Criação de 3 habilidades da lança",
+          "en": "Created 3 spear skills"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.21",
       "date": "2026-07-27",
-      "title": "Drop e Item",
+      "title": {
+        "pt": "Drop e itens",
+        "en": "Drops and items"
+      },
       "changes": [
-        "- Criando o drop dos itens para a morte do monstro",
-        "- Adicionando as thumbs iniciais dos itens."
+        {
+          "pt": "Criação do drop de itens quando o monstro morre",
+          "en": "Item drops when a monster dies"
+        },
+        {
+          "pt": "Adição das miniaturas iniciais dos itens",
+          "en": "Added the first item thumbnails"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.20",
       "date": "2026-06-29",
-      "title": "Melhorias",
+      "title": {
+        "pt": "Melhorias",
+        "en": "Improvements"
+      },
       "changes": [
-        "- Aprimoramento do Lock on",
-        "- Mapa Vila"
+        {
+          "pt": "Aprimoramento do Lock On",
+          "en": "Lock On improvements"
+        },
+        {
+          "pt": "Mapa da vila",
+          "en": "Village map"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.19",
       "date": "2026-06-14",
-      "title": "Update e melhoria",
+      "title": {
+        "pt": "Atualização e melhorias",
+        "en": "Update and improvements"
+      },
       "changes": [
-        "- Adição de novas animações",
-        "- Motion Warp",
-        "- Lock On",
-        "- Novas armas",
-        "- Debuffs"
+        {
+          "pt": "Adição de novas animações",
+          "en": "Added new animations"
+        },
+        {
+          "pt": "Motion Warp",
+          "en": "Motion Warping"
+        },
+        {
+          "pt": "Lock On",
+          "en": "Lock On"
+        },
+        {
+          "pt": "Novas armas",
+          "en": "New weapons"
+        },
+        {
+          "pt": "Debuffs",
+          "en": "Debuffs"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.18",
       "date": "2026-05-24",
-      "title": "Correção de dano e inventário",
+      "title": {
+        "pt": "Correção de dano e inventário",
+        "en": "Damage and inventory fixes"
+      },
       "changes": [
-        "- Ajustando o dano do ataque base",
-        "- Ajustando o tamanho do inventário",
-        "- Aumento de velocidade do lobo",
-        "- Habilidade do jogador aprimorada",
-        "- Distância de ataque do lobo melhorada"
+        {
+          "pt": "Ajuste do dano do ataque básico",
+          "en": "Adjusted basic attack damage"
+        },
+        {
+          "pt": "Ajuste do tamanho do inventário",
+          "en": "Adjusted inventory size"
+        },
+        {
+          "pt": "Aumento de velocidade do lobo",
+          "en": "Increased wolf speed"
+        },
+        {
+          "pt": "Habilidade do jogador aprimorada",
+          "en": "Improved player skill"
+        },
+        {
+          "pt": "Distância de ataque do lobo melhorada",
+          "en": "Improved wolf attack range"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.17",
       "date": "2026-05-11",
-      "title": "Atributos do primeiro inimigo",
+      "title": {
+        "pt": "Atributos do primeiro inimigo",
+        "en": "First enemy attributes"
+      },
       "changes": [
-        "- Adição dos valores dos atributos dos monstros.",
-        "- Variação de atributos e nível para o mesmo monstro."
+        {
+          "pt": "Adição dos valores dos atributos dos monstros",
+          "en": "Added monster attribute values"
+        },
+        {
+          "pt": "Variação de atributos e nível para o mesmo monstro",
+          "en": "Attribute and level variation for the same monster"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.16",
       "date": "2026-05-04",
-      "title": "Animações",
+      "title": {
+        "pt": "Animações",
+        "en": "Animations"
+      },
       "changes": [
-        "- Animações de ataque do personagem com a espada",
-        "- Fix: Equipar arma (GreatSword)"
+        {
+          "pt": "Animações de ataque do personagem com a espada",
+          "en": "Character sword attack animations"
+        },
+        {
+          "pt": "Correção: equipar arma (espada grande)",
+          "en": "Fix: equipping the greatsword"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.15",
       "date": "2026-04-28",
-      "title": "Correções no bestiário",
+      "title": {
+        "pt": "Correções no bestiário",
+        "en": "Bestiary fixes"
+      },
       "changes": [
-        "- Corrigindo a interação com o bestiário",
-        "- Aprimorando o bestiário"
+        {
+          "pt": "Correção da interação com o bestiário",
+          "en": "Fixed bestiary interaction"
+        },
+        {
+          "pt": "Melhorias no bestiário",
+          "en": "Bestiary improvements"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.14",
       "date": "2026-04-27",
-      "title": "Inimigos",
+      "title": {
+        "pt": "Inimigos",
+        "en": "Enemies"
+      },
       "changes": [
-        "- Adicionando primeiro inimigo",
-        "- Comportamento do primeiro inimigo",
-        "- Primeiros ataques dos inimigos"
+        {
+          "pt": "Adição do primeiro inimigo",
+          "en": "Added the first enemy"
+        },
+        {
+          "pt": "Comportamento do primeiro inimigo",
+          "en": "First enemy behavior"
+        },
+        {
+          "pt": "Primeiros ataques dos inimigos",
+          "en": "First enemy attacks"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.13",
       "date": "2026-04-23",
-      "title": "Correção de bug nos atributos",
+      "title": {
+        "pt": "Correção de bug nos atributos",
+        "en": "Attribute bug fix"
+      },
       "changes": [
-        "- Correção do debuff de renascimento"
+        {
+          "pt": "Correção do debuff de renascimento",
+          "en": "Fixed the rebirth debuff"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.12",
       "date": "2026-04-22",
-      "title": "Menu",
+      "title": {
+        "pt": "Menu",
+        "en": "Menu"
+      },
       "changes": [
-        "- Adicionando Widget de menu",
-        "- Adicionando widget de Configurações"
+        {
+          "pt": "Adição do widget de menu",
+          "en": "Added the menu widget"
+        },
+        {
+          "pt": "Adição do widget de configurações",
+          "en": "Added the settings widget"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.11",
       "date": "2026-04-14",
-      "title": "Penalidade",
+      "title": {
+        "pt": "Penalidade",
+        "en": "Penalty"
+      },
       "changes": [
-        "- Penalidade de atributos após a morte",
-        "- Correção do renascimento",
-        "- Debuff após a morte"
+        {
+          "pt": "Penalidade de atributos após a morte",
+          "en": "Attribute penalty after death"
+        },
+        {
+          "pt": "Correção do renascimento",
+          "en": "Rebirth fix"
+        },
+        {
+          "pt": "Debuff após a morte",
+          "en": "Debuff after death"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.10",
       "date": "2026-04-12",
-      "title": "Atributos",
+      "title": {
+        "pt": "Atributos",
+        "en": "Attributes"
+      },
       "changes": [
-        "- Regen de vida e mana após gasto",
-        "- Distribuição de pontos"
+        {
+          "pt": "Regeneração de vida e mana após o uso",
+          "en": "Health and mana regeneration after use"
+        },
+        {
+          "pt": "Distribuição de pontos",
+          "en": "Point distribution"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.9",
       "date": "2026-04-10",
-      "title": "Correção de atributos",
+      "title": {
+        "pt": "Correção de atributos",
+        "en": "Attribute fixes"
+      },
       "changes": [
-        "- Ajustando os atributos corretos para as classes e subclasses",
-        "- Corrigindo o problema de subida de nível"
+        {
+          "pt": "Ajuste dos atributos das classes e subclasses",
+          "en": "Adjusted class and subclass attributes"
+        },
+        {
+          "pt": "Correção do problema de subida de nível",
+          "en": "Fixed the level-up issue"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.8",
       "date": "2026-04-03",
-      "title": "Mapa",
+      "title": {
+        "pt": "Mapa",
+        "en": "Map"
+      },
       "changes": [
-        "- Criação da blocagem do primeiro mapa",
-        "- Blocagem da Vila Inicial",
-        "- Blocagem da floresta"
+        {
+          "pt": "Criação da blocagem do primeiro mapa",
+          "en": "Blockout of the first map"
+        },
+        {
+          "pt": "Blocagem da vila inicial",
+          "en": "Starting village blockout"
+        },
+        {
+          "pt": "Blocagem da floresta",
+          "en": "Forest blockout"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.7",
       "date": "2026-04-02",
-      "title": "IA Inimiga",
+      "title": {
+        "pt": "IA inimiga",
+        "en": "Enemy AI"
+      },
       "changes": [
-        "- Novos comportamentos dos inimigos",
-        "- Novas árvores de comportamento"
+        {
+          "pt": "Novos comportamentos dos inimigos",
+          "en": "New enemy behaviors"
+        },
+        {
+          "pt": "Novas árvores de comportamento",
+          "en": "New behavior trees"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.6",
       "date": "2026-03-28",
-      "title": "Bestiário",
+      "title": {
+        "pt": "Bestiário",
+        "en": "Bestiary"
+      },
       "changes": [
-        "- Criação do bestiário",
-        "- Atributos dos monstros",
-        "- Correção de atributo que não permanecia no personagem"
+        {
+          "pt": "Criação do bestiário",
+          "en": "Bestiary created"
+        },
+        {
+          "pt": "Atributos dos monstros",
+          "en": "Monster attributes"
+        },
+        {
+          "pt": "Correção de atributo que não permanecia no personagem",
+          "en": "Fixed an attribute that did not stay on the character"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.5",
       "date": "2026-03-24",
-      "title": "Escolha de Classe",
+      "title": {
+        "pt": "Escolha de classe",
+        "en": "Class selection"
+      },
       "changes": [
-        "- Escolhas entre classes e subclasses",
-        "- Atributos personalizados de acordo com a classe"
+        {
+          "pt": "Escolhas entre classes e subclasses",
+          "en": "Choice between classes and subclasses"
+        },
+        {
+          "pt": "Atributos personalizados de acordo com a classe",
+          "en": "Custom attributes per class"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.4",
       "date": "2026-03-14",
-      "title": "Inimigo",
+      "title": {
+        "pt": "Inimigo",
+        "en": "Enemy"
+      },
       "changes": [
-        "- Protótipo da IA inimiga",
-        "- Possíveis rotas inimigas",
-        "- Ataques básicos"
+        {
+          "pt": "Protótipo da IA inimiga",
+          "en": "Enemy AI prototype"
+        },
+        {
+          "pt": "Possíveis rotas inimigas",
+          "en": "Possible enemy routes"
+        },
+        {
+          "pt": "Ataques básicos",
+          "en": "Basic attacks"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.3",
       "date": "2026-03-06",
-      "title": "Progressão de nível",
+      "title": {
+        "pt": "Progressão de nível",
+        "en": "Level progression"
+      },
       "changes": [
-        "- Sistema de progressão de nível",
-        "- Habilidades base"
+        {
+          "pt": "Sistema de progressão de nível",
+          "en": "Level progression system"
+        },
+        {
+          "pt": "Habilidades base",
+          "en": "Base skills"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.2",
       "date": "2026-02-27",
-      "title": "Sistema ",
+      "title": {
+        "pt": "Sistema",
+        "en": "System"
+      },
       "changes": [
-        "- Implementação do sistema para RPG",
-        "- Criação dos atributos"
+        {
+          "pt": "Implementação do sistema de RPG",
+          "en": "RPG system implementation"
+        },
+        {
+          "pt": "Criação dos atributos",
+          "en": "Attributes created"
+        }
       ],
-      "link": "#"
+      "link": ""
     },
     {
       "version": "0.0.1",
       "date": "2026-01-22",
-      "title": "Início do projeto",
+      "title": {
+        "pt": "Início do projeto",
+        "en": "Project start"
+      },
       "changes": [
-        "- Idealização do projeto",
-        "- Concept dos personagens"
+        {
+          "pt": "Idealização do projeto",
+          "en": "Project concept"
+        },
+        {
+          "pt": "Concept dos personagens",
+          "en": "Character concepts"
+        }
       ],
-      "link": "#"
+      "link": ""
     }
   ]
 }

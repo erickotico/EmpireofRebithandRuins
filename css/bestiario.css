@@ -1,45 +1,3 @@
-/* Cores de raridade */
-.comum { border-color: #808080; border-radius: 20%; padding: 10px; }
-.comum .monster-rarity,
-.modal-rarity.comum,
-.variant-rarity.comum,
-.reward-rarity.comum { background: #808080; color: #fff; }
-.incomum { border-color: #2e7d32; border-radius: 20%; padding: 10px;  }
-.incomum .monster-rarity,
-.modal-rarity.incomum,
-.variant-rarity.incomum,
-.reward-rarity.incomum { background: #2e7d32; color: #fff; }
-.raro { border-color: #1976d2; border-radius: 20%; padding: 10px; }
-.raro .monster-rarity,
-.modal-rarity.raro,
-.variant-rarity.raro,
-.reward-rarity.raro { background: #1976d2; color: #fff; }
-.epico { border-color: #ff5722; border-radius: 20%; padding: 10px;  }
-.epico .monster-rarity,
-.modal-rarity.epico,
-.variant-rarity.epico,
-.reward-rarity.epico { background: #ff5722; color: #fff; }
-.lendario { border-color: #9c27b0;border-radius: 20%; padding: 10px;  }
-.lendario .monster-rarity,
-.modal-rarity.lendario,
-.variant-rarity.lendario,
-.reward-rarity.lendario { background: #9c27b0; color: #fff; }
-.deus { border-color: #f57c00; border-radius: 20%; padding: 10px; }
-.deus .monster-rarity,
-.modal-rarity.deus,
-.variant-rarity.deus,
-.reward-rarity.deus { background: #f57c00; color: #fff; }
-.imortal { border-color: #c2185b; border-radius: 20%; padding: 10px; }
-.imortal .monster-rarity,
-.modal-rarity.imortal,
-.variant-rarity.imortal,
-.reward-rarity.imortal { background: #c2185b; color: #fff; }
-.divindade { border-color: #ffd700; border-radius: 20%; padding: 10px; }
-.divindade .monster-rarity,
-.modal-rarity.divindade,
-.variant-rarity.divindade,
-.reward-rarity.divindade { background: #ffd700; color: #000; }
-
 /* Container */
 .bestiary-container {
     max-width: 1200px;
@@ -498,13 +456,6 @@
 .variant-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
 .variant-info h4 { margin: 0 0 0.35rem 0; color: var(--accent); }
 .variant-rarity { display: inline-block; margin-bottom: 0.35rem; font-size: 0.88rem; font-weight: 700; color: #fff; padding: 0.25rem 0.55rem; border-radius: 999px; }
-.variant-rarity.comum { background: #808080; border-radius: 50%;}
-.variant-rarity.incomum { background: #2e7d32; }
-.variant-rarity.raro { background: #1976d2; }
-.variant-rarity.epico { background: #ff5722; }
-.variant-rarity.lendario { background: #9c27b0; }
-.variant-rarity.deus { background: #f57c00; }
-.variant-rarity.imortal { background: #c2185b; }
 .variant-info p { margin: 0; line-height: 1.4; font-size: 0.95rem; }
 
 /* Responsividade */
@@ -524,3 +475,151 @@
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 }
+
+/* ========== Bestiário v2: selos, elementos, variantes e estados ========== */
+.muted { color: var(--muted); }
+.grid-message { grid-column: 1 / -1; text-align: center; padding: 2rem 0; }
+
+.bestiary-filters { flex-wrap: wrap; }
+.toggle-label { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--text); font-size: 0.92rem; cursor: pointer; }
+.toggle-label input { accent-color: var(--accent); width: 1rem; height: 1rem; }
+.monster-count { color: var(--muted); font-size: 0.9rem; margin-left: auto; }
+
+/* Selo de raridade (a cor vem de data/gameRules.json) */
+.rarity-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--rarity-color, #808080);
+    color: #111;
+    line-height: 1.3;
+}
+.rarity-badge--small { font-size: 0.68rem; padding: 0.12rem 0.4rem; margin: 0 0.2rem 0.2rem 0; }
+.monster-card-image .monster-rarity { position: absolute; top: 10px; left: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
+
+/* Selo de elemento */
+.element-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    background: color-mix(in srgb, var(--element-color, #555) 30%, rgba(0,0,0,0.6));
+    border: 1px solid var(--element-color, #555);
+    white-space: nowrap;
+}
+.element-badge--small { font-size: 0.72rem; padding: 0.1rem 0.45rem; }
+.element-badge--special { --element-color: #9e9e9e; font-style: italic; }
+.element-badge--pending { --element-color: #6b6b78; color: var(--muted); font-style: italic; }
+.monster-card-element { position: absolute; left: 10px; bottom: 10px; }
+
+/* Selos de estado (Zombie, Corrompido, Forma Anciã) */
+.monster-card-side { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
+.monster-states { display: flex; gap: 0.2rem; }
+.state-badge {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    font-size: 0.85rem;
+    cursor: help;
+}
+
+.monster-card.is-variant { border-color: rgba(122, 73, 255, 0.35); }
+.monster-variant-of { color: var(--accent); font-size: 0.82rem; }
+.monster-basic-info { align-items: flex-start; }
+
+.monster-card-image img.is-placeholder,
+.modal-header img.is-placeholder { object-fit: cover; opacity: 0.9; }
+
+/* Modal: atributos */
+.stats-note { color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem; font-style: italic; }
+.stats-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem 1.25rem; }
+.stat-bar-head { display: flex; justify-content: space-between; margin-bottom: 0.3rem; }
+.stat-name { font-weight: 600; color: #ddd; }
+.stat-number { font-weight: 700; color: #fff; }
+.stat-number.is-pending { color: var(--muted); font-weight: 400; font-style: italic; }
+.stat-progress { width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden; }
+.stat-fill { height: 100%; background: var(--accent); transition: width 0.3s; }
+
+.resistances h4 { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.matchups { display: grid; gap: 0.5rem; }
+.matchup-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.matchup-label { color: var(--muted); min-width: 7.5rem; font-size: 0.9rem; }
+
+.inherited-note { color: var(--muted); font-size: 0.88rem; font-style: italic; margin-bottom: 0.75rem; }
+
+.reward-item { grid-template-columns: 1fr auto auto; }
+.reward-rarities { display: flex; flex-wrap: wrap; justify-content: flex-end; }
+
+/* Modal: variantes como botões clicáveis */
+.variant-list { display: grid; gap: 0.6rem; }
+.variant-card {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+.variant-card:hover, .variant-card:focus-visible { background: rgba(122,73,255,0.12); border-color: var(--accent); }
+.variant-image { aspect-ratio: 16 / 10; overflow: hidden; border-radius: 6px; }
+.variant-image img { width: 100%; height: 100%; object-fit: cover; }
+.variant-badges { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+
+.variant-of-link { margin-bottom: 0.75rem; color: var(--muted); }
+.link-button { background: none; border: none; padding: 0; color: var(--accent); font: inherit; font-weight: 700; cursor: pointer; text-decoration: underline; }
+
+.modal-meta { flex-wrap: wrap; }
+.modal-states { margin-top: 1.25rem; }
+.modal-states h4 { color: var(--title); margin-bottom: 0.5rem; }
+.state-row { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.5rem 0.6rem; background: rgba(255,255,255,0.02); border-radius: 6px; margin-bottom: 0.4rem; }
+.state-row p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.4; }
+.state-icon { font-size: 1.2rem; }
+
+/* Seções de estados e de elementos */
+.bestiary-section { margin-top: 3rem; }
+.section-intro { color: var(--muted); margin: 0.25rem 0 1rem; max-width: 70ch; }
+.state-grid, .element-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.state-card, .element-card {
+    background: var(--header-bg);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+.state-card-icon { font-size: 1.8rem; }
+.state-card h3, .element-card h3 { margin: 0.3rem 0 0.4rem; color: var(--title); font-size: 1.05rem; }
+.state-card p { color: var(--muted); margin: 0; line-height: 1.45; font-size: 0.92rem; }
+.element-card { border-top: 3px solid var(--element-color, var(--accent)); display: grid; gap: 0.45rem; }
+.element-card .matchup-label { min-width: 6.5rem; font-size: 0.82rem; }
+
+@media (max-width: 768px) {
+    .stats-container { grid-template-columns: 1fr; }
+    .monster-count { margin-left: 0; }
+    .variant-card { grid-template-columns: 80px 1fr; }
+    .modal-tabs { flex-wrap: wrap; }
+}
+
+/* Cor do selo de hostilidade */
+.monster-hostility.hostility-peaceful, .modal-hostility.hostility-peaceful { background: rgba(46, 125, 50, 0.9); }
+.monster-hostility.hostility-neutral, .modal-hostility.hostility-neutral { background: rgba(90, 90, 105, 0.92); }
+.monster-hostility.hostility-aggressive, .modal-hostility.hostility-aggressive { background: rgba(196, 98, 16, 0.92); }
+.monster-hostility.hostility-hostile, .modal-hostility.hostility-hostile { background: rgba(140, 26, 26, 0.92); }
+.monster-hostility.hostility-assassin, .modal-hostility.hostility-assassin { background: rgba(74, 20, 90, 0.95); }
