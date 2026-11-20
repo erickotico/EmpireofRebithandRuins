@@ -11,7 +11,6 @@
     const typeSelect = document.getElementById('filterType');
     const elementSelect = document.getElementById('filterElement');
     const variantsToggle = document.getElementById('showVariants');
-    const countLabel = document.getElementById('monsterCount');
 
     let rules = null;
     let monsters = [];
@@ -351,7 +350,6 @@
         grid.innerHTML = list.length
             ? list.map(createCard).join('')
             : `<p class="muted grid-message">${esc(t('noResults'))}</p>`;
-        if (countLabel) countLabel.textContent = t('monsterCount', '{n}', { n: list.length });
     }
 
     function fillFilters() {

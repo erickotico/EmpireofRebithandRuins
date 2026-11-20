@@ -1,13 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
+  <!-- Imagem provisória (até a arte final chegar): pedra escura com um selo dourado gravado. -->
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#26263a"/>
-      <stop offset="1" stop-color="#121219"/>
-    </linearGradient>
+    <radialGradient id="g" cx="50%" cy="45%" r="75%">
+      <stop offset="0" stop-color="#231d16"/>
+      <stop offset="0.6" stop-color="#15120e"/>
+      <stop offset="1" stop-color="#0b0a08"/>
+    </radialGradient>
   </defs>
   <rect width="320" height="180" fill="url(#g)"/>
-  <g fill="none" stroke="#7a49ff" stroke-opacity="0.45" stroke-width="3">
-    <path d="M160 52 l30 18 v36 l-30 18 l-30 -18 v-36 z"/>
-    <path d="M160 70 v36 M145 79 l15 9 l15 -9"/>
+  <g fill="none" stroke="#d9a441" stroke-opacity="0.32" stroke-width="1.5">
+    <circle cx="160" cy="90" r="38"/>
+    <circle cx="160" cy="90" r="31" stroke-opacity="0.18"/>
+    <path d="M160 58 L184 90 L160 122 L136 90 Z" stroke-opacity="0.26"/>
+  </g>
+  <g fill="#d9a441" fill-opacity="0.38">
+    <path d="M160 74 L165 90 L160 106 L155 90 Z"/>
+    <circle cx="160" cy="52" r="2"/><circle cx="160" cy="128" r="2"/><circle cx="122" cy="90" r="2"/><circle cx="198" cy="90" r="2"/>
   </g>
 </svg>
