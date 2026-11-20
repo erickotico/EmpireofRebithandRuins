@@ -1,275 +1,512 @@
-/* ========== CLASSES ========== */
-.classes-hero .container,
-.classes-section .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* =====================================================================
+   CLASSES · cada classe tem sua cor (campo "color" em classesData.json).
+   --class-color = cor original; --class-tint = versão clareada para
+   texto e detalhes (cores escuras como marrom e roxo ficam legíveis).
+   ===================================================================== */
+
+.class-card,
+.class-modal {
+    --class-tint: color-mix(in srgb, var(--class-color) 62%, #f2e6cf);
+    --class-glow: color-mix(in srgb, var(--class-color) 45%, transparent);
 }
 
-.classes-hero { padding: 1.5rem 0 0.5rem; }
-.classes-hero h1 { margin: 0.5rem 0; font-size: 2rem; color: var(--title); }
-.classes-hero p { color: var(--muted); margin: 0 0 1rem; }
+.muted { color: var(--muted); }
+.grid-message { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 3rem 0; }
+
+/* ========== CABEÇALHO DA PÁGINA ========== */
+.classes-hero {
+    padding: clamp(40px, 6vw, 72px) 0 0;
+    text-align: center;
+}
+
+.classes-hero .container,
+.classes-section .container {
+    width: min(var(--max), 100% - 32px);
+    margin: 0 auto;
+}
+
+.classes-hero h1 {
+    margin: 0 0 2.5rem;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+/* mesmo ornamento dos títulos de seção */
+.classes-hero h1::after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 12px;
+    margin: 16px auto 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cdefs%3E%3ClinearGradient id='g'%3E%3Cstop offset='0' stop-color='%23d9a441' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23d9a441' stop-opacity='.7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='5.5' width='86' height='1' fill='url(%23g)'/%3E%3Crect x='114' y='5.5' width='86' height='1' fill='url(%23g)' transform='rotate(180 157 6)'/%3E%3Cpath d='M100 1 L105 6 L100 11 L95 6 Z' fill='%23d9a441'/%3E%3Cpath d='M91 6 L93 4 L95 6 L93 8 Z M105 6 L107 4 L109 6 L107 8 Z' fill='%23d9a441' opacity='.6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.classes-hero p {
+    max-width: 560px;
+    margin: -1rem auto 0;
+    font-family: var(--font-lore);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #e2d6bf;
+}
+
+/* ========== BUSCA ========== */
+.classes-section {
+    padding: 32px 0 88px;
+}
 
 .search-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 6px;
+    max-width: 560px;
+    margin: 0 auto 36px;
 }
 
 .search-container input {
     flex: 1;
-    padding: 10px 12px;
-    border: 1px solid #555;
-    border-radius: 10px;
-    background: #181818;
-    color: #eee;
+    min-width: 0;
+    height: 44px;
+    padding: 0 14px 0 40px;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a59a86' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") 13px center / 17px no-repeat;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
 }
 
-.search-container input::placeholder { color: #888; }
+.search-container input::placeholder { color: var(--muted); }
+.search-container input:hover,
+.search-container input:focus { border-color: var(--line-strong); outline: none; }
 
 .search-container button {
-    padding: 10px 12px;
-    border: 1px solid #555;
-    border-radius: 10px;
-    background: #333;
-    color: #eee;
+    height: 44px;
+    padding: 0 18px;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
     cursor: pointer;
 }
 
-.search-container button:hover { background: #555; }
+.search-container button:hover { background: rgba(var(--accent-rgb), 0.1); }
 
+/* ========== CARDS DAS CLASSES ========== */
 .classes-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    padding: 0 0 40px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
 }
 
-.grid-message { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 2rem 0; }
-.muted { color: var(--muted); }
-
-/* Card da classe: a cor vem do campo "color" de cada classe (--class-color). */
 .class-card {
     position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    background: #1a1a1a;
-    border: 2px solid color-mix(in srgb, var(--class-color) 25%, transparent);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* fio na cor da classe no topo */
+.class-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    z-index: 2;
+    background: linear-gradient(90deg, transparent, var(--class-tint), transparent);
 }
 
 .class-card:hover,
 .class-card:focus-within {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--class-tint) 45%, transparent);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55), 0 0 40px -12px var(--class-glow);
 }
 
 .class-card-image {
     position: relative;
-    width: 100%;
-    height: 250px;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
+    background: #0b0a08;
 }
 
-.class-card-image img { width: 100%; height: 100%; object-fit: cover; }
+.class-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
 
+.class-card:hover .class-card-image img { transform: scale(1.05); }
+
+/* imagem se dissolve no corpo do card */
 .class-card-image::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--class-color) 50%, transparent) 100%);
+    background: linear-gradient(180deg, transparent 50%, var(--surface-2) 100%);
+    pointer-events: none;
 }
+
+/* brilho da cor da classe atravessando a borda entre imagem e texto */
+.class-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30%;
+    height: 45%;
+    background: radial-gradient(55% 50% at 50% 50%, var(--class-glow), transparent 75%);
+    opacity: 0.75;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.25s ease;
+}
+
+.class-card:hover::after { opacity: 1; }
+.class-card-body { position: relative; z-index: 2; }
 
 .class-card-body {
-    padding: 20px;
-    background: #0f0f0f;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    padding: 4px 22px 22px;
+    text-align: center;
 }
 
-.class-name { margin: 0 0 10px; color: var(--class-color); font-size: 22px; font-weight: 700; }
-.class-desc { margin: 0 0 12px; color: #aaa; font-size: 13px; line-height: 1.5; flex: 1; }
+.class-name {
+    margin: -6px 0 10px;
+    position: relative;
+    font-size: 1.55rem;
+    color: var(--title);
+    text-shadow: 0 2px 14px var(--class-glow);
+}
 
-.class-weapons { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.class-desc {
+    flex: 1;
+    margin: 0 0 16px;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.class-weapons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
 .weapon-tag {
-    font-size: 12px;
     padding: 3px 10px;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--class-color) 60%, transparent);
-    color: #ddd;
+    font-family: var(--font-display);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--class-tint);
+    background: color-mix(in srgb, var(--class-color) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--class-tint) 40%, transparent);
+    border-radius: 2px;
 }
 
 .class-card .btn-primary {
     width: 100%;
     padding: 12px;
-    background: var(--class-color);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--title);
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--class-tint) 45%, transparent);
+    border-radius: var(--radius);
     cursor: pointer;
-    font-size: 14px;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-/* ========== MODAL ========== */
+.class-card:hover .btn-primary,
+.class-card .btn-primary:focus-visible {
+    background: color-mix(in srgb, var(--class-color) 22%, transparent);
+    border-color: var(--class-tint);
+}
+
+/* ========== MODAL DA CLASSE ========== */
 .class-modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    padding: 16px;
+    padding: 20px;
+    background: rgba(5, 4, 3, 0.82);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .class-modal .modal-content {
-    background: #0f0f0f;
-    border-radius: 12px;
-    max-width: 900px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
     position: relative;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-    border-top: 5px solid var(--class-color);
+    width: 100%;
+    max-width: 900px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--class-tint) 35%, transparent);
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px -30px var(--class-glow);
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-deep) transparent;
 }
 
 .class-modal .modal-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--class-color);
-    color: #fff;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
+    top: 14px;
+    right: 14px;
     z-index: 10;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--title);
+    background: rgba(10, 9, 8, 0.75);
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    cursor: pointer;
 }
+
+.class-modal .modal-close:hover { background: rgba(var(--accent-rgb), 0.18); }
 
 .modal-header-compact {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 25px;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--class-color) 14%, transparent), color-mix(in srgb, var(--class-color) 6%, transparent));
-    border-bottom: 3px solid var(--class-color);
+    gap: 24px;
+    padding: 32px 72px 28px 32px;
+    background:
+        radial-gradient(70% 120% at 0% 0%, color-mix(in srgb, var(--class-color) 22%, transparent), transparent 70%),
+        var(--surface);
 }
 
 .modal-header-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 112px;
+    height: 112px;
     flex-shrink: 0;
-    border: 3px solid var(--class-color);
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--class-tint);
+    box-shadow: 0 0 0 5px var(--surface), 0 0 0 6px color-mix(in srgb, var(--class-tint) 35%, transparent), 0 0 30px var(--class-glow);
 }
 
-.modal-header-text h2 { margin: 0 0 10px; font-size: 28px; color: var(--class-color); font-weight: 700; }
-.modal-header-text p { margin: 0; color: #aaa; font-size: 14px; }
+.modal-header-text h2 {
+    margin: 0 0 8px;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    color: var(--title);
+}
+
+.modal-header-text p {
+    margin: 0;
+    font-family: var(--font-lore);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: #e2d6bf;
+}
 
 .class-modal .modal-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 5;
     display: flex;
-    border-bottom: 2px solid var(--class-color);
-    background: #1a1a1a;
+    gap: 4px;
+    padding: 0 20px;
+    overflow-x: auto;
+    background: var(--surface);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--line);
+    scrollbar-width: none;
 }
 
 .class-modal .tab-btn {
-    flex: 1;
-    padding: 12px;
+    position: relative;
+    padding: 16px 14px;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--muted);
     background: none;
     border: none;
-    border-bottom: 3px solid transparent;
     cursor: pointer;
-    font-weight: 600;
-    color: #999;
+    transition: color 0.2s ease;
 }
 
-.class-modal .tab-btn.active { color: #fff; border-bottom-color: var(--class-color); }
+.class-modal .tab-btn::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: -1px;
+    height: 2px;
+    background: var(--class-tint);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
 
-.class-modal .modal-body { padding: 30px; }
+.class-modal .tab-btn:hover { color: var(--title); }
+.class-modal .tab-btn.active { color: var(--class-tint); }
+.class-modal .tab-btn.active::after { transform: scaleX(1); }
+
+.class-modal .modal-body { padding: 26px 32px 34px; }
 .class-modal .tab-content { display: none; }
-.class-modal .tab-content.active { display: block; }
+.class-modal .tab-content.active { display: block; animation: class-tab-in 0.25s ease; }
+
+@keyframes class-tab-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+}
 
 .class-modal h3 {
-    color: var(--class-color);
-    margin-bottom: 15px;
-    font-size: 20px;
-    border-bottom: 2px solid color-mix(in srgb, var(--class-color) 25%, transparent);
-    padding-bottom: 10px;
+    margin: 0 0 14px;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--class-tint);
 }
 
-.class-modal .tab-text { color: #bbb; line-height: 1.8; font-size: 15px; margin-bottom: 20px; }
+.class-modal .tab-text {
+    margin: 0 0 28px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text);
+}
 
-.stats-note { color: var(--muted); font-size: 0.88rem; font-style: italic; margin-bottom: 1rem; }
-.stats-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem 1.5rem; }
-.stat-bar-head { display: flex; justify-content: space-between; margin-bottom: 5px; }
-.stat-name { font-weight: 600; color: #ddd; }
-.stat-number { font-weight: 600; color: var(--class-color); }
-.stat-progress { width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden; }
-.stat-fill { height: 100%; background: var(--class-color); transition: width 0.3s; }
+.class-modal .class-weapons { justify-content: flex-start; }
+
+/* Atributos */
+.stats-note { margin: 0 0 18px; font-size: 0.9rem; font-style: italic; color: var(--muted); }
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 28px;
+}
+
+.stat-bar-head { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.stat-name { font-weight: 500; color: var(--text); }
+.stat-number { font-family: var(--font-display); font-weight: 700; color: var(--title); }
+
+.stat-progress {
+    height: 6px;
+    overflow: hidden;
+    background: #26211a;
+    border-radius: 999px;
+}
+
+.stat-fill {
+    height: 100%;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--class-color) 80%, #000), var(--class-tint));
+    border-radius: 999px;
+    box-shadow: 0 0 10px var(--class-glow);
+    transition: width 0.4s ease;
+}
+
+/* Habilidades */
+.skills-list { display: grid; gap: 10px; }
 
 .skill-item {
-    padding: 15px;
-    background: #222;
-    border-left: 4px solid var(--class-color);
-    margin-bottom: 12px;
-    border-radius: 4px;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 2px solid var(--class-tint);
+    border-radius: var(--radius);
 }
 
-.skill-item h4 { margin: 0 0 8px; color: var(--class-color); font-size: 16px; }
-.skill-item p { margin: 0 0 8px; color: #bbb; font-size: 14px; }
+.skill-item h4 { margin: 0 0 4px; font-size: 1rem; color: var(--title); }
+.skill-item p { margin: 0 0 8px; line-height: 1.5; color: var(--text); }
+
 .skill-cooldown {
     display: inline-block;
-    background: color-mix(in srgb, var(--class-color) 20%, transparent);
-    color: var(--class-color);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 2px 10px;
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--class-tint);
+    border: 1px solid color-mix(in srgb, var(--class-tint) 40%, transparent);
+    border-radius: 2px;
 }
 
+/* Subclasses */
 .subclasses-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
 }
 
 .subclass-item {
-    border: 2px solid color-mix(in srgb, var(--class-color) 25%, transparent);
-    border-radius: 8px;
     overflow: hidden;
-    background: #1a1a1a;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius);
+    transition: border-color 0.2s ease;
 }
 
+.subclass-item:hover { border-color: color-mix(in srgb, var(--class-tint) 40%, transparent); }
+
 .subclass-image-wrapper {
-    height: 150px;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--class-color) 20%, transparent), color-mix(in srgb, var(--class-color) 6%, transparent));
+    background: #0b0a08;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .subclass-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-.subclass-info { padding: 15px; }
-.subclass-info h4 { margin: 0 0 8px; color: var(--class-color); font-size: 16px; font-weight: 700; }
-.subclass-info p { margin: 0 0 8px; color: #aaa; font-size: 13px; line-height: 1.45; }
-.subclass-unlock { color: var(--muted); font-size: 12px; font-style: italic; }
+.subclass-info { padding: 14px 16px 16px; }
+.subclass-info h4 { margin: 0 0 6px; font-size: 1.05rem; color: var(--title); }
+.subclass-info p { margin: 0 0 10px; font-size: 0.95rem; line-height: 1.5; color: var(--muted); }
 
-/* ========== MEDIA QUERIES ========== */
-@media (max-width: 768px) {
-    .classes-grid { grid-template-columns: 1fr; gap: 20px; }
+.subclass-unlock {
+    padding-top: 10px;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--class-tint);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 1000px) {
+    .classes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+    .classes-grid { grid-template-columns: 1fr; }
     .stats-container { grid-template-columns: 1fr; }
-    .modal-header-compact { flex-direction: column; align-items: flex-start; }
+    .modal-header-compact { flex-direction: column; align-items: flex-start; padding: 28px 20px 22px; }
+    .modal-header-img { width: 88px; height: 88px; }
     .class-modal .modal-body { padding: 20px; }
-    .class-modal .modal-tabs { flex-wrap: wrap; }
+    .class-modal .modal-tabs { padding: 0 8px; }
+}
+
+@media (max-width: 520px) {
+    .class-modal { padding: 0; }
+    .class-modal .modal-content { height: 100%; max-height: 100vh; border: none; border-radius: 0; }
 }
