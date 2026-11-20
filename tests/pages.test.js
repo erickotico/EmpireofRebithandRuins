@@ -6,7 +6,7 @@ const fs = require('node:fs');
 
 const root = path.join(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const sitePages = ['index.html', 'bestiario.html', 'classes.html', 'guia.html', 'updates.html', 'sobre.html'];
+const sitePages = ['index.html', 'bestiario.html', 'classes.html', 'guia.html', 'updates.html', 'sobre.html', 'perfil.html', 'privacidade.html'];
 
 test('as páginas usam o header e o footer de js/layout.js, carregado antes do langSwitcher', () => {
   sitePages.forEach((page) => {
@@ -21,7 +21,7 @@ test('as páginas usam o header e o footer de js/layout.js, carregado antes do l
 });
 
 test('os links internos do menu, do rodapé e das páginas apontam para arquivos que existem', () => {
-  const sources = [...sitePages, 'js/layout.js'];
+  const sources = [...sitePages, 'login.html', 'js/layout.js'];
   sources.forEach((file) => {
     const hrefs = [...read(file).matchAll(/href[=:]\s*["']([^"'#]+\.html)/g)].map((m) => m[1]);
     hrefs.forEach((href) => assert.ok(fs.existsSync(path.join(root, href)), `${file} → ${href}`));

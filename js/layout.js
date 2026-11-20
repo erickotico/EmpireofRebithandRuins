@@ -31,7 +31,8 @@
         },
         {
             key: 'support', label: 'Support', links: [
-                { href: ITCH_URL, key: 'reportBug', label: 'Report a bug', external: true }
+                { href: ITCH_URL, key: 'reportBug', label: 'Report a bug', external: true },
+                { href: 'privacidade.html', key: 'privacyPolicy', label: 'Privacy policy' }
             ]
         }
     ];
@@ -113,6 +114,32 @@
         siteHeader.querySelectorAll('.site-nav a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') setMenu(false);
+        });
+    }
+
+    // Jogador logado: o botão "Entrar" vira o apelido e leva ao perfil.
+    // Só lê a sessão salva no navegador (sem carregar o Supabase em toda página);
+    // é apenas visual: o que vale de verdade é checado pelo banco.
+    function playerNickname() {
+        const key = 'sb-qjpogjpmxbpuuclpdfhv-auth-token';
+        for (const area of ['localStorage', 'sessionStorage']) {
+            try {
+                const raw = window[area].getItem(key);
+                if (!raw) continue;
+                const nick = JSON.parse(raw)?.user?.user_metadata?.nickname;
+                if (typeof nick === 'string' && nick) return nick.slice(0, 20);
+            } catch { /* armazenamento bloqueado ou inválido */ }
+        }
+        return null;
+    }
+    const nickname = playerNickname();
+    if (nickname) {
+        document.querySelectorAll('.header-login, .nav-login a').forEach((link) => {
+            link.href = 'perfil.html';
+            link.removeAttribute('data-i18n');
+            link.textContent = nickname;
+            link.classList.add('is-player');
+            if (currentPage === 'perfil.html' && !window.location.search) link.setAttribute('aria-current', 'page');
         });
     }
 

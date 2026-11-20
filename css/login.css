@@ -407,6 +407,13 @@
 
 .dob-row .form-error { grid-column: 1 / -1; }
 
+.form-hint {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--muted);
+}
+
 .form-error {
     min-height: 0;
     font-size: 0.85rem;
@@ -446,4 +453,48 @@
 @media (max-width: 520px) {
     .modal-overlay { padding: 0; }
     .modal { height: 100%; max-height: 100vh; border: none; border-radius: 0; padding: 28px 20px; }
+}
+
+/* ========== AVISOS E LINKS-BOTÃO ========== */
+.auth-notice {
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: var(--text);
+    background: rgba(var(--accent-rgb), 0.08);
+    border: 1px solid var(--line-strong);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+}
+
+.auth-notice[data-kind="success"] { border-left-color: var(--verdant); }
+.auth-notice[data-kind="error"] { border-left-color: #e2685a; }
+
+.link-button {
+    padding: 0;
+    font: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.signup-prompt .link-button { font-weight: 700; }
+
+.auth-submit:disabled,
+.modal .form-actions .btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+}
+
+/* Captcha (Cloudflare Turnstile) */
+.captcha:empty { display: none; }
+.captcha { min-height: 65px; }
+
+/* Código da verificação em duas etapas */
+.auth-page input.mfa-code {
+    font-size: 1.4rem;
+    letter-spacing: 0.4em;
+    text-align: center;
 }

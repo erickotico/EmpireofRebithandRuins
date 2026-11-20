@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
+<title>Sua lenda está prestes a começar</title>
+</head>
+<body style="margin:0;padding:0;background-color:#0c0b0a;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#0c0b0a;">Falta um passo para sua lenda começar.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0c0b0a" style="background-color:#0c0b0a;">
+<tr><td align="center" style="padding:40px 16px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
+
+    <!-- Logo -->
+    <tr><td align="center" style="padding:0 0 24px;">
+      <img src="https://erickotico.github.io/EmpireofRebithandRuins/img/LogoRPG.jpg" width="88" height="88" alt="Empire of Rebirth &amp; Ruins" style="display:block;width:88px;height:88px;border-radius:44px;border:1px solid #9c6b1d;">
+    </td></tr>
+
+    <!-- Cartão -->
+    <tr><td bgcolor="#16130f" style="background-color:#16130f;border:1px solid #4a3a22;border-top:3px solid #d9a441;border-radius:4px;padding:40px 36px;">
+      <p style="margin:0 0 10px;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#d9a441;text-align:center;">Bem-vindo ao reino</p>
+      <h1 style="margin:0 0 24px;font-family:Georgia, 'Times New Roman', serif;font-size:28px;line-height:1.25;font-weight:700;color:#f2cd7a;text-align:center;">Sua lenda está prestes a começar</h1>
+      <p style="margin:0 0 16px;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:1.6;color:#e9e1d1;">Saudações, <strong style="color:#f2cd7a;">{{ .Data.nickname }}</strong>!</p>
+      <p style="margin:0 0 16px;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:16px;line-height:1.6;color:#e9e1d1;">Sua conta foi criada. Para ativá-la e entrar no site, confirme que este e-mail é seu:</p>
+
+      <!-- Botão -->
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:28px auto;">
+        <tr><td align="center" bgcolor="#d9a441" style="background-color:#d9a441;border-radius:4px;border:1px solid #f2cd7a;">
+          <a href="{{ .ConfirmationURL }}" target="_blank" style="display:inline-block;padding:15px 34px;font-family:Georgia, 'Times New Roman', serif;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1a1206;text-decoration:none;">Confirmar minha conta</a>
+        </td></tr>
+      </table>
+
+      
+      <p style="margin:24px 0 0;padding-top:20px;border-top:1px solid #2e261a;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:13px;line-height:1.6;color:#a59a86;">Se você não criou uma conta em Empire of Rebirth &amp; Ruins, ignore este e-mail: nenhuma conta será ativada sem essa confirmação.</p>
+    </td></tr>
+
+    <!-- Link reserva -->
+    <tr><td style="padding:20px 8px 0;font-family:'Segoe UI', Helvetica, Arial, sans-serif;font-size:12px;line-height:1.6;color:#7d7362;text-align:center;">
+      O botão não funcionou? Copie e cole este link no navegador:<br>
+      <a href="{{ .ConfirmationURL }}" style="color:#d9a441;word-break:break-all;">{{ .ConfirmationURL }}</a>
+    </td></tr>
+
+    <!-- Rodapé -->
+    <tr><td style="padding:28px 8px 0;font-family:Georgia, 'Times New Roman', serif;font-size:13px;color:#7d7362;text-align:center;">
+      <a href="https://erickotico.github.io/EmpireofRebithandRuins/" style="color:#a59a86;text-decoration:none;">Empire of Rebirth &amp; Ruins</a> &middot; um jogo da Myth Forge Studios
+    </td></tr>
+
+  </table>
+</td></tr>
+</table>
+</body>
+</html>

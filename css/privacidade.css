@@ -1,0 +1,48 @@
+/* =====================================================================
+   POLÍTICA DE PRIVACIDADE · texto nos dois idiomas; o idioma da página
+   (definido pelo langSwitcher em <html lang>) escolhe qual aparece.
+   ===================================================================== */
+
+html[lang="en"] .legal-text[data-lang="pt"],
+html:not([lang="en"]) .legal-text[data-lang="en"] {
+    display: none;
+}
+
+.legal-page {
+    width: min(760px, 100% - 32px);
+    margin: 0 auto;
+    padding: clamp(40px, 6vw, 72px) 0 96px;
+}
+
+.legal-text {
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.legal-updated {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.legal-text h2 {
+    margin: 40px 0 12px;
+    font-size: 1.15rem;
+    color: var(--accent-bright);
+}
+
+.legal-text p { margin: 0 0 14px; }
+
+.legal-text ul {
+    margin: 0 0 14px;
+    padding-left: 22px;
+}
+
+.legal-text li { margin-bottom: 8px; }
+.legal-text li::marker { color: var(--accent); }
+
+.legal-text a {
+    color: var(--accent);
+}
+
+.legal-text a:hover { color: var(--accent-bright); }

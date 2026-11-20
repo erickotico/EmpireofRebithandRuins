@@ -585,3 +585,41 @@ a {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* Jogador logado: o botão "Entrar" mostra o apelido */
+.btn-login.is-player,
+.site-nav .nav-login a.is-player {
+    text-transform: none;
+    letter-spacing: 0.04em;
+    max-width: 16ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btn-login.is-player::before {
+    content: '';
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    transform: rotate(45deg);
+}
+
+/* Texto só para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Elemento com o atributo hidden nunca aparece, mesmo com display definido no CSS */
+[hidden] {
+    display: none !important;
+}

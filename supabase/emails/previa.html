@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prévia dos e-mails</title>
+<style>
+  body { margin: 0; padding: 24px 16px 60px; background: #2a2a2a; font-family: 'Segoe UI', Arial, sans-serif; color: #eee; }
+  h1 { text-align: center; font-weight: 600; font-size: 20px; margin: 0 0 6px; }
+  .sub { text-align: center; color: #aaa; margin: 0 0 28px; font-size: 14px; }
+  .mail { max-width: 720px; margin: 0 auto 40px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,.4); }
+  .mail header { padding: 14px 18px; background: #f3f3f3; color: #222; font-size: 14px; border-bottom: 1px solid #ddd; }
+  .mail header b { display: block; font-size: 16px; margin-bottom: 2px; }
+  .mail header span { color: #666; }
+  iframe { display: block; width: 100%; height: 760px; border: 0; }
+</style>
+</head>
+<body>
+<h1>Prévia dos e-mails do Empire of Rebirth &amp; Ruins</h1>
+<p class="sub">Como o jogador vai receber (exemplo com o apelido "Erickotico")</p>
+<div id="list"></div>
+<script>
+  const sample = {
+    '{{ .ConfirmationURL }}': 'https://erickotico.github.io/EmpireofRebithandRuins/login.html',
+    '{{ .Data.nickname }}': 'Erickotico',
+    '{{ .Email }}': 'antigo@exemplo.com',
+    '{{ .NewEmail }}': 'novo@exemplo.com'
+  };
+  fetch('assuntos.json').then((r) => r.json()).then(async (subjects) => {
+    for (const [file, subject] of Object.entries(subjects)) {
+      let html = await (await fetch(file)).text();
+      for (const [k, v] of Object.entries(sample)) html = html.split(k).join(v);
+      const box = document.createElement('section');
+      box.className = 'mail';
+      box.innerHTML = '<header><b></b><span>De: Empire of Rebirth &amp; Ruins &lt;empireofrebirth@gmail.com&gt;</span></header><iframe></iframe>';
+      box.querySelector('b').textContent = subject;
+      box.querySelector('iframe').srcdoc = html;
+      document.getElementById('list').appendChild(box);
+    }
+  });
+</script>
+</body>
+</html>

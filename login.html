@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Só deixa a página falar com o próprio site, as fontes do Google e o Supabase -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <meta name="theme-color" content="#0c0b0a">
     <title>Login</title>
-    <!-- Login de demonstração: aberto pelo botão "Entrar" do topo, mas ainda sem servidor de contas
-         (o cadastro é simulado e nada é salvo). Fora dos buscadores até as contas funcionarem. -->
     <meta name="robots" content="noindex">
-    <link rel="stylesheet" href="css/reset.css?v=2026112008">
-    <link rel="stylesheet" href="css/global.css?v=2026112008">
-    <link rel="stylesheet" href="css/login.css?v=2026112008">
+    <link rel="stylesheet" href="css/reset.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112010">
+    <link rel="stylesheet" href="css/login.css?v=2026112015">
 </head>
 <body class="auth-page">
     <main class="auth-layout">
@@ -26,7 +27,7 @@
             </div>
         </div>
 
-        <!-- Formulário -->
+        <!-- Formulários -->
         <section class="auth-panel" aria-label="Login">
             <div class="auth-top">
                 <a class="auth-home" href="index.html" data-i18n="back">Back</a>
@@ -40,10 +41,14 @@
                     <p class="login-desc" data-i18n="loginDesc">Sign in to continue your journey in Empire of Rebirth &amp; Ruins.</p>
                 </div>
 
-                <form id="loginForm" class="login-form" action="login.php" method="POST" novalidate>
+                <!-- Avisos (link enviado, conta confirmada...) -->
+                <p class="auth-notice" id="authNotice" role="status" hidden></p>
+
+                <!-- Entrar -->
+                <form id="loginForm" class="login-form" data-view="login" novalidate>
                     <div class="form-group">
-                        <label for="username" data-i18n="emailOrUser">Email or username</label>
-                        <input id="username" name="username" type="text" autocomplete="username" required>
+                        <label for="loginEmail" data-i18n="emailOrUser">Email or nickname</label>
+                        <input id="loginEmail" name="email" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
                     </div>
 
                     <div class="form-group">
@@ -58,24 +63,65 @@
 
                     <div class="form-row">
                         <label class="checkbox">
-                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <input type="checkbox" id="rememberMe" name="rememberMe" checked>
                             <span data-i18n="rememberMe">Remember me</span>
                         </label>
-                        <a class="small-link" href="contato.html" data-i18n="forgotPassword">Forgot password?</a>
+                        <button type="button" class="small-link link-button" data-goto="forgot" data-i18n="forgotPassword">Forgot password?</button>
                     </div>
 
+                    <div class="captcha" data-captcha="login"></div>
+                    <div class="form-error" data-for="login" role="alert"></div>
+
                     <button class="btn btn-download auth-submit" type="submit" data-i18n="signIn">Sign in</button>
-
-                    <div class="auth-divider"><span data-i18n="or">or</span></div>
-
-                    <button type="button" class="btn btn-google" onclick="loginWithGoogle()">
-                        <img src="img/icons/google.png" alt="" class="google-icon">
-                        <span data-i18n="continueGoogle">Continue with Google</span>
-                    </button>
 
                     <p class="signup-prompt">
                         <span data-i18n="noAccount">Don't have an account?</span>
                         <a href="#" id="openSignup" class="signup-link" data-i18n="createAccount">Create account</a>
+                    </p>
+                </form>
+
+                <!-- Esqueci a senha -->
+                <form id="forgotForm" class="login-form" data-view="forgot" novalidate hidden>
+                    <p class="form-hint" data-i18n="forgotDesc">Enter your account email and we will send you a link to create a new password.</p>
+                    <div class="form-group">
+                        <label for="forgotEmail" data-i18n="email">Email</label>
+                        <input id="forgotEmail" name="email" type="email" autocomplete="email" required>
+                    </div>
+                    <div class="captcha" data-captcha="forgot"></div>
+                    <div class="form-error" data-for="forgot" role="alert"></div>
+                    <button class="btn btn-download auth-submit" type="submit" data-i18n="sendResetLink">Send link</button>
+                    <p class="signup-prompt">
+                        <button type="button" class="signup-link link-button" data-goto="login" data-i18n="backToLogin">Back to sign in</button>
+                    </p>
+                </form>
+
+                <!-- Nova senha (aberto pelo link do e-mail) -->
+                <form id="resetForm" class="login-form" data-view="reset" novalidate hidden>
+                    <p class="form-hint" data-i18n="resetDesc">Choose a new password for your account.</p>
+                    <div class="form-group">
+                        <label for="newPassword" data-i18n="newPassword">New password</label>
+                        <input id="newPassword" name="password" type="password" minlength="8" autocomplete="new-password" required aria-describedby="newPasswordHint">
+                        <p class="form-hint" id="newPasswordHint" data-i18n="passwordHint">At least 8 characters, with a lowercase letter, an uppercase letter, a number and a symbol (!@#$...).</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword2" data-i18n="confirmPassword">Confirm password</label>
+                        <input id="newPassword2" name="password2" type="password" minlength="8" autocomplete="new-password" required>
+                    </div>
+                    <div class="form-error" data-for="reset" role="alert"></div>
+                    <button class="btn btn-download auth-submit" type="submit" data-i18n="savePassword">Save password</button>
+                </form>
+
+                <!-- Verificação em duas etapas (só para quem ativou) -->
+                <form id="mfaForm" class="login-form" data-view="mfa" novalidate hidden>
+                    <p class="form-hint" data-i18n="mfaLoginDesc">Open your authenticator app and enter the 6-digit code for Empire of Rebirth &amp; Ruins.</p>
+                    <div class="form-group">
+                        <label for="mfaCode" data-i18n="mfaCode">Verification code</label>
+                        <input id="mfaCode" name="code" class="mfa-code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
+                    </div>
+                    <div class="form-error" data-for="mfa" role="alert"></div>
+                    <button class="btn btn-download auth-submit" type="submit" data-i18n="verify">Verify</button>
+                    <p class="signup-prompt">
+                        <button type="button" class="signup-link link-button" id="mfaCancel" data-i18n="logout">Sign out</button>
                     </p>
                 </form>
             </div>
@@ -93,21 +139,16 @@
             <h2 id="signupTitle" data-i18n="createAccountTitle">Create account</h2>
             <form id="signupForm" class="signup-form" novalidate>
                 <div class="form-group">
-                    <label for="fullName" data-i18n="fullName">Full name</label>
-                    <input id="fullName" name="fullName" type="text" autocomplete="name" required>
-                    <div class="form-error" data-for="fullName"></div>
+                    <label for="nickname" data-i18n="nickname">Nickname</label>
+                    <input id="nickname" name="nickname" type="text" autocomplete="nickname" minlength="3" maxlength="20" required aria-describedby="nicknameHint">
+                    <p class="form-hint" id="nicknameHint" data-i18n="nicknameHint">Your player name. 3 to 20 characters, letters and numbers.</p>
+                    <div class="form-error" data-for="nickname"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="signupEmail" data-i18n="email">Email</label>
                     <input id="signupEmail" name="email" type="email" autocomplete="email" required>
                     <div class="form-error" data-for="signupEmail"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone" data-i18n="phone">Phone number</label>
-                    <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+55 11 9xxxx-xxxx">
-                    <div class="form-error" data-for="phone"></div>
                 </div>
 
                 <div class="dob-row">
@@ -128,17 +169,21 @@
 
                 <div class="form-group">
                     <label for="signupPassword" data-i18n="password">Password</label>
-                    <input id="signupPassword" name="password" type="password" minlength="6" autocomplete="new-password" required>
+                    <input id="signupPassword" name="password" type="password" minlength="8" autocomplete="new-password" required aria-describedby="signupPasswordHint">
+                    <p class="form-hint" id="signupPasswordHint" data-i18n="passwordHint">At least 8 characters, with a lowercase letter, an uppercase letter, a number and a symbol (!@#$...).</p>
                     <div class="form-error" data-for="signupPassword"></div>
                 </div>
 
                 <div class="form-group">
                     <label class="checkbox">
                         <input type="checkbox" id="agreeTerms" required>
-                        <span><span data-i18n="agreeTerms">I have read and agree to the</span> <a href="#" target="_blank" data-i18n="privacyTerms">privacy terms</a></span>
+                        <span><span data-i18n="agreeTerms">I have read and agree to the</span> <a href="privacidade.html" target="_blank" rel="noopener" data-i18n="privacyTerms">privacy terms</a></span>
                     </label>
                     <div class="form-error" data-for="agreeTerms"></div>
                 </div>
+
+                <div class="captcha" data-captcha="signup"></div>
+                <div class="form-error" data-for="signup" role="alert"></div>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-download" data-i18n="createAccountButton">Create account</button>
@@ -148,7 +193,10 @@
         </div>
     </div>
 
-    <script src="js/langSwitcher.js?v=2026112008"></script>
-    <script src="js/login.js?v=2026112008"></script>
+    <script src="js/langSwitcher.js?v=2026112016"></script>
+    <script src="js/vendor/supabase.js?v=2.118.0"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <script src="js/auth.js?v=2026112015"></script>
+    <script src="js/login.js?v=2026112015"></script>
 </body>
 </html>
