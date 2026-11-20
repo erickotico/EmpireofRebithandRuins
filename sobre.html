@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conheça a Myth Forge, o estúdio independente que está criando Empire of Rebirth &amp; Ruins.">
+    <meta name="description" content="Empire of Rebirth &amp; Ruins: o Action RPG da Myth Forge, a mecânica do Renascer, o caminho até o lançamento e onde falar com a comunidade.">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <meta name="theme-color" content="#1C1C24">
+    <meta name="theme-color" content="#0c0b0a">
     <!-- Prévia ao compartilhar o link (Discord, WhatsApp, itch.io...). A imagem precisa do endereço completo. -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Empire of Rebirth &amp; Ruins">
-    <meta property="og:title" content="Sobre o estúdio | Empire of Rebirth &amp; Ruins">
-    <meta property="og:description" content="Conheça a Myth Forge, o estúdio independente que está criando Empire of Rebirth &amp; Ruins.">
+    <meta property="og:title" content="Sobre o jogo | Empire of Rebirth &amp; Ruins">
+    <meta property="og:description" content="Empire of Rebirth &amp; Ruins: o Action RPG da Myth Forge, a mecânica do Renascer, o caminho até o lançamento e onde falar com a comunidade.">
     <meta property="og:url" content="https://erickotico.github.io/EmpireofRebithandRuins/sobre.html">
     <meta property="og:image" content="https://erickotico.github.io/EmpireofRebithandRuins/img/share.jpg">
     <meta property="og:image:width" content="1200">
@@ -20,108 +20,115 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
-    <title data-i18n="aboutPageTitle">About</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/sobre.css">
+    <title data-i18n="aboutPageTitle">About the game</title>
+    <link rel="stylesheet" href="css/reset.css?v=2026112006">
+    <link rel="stylesheet" href="css/global.css?v=2026112006">
+    <link rel="stylesheet" href="css/sobre.css?v=2026112006">
 </head>
 <body>
     <div id="site-header"></div>
-    <main class="about-container">
-        <h1 data-i18n="aboutStudioTitle">About the Studio</h1>
-    <!-- Info do Estúdio -->
-        <section class="studio-info" id="studioInfo">
-            <h2 data-i18n="whoWeAreTitle">Who We Are</h2>
-            <p class="studio-description">
-                <span data-i18n="studioDescription">We are <strong>Myth Forge</strong>, an independent development studio dedicated to creating immersive experiences. Founded with a passion for epic storytelling and challenging gameplay, we specialize in detailed worldbuilding and innovative mechanics.</span>
-            </p>
-            
-            <div class="studio-mission">
-                <h3 data-i18n="missionTitle">Our Mission</h3>
-                <p data-i18n="missionText">Create games that expand the horizons of imagination, offering players memorable stories and living worlds to shape their own adventures.</p>
-            </div>
-            
-            <div class="studio-vision">
-                <h3 data-i18n="visionTitle">Our Vision</h3>
-                <p data-i18n="visionText">Become a reference in the gaming industry, known for artistic quality, engaging narratives, unique mechanics, and a dedicated community around our projects.</p>
-            </div>
-        </section>
-    <!-- Info da Equipe -->
-        <section class="team-section" id="teamSection">
-            <h2 data-i18n="teamTitle">Our Team</h2>
-            
-            <div class="team-members" id="teamMembers">
-                <div class="team-member" data-member="1">
-                    <div class="member-avatar">🧑‍💼</div>
-                    <h3 class="member-name">Erick Monteiro</h3>
-                    <p class="member-role" data-i18n="gameDirector">Game Director, Lead Designer, Lead Programmer, Visual Effects</p>
-                    <p class="member-bio" data-i18n="directorBio">Responsible for the overall vision of the project, gameplay design, main narrative direction, and general programming.</p>
-                </div>
-                <div class="team-member" data-member="2">
-                    <div class="member-avatar">🧑‍💻</div>
-                    <h3 class="member-name">Jonatas Ornelas</h3>
-                    <p class="member-role" data-i18n="programmer">Programmer</p>
-                    <p class="member-bio" data-i18n="programmerBio">Builds the core gameplay mechanics and implements technical systems.</p>
-                </div>
-                <div class="team-member" data-member="3">
-                    <div class="member-avatar">🧑‍🎨</div>
-                    <h3 class="member-name">Lucas Muradi</h3>
-                    <p class="member-role" data-i18n="textureArtist">Texture Artist, 3D Artist, 3D Modeler</p>
-                    <p class="member-bio" data-i18n="textureBio">Creates high-quality textures for characters, environments, and in-game objects.</p>
-                </div>
-                <div class="team-member" data-member="4">
-                    <div class="member-avatar">🧑‍🎨</div>
-                    <h3 class="member-name">Jonatas Xavier Araujo</h3>
-                    <p class="member-role" data-i18n="leadArtist">Lead 3D Artist & 3D Modeler</p>
-                    <p class="member-bio" data-i18n="leadArtistBio">Leads the 3D art team and creates detailed models for characters and environments.</p>
-                </div>
-                <div class="team-member" data-member="4">
-                    <div class="member-avatar">🤹</div>
-                    <h3 class="member-name">Leonardo da Costa Silva</h3>
-                    <p class="member-role" data-i18n="rigger">Rigger, Technical Animator</p>
-                    <p class="member-bio" data-i18n="riggerBio">Responsible for character rigging and creation of technical animations for the game.</p>
-                </div>
+
+    <main class="about-page">
+        <h1 class="section-title about-title" data-i18n="aboutGameTitle">About the game</h1>
+
+        <!-- 1. O que é o jogo -->
+        <section class="about-game">
+            <figure class="about-cover">
+                <img src="img/LogoRPG.jpg" alt="Empire of Rebirth &amp; Ruins">
+            </figure>
+            <div class="about-game-text">
+                <p class="about-pitch" data-i18n="aboutPitch">Among the ruins of empires and kingdoms that still stand, every battle is a story and every death, a new beginning. Choose your weapon and become part of the legend.</p>
+                <dl class="about-facts">
+                    <div><dt data-i18n="factGenre">Genre</dt><dd>Action RPG</dd></div>
+                    <div><dt data-i18n="factPlatform">Platform</dt><dd>PC</dd></div>
+                    <div><dt data-i18n="factEngine">Engine</dt><dd>Unreal Engine 5</dd></div>
+                    <div><dt data-i18n="factStage">Stage</dt><dd data-i18n="factStageValue">Alpha available</dd></div>
+                </dl>
+                <a class="btn btn-download" href="https://erickotico-dev.itch.io/empire-of-rebirth" target="_blank" rel="noopener" data-i18n="playAlpha">Play the alpha on itch.io</a>
             </div>
         </section>
-            <!-- Info de Contato -->
-        <section class="contact-links" id="contactLinks">
-            <h2 data-i18n="connectWithUs">Connect With Us</h2>
-            <div class="social-media" id="socialMedia">
-                <a href="https://erickotico-dev.itch.io/" data-link="itch" class="social-link" target="_blank" rel="noopener">
-                    <span class="social-icon">🎮</span> <span data-i18n="itchPage">itch.io page</span>
+
+        <!-- 2. A mecânica do Renascer -->
+        <section class="about-rebirth">
+            <p class="about-kicker" data-i18n="rebirthKicker">The Rebirth mechanic</p>
+            <h2 data-i18n="rebirthTitle">Die. Be reborn. Carry on the legend.</h2>
+            <ol class="rebirth-steps">
+                <li>
+                    <span class="rebirth-num" aria-hidden="true">I</span>
+                    <h3 data-i18n="rebirth1Title">The fall</h3>
+                    <p data-i18n="rebirth1Text">Death takes everything: level, inventory and achievements are left behind.</p>
+                </li>
+                <li>
+                    <span class="rebirth-num" aria-hidden="true">II</span>
+                    <h3 data-i18n="rebirth2Title">The years go by</h3>
+                    <p data-i18n="rebirth2Text">The world doesn't wait for you. Years pass before your return.</p>
+                </li>
+                <li>
+                    <span class="rebirth-num" aria-hidden="true">III</span>
+                    <h3 data-i18n="rebirth3Title">A new life</h3>
+                    <p data-i18n="rebirth3Text">Start over from zero, with the same class or a new path.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 3. Rumo ao lançamento -->
+        <section class="about-roadmap">
+            <h2 class="section-title" data-i18n="roadmapTitle">Road to release</h2>
+            <ol class="stage-track">
+                <li class="is-done"><span class="stage-dot" aria-hidden="true"></span><span data-i18n="stageConcept">Concept</span></li>
+                <li class="is-done"><span class="stage-dot" aria-hidden="true"></span><span data-i18n="stagePrototype">Prototype</span></li>
+                <li class="is-current" aria-current="step"><span class="stage-dot" aria-hidden="true"></span><span data-i18n="stageAlpha">Alpha</span><small data-i18n="youAreHere">We are here</small></li>
+                <li><span class="stage-dot" aria-hidden="true"></span><span data-i18n="stageBeta">Beta</span></li>
+                <li><span class="stage-dot" aria-hidden="true"></span><span data-i18n="stageRelease">Release</span></li>
+            </ol>
+            <div class="next-steps">
+                <h3 data-i18n="nextStepsTitle">Next steps</h3>
+                <ul>
+                    <li data-i18n="next2">Swordsman, Barbarian and Sorcerer classes</li>
+                    <li data-i18n="next3">Talent trees for every weapon</li>
+                    <li data-i18n="next4">Downloadable build</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4. Comunidade e suporte -->
+        <section class="about-community">
+            <h2 class="section-title" data-i18n="joinTitle">Community and support</h2>
+            <div class="community-grid">
+                <a class="community-card" href="https://erickotico-dev.itch.io/empire-of-rebirth" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l2 5-2 5H6l-2-5z M9 13h2 M10 12v2 M15 12h.01 M17 14h.01"/></svg>
+                    <h3 data-i18n="itchPage">itch.io page</h3>
+                    <p data-i18n="itchDesc">Download the alpha and follow the builds.</p>
+                </a>
+                <a class="community-card" href="https://discord.gg/rpUdmjrxq" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v10H9l-5 4z M9 11h.01 M15 11h.01"/></svg>
+                    <h3>Discord</h3>
+                    <p data-i18n="discordDesc">Talk with the team and other players.</p>
+                </a>
+                <a class="community-card" href="mailto:empireofrebirth@gmail.com">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z M3 7l9 6 9-6"/></svg>
+                    <h3 data-i18n="emailName">E-mail</h3>
+                    <p data-i18n="emailDesc">Reach the team directly.</p>
+                </a>
+                <a class="community-card" href="mailto:empireofrebirth@gmail.com?subject=Bug%20-%20Empire%20of%20Rebirth">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9a4 4 0 0 1 8 0v6a4 4 0 0 1-8 0z M12 9v10 M4 12h4 M16 12h4 M5 7l3 2 M19 7l-3 2 M5 18l3-2 M19 18l-3-2"/></svg>
+                    <h3 data-i18n="reportBug">Report a bug</h3>
+                    <p data-i18n="bugDesc">Found a problem? Let us know.</p>
                 </a>
             </div>
         </section>
-    <!-- Info dos Valores -->
-        <section class="values-section" id="valuesSection">
-            <h2 data-i18n="valuesTitle">Our Values</h2>
-            <div class="values-grid" id="valuesGrid">
-                <div class="value-card">
-                    <h3 data-i18n="qualityTitle">🎮 Quality</h3>
-                    <p data-i18n="qualityText">We are committed to excellence in every aspect of development, from art to programming.</p>
-                </div>
-                <div class="value-card">
-                    <h3 data-i18n="communityTitle">👥 Community</h3>
-                    <p data-i18n="communityTextLong">We listen to player feedback and build vibrant communities around our projects.</p>
-                </div>
-                <div class="value-card">
-                    <h3 data-i18n="innovationTitle">🚀 Innovation</h3>
-                    <p data-i18n="innovationText">We explore new ideas and technologies to deliver unique and memorable gaming experiences.</p>
-                </div>
-                <div class="value-card">
-                    <h3 data-i18n="creativityTitle">🎯 Creativity</h3>
-                    <p data-i18n="creativityText">We encourage creative expression across the whole team, resulting in authentic and original content.</p>
-                </div>
-            </div>
+
+        <!-- 5. Créditos -->
+        <section class="about-credits">
+            <p class="about-kicker" data-i18n="creditsKicker">A game by</p>
+            <p class="credits-studio">Myth Forge Studios</p>
+            <a class="btn btn-login" href="https://erickotico.github.io/myth-forge-studios/#equipe" target="_blank" rel="noopener" data-i18n="creditsTeam">Meet the team</a>
         </section>
     </main>
 
     <div id="site-footer"></div>
 
-    <!-- Info para o JavaScript -->
-    <script src="js/layout.js"></script>
-    <script src="js/langSwitcher.js"></script>
-    <script src="js/sobre.js"></script>
-
+    <script src="js/layout.js?v=2026112006"></script>
+    <script src="js/langSwitcher.js?v=2026112006"></script>
 </body>
 </html>

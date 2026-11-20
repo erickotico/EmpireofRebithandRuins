@@ -3,13 +3,13 @@
 // e carrega este script ANTES do langSwitcher.js (que traduz os data-i18n).
 (function () {
     const ITCH_URL = 'https://erickotico-dev.itch.io/';
+    const DISCORD_URL = 'https://discord.gg/rpUdmjrxq';
 
     const NAV = [
         { href: 'index.html', key: 'home', label: 'Home' },
         { href: 'bestiario.html', key: 'bestiary', label: 'Bestiary' },
         { href: 'classes.html', key: 'classes', label: 'Classes' },
         { href: 'guia.html', key: 'guide', label: 'Guide' },
-        { href: 'updates.html', key: 'updatesPageTitle', label: 'Updates' },
         { href: 'sobre.html', key: 'about', label: 'About' }
     ];
 
@@ -25,6 +25,7 @@
         {
             key: 'community', label: 'Community', links: [
                 { href: ITCH_URL, key: 'itchPage', label: 'itch.io page', external: true },
+                { href: DISCORD_URL, key: 'discord', label: 'Discord', external: true },
                 { href: 'sobre.html', key: 'about', label: 'About' }
             ]
         },
