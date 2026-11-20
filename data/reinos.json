@@ -5,6 +5,11 @@
       "pt": "Thalor",
       "en": "Thalor"
     },
+    "title": {
+      "pt": "O reino da honra",
+      "en": "The kingdom of honor"
+    },
+    "enemy": false,
     "image": "img/reinos/thalor.jpg",
     "capital": "Valoria",
     "ruler": {
@@ -15,42 +20,103 @@
       "pt": "Eryndor, o deus guerreiro",
       "en": "Eryndor, the warrior god"
     },
+    "hero": {
+      "pt": "Caine, o lanceiro",
+      "en": "Caine, the lancer"
+    },
     "location": {
-      "pt": "Planícies e montanhas",
-      "en": "Plains and mountains"
+      "pt": "Planícies verdejantes e montanhas",
+      "en": "Green plains and mountains"
     },
     "description": {
-      "pt": "Reino de lanceiros e cavaleiros, devoto do deus guerreiro Eryndor.",
-      "en": "A kingdom of lancers and knights, devoted to the warrior god Eryndor."
+      "pt": "Terra de lanceiros e cavaleiros de elite, onde coragem, honra e lealdade são as pedras angulares da sociedade. Os feitos de seus guerreiros ecoam em cânticos há gerações.",
+      "en": "Land of elite lancers and knights, where courage, honor and loyalty are the cornerstones of society. The deeds of its warriors have echoed in songs for generations."
     },
     "alliance": {
       "pt": "Força",
       "en": "Strength"
     },
     "history": {
-      "pt": "",
-      "en": ""
+      "pt": "Em tempos antigos, o deus guerreiro Eryndor desceu dos céus para guiar os primeiros habitantes do reino. Com sua armadura brilhante e sua lança sagrada, trouxe os princípios de coragem, honra e lealdade, e ensinou aos humanos as artes da guerra e da defesa.\n\nOs primeiros reis de Thalor foram guerreiros escolhidos por Eryndor, e suas linhagens defenderam e expandiram o reino com bravura e justiça, fazendo de Thalor um farol de nobreza na região.",
+      "en": "In ancient times, the warrior god Eryndor came down from the heavens to guide the kingdom's first people. With his shining armor and sacred spear, he brought the principles of courage, honor and loyalty, and taught humans the arts of war and defense.\n\nThalor's first kings were warriors chosen by Eryndor, and their bloodlines defended and expanded the realm with bravery and justice, making Thalor a beacon of nobility in the region."
     },
     "culture": {
-      "pt": "",
-      "en": ""
+      "pt": "Festival de Eryndor: todo ano o reino celebra com torneios, danças guerreiras e oferendas. Os jovens guerreiros recebem ali suas primeiras lanças e entram na irmandade dos defensores de Thalor.\n\nGrande Salão dos Guerreiros: no coração de Valoria, tapeçarias de batalhas épicas e as armas dos mais valorosos guardam a memória dos heróis.\n\nOrdem dos Lanceiros: a elite de cavaleiros e lanceiros que jura lealdade a Eryndor, com armaduras gravadas com os símbolos sagrados do deus.\n\nCódigo de Honra: princípios que todo guerreiro segue, unindo perícia em batalha, respeito e lealdade à causa justa.",
+      "en": "Festival of Eryndor: every year the kingdom celebrates with tournaments, war dances and offerings. Young warriors receive their first spears there and join the brotherhood of Thalor's defenders.\n\nGreat Hall of Warriors: in the heart of Valoria, tapestries of epic battles and the weapons of the bravest keep the heroes' memory alive.\n\nOrder of Lancers: the elite of knights and lancers sworn to Eryndor, their armor engraved with the god's sacred symbols.\n\nCode of Honor: principles every warrior follows, uniting battle skill, respect and loyalty to a just cause."
     },
     "customs": {
-      "pt": "",
-      "en": ""
+      "pt": "O Conselho de Valoria, formado pelas principais famílias guerreiras e pelos sábios, governa segundo os princípios de Eryndor. A agricultura farta das planícies sustenta uma vida abundante para todo o povo.",
+      "en": "The Council of Valoria, formed by the leading warrior families and the sages, rules by Eryndor's principles. The rich farmland of the plains ensures an abundant life for all."
     },
     "festivals": {
-      "pt": "",
-      "en": ""
-    }
+      "pt": "Festival de Eryndor",
+      "en": "Festival of Eryndor"
+    },
+    "sections": [
+      {
+        "title": {
+          "pt": "Localização",
+          "en": "Location"
+        },
+        "text": {
+          "pt": "Thalor se estende por vastas planícies que vão até onde os olhos alcançam, interrompidas apenas por cadeias de montanhas que se erguem como guardiãs naturais do reino. A capital, Valoria, fica em um vale protegido, onde está o Grande Salão dos Guerreiros, lugar sagrado onde os feitos dos heróis são eternamente honrados.",
+          "en": "Thalor stretches across vast plains as far as the eye can see, broken only by mountain ranges that rise like natural guardians of the kingdom. The capital, Valoria, lies in a sheltered valley and holds the Great Hall of Warriors, a sacred place where the deeds of heroes are honored forever."
+        }
+      },
+      {
+        "title": {
+          "pt": "História",
+          "en": "History"
+        },
+        "text": {
+          "pt": "Em tempos antigos, o deus guerreiro Eryndor desceu dos céus para guiar os primeiros habitantes do reino. Com sua armadura brilhante e sua lança sagrada, trouxe os princípios de coragem, honra e lealdade, e ensinou aos humanos as artes da guerra e da defesa.\n\nOs primeiros reis de Thalor foram guerreiros escolhidos por Eryndor, e suas linhagens defenderam e expandiram o reino com bravura e justiça, fazendo de Thalor um farol de nobreza na região.",
+          "en": "In ancient times, the warrior god Eryndor came down from the heavens to guide the kingdom's first people. With his shining armor and sacred spear, he brought the principles of courage, honor and loyalty, and taught humans the arts of war and defense.\n\nThalor's first kings were warriors chosen by Eryndor, and their bloodlines defended and expanded the realm with bravery and justice, making Thalor a beacon of nobility in the region."
+        }
+      },
+      {
+        "title": {
+          "pt": "Cultura e costumes",
+          "en": "Culture and customs"
+        },
+        "text": {
+          "pt": "Festival de Eryndor: todo ano o reino celebra com torneios, danças guerreiras e oferendas. Os jovens guerreiros recebem ali suas primeiras lanças e entram na irmandade dos defensores de Thalor.\n\nGrande Salão dos Guerreiros: no coração de Valoria, tapeçarias de batalhas épicas e as armas dos mais valorosos guardam a memória dos heróis.\n\nOrdem dos Lanceiros: a elite de cavaleiros e lanceiros que jura lealdade a Eryndor, com armaduras gravadas com os símbolos sagrados do deus.\n\nCódigo de Honra: princípios que todo guerreiro segue, unindo perícia em batalha, respeito e lealdade à causa justa.",
+          "en": "Festival of Eryndor: every year the kingdom celebrates with tournaments, war dances and offerings. Young warriors receive their first spears there and join the brotherhood of Thalor's defenders.\n\nGreat Hall of Warriors: in the heart of Valoria, tapestries of epic battles and the weapons of the bravest keep the heroes' memory alive.\n\nOrder of Lancers: the elite of knights and lancers sworn to Eryndor, their armor engraved with the god's sacred symbols.\n\nCode of Honor: principles every warrior follows, uniting battle skill, respect and loyalty to a just cause."
+        }
+      },
+      {
+        "title": {
+          "pt": "Sociedade e economia",
+          "en": "Society and economy"
+        },
+        "text": {
+          "pt": "O Conselho de Valoria, formado pelas principais famílias guerreiras e pelos sábios, governa segundo os princípios de Eryndor. A agricultura farta das planícies sustenta uma vida abundante para todo o povo.",
+          "en": "The Council of Valoria, formed by the leading warrior families and the sages, rules by Eryndor's principles. The rich farmland of the plains ensures an abundant life for all."
+        }
+      },
+      {
+        "title": {
+          "pt": "Atualmente",
+          "en": "Today"
+        },
+        "text": {
+          "pt": "O legado de Eryndor vive em cada lanceiro e cavaleiro. Thalor prospera não só pela força de suas armas, mas pela integridade e pela união de seu povo. Em Thalor, cada amanhecer é um novo capítulo de honra e coragem.",
+          "en": "Eryndor's legacy lives on in every lancer and knight. Thalor thrives not only through the strength of its arms, but through the integrity and unity of its people. In Thalor, every dawn is a new chapter of honor and courage."
+        }
+      }
+    ]
   },
   {
-    "id": "eriador",
+    "id": "aurelis",
     "name": {
-      "pt": "Eriador",
-      "en": "Eriador"
+      "pt": "Aurelis",
+      "en": "Aurelis"
     },
-    "image": "img/reinos/eriador.jpg",
+    "title": {
+      "pt": "O reino do ouro e das rotas",
+      "en": "The kingdom of gold and roads"
+    },
+    "enemy": false,
+    "image": "img/reinos/aurelis.jpg",
     "capital": "Eldoria",
     "ruler": {
       "pt": "Rei Aldric, o Sábio",
@@ -60,34 +126,100 @@
       "pt": "",
       "en": ""
     },
+    "hero": {
+      "pt": "",
+      "en": ""
+    },
     "location": {
-      "pt": "Cidade portuária",
-      "en": "Port city"
+      "pt": "Portos naturais e terras férteis",
+      "en": "Natural harbors and fertile land"
     },
     "description": {
-      "pt": "Reino do comércio, governado pelo Rei Aldric, o Sábio, e sede da Guilda dos Mercadores.",
-      "en": "The kingdom of trade, ruled by King Aldric the Wise and home of the Merchants' Guild."
+      "pt": "O coração comercial do mundo. Seus mercadores são mestres da negociação, sua moeda vale em todos os portos, e seu ouro sustentou a guerra contra Zarek.",
+      "en": "The commercial heart of the world. Its merchants are masters of negotiation, its coin is good in every port, and its gold sustained the war against Zarek."
     },
     "alliance": {
       "pt": "Colheita e Mineração",
       "en": "Harvesting and Mining"
     },
     "history": {
-      "pt": "",
-      "en": ""
+      "pt": "Os primeiros colonos descobriram a posição estratégica e as riquezas da região e logo se tornaram mercadores habilidosos, abrindo rotas com terras distantes. Sob reis sábios e visionários, Aurelis virou um centro de comércio e influência.\n\nO auge veio com o Rei Aldric, o Sábio, que incentivou o comércio, a inovação e a segurança, e fundou a Guilda dos Mercadores para regular o comércio e garantir a qualidade.",
+      "en": "The first settlers discovered the region's strategic position and riches and soon became skilled merchants, opening routes to distant lands. Under wise and visionary kings, Aurelis became a center of trade and influence.\n\nIts height came under King Aldric the Wise, who encouraged trade, innovation and security, and founded the Merchants' Guild to regulate commerce and guarantee quality."
     },
     "culture": {
-      "pt": "",
-      "en": ""
+      "pt": "Feiras de Eldoria: todo ano a capital recebe mercadores do mundo inteiro, com produtos exóticos, competições de negociação e festas à prosperidade.\n\nGuilda dos Mercadores: treina, define padrões de qualidade e resolve disputas. Seus membros são altamente respeitados.\n\nArte da Negociação: desde cedo os jovens estudam retórica, contabilidade e diplomacia.",
+      "en": "Fairs of Eldoria: every year the capital welcomes merchants from all over the world, with exotic goods, bargaining contests and celebrations of prosperity.\n\nMerchants' Guild: it trains, sets quality standards and settles disputes. Its members are highly respected.\n\nThe Art of Negotiation: from an early age, the young study rhetoric, accounting and diplomacy."
     },
     "customs": {
-      "pt": "",
-      "en": ""
+      "pt": "Comerciantes, artesãos, agricultores e soldados formam uma sociedade movida pelo comércio de especiarias raras, tecidos finos, metais preciosos e artefatos. A moeda de Aurelis é aceita em todo o mundo conhecido.",
+      "en": "Merchants, artisans, farmers and soldiers form a society driven by the trade of rare spices, fine fabrics, precious metals and crafted artifacts. The coin of Aurelis is accepted throughout the known world."
     },
     "festivals": {
-      "pt": "",
-      "en": ""
-    }
+      "pt": "Feiras de Eldoria",
+      "en": "Fairs of Eldoria"
+    },
+    "sections": [
+      {
+        "title": {
+          "pt": "Localização",
+          "en": "Location"
+        },
+        "text": {
+          "pt": "Aurelis fica na encruzilhada de rotas comerciais vitais, em uma região de portos naturais e terras férteis, com cidades prósperas ligadas por estradas bem guardadas. A capital, Eldoria, é um centro vibrante de comércio e cultura, à beira de um rio que deságua em um porto movimentado.",
+          "en": "Aurelis sits at the crossroads of vital trade routes, in a region of natural harbors and fertile land, with thriving cities linked by well-guarded roads. The capital, Eldoria, is a vibrant center of trade and culture on a river that flows into a busy port."
+        }
+      },
+      {
+        "title": {
+          "pt": "História",
+          "en": "History"
+        },
+        "text": {
+          "pt": "Os primeiros colonos descobriram a posição estratégica e as riquezas da região e logo se tornaram mercadores habilidosos, abrindo rotas com terras distantes. Sob reis sábios e visionários, Aurelis virou um centro de comércio e influência.\n\nO auge veio com o Rei Aldric, o Sábio, que incentivou o comércio, a inovação e a segurança, e fundou a Guilda dos Mercadores para regular o comércio e garantir a qualidade.",
+          "en": "The first settlers discovered the region's strategic position and riches and soon became skilled merchants, opening routes to distant lands. Under wise and visionary kings, Aurelis became a center of trade and influence.\n\nIts height came under King Aldric the Wise, who encouraged trade, innovation and security, and founded the Merchants' Guild to regulate commerce and guarantee quality."
+        }
+      },
+      {
+        "title": {
+          "pt": "Cultura e costumes",
+          "en": "Culture and customs"
+        },
+        "text": {
+          "pt": "Feiras de Eldoria: todo ano a capital recebe mercadores do mundo inteiro, com produtos exóticos, competições de negociação e festas à prosperidade.\n\nGuilda dos Mercadores: treina, define padrões de qualidade e resolve disputas. Seus membros são altamente respeitados.\n\nArte da Negociação: desde cedo os jovens estudam retórica, contabilidade e diplomacia.",
+          "en": "Fairs of Eldoria: every year the capital welcomes merchants from all over the world, with exotic goods, bargaining contests and celebrations of prosperity.\n\nMerchants' Guild: it trains, sets quality standards and settles disputes. Its members are highly respected.\n\nThe Art of Negotiation: from an early age, the young study rhetoric, accounting and diplomacy."
+        }
+      },
+      {
+        "title": {
+          "pt": "Sociedade e economia",
+          "en": "Society and economy"
+        },
+        "text": {
+          "pt": "Comerciantes, artesãos, agricultores e soldados formam uma sociedade movida pelo comércio de especiarias raras, tecidos finos, metais preciosos e artefatos. A moeda de Aurelis é aceita em todo o mundo conhecido.",
+          "en": "Merchants, artisans, farmers and soldiers form a society driven by the trade of rare spices, fine fabrics, precious metals and crafted artifacts. The coin of Aurelis is accepted throughout the known world."
+        }
+      },
+      {
+        "title": {
+          "pt": "Força militar",
+          "en": "Military strength"
+        },
+        "text": {
+          "pt": "Para proteger rotas e fronteiras, Aurelis mantém um exército de mercenários especializados e soldados rigorosamente treinados, disciplinados em tempos de paz e de conflito.",
+          "en": "To protect its routes and borders, Aurelis keeps an army of skilled mercenaries and rigorously trained soldiers, disciplined in times of peace and of war."
+        }
+      },
+      {
+        "title": {
+          "pt": "Atualmente",
+          "en": "Today"
+        },
+        "text": {
+          "pt": "Riqueza e força militar fazem de Aurelis um pilar de estabilidade na região, onde astúcia, lealdade e prosperidade convivem em harmonia.",
+          "en": "Wealth and military strength make Aurelis a pillar of stability in the region, where cunning, loyalty and prosperity live in harmony."
+        }
+      }
+    ]
   },
   {
     "id": "sylvanor",
@@ -95,51 +227,127 @@
       "pt": "Sylvanor",
       "en": "Sylvanor"
     },
+    "title": {
+      "pt": "O reino da magia antiga",
+      "en": "The kingdom of ancient magic"
+    },
+    "enemy": false,
     "image": "img/reinos/sylvanor.jpg",
-    "capital": "Elunaria",
+    "capital": "Sylmareth",
     "ruler": {
       "pt": "",
       "en": ""
     },
     "deity": {
-      "pt": "Aelion",
-      "en": "Aelion"
+      "pt": "Aelion, o deus elfo",
+      "en": "Aelion, the elven god"
+    },
+    "hero": {
+      "pt": "Lorian, o mago",
+      "en": "Lorian, the mage"
     },
     "location": {
-      "pt": "No coração da floresta",
-      "en": "In the heart of the forest"
+      "pt": "Florestas antigas, rios e cachoeiras",
+      "en": "Ancient forests, rivers and waterfalls"
     },
     "description": {
-      "pt": "Reino dos elfos e druidas, protegido pelo deus Aelion.",
-      "en": "The kingdom of elves and druids, protected by the god Aelion."
+      "pt": "Uma terra de mistérios ancestrais onde a magia flui como os rios. Elfos e druidas guardam ali tradições dos tempos em que o mundo era jovem.",
+      "en": "A land of ancient mysteries where magic flows like its rivers. Elves and druids keep traditions from the days when the world was young."
     },
     "alliance": {
       "pt": "Magia",
       "en": "Magic"
     },
     "history": {
-      "pt": "",
-      "en": ""
+      "pt": "Em tempos imemoriais, o deus elfo Aelion desceu dos céus para ensinar aos primeiros elfos e druidas a magia natural e o equilíbrio do mundo. Seus princípios de harmonia, respeito e cuidado com a natureza se tornaram os alicerces do reino.\n\nO conselho de sábios elfos e druidas seguiu preservando e expandindo esse conhecimento, fazendo de Sylvanor um centro de sabedoria.",
+      "en": "In time immemorial, the elven god Aelion came down from the heavens to teach the first elves and druids natural magic and the balance of the world. His principles of harmony, respect and care for nature became the foundations of the kingdom.\n\nThe council of elven sages and druids has kept preserving and expanding this knowledge, making Sylvanor a center of wisdom."
     },
     "culture": {
-      "pt": "",
-      "en": ""
+      "pt": "Festivais da Natureza: danças, canções e rituais honram os espíritos da floresta. O Festival da Lua Cheia marca o momento em que a magia é mais forte.\n\nComunicação com os espíritos: desde cedo, elfos e druidas aprendem a ouvir as árvores, as plantas e os animais.\n\nArtes da Magia Natural: ensinadas em clareiras sagradas para curar, proteger e nutrir a terra.",
+      "en": "Nature Festivals: dances, songs and rituals honor the spirits of the forest. The Full Moon Festival marks the moment when magic is strongest.\n\nSpeaking with spirits: from an early age, elves and druids learn to listen to the trees, plants and animals.\n\nArts of Natural Magic: taught in sacred clearings to heal, protect and nourish the land."
     },
     "customs": {
-      "pt": "",
-      "en": ""
+      "pt": "O reino vive da abundância das florestas, colhendo apenas o necessário. Joias e tecidos feitos com materiais naturais são muito apreciados.",
+      "en": "The kingdom lives off the abundance of the forests, harvesting only what it needs. Jewelry and fabrics made from natural materials are highly prized."
     },
     "festivals": {
-      "pt": "",
-      "en": ""
-    }
+      "pt": "Festival da Lua Cheia",
+      "en": "Full Moon Festival"
+    },
+    "sections": [
+      {
+        "title": {
+          "pt": "Localização",
+          "en": "Location"
+        },
+        "text": {
+          "pt": "Sylvanor cobre uma vasta região de florestas antigas, com árvores que se erguem até os céus. A capital, Sylmareth, é construída entre as árvores, com passarelas que se integram à paisagem. Rios cristalinos e cachoeiras são comuns, e a luz do sol atravessa as folhas em um ambiente de eterna tranquilidade.",
+          "en": "Sylvanor covers a vast region of ancient forests, with trees that reach the sky. The capital, Sylmareth, is built among the trees, with walkways that blend into the landscape. Crystal rivers and waterfalls are everywhere, and sunlight filters through the leaves in an atmosphere of eternal calm."
+        }
+      },
+      {
+        "title": {
+          "pt": "História",
+          "en": "History"
+        },
+        "text": {
+          "pt": "Em tempos imemoriais, o deus elfo Aelion desceu dos céus para ensinar aos primeiros elfos e druidas a magia natural e o equilíbrio do mundo. Seus princípios de harmonia, respeito e cuidado com a natureza se tornaram os alicerces do reino.\n\nO conselho de sábios elfos e druidas seguiu preservando e expandindo esse conhecimento, fazendo de Sylvanor um centro de sabedoria.",
+          "en": "In time immemorial, the elven god Aelion came down from the heavens to teach the first elves and druids natural magic and the balance of the world. His principles of harmony, respect and care for nature became the foundations of the kingdom.\n\nThe council of elven sages and druids has kept preserving and expanding this knowledge, making Sylvanor a center of wisdom."
+        }
+      },
+      {
+        "title": {
+          "pt": "Cultura e costumes",
+          "en": "Culture and customs"
+        },
+        "text": {
+          "pt": "Festivais da Natureza: danças, canções e rituais honram os espíritos da floresta. O Festival da Lua Cheia marca o momento em que a magia é mais forte.\n\nComunicação com os espíritos: desde cedo, elfos e druidas aprendem a ouvir as árvores, as plantas e os animais.\n\nArtes da Magia Natural: ensinadas em clareiras sagradas para curar, proteger e nutrir a terra.",
+          "en": "Nature Festivals: dances, songs and rituals honor the spirits of the forest. The Full Moon Festival marks the moment when magic is strongest.\n\nSpeaking with spirits: from an early age, elves and druids learn to listen to the trees, plants and animals.\n\nArts of Natural Magic: taught in sacred clearings to heal, protect and nourish the land."
+        }
+      },
+      {
+        "title": {
+          "pt": "Sociedade e economia",
+          "en": "Society and economy"
+        },
+        "text": {
+          "pt": "O reino vive da abundância das florestas, colhendo apenas o necessário. Joias e tecidos feitos com materiais naturais são muito apreciados.",
+          "en": "The kingdom lives off the abundance of the forests, harvesting only what it needs. Jewelry and fabrics made from natural materials are highly prized."
+        }
+      },
+      {
+        "title": {
+          "pt": "Aelion, o deus elfo",
+          "en": "Aelion, the elven god"
+        },
+        "text": {
+          "pt": "Venerado como guardião de Sylvanor, Aelion tem templos nos lugares de maior beleza natural, onde recebe oferendas de flores, frutas e poções, com cânticos e danças.",
+          "en": "Revered as Sylvanor's guardian, Aelion has temples in the most beautiful natural places, where he receives offerings of flowers, fruit and potions, with songs and dances."
+        }
+      },
+      {
+        "title": {
+          "pt": "Atualmente",
+          "en": "Today"
+        },
+        "text": {
+          "pt": "Sylvanor é a prova de que magia e natureza podem coexistir em perfeita harmonia: uma terra de esplendor e mistérios eternos.",
+          "en": "Sylvanor is proof that magic and nature can live in perfect harmony: a land of splendor and eternal mystery."
+        }
+      }
+    ]
   },
   {
     "id": "dracoria",
     "name": {
       "pt": "Dracória",
-      "en": "Dracoria"
+      "en": "Dracória"
     },
+    "title": {
+      "pt": "O reino do deus-dragão",
+      "en": "The kingdom of the dragon god"
+    },
+    "enemy": false,
     "image": "img/reinos/dracoria.jpg",
     "capital": "Draconia",
     "ruler": {
@@ -150,34 +358,206 @@
       "pt": "Zephyrinox, o deus-dragão",
       "en": "Zephyrinox, the dragon god"
     },
+    "hero": {
+      "pt": "Ektor, o guerreiro, e Korvath, o bárbaro",
+      "en": "Ektor, the warrior, and Korvath, the barbarian"
+    },
     "location": {
-      "pt": "Montanhas Flamejantes e Floresta do Crepúsculo",
-      "en": "Flaming Mountains and Twilight Forest"
+      "pt": "Vale entre montanhas de fogo e floresta",
+      "en": "A valley between mountains of fire and forest"
     },
     "description": {
-      "pt": "Reino do deus-dragão Zephyrinox e dos Dracomantes.",
-      "en": "The kingdom of the dragon god Zephyrinox and the Dracomancers."
+      "pt": "Um vale místico guardado pelo sábio dragão Zephyrinox, onde os céus se pintam de fogo e o vento sussurra segredos ancestrais. Berço de Ektor e Korvath.",
+      "en": "A mystical valley guarded by the wise dragon Zephyrinox, where the skies are painted in fire and the wind whispers ancient secrets. Birthplace of Ektor and Korvath."
     },
     "alliance": {
       "pt": "Força e Magia",
       "en": "Strength and Magic"
     },
     "history": {
-      "pt": "",
-      "en": ""
+      "pt": "Zephyrinox desceu dos céus em um dia de tempestade, iluminando o céu com seu corpo imenso, e se proclamou protetor do vale. Nômades em busca de um lar decidiram ficar e erguer um reino em honra ao dragão divino, e sob sua proteção Dracória floresceu.",
+      "en": "Zephyrinox descended from the heavens on a stormy day, lighting up the sky with his immense body, and proclaimed himself protector of the valley. Nomads in search of a home chose to stay and raise a kingdom in honor of the divine dragon, and under his protection Dracória flourished."
     },
     "culture": {
-      "pt": "",
-      "en": ""
+      "pt": "Festival de Zephyrinox: uma semana de danças, oferendas e competições de bravura e sabedoria, que termina com uma grande oferenda no Pico de Zephyrinox.\n\nOrdem dos Dragões: cavaleiros treinados na guerra e na magia, com armaduras forjadas com escamas doadas pelo próprio dragão.\n\nMagia Dracônica: os Dracomantes estudam na Escola de Magia Dracônica, em Draconia.\n\nArquitetura: edifícios adornados com dragões e formas curvas; pinturas e tapeçarias narram as proezas de Zephyrinox.",
+      "en": "Festival of Zephyrinox: a week of dances, offerings and contests of bravery and wisdom, ending with a great offering on Zephyrinox Peak.\n\nOrder of Dragons: knights trained in war and magic, wearing armor forged from scales given by the dragon himself.\n\nDraconic Magic: the Dracomancers study at the School of Draconic Magic in Draconia.\n\nArchitecture: buildings adorned with dragons and curved forms; paintings and tapestries tell of Zephyrinox's deeds."
     },
     "customs": {
+      "pt": "O Conselho de Draconia, formado pelas principais famílias e líderes religiosos, governa segundo os ensinamentos do dragão. Terras férteis e a mineração de metais preciosos nas montanhas garantem a prosperidade.",
+      "en": "The Council of Draconia, formed by the leading families and religious leaders, rules by the dragon's teachings. Fertile land and the mining of precious metals in the mountains ensure prosperity."
+    },
+    "festivals": {
+      "pt": "Festival de Zephyrinox",
+      "en": "Festival of Zephyrinox"
+    },
+    "sections": [
+      {
+        "title": {
+          "pt": "Localização",
+          "en": "Location"
+        },
+        "text": {
+          "pt": "Dracória ocupa um vale fértil protegido pelas Montanhas Flamejantes ao norte e pela Floresta do Crepúsculo ao sul. A capital, Draconia, fica aos pés do Pico de Zephyrinox, a montanha sagrada onde o grande dragão reside.",
+          "en": "Dracória lies in a fertile valley protected by the Flaming Mountains to the north and the Twilight Forest to the south. The capital, Draconia, stands at the foot of Zephyrinox Peak, the sacred mountain where the great dragon dwells."
+        }
+      },
+      {
+        "title": {
+          "pt": "História",
+          "en": "History"
+        },
+        "text": {
+          "pt": "Zephyrinox desceu dos céus em um dia de tempestade, iluminando o céu com seu corpo imenso, e se proclamou protetor do vale. Nômades em busca de um lar decidiram ficar e erguer um reino em honra ao dragão divino, e sob sua proteção Dracória floresceu.",
+          "en": "Zephyrinox descended from the heavens on a stormy day, lighting up the sky with his immense body, and proclaimed himself protector of the valley. Nomads in search of a home chose to stay and raise a kingdom in honor of the divine dragon, and under his protection Dracória flourished."
+        }
+      },
+      {
+        "title": {
+          "pt": "Cultura e costumes",
+          "en": "Culture and customs"
+        },
+        "text": {
+          "pt": "Festival de Zephyrinox: uma semana de danças, oferendas e competições de bravura e sabedoria, que termina com uma grande oferenda no Pico de Zephyrinox.\n\nOrdem dos Dragões: cavaleiros treinados na guerra e na magia, com armaduras forjadas com escamas doadas pelo próprio dragão.\n\nMagia Dracônica: os Dracomantes estudam na Escola de Magia Dracônica, em Draconia.\n\nArquitetura: edifícios adornados com dragões e formas curvas; pinturas e tapeçarias narram as proezas de Zephyrinox.",
+          "en": "Festival of Zephyrinox: a week of dances, offerings and contests of bravery and wisdom, ending with a great offering on Zephyrinox Peak.\n\nOrder of Dragons: knights trained in war and magic, wearing armor forged from scales given by the dragon himself.\n\nDraconic Magic: the Dracomancers study at the School of Draconic Magic in Draconia.\n\nArchitecture: buildings adorned with dragons and curved forms; paintings and tapestries tell of Zephyrinox's deeds."
+        }
+      },
+      {
+        "title": {
+          "pt": "Sociedade e economia",
+          "en": "Society and economy"
+        },
+        "text": {
+          "pt": "O Conselho de Draconia, formado pelas principais famílias e líderes religiosos, governa segundo os ensinamentos do dragão. Terras férteis e a mineração de metais preciosos nas montanhas garantem a prosperidade.",
+          "en": "The Council of Draconia, formed by the leading families and religious leaders, rules by the dragon's teachings. Fertile land and the mining of precious metals in the mountains ensure prosperity."
+        }
+      },
+      {
+        "title": {
+          "pt": "Atualmente",
+          "en": "Today"
+        },
+        "text": {
+          "pt": "Sob a proteção de Zephyrinox, o Sábio, Dracória vive em paz há gerações. Sua história é a prova do poder da união entre humanos e seres mágicos.",
+          "en": "Under the protection of Zephyrinox the Wise, Dracória has lived in peace for generations. Its history is proof of the power of the union between humans and magical beings."
+        }
+      }
+    ]
+  },
+  {
+    "id": "ventharis",
+    "name": {
+      "pt": "Ventharis",
+      "en": "Ventharis"
+    },
+    "title": {
+      "pt": "O reino dos ventos",
+      "en": "The kingdom of the winds"
+    },
+    "enemy": false,
+    "image": "img/reinos/ventharis.jpg",
+    "capital": "Lyrahn",
+    "ruler": {
       "pt": "",
       "en": ""
     },
-    "festivals": {
+    "deity": {
+      "pt": "Vaelith, a Senhora dos Ventos",
+      "en": "Vaelith, the Lady of the Winds"
+    },
+    "hero": {
+      "pt": "Kael, o arqueiro",
+      "en": "Kael, the archer"
+    },
+    "location": {
+      "pt": "Terras altas, falésias e ninhos de dragões",
+      "en": "Highlands, cliffs and dragon nests"
+    },
+    "description": {
+      "pt": "Nas terras altas onde o vento nunca dorme, um povo de arqueiros aprendeu a ler o ar antes de soltar a flecha. Foram eles que derrubaram os dragões de Zarek.",
+      "en": "In the highlands where the wind never sleeps, a people of archers learned to read the air before loosing an arrow. They were the ones who brought down Zarek's dragons."
+    },
+    "alliance": {
       "pt": "",
       "en": ""
-    }
+    },
+    "history": {
+      "pt": "Os primeiros habitantes subiram às alturas fugindo de guerras nas planícies. O vento cortante quase os destruiu, até que Vaelith, a Senhora dos Ventos, se revelou a eles e ensinou a ouvir o ar: de onde ele vem, para onde vai e como carrega uma flecha.\n\nViver entre dragões selvagens forjou o povo de Ventharis. Ao longo de gerações, aprenderam a defender seus vales das feras aladas, e dessa necessidade nasceu a ordem dos Caçadores de Asas.",
+      "en": "The first settlers climbed to the heights fleeing wars in the plains. The cutting wind nearly destroyed them, until Vaelith, the Lady of the Winds, revealed herself and taught them to listen to the air: where it comes from, where it goes and how it carries an arrow.\n\nLiving among wild dragons forged the people of Ventharis. Over generations they learned to defend their valleys from the winged beasts, and from that need the order of the Wing Hunters was born."
+    },
+    "culture": {
+      "pt": "Festival das Mil Flechas: todo ano os jovens disparam contra o vento do penhasco para provar a mira. Quem acerta o alvo além do abismo recebe a pena prateada dos Caçadores.\n\nCaçadores de Asas: a elite de arqueiros treinada para abater dragões. Kael, herói da lenda, foi o maior de todos.\n\nA leitura do vento: toda criança aprende a sentir o vento no rosto antes de aprender a escrever. Dizem que Vaelith sussurra a trajetória certa a quem sabe ouvir.",
+      "en": "Festival of a Thousand Arrows: every year the young shoot against the cliff wind to prove their aim. Whoever hits the target beyond the abyss receives the silver feather of the Hunters.\n\nWing Hunters: the elite of archers trained to bring down dragons. Kael, hero of the legend, was the greatest of them all.\n\nReading the wind: every child learns to feel the wind on their face before learning to write. They say Vaelith whispers the right path to those who know how to listen."
+    },
+    "customs": {
+      "pt": "Ventharis é governada pelo Conselho das Torres, com um representante de cada vigia do reino. A economia vive do pastoreio nas encostas, do comércio de penas e escamas e da fabricação dos melhores arcos e flechas do mundo conhecido.",
+      "en": "Ventharis is ruled by the Council of Towers, with one representative from each of the kingdom's watchtowers. Its economy lives on herding along the slopes, the trade of feathers and scales and the crafting of the finest bows and arrows in the known world."
+    },
+    "festivals": {
+      "pt": "Festival das Mil Flechas",
+      "en": "Festival of a Thousand Arrows"
+    },
+    "sections": [
+      {
+        "title": {
+          "pt": "Localização",
+          "en": "Location"
+        },
+        "text": {
+          "pt": "Ventharis ocupa as terras altas acima das nuvens, um labirinto de falésias, desfiladeiros e platôs varridos por ventos que nunca cessam. Nas escarpas mais altas, dragões selvagens fazem seus ninhos. A capital, Lyrahn, é escavada na face de um penhasco, com pontes suspensas e torres de vigia que dominam o horizonte.",
+          "en": "Ventharis occupies the highlands above the clouds, a maze of cliffs, canyons and plateaus swept by winds that never cease. On the highest crags, wild dragons build their nests. The capital, Lyrahn, is carved into a cliff face, with hanging bridges and watchtowers overlooking the horizon."
+        }
+      },
+      {
+        "title": {
+          "pt": "História",
+          "en": "History"
+        },
+        "text": {
+          "pt": "Os primeiros habitantes subiram às alturas fugindo de guerras nas planícies. O vento cortante quase os destruiu, até que Vaelith, a Senhora dos Ventos, se revelou a eles e ensinou a ouvir o ar: de onde ele vem, para onde vai e como carrega uma flecha.\n\nViver entre dragões selvagens forjou o povo de Ventharis. Ao longo de gerações, aprenderam a defender seus vales das feras aladas, e dessa necessidade nasceu a ordem dos Caçadores de Asas.",
+          "en": "The first settlers climbed to the heights fleeing wars in the plains. The cutting wind nearly destroyed them, until Vaelith, the Lady of the Winds, revealed herself and taught them to listen to the air: where it comes from, where it goes and how it carries an arrow.\n\nLiving among wild dragons forged the people of Ventharis. Over generations they learned to defend their valleys from the winged beasts, and from that need the order of the Wing Hunters was born."
+        }
+      },
+      {
+        "title": {
+          "pt": "Cultura e costumes",
+          "en": "Culture and customs"
+        },
+        "text": {
+          "pt": "Festival das Mil Flechas: todo ano os jovens disparam contra o vento do penhasco para provar a mira. Quem acerta o alvo além do abismo recebe a pena prateada dos Caçadores.\n\nCaçadores de Asas: a elite de arqueiros treinada para abater dragões. Kael, herói da lenda, foi o maior de todos.\n\nA leitura do vento: toda criança aprende a sentir o vento no rosto antes de aprender a escrever. Dizem que Vaelith sussurra a trajetória certa a quem sabe ouvir.",
+          "en": "Festival of a Thousand Arrows: every year the young shoot against the cliff wind to prove their aim. Whoever hits the target beyond the abyss receives the silver feather of the Hunters.\n\nWing Hunters: the elite of archers trained to bring down dragons. Kael, hero of the legend, was the greatest of them all.\n\nReading the wind: every child learns to feel the wind on their face before learning to write. They say Vaelith whispers the right path to those who know how to listen."
+        }
+      },
+      {
+        "title": {
+          "pt": "Sociedade e economia",
+          "en": "Society and economy"
+        },
+        "text": {
+          "pt": "Ventharis é governada pelo Conselho das Torres, com um representante de cada vigia do reino. A economia vive do pastoreio nas encostas, do comércio de penas e escamas e da fabricação dos melhores arcos e flechas do mundo conhecido.",
+          "en": "Ventharis is ruled by the Council of Towers, with one representative from each of the kingdom's watchtowers. Its economy lives on herding along the slopes, the trade of feathers and scales and the crafting of the finest bows and arrows in the known world."
+        }
+      },
+      {
+        "title": {
+          "pt": "A tensão com Dracória",
+          "en": "The tension with Dracória"
+        },
+        "text": {
+          "pt": "Dracória venera um deus-dragão; Ventharis caça dragões. Por séculos, os dois reinos se olharam com desconfiança. A aliança só foi possível quando os dragões de Zarek surgiram corrompidos pelas trevas: diante de um inimigo comum, Dracomantes e Caçadores de Asas lutaram lado a lado.",
+          "en": "Dracória worships a dragon god; Ventharis hunts dragons. For centuries the two kingdoms eyed each other with distrust. The alliance only became possible when Zarek's dragons appeared, corrupted by darkness: facing a common enemy, Dracomancers and Wing Hunters fought side by side."
+        }
+      },
+      {
+        "title": {
+          "pt": "Atualmente",
+          "en": "Today"
+        },
+        "text": {
+          "pt": "A paz é frágil, mas a lembrança da aliança persiste. Em Lyrahn, as torres continuam vigiando o céu, e cada flecha disparada carrega uma prece a Vaelith.",
+          "en": "The peace is fragile, but the memory of the alliance endures. In Lyrahn, the towers keep watching the sky, and every arrow loosed carries a prayer to Vaelith."
+        }
+      }
+    ]
   },
   {
     "id": "malakar",
@@ -185,43 +565,114 @@
       "pt": "Malakar",
       "en": "Malakar"
     },
+    "title": {
+      "pt": "O domínio das trevas",
+      "en": "The dominion of darkness"
+    },
+    "enemy": true,
     "image": "img/reinos/malakar.jpg",
     "capital": "Noxarus",
     "ruler": {
-      "pt": "Lorde Demônio Thrazul",
-      "en": "Demon Lord Thrazul"
+      "pt": "Zarek, o Lorde Demônio",
+      "en": "Zarek, the Demon Lord"
     },
     "deity": {
       "pt": "",
       "en": ""
     },
+    "hero": {
+      "pt": "",
+      "en": ""
+    },
     "location": {
-      "pt": "Plano infernal",
-      "en": "Infernal plane"
+      "pt": "Vulcões, rios de lava e desertos de cinzas",
+      "en": "Volcanoes, lava rivers and ash deserts"
     },
     "description": {
-      "pt": "Plano infernal governado pelo Lorde Demônio Thrazul, portador da Lança do Abismo.",
-      "en": "An infernal plane ruled by Demon Lord Thrazul, wielder of the Spear of the Abyss."
+      "pt": "Um plano sombrio onde a escuridão reina suprema. Governado pelo impiedoso Zarek, Malakar é um domínio de terror onde demônios se alimentam do medo dos mortais.",
+      "en": "A shadow plane where darkness reigns supreme. Ruled by the merciless Zarek, Malakar is a dominion of terror where demons feed on the fear of mortals."
     },
     "alliance": {
       "pt": "",
       "en": ""
     },
     "history": {
-      "pt": "",
-      "en": ""
+      "pt": "Há milênios, Zarek, o mais poderoso dos demônios, tomou o trono após uma guerra cataclísmica contra os outros lordes demoníacos e unificou os clãs sob seu domínio. Ergueu Noxarus sobre as ruínas de reinos destruídos e governa por terror absoluto: a traição é punida com tormentos eternos e a lealdade, recompensada com poder corrupto.",
+      "en": "Millennia ago, Zarek, the mightiest of demons, seized the throne after a cataclysmic war against the other demon lords and united the clans under his rule. He raised Noxarus on the ruins of destroyed kingdoms and rules through absolute terror: betrayal is punished with eternal torment, and loyalty rewarded with corrupt power."
     },
     "culture": {
-      "pt": "",
-      "en": ""
+      "pt": "Festivais de Agonia: celebrações do sofrimento. O Festival das Chamas Negras é o mais importante, com rituais para invocar poder das profundezas.\n\nArenas de Sangue: demônios lutam até a morte para conquistar o favor de Zarek.\n\nCulto ao Caos: altares e templos dedicados a Zarek, onde sacerdotes canalizam a energia caótica do reino.",
+      "en": "Festivals of Agony: celebrations of suffering. The Festival of Black Flames is the most important, with rituals to summon power from the depths.\n\nBlood Arenas: demons fight to the death to win Zarek's favor.\n\nCult of Chaos: altars and temples dedicated to Zarek, where priests channel the realm's chaotic energy."
     },
     "customs": {
-      "pt": "",
-      "en": ""
+      "pt": "Uma hierarquia rígida em que os mais fortes dominam os mais fracos pelo medo. A economia vive da pilhagem e da escravidão: mortais capturados trabalham nas minas de enxofre e forjam armas de destruição.",
+      "en": "A rigid hierarchy in which the strongest dominate the weakest through fear. The economy lives on plunder and slavery: captured mortals toil in the sulfur mines and forge weapons of destruction."
     },
     "festivals": {
-      "pt": "",
-      "en": ""
-    }
+      "pt": "Festival das Chamas Negras",
+      "en": "Festival of Black Flames"
+    },
+    "sections": [
+      {
+        "title": {
+          "pt": "Localização",
+          "en": "Location"
+        },
+        "text": {
+          "pt": "Malakar existe em um plano sombrio e distorcido, separado do mundo dos mortais por um véu de trevas e magia negra: vulcões em erupção, rios de lava e desertos de cinzas. A capital, Noxarus, é uma fortaleza de ossos e pedra negra, iluminada apenas por chamas infernais.",
+          "en": "Malakar exists on a dark, twisted plane, separated from the mortal world by a veil of darkness and black magic: erupting volcanoes, rivers of lava and deserts of ash. The capital, Noxarus, is a fortress of bone and black stone, lit only by infernal flames."
+        }
+      },
+      {
+        "title": {
+          "pt": "História",
+          "en": "History"
+        },
+        "text": {
+          "pt": "Há milênios, Zarek, o mais poderoso dos demônios, tomou o trono após uma guerra cataclísmica contra os outros lordes demoníacos e unificou os clãs sob seu domínio. Ergueu Noxarus sobre as ruínas de reinos destruídos e governa por terror absoluto: a traição é punida com tormentos eternos e a lealdade, recompensada com poder corrupto.",
+          "en": "Millennia ago, Zarek, the mightiest of demons, seized the throne after a cataclysmic war against the other demon lords and united the clans under his rule. He raised Noxarus on the ruins of destroyed kingdoms and rules through absolute terror: betrayal is punished with eternal torment, and loyalty rewarded with corrupt power."
+        }
+      },
+      {
+        "title": {
+          "pt": "Cultura e costumes",
+          "en": "Culture and customs"
+        },
+        "text": {
+          "pt": "Festivais de Agonia: celebrações do sofrimento. O Festival das Chamas Negras é o mais importante, com rituais para invocar poder das profundezas.\n\nArenas de Sangue: demônios lutam até a morte para conquistar o favor de Zarek.\n\nCulto ao Caos: altares e templos dedicados a Zarek, onde sacerdotes canalizam a energia caótica do reino.",
+          "en": "Festivals of Agony: celebrations of suffering. The Festival of Black Flames is the most important, with rituals to summon power from the depths.\n\nBlood Arenas: demons fight to the death to win Zarek's favor.\n\nCult of Chaos: altars and temples dedicated to Zarek, where priests channel the realm's chaotic energy."
+        }
+      },
+      {
+        "title": {
+          "pt": "Sociedade e economia",
+          "en": "Society and economy"
+        },
+        "text": {
+          "pt": "Uma hierarquia rígida em que os mais fortes dominam os mais fracos pelo medo. A economia vive da pilhagem e da escravidão: mortais capturados trabalham nas minas de enxofre e forjam armas de destruição.",
+          "en": "A rigid hierarchy in which the strongest dominate the weakest through fear. The economy lives on plunder and slavery: captured mortals toil in the sulfur mines and forge weapons of destruction."
+        }
+      },
+      {
+        "title": {
+          "pt": "Zarek, o Lorde Demônio",
+          "en": "Zarek, the Demon Lord"
+        },
+        "text": {
+          "pt": "Pele vermelho-profundo, olhos como carvões em brasa e chifres retorcidos. Zarek empunha a Lança do Abismo, forjada nas profundezas, capaz de consumir almas. É adorado como um deus em Malakar.",
+          "en": "Deep red skin, eyes like burning coals and twisted horns. Zarek wields the Spear of the Abyss, forged in the depths and able to consume souls. In Malakar he is worshipped as a god."
+        }
+      },
+      {
+        "title": {
+          "pt": "Atualmente",
+          "en": "Today"
+        },
+        "text": {
+          "pt": "Malakar segue sendo terra de sofrimento e poder sombrio. Relíquias de magia negra são símbolos de prestígio, e o terror é a única lei.",
+          "en": "Malakar remains a land of suffering and dark power. Relics of black magic are symbols of prestige, and terror is the only law."
+        }
+      }
+    ]
   }
 ]

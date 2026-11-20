@@ -108,14 +108,14 @@
             <div class="guide-modal-body">
                 <div class="guide-facts">
                     ${[[t('capital'), txt(kingdom.capital)], [t('ruler'), txt(kingdom.ruler)], [t('deity'), txt(kingdom.deity)],
-                        [t('location'), txt(kingdom.location)], [t('alliance'), txt(kingdom.alliance)]]
+                        [t('legendaryHero', 'Legendary hero'), txt(kingdom.hero)], [t('location'), txt(kingdom.location)], [t('alliance'), txt(kingdom.alliance)]]
                         .filter(([, value]) => value)
                         .map(([label, value]) => `<div class="guide-fact"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`).join('')}
                 </div>
-                ${infoBlock(t('history'), txt(kingdom.history))}
-                ${infoBlock(t('culture'), txt(kingdom.culture))}
-                ${infoBlock(t('customs'), txt(kingdom.customs))}
-                ${infoBlock(t('festivals'), txt(kingdom.festivals))}
+                ${Array.isArray(kingdom.sections) && kingdom.sections.length
+                    ? kingdom.sections.map((section) => infoBlock(txt(section.title), txt(section.text))).join('')
+                    : [infoBlock(t('history'), txt(kingdom.history)), infoBlock(t('culture'), txt(kingdom.culture)),
+                        infoBlock(t('customs'), txt(kingdom.customs)), infoBlock(t('festivals'), txt(kingdom.festivals))].join('')}
             </div>`, { type: 'kingdom', id: kingdom.id });
     }
 
@@ -272,6 +272,20 @@
         if (entry) source[1](entry);
     });
 
+    // Link direto: guia.html#reino-thalor abre o reino; #masmorra-<id> e #item-<id> também funcionam.
+    function openFromHash() {
+        const match = window.location.hash.match(/^#(reino|masmorra|item)-(.+)$/);
+        if (!match) return;
+        const [list, open] = {
+            reino: [kingdoms, openKingdom],
+            masmorra: [dungeons, openDungeon],
+            item: [items, openItem]
+        }[match[1]];
+        const entry = list.find((candidate) => candidate.id === decodeURIComponent(match[2]));
+        if (entry) open(entry);
+    }
+    window.addEventListener('hashchange', openFromHash);
+
     async function load() {
         setupMap();
         bindSearch('filtro-reinos', renderKingdoms);
@@ -291,6 +305,7 @@
             items = Array.isArray(itemData) ? itemData : (itemData.items || []);
             monstersById = Object.fromEntries((monsterData.monsters || []).map((monster) => [monster.id, monster]));
             renderAll();
+            openFromHash();
         } catch (error) {
             console.error('Erro ao carregar o guia:', error);
             ['lista-reinos', 'lista-masmorras', 'lista-itens'].forEach((id) => {

@@ -50,13 +50,14 @@
         <header class="site-header">
             <a class="brand" href="index.html">
                 <img src="img/LogoRPG.jpg" alt="Logo Empire of Rebirth & Ruins">
-                <span class="brand-name" data-i18n="brandName">Empire of Rebirth & Ruins</span>
+                <span class="brand-name">Empire of Rebirth <small>&amp; Ruins</small></span>
             </a>
-            <nav aria-label="Menu"><ul>${nav}</ul></nav>
+            <nav class="site-nav" id="site-nav" aria-label="Menu"><ul>${nav}</ul></nav>
             <div class="header-actions">
                 <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
                 <a class="btn btn-download" ${linkAttrs({ href: ITCH_URL, external: true })} data-i18n="download">Download</a>
             </div>
+            <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-i18n-aria="openMenu" aria-label="Open menu"><span></span></button>
         </header>`;
     }
 
@@ -97,6 +98,21 @@
     if (header) header.outerHTML = renderFileWarning() + renderHeader();
     const footer = document.getElementById('site-footer');
     if (footer) footer.outerHTML = renderFooter();
+
+    // Menu mobile (abaixo de 1000px o menu vira um painel aberto pelo botão ☰).
+    const siteHeader = document.querySelector('.site-header');
+    const menuToggle = siteHeader?.querySelector('.menu-toggle');
+    if (siteHeader && menuToggle) {
+        const setMenu = (open) => {
+            siteHeader.classList.toggle('menu-open', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+        };
+        menuToggle.addEventListener('click', () => setMenu(!siteHeader.classList.contains('menu-open')));
+        siteHeader.querySelectorAll('.site-nav a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') setMenu(false);
+        });
+    }
 
     // Qualquer link da página marcado com data-link="itch" aponta para a página do itch.io.
     document.querySelectorAll('[data-link="itch"]').forEach((link) => {

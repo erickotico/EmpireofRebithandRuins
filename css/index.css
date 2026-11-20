@@ -1,67 +1,401 @@
-/* ========== HERO ========== */
+/* ========== HERO: cenário de ruínas com amanhecer de brasa ========== */
 .hero {
-    min-height: 80vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)),
-        url('../img/LogoRPG.jpg');
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    min-height: clamp(560px, calc(100vh - var(--header-h)), 860px);
+    min-height: clamp(560px, calc(100svh - var(--header-h)), 860px);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
-    padding: 2rem;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(120% 70% at 50% 0%, #17131a 0%, transparent 60%),
+        linear-gradient(180deg, #08080b 0%, #120e10 45%, #24120b 78%, #0c0b0a 100%);
+}
+
+.hero-scene {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 62%;
+    max-width: none;
+    z-index: -2;
+}
+
+.hero-windows rect {
+    animation: flicker 4s ease-in-out infinite;
+}
+
+.hero-windows rect:nth-child(2) { animation-delay: -1.3s; }
+.hero-windows rect:nth-child(3) { animation-delay: -2.1s; }
+.hero-windows rect:nth-child(4) { animation-delay: -0.6s; }
+
+@keyframes flicker {
+    0%, 100% { opacity: 0.85; }
+    40% { opacity: 0.45; }
+    55% { opacity: 1; }
+    70% { opacity: 0.6; }
+}
+
+/* Brasas: geradas pelo js/home.js */
+.embers {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.embers span {
+    position: absolute;
+    left: var(--x);
+    bottom: -10px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--accent-bright);
+    box-shadow: 0 0 8px 2px rgba(224, 97, 43, 0.7);
+    opacity: 0;
+    animation: rise var(--dur) linear var(--delay) infinite;
+}
+
+@keyframes rise {
+    0% { transform: translate(0, 0); opacity: 0; }
+    10% { opacity: 0.9; }
+    70% { opacity: 0.5; }
+    100% { transform: translate(var(--drift), -85vh); opacity: 0; }
 }
 
 .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 760px;
+    padding: clamp(40px, 8vh, 96px) 16px 0;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
+.hero-title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.hero-title-main {
+    font-size: clamp(2.3rem, 7vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    background: linear-gradient(180deg, #fff3d6 0%, var(--accent-bright) 45%, var(--accent) 70%, var(--accent-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 4px 24px rgba(224, 97, 43, 0.35));
+}
+
+.hero-title-sub {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 12px;
+    font-size: clamp(1.1rem, 2.6vw, 1.7rem);
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    color: var(--accent);
+}
+
+.hero-title-sub::before,
+.hero-title-sub::after {
+    content: '';
+    width: clamp(40px, 10vw, 110px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent));
+}
+
+.hero-title-sub::after {
+    transform: scaleX(-1);
+}
+
+.hero-legend {
+    margin: 32px auto 36px;
+    max-width: 620px;
+    font-family: var(--font-lore);
+    font-style: italic;
+    font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+    line-height: 1.65;
+    color: #e2d6bf;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+
+.btn-hero {
+    font-size: 0.95rem;
+    padding: 16px 30px;
+}
+
+/* ========== OS REINOS ========== */
+.kingdoms {
+    padding: clamp(56px, 9vw, 104px) 0;
+    background:
+        radial-gradient(60% 40% at 50% 0%, rgba(var(--accent-rgb), 0.06), transparent 70%),
+        var(--bg);
+}
+
+.kingdom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.kingdom-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px 24px;
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius);
     color: var(--text);
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.hero-subtitle {
-    font-size: 1.25rem;
+/* Brilho com a cor do reino no topo do card */
+.kingdom-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 140px;
+    background: radial-gradient(60% 100% at 50% 0%, color-mix(in srgb, var(--crest) 22%, transparent), transparent);
+    opacity: 0.6;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.kingdom-card:hover,
+.kingdom-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--crest) 55%, transparent);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+
+.kingdom-card:hover::before,
+.kingdom-card:focus-visible::before {
+    opacity: 1;
+}
+
+.crest {
+    position: relative;
+    width: 72px;
+    height: 86px;
+    margin-bottom: 18px;
+}
+
+.crest-shield {
+    fill: #120f0c;
+    stroke: var(--crest);
+    stroke-width: 2;
+}
+
+.crest-inner {
+    fill: none;
+    stroke: var(--crest);
+    stroke-opacity: 0.35;
+    stroke-width: 1;
+}
+
+.kingdom-card h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.kingdom-motto {
+    margin: 6px 0 0;
+    font-family: var(--font-lore);
+    font-style: italic;
+    color: var(--crest);
+}
+
+.kingdom-facts {
+    width: 100%;
+    margin: 20px 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: grid;
+    gap: 10px;
+}
+
+.kingdom-facts div {
+    display: flex;
+    flex-direction: column;
+}
+
+.kingdom-facts dt {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.hero .btn-download {
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
+.kingdom-facts dd {
+    margin: 2px 0 0;
+    color: var(--title);
 }
 
-/* ========== UPDATES ========== */
+.kingdom-more {
+    margin-top: auto;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.kingdom-card:hover .kingdom-more span {
+    display: inline-block;
+    transform: translateX(3px);
+}
+
+/* Reino inimigo: Malakar */
+.kingdom-card.is-enemy {
+    background: linear-gradient(180deg, #1f0f0d, #130b0a);
+    border-color: rgba(192, 57, 43, 0.3);
+}
+
+.kingdom-card.is-enemy .kingdom-more {
+    color: #e2685a;
+}
+
+.kingdom-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 3px 8px;
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #f0a49a;
+    border: 1px solid rgba(192, 57, 43, 0.6);
+    border-radius: 2px;
+}
+
+/* ========== ÚLTIMAS ATUALIZAÇÕES ========== */
 .updates {
-    padding: 4rem 2rem;
-    background: var(--bg);
+    padding: clamp(56px, 9vw, 104px) 0;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
 }
 
 .updates-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
+    gap: 20px;
+    max-width: var(--max);
     margin: 0 auto;
-    max-height: 420px;
+    max-height: 460px;
     overflow-y: auto;
     padding-right: 8px;
 }
 
+/* Início: últimos meses, só com os títulos (sem rolagem) */
+.update-months {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.update-month {
+    display: block;
+    padding: 20px 20px 18px;
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 2px solid var(--accent-deep);
+    border-radius: var(--radius);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.update-month:hover,
+.update-month:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--line-strong);
+    border-top-color: var(--accent);
+}
+
+.update-month h3 {
+    margin: 0 0 14px;
+    font-size: 1.02rem;
+    color: var(--accent-bright);
+}
+
+.update-month ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.update-month li {
+    display: flex;
+    flex-direction: column;
+    padding-left: 12px;
+    border-left: 1px solid var(--line-strong);
+}
+
+.update-month-version {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.update-month-title {
+    color: var(--title);
+    line-height: 1.35;
+}
+
+@media (max-width: 1100px) {
+    .update-months { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+    .update-months { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 460px) {
+    .update-months { grid-template-columns: 1fr; }
+}
+
 .updates-more {
-    max-width: 1200px;
-    margin: 1.25rem auto 0;
-    text-align: right;
+    max-width: var(--max);
+    margin: 24px auto 0;
+    text-align: center;
 }
 
 .updates-more a {
-    color: var(--accent);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
     font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 4px;
+}
+
+.updates-more a:hover {
+    color: var(--accent-bright);
+    border-color: var(--accent);
 }
 
 .updates-page .updates-grid {
@@ -70,7 +404,7 @@
 }
 
 .updates-page .updates-search {
-    max-width: 1200px;
+    max-width: var(--max);
     margin: 0 auto 1.5rem;
     display: flex;
     justify-content: flex-end;
@@ -80,65 +414,73 @@
 .updates-page .updates-search input {
     width: 100%;
     max-width: 420px;
-    padding: 0.95rem 1rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.08);
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
     color: var(--text);
+    font: inherit;
     font-size: 0.95rem;
 }
 
 .updates-page .updates-search input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--title);
-    margin-bottom: 2rem;
+    color: var(--muted);
 }
 
 .update-card {
-    background: var(--header-bg);
-    border-radius: 8px;
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 2px solid var(--accent-deep);
 }
 
 .update-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
 }
 
 .update-version {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.08em;
     color: var(--accent);
-    font-weight: bold;
 }
 
 .update-date {
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
 }
 
 .update-card h3 {
-    color: var(--title);
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+    margin: 0 0 12px;
+    font-size: 1.12rem;
 }
 
 .update-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 1rem 0;
+    margin: 0;
 }
 
 .update-list li {
+    position: relative;
+    padding: 6px 0 6px 18px;
     color: var(--text);
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.update-list li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 15px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-deep);
+    transform: rotate(45deg);
 }
 
 .update-list li:last-child {
@@ -146,58 +488,65 @@
 }
 
 .update-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.9rem;
     color: var(--accent);
     text-decoration: none;
-    font-size: 0.9rem;
-    display: inline-block;
-    margin-top: 1rem;
 }
 
 .update-link:hover {
     text-decoration: underline;
 }
 
-/* ========== SCROLLBAR CUSTOMIZADO ========== */
+.update-empty {
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Barra de rolagem dourada */
 .updates-grid::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 .updates-grid::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .updates-grid::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--accent), #5f39d9);
+    background: var(--accent-deep);
     border-radius: 8px;
 }
 
 @supports (scrollbar-width: thin) {
     .updates-grid {
         scrollbar-width: thin;
-        scrollbar-color: var(--accent) rgba(255, 255, 255, 0.02);
+        scrollbar-color: var(--accent-deep) rgba(255, 255, 255, 0.03);
     }
 }
 
-/* ========== MEDIA QUERIES ========== */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+/* ========== RESPONSIVO ========== */
+@media (max-width: 960px) {
+    .kingdom-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .kingdom-grid {
+        grid-template-columns: 1fr;
     }
 
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-
-    .updates {
-        padding: 2rem 1rem;
-    }
-
-    .update-card {
-        padding: 1rem;
+    .hero-title-sub {
+        letter-spacing: 0.3em;
     }
 
     .updates-grid {
-        max-height: 360px;
+        grid-template-columns: 1fr;
+        max-height: 420px;
+    }
+
+    .update-card {
+        padding: 18px;
     }
 }

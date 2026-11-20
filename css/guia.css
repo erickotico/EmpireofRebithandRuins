@@ -318,7 +318,7 @@ main > section h2 {
     padding-bottom: 4px;
 }
 
-.guide-info p { margin: 0; color: #e5e5e5; line-height: 1.5; }
+.guide-info p { margin: 0; color: #e5e5e5; line-height: 1.6; white-space: pre-line; }
 
 .nenhum-resultado { color: #bbb; font-style: italic; grid-column: 1 / -1; }
 
