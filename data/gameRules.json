@@ -111,11 +111,5 @@
     { "id": "SS", "metal": { "pt": "Mithril", "en": "Mithril" } },
     { "id": "SSS", "metal": null },
     { "id": "SSS+", "metal": null }
-  ],
-
-  "dungeonNotes": [
-    { "pt": "Algumas armadilhas teleportam o jogador para um andar mais fundo, nunca para cima.", "en": "Some traps teleport the player to a deeper floor, never upward." },
-    { "pt": "Monstros e chefes podem aplicar maldições. Para desfazer uma maldição, é preciso matar quem a aplicou.", "en": "Monsters and bosses can apply curses. To lift a curse, you must kill whoever applied it." },
-    { "pt": "As masmorras desta lista têm sempre o mesmo formato, com uma pequena chance de surgir uma sala extra. As pequenas masmorras espalhadas pelo mundo mudam de formato a cada entrada.", "en": "The dungeons on this list always keep the same layout, with a small chance of an extra room. The small dungeons scattered across the world change layout on every visit." }
   ]
 }

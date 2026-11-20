@@ -183,14 +183,6 @@
             </div>`, { type: 'dungeon', id: dungeon.id });
     }
 
-    function renderDungeonNotes() {
-        const container = $('masmorras-regras');
-        if (!container || !rules?.dungeonNotes?.length) return;
-        container.innerHTML = `
-            <h3>${esc(t('dungeonsHowItWorks'))}</h3>
-            <ul>${rules.dungeonNotes.map((note) => `<li>${esc(txt(note))}</li>`).join('')}</ul>`;
-    }
-
     // ---------- Itens ----------
     function renderItems() {
         const list = $('lista-itens');
@@ -258,7 +250,6 @@
     function renderAll() {
         renderKingdoms();
         renderDungeons();
-        renderDungeonNotes();
         renderItems();
     }
 
