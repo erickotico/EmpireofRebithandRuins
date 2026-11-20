@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const translate = (key, fallback) => typeof window.getSiteTranslation === 'function'
         ? window.getSiteTranslation(key, fallback)
         : fallback;
+    // Ano do rodapé sempre atual
+    document.querySelectorAll('.auth-year').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
     const togglePassword = document.querySelector('.toggle-password');
     const password = document.getElementById('password');
     const eyeIcon = document.querySelector('.eye-icon');

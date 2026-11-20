@@ -5,126 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta name="theme-color" content="#0c0b0a">
     <title>Login</title>
-    <!-- Login desligado até existir servidor de contas: a página não aparece no menu nem nos buscadores. -->
+    <!-- Login de demonstração: aberto pelo botão "Entrar" do topo, mas ainda sem servidor de contas
+         (o cadastro é simulado e nada é salvo). Fora dos buscadores até as contas funcionarem. -->
     <meta name="robots" content="noindex">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/reset.css?v=2026112008">
+    <link rel="stylesheet" href="css/global.css?v=2026112008">
+    <link rel="stylesheet" href="css/login.css?v=2026112008">
 </head>
 <body class="auth-page">
-    <header style="padding: 12px 20px; display:flex; justify-content:flex-end;">
-        <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
-    </header>
-    <main class="auth-layout container">
-        
-        <div class="auth-image" aria-hidden="false">
-            <img src="./img/LogoRPG.jpg" alt="Arte do jogo Empire of Rebirth & Ruins">
+    <main class="auth-layout">
+
+        <!-- Arte: o mesmo cenário de ruínas do banner da página inicial -->
+        <div class="auth-art" aria-hidden="true">
+            <img class="auth-scene" src="img/ruins-scene.svg" alt="">
+            <div class="auth-art-title">
+                <span class="auth-art-main">Empire of Rebirth</span>
+                <span class="auth-art-sub">&amp; Ruins</span>
+            </div>
         </div>
-        <aside class="auth-panel" role="region" aria-label="Formulário de login">
-            <div class="login-brand">
-                <img src="./img/LogoRPG.jpg" alt="Game logo">
-                <h2 data-i18n="welcomeBack">Welcome back</h2>
-                <p class="login-desc" data-i18n="loginDesc">Sign in to continue your journey in Empire of Rebirth & Ruins.</p>
+
+        <!-- Formulário -->
+        <section class="auth-panel" aria-label="Login">
+            <div class="auth-top">
+                <a class="auth-home" href="index.html" data-i18n="back">Back</a>
+                <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
             </div>
 
-            <form id="loginForm" class="login-form" action="login.php" method="POST" novalidate>
-                <div class="form-group">
-                    <label for="username" data-i18n="emailOrUser">Email or username</label>
-                    <input id="username" name="username" type="text" autocomplete="username" required>
+            <div class="auth-box">
+                <div class="login-brand">
+                    <img src="img/LogoRPG.jpg" alt="Empire of Rebirth &amp; Ruins">
+                    <h1 data-i18n="welcomeBack">Welcome back</h1>
+                    <p class="login-desc" data-i18n="loginDesc">Sign in to continue your journey in Empire of Rebirth &amp; Ruins.</p>
                 </div>
 
-                  <div class="form-group">
-                    <label for="password" data-i18n="password">Password</label>
-                    <div class="password-wrap">
-                        <input id="password" name="password" type="password" autocomplete="current-password" required>
+                <form id="loginForm" class="login-form" action="login.php" method="POST" novalidate>
+                    <div class="form-group">
+                        <label for="username" data-i18n="emailOrUser">Email or username</label>
+                        <input id="username" name="username" type="text" autocomplete="username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" data-i18n="password">Password</label>
+                        <div class="password-wrap">
+                            <input id="password" name="password" type="password" autocomplete="current-password" required>
                             <button type="button" class="toggle-password" aria-label="Show password" data-i18n-aria="showPassword">
-                                <img src="./img/icons/closed-eye.png" alt="Show/Hide password" class="eye-icon">
+                                <img src="img/icons/closed-eye.png" alt="" class="eye-icon">
                             </button>
-                    </div>  
-                </div>
-                <div class="form-row">
-                    <label class="checkbox">
-                        <input type="checkbox" id="rememberMe" name="rememberMe"> <span data-i18n="rememberMe">Remember me</span>
-                    </label>
-                    <a class="small-link" href="contato.html" data-i18n="forgotPassword">Forgot password?</a>
-                </div>
- <div class="form-actions">
-                    <button class="btn btn-download" type="submit" data-i18n="signIn">Sign in</button>
-                    <a class="btn btn-login" href="index.html" data-i18n="back">Back</a>
-                </div>
+                        </div>
+                    </div>
 
-                <div class="auth-divider">
-                    <span data-i18n="or">or</span>
-                </div>
-                <div class="social-login">  
-                </div>
+                    <div class="form-row">
+                        <label class="checkbox">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span data-i18n="rememberMe">Remember me</span>
+                        </label>
+                        <a class="small-link" href="contato.html" data-i18n="forgotPassword">Forgot password?</a>
+                    </div>
 
-              
-                <div class="social-login">
+                    <button class="btn btn-download auth-submit" type="submit" data-i18n="signIn">Sign in</button>
+
+                    <div class="auth-divider"><span data-i18n="or">or</span></div>
+
                     <button type="button" class="btn btn-google" onclick="loginWithGoogle()">
-                        <img src="./img/icons/google.png" alt="Google" class="google-icon">
+                        <img src="img/icons/google.png" alt="" class="google-icon">
                         <span data-i18n="continueGoogle">Continue with Google</span>
                     </button>
-                </div>
-                <p class="signup-prompt">
-                    <span data-i18n="noAccount">Don't have an account?</span> <a href="#" id="openSignup" type="button" class="signup-link" data-i18n="createAccount">Create account</a>
-                </p>
-                </form>
 
-    <footer class="site-footer auth-footer">
-        <p>&copy; 2025 <span data-i18n="brandName">Empire of Rebirth & Ruins</span>. <span data-i18n="allRights">All rights reserved.</span></p>
-    </footer>
+                    <p class="signup-prompt">
+                        <span data-i18n="noAccount">Don't have an account?</span>
+                        <a href="#" id="openSignup" class="signup-link" data-i18n="createAccount">Create account</a>
+                    </p>
+                </form>
+            </div>
+
+            <footer class="auth-footer">
+                <p>&copy; <span class="auth-year">2026</span> <span data-i18n="brandName">Empire of Rebirth &amp; Ruins</span>. <span data-i18n="allRights">All rights reserved.</span></p>
+            </footer>
+        </section>
+    </main>
 
     <!-- Modal de cadastro -->
     <div id="signupModal" class="modal-overlay" hidden aria-hidden="true">
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
             <button class="modal-close" id="closeSignup" data-i18n-aria="closeModal" aria-label="Close">×</button>
-            <h3 id="signupTitle" data-i18n="createAccountTitle">Create account</h3>
+            <h2 id="signupTitle" data-i18n="createAccountTitle">Create account</h2>
             <form id="signupForm" class="signup-form" novalidate>
                 <div class="form-group">
-                   <label for="fullName" data-i18n="fullName">Full name</label>
-                    <input id="fullName" name="fullName" type="text" required>
+                    <label for="fullName" data-i18n="fullName">Full name</label>
+                    <input id="fullName" name="fullName" type="text" autocomplete="name" required>
                     <div class="form-error" data-for="fullName"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="signupEmail" data-i18n="email">Email</label>
-                    <input id="signupEmail" name="email" type="email" required>
+                    <input id="signupEmail" name="email" type="email" autocomplete="email" required>
                     <div class="form-error" data-for="signupEmail"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="phone" data-i18n="phone">Phone number</label>
-                    <input id="phone" name="phone" type="tel" placeholder="+55 11 9xxxx-xxxx">
+                    <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+55 11 9xxxx-xxxx">
                     <div class="form-error" data-for="phone"></div>
                 </div>
 
-                <div class="form-row dob-row">
-                    <div>
+                <div class="dob-row">
+                    <div class="form-group">
                         <label for="birthDay" data-i18n="day">Day</label>
                         <input id="birthDay" name="day" type="number" min="1" max="31" required>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="birthMonth" data-i18n="month">Month</label>
                         <input id="birthMonth" name="month" type="number" min="1" max="12" required>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="birthYear" data-i18n="year">Year</label>
-                        <input id="birthYear" name="year" type="number" min="1900" max="2025" required>
+                        <input id="birthYear" name="year" type="number" min="1900" max="2026" required>
                     </div>
                     <div class="form-error" data-for="dob"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="signupPassword" data-i18n="password">Password</label>
-                    <input id="signupPassword" name="password" type="password" minlength="6" required>
+                    <input id="signupPassword" name="password" type="password" minlength="6" autocomplete="new-password" required>
                     <div class="form-error" data-for="signupPassword"></div>
                 </div>
 
                 <div class="form-group">
                     <label class="checkbox">
-                        <input type="checkbox" id="agreeTerms" required> <span data-i18n="agreeTerms">I have read and agree to the</span> <a href="#" target="_blank" data-i18n="privacyTerms">privacy terms</a>
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span><span data-i18n="agreeTerms">I have read and agree to the</span> <a href="#" target="_blank" data-i18n="privacyTerms">privacy terms</a></span>
                     </label>
                     <div class="form-error" data-for="agreeTerms"></div>
                 </div>
@@ -137,10 +148,7 @@
         </div>
     </div>
 
-    </aside>
-    </main>
-<script src="js/langSwitcher.js"></script>
-<script src="js/login.js"></script>
- </body>
+    <script src="js/langSwitcher.js?v=2026112008"></script>
+    <script src="js/login.js?v=2026112008"></script>
+</body>
 </html>
-

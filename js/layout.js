@@ -53,10 +53,11 @@
                 <img src="img/LogoRPG.jpg" alt="Logo Empire of Rebirth & Ruins">
                 <span class="brand-name">Empire of Rebirth <small>&amp; Ruins</small></span>
             </a>
-            <nav class="site-nav" id="site-nav" aria-label="Menu"><ul>${nav}</ul></nav>
+            <nav class="site-nav" id="site-nav" aria-label="Menu"><ul>${nav}<li class="nav-login"><a href="login.html"${currentPage === 'login.html' ? ' aria-current="page"' : ''} data-i18n="login">Login</a></li></ul></nav>
             <div class="header-actions">
                 <button class="lang-switcher" type="button" aria-label="Change page language" title="Change language">🌐</button>
-                <a class="btn btn-download" ${linkAttrs({ href: ITCH_URL, external: true })} data-i18n="download">Download</a>
+                <a class="btn btn-login header-login" href="login.html" data-i18n="login">Login</a>
+                <a class="btn btn-download"${linkAttrs({ href: ITCH_URL, external: true })} data-i18n="download">Download</a>
             </div>
             <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-i18n-aria="openMenu" aria-label="Open menu"><span></span></button>
         </header>`;

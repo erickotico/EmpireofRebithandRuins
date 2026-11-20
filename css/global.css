@@ -197,6 +197,11 @@ a {
     transform: translateX(-50%) rotate(45deg) scale(1);
 }
 
+/* item "Entrar" do menu: só aparece no celular (no resto fica o botão do topo) */
+.site-nav .nav-login {
+    display: none;
+}
+
 .menu-toggle {
     display: none;
     width: 44px;
@@ -477,8 +482,9 @@ a {
         top: var(--header-h);
         left: 0;
         right: 0;
-        background: rgba(12, 11, 10, 0.97);
+        background: var(--bg);
         border-bottom: 1px solid var(--line);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
         display: none;
     }
 
@@ -535,6 +541,15 @@ a {
 
     .site-header .btn-download {
         display: none;
+    }
+
+    /* no celular, "Entrar" sai do topo e vai para dentro do menu ☰ */
+    .site-header .header-login {
+        display: none;
+    }
+
+    .site-nav .nav-login {
+        display: block;
     }
 }
 
