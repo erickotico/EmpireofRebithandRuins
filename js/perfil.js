@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se o banco ainda não tiver a coluna "avatar" (003_avatar.sql não rodado), busca sem ela.
     // Se o banco ainda não tiver alguma coluna nova (scripts 003/004 não rodados), tenta com menos campos.
     const FIELD_SETS = [
+        'id, nickname, bio, avatar, shown_badges, friends_public, created_at',
         'id, nickname, bio, avatar, shown_badges, created_at',
         'id, nickname, bio, avatar, created_at',
         'id, nickname, bio, created_at'
@@ -150,57 +151,160 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // ---------- novos jogadores (só dados públicos) ----------
-    let newPlayers = [];
-    function renderNewPlayers() {
-        const list = $('newPlayers');
-        list.textContent = '';
-        newPlayers.forEach((p) => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = `perfil.html?n=${encodeURIComponent(p.nickname)}`;
-            a.className = 'player-link';
-            const pic = document.createElement('span');
-            pic.className = 'player-pic';
-            if (p.avatar && crests.find(p.avatar)) {
-                pic.innerHTML = crests.avatar(p.avatar);
-            } else {
-                pic.classList.add('is-initial');
-                pic.textContent = p.nickname.charAt(0).toUpperCase();
-            }
-            const name = document.createElement('span');
-            name.className = 'player-name';
-            name.textContent = p.nickname;
-            const since = document.createElement('small');
-            since.textContent = fmtDate(p.created_at, { day: 'numeric', month: 'short' });
-            name.appendChild(since);
-            a.append(pic, name);
-            li.appendChild(a);
-            list.appendChild(li);
-        });
-        if (!newPlayers.length) {
-            const li = document.createElement('li');
-            li.className = 'badge-empty';
-            li.textContent = '—';
-            list.appendChild(li);
-        }
-    }
-    async function loadNewPlayers() {
-        let result = await client.from('profiles').select('nickname, avatar, created_at').order('created_at', { ascending: false }).limit(6);
-        if (result.error?.code === '42703') {
-            result = await client.from('profiles').select('nickname, created_at').order('created_at', { ascending: false }).limit(6);
-        }
-        newPlayers = (result.data || []).filter((p) => p.nickname !== profile.nickname).slice(0, 5);
-        renderNewPlayers();
-    }
-
     render();
     renderBadges();
     show('profileWrap');
-    loadNewPlayers();
-    document.addEventListener('site-language-changed', () => { render(); renderBadges(); renderNewPlayers(); });
+    document.addEventListener('site-language-changed', () => { render(); renderBadges(); renderFriends(); renderFriendAction(); });
+
+    // ---------- amigos (quadro na direita) ----------
+    // Lista privada: o banco devolve só a quantidade para quem não é o dono.
+    let friends = null; // { list, total, isPrivate }
+    let friendsExpanded = false;
+    const mobile = window.matchMedia('(max-width: 760px)');
+    mobile.addEventListener('change', () => renderFriends());
+    // "Ver todos": no seu perfil abre a página Amigos; no de outro jogador, abre a lista aqui mesmo.
+    $('friendsMore').addEventListener('click', () => {
+        if (isOwner) { window.location.href = 'amigos.html'; return; }
+        friendsExpanded = true;
+        renderFriends();
+    });
+    function playerItem(p) {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `perfil.html?n=${encodeURIComponent(p.nickname)}`;
+        a.className = 'player-link';
+        const pic = document.createElement('span');
+        pic.className = 'player-pic';
+        if (p.avatar && crests.find(p.avatar)) {
+            pic.innerHTML = crests.avatar(p.avatar);
+        } else {
+            pic.classList.add('is-initial');
+            pic.textContent = p.nickname.charAt(0).toUpperCase();
+        }
+        const name = document.createElement('span');
+        name.className = 'player-name';
+        name.textContent = p.nickname;
+        a.append(pic, name);
+        li.appendChild(a);
+        return li;
+    }
+    function renderFriends() {
+        if (!friends) return;
+        $('friendsCard').hidden = false;
+        $('friendsTotal').textContent = friends.total ? `(${friends.total})` : '';
+        const list = $('friendList');
+        list.textContent = '';
+        // Poucos amigos no quadro: 6 no computador, 3 no celular. O resto em "Ver todos".
+        const limit = friendsExpanded ? Infinity : (mobile.matches ? 3 : 6);
+        friends.list.slice(0, limit).forEach((p) => list.appendChild(playerItem(p)));
+        const more = $('friendsMore');
+        const hasMore = friends.total > Math.min(limit, friends.list.length) && !friends.isPrivate;
+        more.hidden = !hasMore || (friendsExpanded && !isOwner);
+        more.textContent = `${t('seeAllFriends', 'See all')} (${friends.total})`;
+        const empty = $('friendsEmpty');
+        empty.hidden = friends.list.length > 0;
+        empty.textContent = friends.isPrivate
+            ? t('friendsPrivate', 'This player keeps their friends list private.')
+            : t('noFriendsYet', 'No friends yet.');
+    }
+    async function loadFriends() {
+        const { data, error } = await client.rpc('friends_of', { p_nick: profile.nickname });
+        if (error) return; // banco ainda sem o script 005: o quadro continua escondido
+        const rows = data || [];
+        friends = {
+            total: rows[0]?.total ?? 0,
+            isPrivate: !!rows[0]?.is_private,
+            list: rows.filter((r) => r.nickname)
+        };
+        renderFriends();
+    }
+    loadFriends();
+
+    // ---------- botão de amizade no perfil de outro jogador ----------
+    let friendState = null; // none | sent | received | friends | guest
+    const friendMsg = $('friendMsg');
+    function renderFriendAction() {
+        if (!friendState) return;
+        const main = $('friendMain');
+        const secondary = $('friendSecondary');
+        const labels = {
+            guest: ['addFriend', 'Add friend'],
+            none: ['addFriend', 'Add friend'],
+            sent: ['requestSent', 'Request sent'],
+            received: ['acceptFriend', 'Accept request'],
+            friends: ['friendsCheck', 'Friends ✓']
+        };
+        main.textContent = t(...labels[friendState]);
+        main.className = `btn ${['none', 'guest', 'received'].includes(friendState) ? 'btn-download' : 'btn-login'}`;
+        main.disabled = friendState === 'sent' || friendState === 'friends';
+        const second = { sent: ['cancelRequest', 'Cancel request'], received: ['declineFriend', 'Decline'], friends: ['removeFriend', 'Remove friend'] }[friendState];
+        secondary.hidden = !second;
+        if (second) secondary.textContent = t(...second);
+        $('friendAction').hidden = false;
+    }
+    async function friendCall(fn, args, okKey, okText) {
+        $('friendMain').disabled = true;
+        $('friendSecondary').disabled = true;
+        const { data, error } = await client.rpc(fn, args);
+        $('friendSecondary').disabled = false;
+        if (error) {
+            const [key, fallback] = auth.friendError(error);
+            friendMsg.dataset.kind = 'error';
+            friendMsg.textContent = t(key, fallback);
+            renderFriendAction();
+            return { ok: false };
+        }
+        friendMsg.dataset.kind = 'success';
+        friendMsg.textContent = okKey ? t(okKey, okText) : '';
+        return { ok: true, data };
+    }
+    if (!isOwner) {
+        if (!me) {
+            friendState = 'guest';
+            renderFriendAction();
+        } else {
+            const { data, error } = await client.rpc('friendship_status', { p_nick: profile.nickname });
+            if (!error) {
+                friendState = data || 'none';
+                renderFriendAction();
+            }
+        }
+        $('friendMain').addEventListener('click', async () => {
+            if (friendState === 'guest') { window.location.href = 'login.html'; return; }
+            if (friendState === 'none') {
+                const result = await friendCall('send_friend_request', { p_nick: profile.nickname }, 'friendRequestSent', 'Friend request sent!');
+                if (result.ok) {
+                    // 'accepted' = o outro já tinha te pedido: viraram amigos na hora
+                    friendState = result.data === 'accepted' ? 'friends' : 'sent';
+                    if (friendState === 'friends') {
+                        friendMsg.textContent = t('friendAccepted', 'You are now friends!');
+                        loadFriends();
+                    }
+                }
+            } else if (friendState === 'received') {
+                if ((await friendCall('respond_friend_request', { p_nick: profile.nickname, p_accept: true }, 'friendAccepted', 'You are now friends!')).ok) {
+                    friendState = 'friends';
+                    loadFriends();
+                }
+            }
+            renderFriendAction();
+        });
+        $('friendSecondary').addEventListener('click', async () => {
+            if (friendState === 'friends' && !window.confirm(t('removeFriendConfirm', 'Remove this player from your friends?'))) return;
+            const { ok } = friendState === 'received'
+                ? await friendCall('respond_friend_request', { p_nick: profile.nickname, p_accept: false }, '', '')
+                : await friendCall('remove_friend', { p_nick: profile.nickname }, '', '');
+            if (ok) {
+                const wasFriend = friendState === 'friends';
+                friendState = 'none';
+                if (wasFriend) loadFriends();
+            }
+            renderFriendAction();
+        });
+    }
 
     if (!isOwner) return;
+    $('myFriendsLink').hidden = false;
 
     // ---------- editar perfil (só o dono) ----------
     function setEditing(on, focus = true) {
@@ -331,6 +435,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         setMsg(badgeMsg, 'saved', 'Saved!', 'success');
     });
+
+    // ---------- privacidade: lista de amigos pública ou não ----------
+    const privacyMsg = $('privacyMsg');
+    const friendsPublic = $('friendsPublic');
+    if (typeof profile.friends_public === 'boolean') {
+        friendsPublic.checked = profile.friends_public;
+        friendsPublic.addEventListener('change', async () => {
+            const value = friendsPublic.checked;
+            setMsg(privacyMsg, 'saving', 'Saving...');
+            const { error } = await client.from('profiles').update({ friends_public: value }).eq('id', me.id);
+            if (error) {
+                friendsPublic.checked = !value;
+                setMsg(privacyMsg, 'errGeneric', 'Something went wrong. Please try again.', 'error');
+                return;
+            }
+            profile.friends_public = value;
+            setMsg(privacyMsg, 'saved', 'Saved!', 'success');
+        });
+    } else {
+        friendsPublic.closest('.profile-block').hidden = true; // banco ainda sem o script 005
+    }
 
     // ---------- bio ----------
     const bioForm = $('bioForm');

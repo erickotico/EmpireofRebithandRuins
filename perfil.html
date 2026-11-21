@@ -11,8 +11,8 @@
     <meta name="robots" content="noindex">
     <title data-i18n="profilePageTitle">Player profile</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112010">
-    <link rel="stylesheet" href="css/perfil.css?v=2026112021">
+    <link rel="stylesheet" href="css/global.css?v=2026112022">
+    <link rel="stylesheet" href="css/perfil.css?v=2026112024">
 </head>
 <body>
     <div id="site-header"></div>
@@ -48,6 +48,14 @@
                         <span class="soon-tag" data-i18n="comingSoon">Coming soon</span>
                     </div>
                     <button type="button" class="btn btn-login profile-edit-btn" id="editProfile" hidden data-i18n="editProfile">Edit profile</button>
+                    <a class="btn btn-login profile-edit-btn" id="myFriendsLink" href="amigos.html" hidden data-i18n="myFriends">My friends</a>
+
+                    <!-- Perfil de outro jogador: adicionar / aceitar / desfazer amizade -->
+                    <div class="friend-action" id="friendAction" hidden>
+                        <button type="button" class="btn btn-download" id="friendMain"></button>
+                        <button type="button" class="small-link link-button friend-secondary" id="friendSecondary" hidden></button>
+                        <p class="profile-msg" id="friendMsg" role="status"></p>
+                    </div>
                 </aside>
 
                 <!-- Centro: publicações (o fórum preenche depois) -->
@@ -59,7 +67,7 @@
                     </div>
                 </section>
 
-                <!-- Direita: sobre, insígnias, novos jogadores -->
+                <!-- Direita: sobre, insígnias, amigos -->
                 <aside class="profile-aside">
                     <section class="aside-card">
                         <h2 class="profile-block-title" data-i18n="aboutPlayer">About</h2>
@@ -72,10 +80,13 @@
                         <ul class="badge-list" id="badgeList"></ul>
                     </section>
 
-                    <section class="aside-card">
-                        <h2 class="profile-block-title" data-i18n="newPlayersTitle">New players</h2>
-                        <ul class="player-list" id="newPlayers"></ul>
+                    <section class="aside-card" id="friendsCard" hidden>
+                        <h2 class="profile-block-title"><span data-i18n="friendsTitle">Friends</span> <span class="badge-count" id="friendsTotal"></span></h2>
+                        <ul class="player-list" id="friendList"></ul>
+                        <p class="badge-empty" id="friendsEmpty" hidden></p>
+                        <button type="button" class="friends-more" id="friendsMore" hidden></button>
                     </section>
+
                 </aside>
             </div>
 
@@ -117,6 +128,16 @@
                             <button type="submit" class="btn btn-download" data-i18n="save">Save</button>
                         </div>
                     </form>
+                </section>
+
+                <!-- Privacidade -->
+                <section class="profile-block">
+                    <h2 class="profile-block-title" data-i18n="privacyTitle">Privacy</h2>
+                    <label class="switch-row">
+                        <input type="checkbox" id="friendsPublic">
+                        <span><strong data-i18n="friendsPublicLabel">Show my friends list to everyone</strong><small data-i18n="friendsPublicHint">If off, other players only see how many friends you have.</small></span>
+                    </label>
+                    <p class="profile-msg" id="privacyMsg" role="status"></p>
                 </section>
 
                 <!-- Dados da conta -->
@@ -177,11 +198,11 @@
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112010"></script>
-    <script src="js/langSwitcher.js?v=2026112021"></script>
+    <script src="js/layout.js?v=2026112022"></script>
+    <script src="js/langSwitcher.js?v=2026112024"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
-    <script src="js/auth.js?v=2026112015"></script>
+    <script src="js/auth.js?v=2026112022"></script>
     <script src="js/crests.js?v=2026112017"></script>
-    <script src="js/perfil.js?v=2026112021"></script>
+    <script src="js/perfil.js?v=2026112024"></script>
 </body>
 </html>

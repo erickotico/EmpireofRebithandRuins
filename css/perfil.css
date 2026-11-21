@@ -699,3 +699,74 @@
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
+
+/* ========== AMIZADE NO PERFIL ========== */
+.friend-action {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.friend-action .btn { width: 100%; }
+.friend-action .btn:disabled { cursor: default; opacity: 0.85; }
+
+.friend-secondary {
+    padding: 0;
+    font: inherit;
+    font-size: 0.88rem;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.friend-secondary:hover { color: #e2685a; text-decoration: underline; }
+
+.friend-action .profile-msg { margin: 0; text-align: center; }
+
+#myFriendsLink { margin-top: 10px; }
+
+/* Interruptor da privacidade */
+.switch-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.switch-row input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 3px 0 0;
+    accent-color: var(--accent);
+}
+
+.switch-row span { display: grid; gap: 2px; }
+.switch-row strong { color: var(--title); }
+.switch-row small { font-size: 0.88rem; color: var(--muted); }
+
+/* "Ver todos" no quadro de amigos */
+.friends-more {
+    width: 100%;
+    margin-top: 14px;
+    padding: 9px 12px;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.friends-more:hover {
+    color: var(--accent-bright);
+    background: rgba(var(--accent-rgb), 0.08);
+    border-color: var(--accent);
+}

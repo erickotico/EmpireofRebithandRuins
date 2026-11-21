@@ -445,6 +445,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setError(signupForm, 'signupPassword', 'errWeakPassword', 'This password is too weak. Follow the rule below the field.');
             valid = false;
         }
+        // Senha digitada duas vezes (só no cadastro)
+        if (vals.password !== (signupForm.password2?.value ?? '')) {
+            setError(signupForm, 'signupPassword2', 'passwordMismatch', 'The passwords do not match.');
+            valid = false;
+        }
         if (!vals.agree) {
             setError(signupForm, 'agreeTerms', 'acceptTerms', 'You must accept the terms.');
             valid = false;

@@ -12,7 +12,7 @@
     <title>Login</title>
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112022">
     <link rel="stylesheet" href="css/login.css?v=2026112015">
 </head>
 <body class="auth-page">
@@ -175,6 +175,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="signupPassword2" data-i18n="confirmPassword">Confirm password</label>
+                    <input id="signupPassword2" name="password2" type="password" minlength="8" autocomplete="new-password" required>
+                    <div class="form-error" data-for="signupPassword2"></div>
+                </div>
+
+                <div class="form-group">
                     <label class="checkbox">
                         <input type="checkbox" id="agreeTerms" required>
                         <span><span data-i18n="agreeTerms">I have read and agree to the</span> <a href="privacidade.html" target="_blank" rel="noopener" data-i18n="privacyTerms">privacy terms</a></span>
@@ -193,10 +199,10 @@
         </div>
     </div>
 
-    <script src="js/langSwitcher.js?v=2026112016"></script>
+    <script src="js/langSwitcher.js?v=2026112024"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
-    <script src="js/auth.js?v=2026112015"></script>
-    <script src="js/login.js?v=2026112015"></script>
+    <script src="js/auth.js?v=2026112022"></script>
+    <script src="js/login.js?v=2026112022"></script>
 </body>
 </html>

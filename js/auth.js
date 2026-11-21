@@ -66,7 +66,28 @@
     // Mesmas regras do banco (public.nickname_ok).
     const NICK_RE = /^[A-Za-z0-9_À-ÖØ-öø-ÿĀ-ž-]{3,20}$/;
 
+    // Recusas das funções de amizade (supabase/005_amizades.sql) → [chave de tradução, texto padrão]
+    function friendError(error) {
+        const reason = String(error?.message || '').match(/EOR_[A-Z_]+/)?.[0];
+        const map = {
+            EOR_NOT_FOUND: ['errPlayerNotFound', 'Player not found.'],
+            EOR_SELF: ['errFriendSelf', 'You cannot add yourself.'],
+            EOR_TOO_MANY: ['errFriendTooMany', 'You sent many requests in a short time. Try again in an hour.'],
+            EOR_TOO_MANY_PENDING: ['errFriendTooManyPending', 'You have too many requests waiting for an answer.'],
+            EOR_FRIEND_LIMIT: ['errFriendLimit', 'Friend limit reached (500).'],
+            EOR_ALREADY_FRIENDS: ['errAlreadyFriends', 'You are already friends.'],
+            EOR_ALREADY_SENT: ['errAlreadySent', 'Request already sent.'],
+            EOR_COOLDOWN: ['errFriendCooldown', 'This player declined your request recently. Try again in a few days.'],
+            EOR_BANNED: ['errBanned', 'Your account is suspended.'],
+            EOR_MFA: ['errNeedMfa', 'Confirm your two-step code to continue.']
+        };
+        if (reason && map[reason]) return map[reason];
+        console.warn('[amigos]', error?.code, error?.message);
+        return ['errGeneric', 'Something went wrong. Please try again.'];
+    }
+
     window.EorAuth = {
+        friendError,
         client,
         SUPABASE_URL,
         SUPABASE_KEY,

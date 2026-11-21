@@ -141,7 +141,45 @@
             link.classList.add('is-player');
             if (currentPage === 'perfil.html' && !window.location.search) link.setAttribute('aria-current', 'page');
         });
+        loadFriendAlert();
     }
+
+    // Pedidos de amizade esperando resposta → bolinha com o número no botão do apelido.
+    // Usa a sessão salva para uma consulta simples; se a sessão venceu, só não mostra nada.
+    async function loadFriendAlert() {
+        const SUPABASE_URL = 'https://qjpogjpmxbpuuclpdfhv.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc';
+        let token = null;
+        for (const area of ['localStorage', 'sessionStorage']) {
+            try {
+                const raw = window[area].getItem('sb-qjpogjpmxbpuuclpdfhv-auth-token');
+                const session = raw && JSON.parse(raw);
+                if (session?.access_token && (!session.expires_at || session.expires_at * 1000 > Date.now())) token = session.access_token;
+            } catch { /* armazenamento bloqueado */ }
+            if (token) break;
+        }
+        if (!token) return;
+        try {
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/pending_friend_count`, {
+                method: 'POST',
+                headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: '{}'
+            });
+            if (!res.ok) return;
+            const count = Number(await res.json()) || 0;
+            document.querySelectorAll('.header-login.is-player, .nav-login a.is-player').forEach((link) => {
+                link.querySelector('.friend-alert')?.remove();
+                if (!count) return;
+                const dot = document.createElement('span');
+                dot.className = 'friend-alert';
+                dot.textContent = count > 9 ? '9+' : String(count);
+                dot.title = window.getSiteTranslation ? window.getSiteTranslation('friendRequestsAlert', 'Friend requests') : 'Friend requests';
+                link.appendChild(dot);
+                link.href = 'amigos.html#recebidos';
+            });
+        } catch { /* sem conexão: ignora */ }
+    }
+    window.addEventListener('eor-friends-changed', () => { if (nickname) loadFriendAlert(); });
 
     // Qualquer link da página marcado com data-link="itch" aponta para a página do itch.io.
     document.querySelectorAll('[data-link="itch"]').forEach((link) => {

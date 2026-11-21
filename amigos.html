@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta name="theme-color" content="#0c0b0a">
+    <meta name="robots" content="noindex">
+    <title data-i18n="friendsPageTitle">Friends</title>
+    <link rel="stylesheet" href="css/reset.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112022">
+    <link rel="stylesheet" href="css/perfil.css?v=2026112024">
+    <link rel="stylesheet" href="css/amigos.css?v=2026112023">
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="friends-page">
+        <p class="profile-status" id="friendsStatus" data-i18n="loading">Loading...</p>
+
+        <!-- Sem login -->
+        <section class="profile-empty" id="friendsGuest" hidden>
+            <h1 class="section-title" data-i18n="friendsPageTitle">Friends</h1>
+            <p data-i18n="friendsNeedLogin">Sign in to see your friends.</p>
+            <a class="btn btn-download" href="login.html" data-i18n="login">Login</a>
+        </section>
+
+        <div id="friendsWrap" hidden>
+            <div class="friends-head">
+                <a class="auth-back" href="perfil.html" data-i18n="backToProfile">Back to profile</a>
+                <h1 class="profile-edit-title" data-i18n="friendsPageTitle">Friends</h1>
+            </div>
+
+            <!-- Adicionar pelo apelido -->
+            <form class="friend-add" id="friendAddForm" novalidate>
+                <label for="friendNick" class="sr-only" data-i18n="nickname">Nickname</label>
+                <input id="friendNick" type="text" maxlength="20" autocomplete="off" autocapitalize="none" spellcheck="false">
+                <button type="submit" class="btn btn-download" data-i18n="addFriend">Add friend</button>
+            </form>
+            <p class="profile-msg" id="friendAddMsg" role="status"></p>
+
+            <div class="profile-tabs" role="tablist">
+                <button type="button" role="tab" id="tabFriends" aria-controls="listFriends" aria-selected="true" data-tab="amigos"><span data-i18n="friendsTitle">Friends</span> <span class="tab-count" id="countFriends"></span></button>
+                <button type="button" role="tab" id="tabReceived" aria-controls="listReceived" aria-selected="false" tabindex="-1" data-tab="recebidos"><span data-i18n="requestsReceived">Received</span> <span class="tab-count is-alert" id="countReceived"></span></button>
+                <button type="button" role="tab" id="tabSent" aria-controls="listSent" aria-selected="false" tabindex="-1" data-tab="enviados"><span data-i18n="requestsSent">Sent</span> <span class="tab-count" id="countSent"></span></button>
+            </div>
+
+            <section class="friends-panel" id="listFriends" role="tabpanel" aria-labelledby="tabFriends"></section>
+            <section class="friends-panel" id="listReceived" role="tabpanel" aria-labelledby="tabReceived" hidden></section>
+            <section class="friends-panel" id="listSent" role="tabpanel" aria-labelledby="tabSent" hidden></section>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/layout.js?v=2026112022"></script>
+    <script src="js/langSwitcher.js?v=2026112024"></script>
+    <script src="js/vendor/supabase.js?v=2.118.0"></script>
+    <script src="js/auth.js?v=2026112022"></script>
+    <script src="js/crests.js?v=2026112017"></script>
+    <script src="js/amigos.js?v=2026112022"></script>
+</body>
+</html>
