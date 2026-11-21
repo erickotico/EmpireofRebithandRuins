@@ -49,8 +49,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // ---------- listas ----------
     let rows = [];
+    let blocks = [];
     async function load() {
-        const { data, error } = await client.rpc('my_friendships');
+        const [{ data, error }, blockResult] = await Promise.all([client.rpc('my_friendships'), client.rpc('my_blocks')]);
+        blocks = blockResult.error ? [] : (blockResult.data || []);
         if (error) {
             const [key, fallback] = auth.friendError(error);
             status.textContent = t(key, fallback);
@@ -81,6 +83,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         b.textContent = t(key, fallback);
         b.addEventListener('click', onClick);
         return b;
+    }
+
+    function link(key, fallback, className, href) {
+        const a = document.createElement('a');
+        a.className = className;
+        a.href = href;
+        a.textContent = t(key, fallback);
+        return a;
     }
 
     function row(p, actions) {
@@ -136,8 +146,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         $('countFriends').textContent = friendsList.length || '';
         $('countReceived').textContent = received.length || '';
         $('countSent').textContent = sent.length || '';
+        $('countBlocked').textContent = blocks.length || '';
+        fill('listBlocked', blocks, 'noBlocked', 'You have not blocked anyone.', (p) => [
+            button('unblockPlayer', 'Unblock player', 'small-link link-button friend-remove', (e) => act('unblock_player', { p_nick: p.nickname }, e.currentTarget))
+        ]);
 
         fill('listFriends', friendsList, 'noFriendsYetOwn', 'You have no friends yet. Visit a player\'s profile and click "Add friend".', (p) => [
+            link('sendMessage', 'Send message', 'btn btn-login', `mensagens.html?com=${encodeURIComponent(p.nickname)}`),
             button('removeFriend', 'Remove friend', 'small-link link-button friend-remove', (e) => {
                 if (window.confirm(t('removeFriendConfirm', 'Remove this player from your friends?'))) act('remove_friend', { p_nick: p.nickname }, e.currentTarget);
             })
@@ -153,7 +168,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!(await load())) return;
     show('friendsWrap');
-    const startTab = ['amigos', 'recebidos', 'enviados'].includes(window.location.hash.slice(1))
+    const startTab = ['amigos', 'recebidos', 'enviados', 'bloqueados'].includes(window.location.hash.slice(1))
         ? window.location.hash.slice(1)
         : (rows.some((r) => r.kind === 'received') ? 'recebidos' : 'amigos');
     selectTab(startTab);

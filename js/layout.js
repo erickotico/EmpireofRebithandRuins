@@ -141,32 +141,84 @@
             link.classList.add('is-player');
             if (currentPage === 'perfil.html' && !window.location.search) link.setAttribute('aria-current', 'page');
         });
+        addMessagesLinks();
         loadFriendAlert();
+        loadMessageAlert();
     }
 
-    // Pedidos de amizade esperando resposta → bolinha com o número no botão do apelido.
-    // Usa a sessão salva para uma consulta simples; se a sessão venceu, só não mostra nada.
-    async function loadFriendAlert() {
-        const SUPABASE_URL = 'https://qjpogjpmxbpuuclpdfhv.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc';
-        let token = null;
+    // Envelope de mensagens: no topo (computador) e dentro do menu ☰ (celular).
+    function addMessagesLinks() {
+        const label = window.getSiteTranslation ? window.getSiteTranslation('messagesPageTitle', 'Messages') : 'Messages';
+        const login = document.querySelector('.header-login');
+        if (login && !document.querySelector('.header-messages')) {
+            const a = document.createElement('a');
+            a.className = 'header-messages';
+            a.href = 'mensagens.html';
+            a.setAttribute('aria-label', label);
+            a.title = label;
+            a.setAttribute('data-i18n-aria', 'messagesPageTitle');
+            a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6 H21 V18 H3 Z M3 6 L12 13 L21 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+            if (currentPage === 'mensagens.html') a.setAttribute('aria-current', 'page');
+            login.before(a);
+        }
+        const navLogin = document.querySelector('.site-nav .nav-login');
+        if (navLogin && !document.querySelector('.nav-messages')) {
+            const li = document.createElement('li');
+            li.className = 'nav-messages';
+            li.innerHTML = '<a href="mensagens.html" data-i18n="messagesPageTitle"></a>';
+            li.querySelector('a').textContent = label;
+            navLogin.before(li);
+        }
+    }
+
+    // Sessão salva no navegador → token para consultas simples (se venceu, não mostra nada).
+    const SUPABASE_URL = 'https://qjpogjpmxbpuuclpdfhv.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc';
+    function sessionToken() {
         for (const area of ['localStorage', 'sessionStorage']) {
             try {
                 const raw = window[area].getItem('sb-qjpogjpmxbpuuclpdfhv-auth-token');
                 const session = raw && JSON.parse(raw);
-                if (session?.access_token && (!session.expires_at || session.expires_at * 1000 > Date.now())) token = session.access_token;
+                if (session?.access_token && (!session.expires_at || session.expires_at * 1000 > Date.now())) return session.access_token;
             } catch { /* armazenamento bloqueado */ }
-            if (token) break;
         }
-        if (!token) return;
+        return null;
+    }
+    async function countFrom(fn) {
+        const token = sessionToken();
+        if (!token) return null;
         try {
-            const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/pending_friend_count`, {
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${fn}`, {
                 method: 'POST',
                 headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
                 body: '{}'
             });
-            if (!res.ok) return;
-            const count = Number(await res.json()) || 0;
+            return res.ok ? Number(await res.json()) || 0 : null;
+        } catch {
+            return null;
+        }
+    }
+
+    // Mensagens não lidas → número no envelope e no item "Mensagens" do menu
+    async function loadMessageAlert() {
+        const count = await countFrom('unread_message_count');
+        if (count === null) return;
+        document.querySelectorAll('.header-messages, .nav-messages a').forEach((link) => {
+            link.querySelector('.friend-alert')?.remove();
+            if (!count) return;
+            const dot = document.createElement('span');
+            dot.className = 'friend-alert';
+            dot.textContent = count > 9 ? '9+' : String(count);
+            link.appendChild(dot);
+        });
+    }
+    window.addEventListener('eor-messages-changed', () => { if (nickname) loadMessageAlert(); });
+
+    // Pedidos de amizade esperando resposta → bolinha com o número no botão do apelido.
+    async function loadFriendAlert() {
+        {
+            const count = await countFrom('pending_friend_count');
+            if (count === null) return;
             document.querySelectorAll('.header-login.is-player, .nav-login a.is-player').forEach((link) => {
                 link.querySelector('.friend-alert')?.remove();
                 if (!count) return;
@@ -177,7 +229,7 @@
                 link.appendChild(dot);
                 link.href = 'amigos.html#recebidos';
             });
-        } catch { /* sem conexão: ignora */ }
+        }
     }
     window.addEventListener('eor-friends-changed', () => { if (nickname) loadFriendAlert(); });
 

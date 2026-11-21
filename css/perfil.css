@@ -770,3 +770,6 @@
     background: rgba(var(--accent-rgb), 0.08);
     border-color: var(--accent);
 }
+
+#friendMessage { width: 100%; }
+.friend-block { font-size: 0.82rem; }

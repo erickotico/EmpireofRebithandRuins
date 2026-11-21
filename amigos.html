@@ -11,9 +11,9 @@
     <meta name="robots" content="noindex">
     <title data-i18n="friendsPageTitle">Friends</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112022">
-    <link rel="stylesheet" href="css/perfil.css?v=2026112024">
-    <link rel="stylesheet" href="css/amigos.css?v=2026112023">
+    <link rel="stylesheet" href="css/global.css?v=2026112025">
+    <link rel="stylesheet" href="css/perfil.css?v=2026112025">
+    <link rel="stylesheet" href="css/amigos.css?v=2026112025">
 </head>
 <body>
     <div id="site-header"></div>
@@ -46,21 +46,23 @@
                 <button type="button" role="tab" id="tabFriends" aria-controls="listFriends" aria-selected="true" data-tab="amigos"><span data-i18n="friendsTitle">Friends</span> <span class="tab-count" id="countFriends"></span></button>
                 <button type="button" role="tab" id="tabReceived" aria-controls="listReceived" aria-selected="false" tabindex="-1" data-tab="recebidos"><span data-i18n="requestsReceived">Received</span> <span class="tab-count is-alert" id="countReceived"></span></button>
                 <button type="button" role="tab" id="tabSent" aria-controls="listSent" aria-selected="false" tabindex="-1" data-tab="enviados"><span data-i18n="requestsSent">Sent</span> <span class="tab-count" id="countSent"></span></button>
+                <button type="button" role="tab" id="tabBlocked" aria-controls="listBlocked" aria-selected="false" tabindex="-1" data-tab="bloqueados"><span data-i18n="blockedTab">Blocked</span> <span class="tab-count" id="countBlocked"></span></button>
             </div>
 
             <section class="friends-panel" id="listFriends" role="tabpanel" aria-labelledby="tabFriends"></section>
             <section class="friends-panel" id="listReceived" role="tabpanel" aria-labelledby="tabReceived" hidden></section>
             <section class="friends-panel" id="listSent" role="tabpanel" aria-labelledby="tabSent" hidden></section>
+            <section class="friends-panel" id="listBlocked" role="tabpanel" aria-labelledby="tabBlocked" hidden></section>
         </div>
     </main>
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112022"></script>
-    <script src="js/langSwitcher.js?v=2026112024"></script>
+    <script src="js/layout.js?v=2026112025"></script>
+    <script src="js/langSwitcher.js?v=2026112025"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
-    <script src="js/auth.js?v=2026112022"></script>
+    <script src="js/auth.js?v=2026112025"></script>
     <script src="js/crests.js?v=2026112017"></script>
-    <script src="js/amigos.js?v=2026112022"></script>
+    <script src="js/amigos.js?v=2026112025"></script>
 </body>
 </html>

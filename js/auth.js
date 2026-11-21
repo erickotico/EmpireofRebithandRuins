@@ -79,7 +79,8 @@
             EOR_ALREADY_SENT: ['errAlreadySent', 'Request already sent.'],
             EOR_COOLDOWN: ['errFriendCooldown', 'This player declined your request recently. Try again in a few days.'],
             EOR_BANNED: ['errBanned', 'Your account is suspended.'],
-            EOR_MFA: ['errNeedMfa', 'Confirm your two-step code to continue.']
+            EOR_MFA: ['errNeedMfa', 'Confirm your two-step code to continue.'],
+            EOR_BLOCKED: ['errBlocked', 'You cannot interact with this player.']
         };
         if (reason && map[reason]) return map[reason];
         console.warn('[amigos]', error?.code, error?.message);

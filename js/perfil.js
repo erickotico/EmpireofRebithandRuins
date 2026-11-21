@@ -223,9 +223,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ---------- botão de amizade no perfil de outro jogador ----------
     let friendState = null; // none | sent | received | friends | guest
     const friendMsg = $('friendMsg');
+    let iBlocked = false;
     function renderFriendAction() {
         if (!friendState) return;
         const main = $('friendMain');
+        const block = $('blockToggle');
+        // Bloqueado por mim: só aparece "Desbloquear"
+        block.hidden = friendState === 'guest';
+        block.textContent = iBlocked ? t('unblockPlayer', 'Unblock player') : t('blockPlayer', 'Block player');
+        main.hidden = iBlocked;
+        $('friendMessage').hidden = iBlocked || friendState !== 'friends';
+        $('friendMessage').href = `mensagens.html?com=${encodeURIComponent(profile.nickname)}`;
+        if (iBlocked) {
+            $('friendSecondary').hidden = true;
+            $('friendAction').hidden = false;
+            return;
+        }
         const secondary = $('friendSecondary');
         const labels = {
             guest: ['addFriend', 'Add friend'],
@@ -263,12 +276,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             friendState = 'guest';
             renderFriendAction();
         } else {
-            const { data, error } = await client.rpc('friendship_status', { p_nick: profile.nickname });
+            const [{ data, error }, blocked] = await Promise.all([
+                client.rpc('friendship_status', { p_nick: profile.nickname }),
+                client.rpc('i_blocked', { p_nick: profile.nickname })
+            ]);
             if (!error) {
+                iBlocked = blocked.error ? false : !!blocked.data;
                 friendState = data || 'none';
                 renderFriendAction();
             }
         }
+        $('blockToggle').addEventListener('click', async () => {
+            if (!iBlocked && !window.confirm(t('blockConfirm', 'Block this player? You will stop being friends and neither of you will be able to send messages or friend requests to the other.'))) return;
+            const fn = iBlocked ? 'unblock_player' : 'block_player';
+            const result = await friendCall(fn, { p_nick: profile.nickname }, iBlocked ? 'playerUnblocked' : 'playerBlocked', iBlocked ? 'Player unblocked.' : 'Player blocked.');
+            if (!result.ok) return;
+            if (!iBlocked) {
+                const wasFriend = friendState === 'friends';
+                friendState = 'none';
+                if (wasFriend) loadFriends();
+            }
+            iBlocked = !iBlocked;
+            renderFriendAction();
+            window.dispatchEvent(new Event('eor-friends-changed'));
+        });
         $('friendMain').addEventListener('click', async () => {
             if (friendState === 'guest') { window.location.href = 'login.html'; return; }
             if (friendState === 'none') {
