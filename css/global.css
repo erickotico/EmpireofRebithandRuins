@@ -677,3 +677,6 @@ a {
     .site-header .header-messages { display: none; }
     .site-nav .nav-messages { display: block; }
 }
+
+/* No menu ☰ o apelido ocupa a linha inteira (como os outros itens) */
+.site-nav .nav-login a.is-player { max-width: none; }

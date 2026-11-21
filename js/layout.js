@@ -37,6 +37,7 @@
         }
     ];
 
+    const ASSET_V = '2026112030';
     const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
     function linkAttrs(link) {
@@ -142,8 +143,9 @@
             if (currentPage === 'perfil.html' && !window.location.search) link.setAttribute('aria-current', 'page');
         });
         addMessagesLinks();
-        loadFriendAlert();
-        loadMessageAlert();
+        addBell();
+        loadAlerts();
+        loadChat();
     }
 
     // Envelope de mensagens: no topo (computador) e dentro do menu ☰ (celular).
@@ -169,6 +171,54 @@
             li.querySelector('a').textContent = label;
             navLogin.before(li);
         }
+        // No menu ☰ do celular: o próprio perfil primeiro, depois Mensagens
+        const navList = navLogin?.parentElement;
+        if (navList) navList.prepend(navLogin, document.querySelector('.nav-messages') || '');
+    }
+
+    // Sino de notificações ao lado do apelido (computador e celular).
+    // A lista que abre ao clicar é montada pelo js/chat.js.
+    function addBell() {
+        const actions = document.querySelector('.header-actions');
+        if (!actions || document.querySelector('.header-bell')) return;
+        const label = window.getSiteTranslation ? window.getSiteTranslation('notifications', 'Notifications') : 'Notifications';
+        const wrap = document.createElement('div');
+        wrap.className = 'header-bell-wrap';
+        wrap.innerHTML = '<button type="button" class="header-bell" aria-haspopup="true" aria-expanded="false" data-i18n-aria="notifications"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 17 V11 A6 6 0 0 1 18 11 V17 L20 19 H4 Z M10 21 H14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></button>';
+        const bell = wrap.querySelector('button');
+        bell.setAttribute('aria-label', label);
+        bell.title = label;
+        const login = actions.querySelector('.header-login');
+        if (login) login.before(wrap); else actions.prepend(wrap);
+    }
+
+    // Janela de mensagens + lista do sino: carrega o Supabase só para quem está logado,
+    // depois que os scripts da própria página já rodaram (para não carregar duas vezes).
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = src;
+            s.onload = resolve;
+            s.onerror = reject;
+            document.body.appendChild(s);
+        });
+    }
+    function loadChat() {
+        if (window.location.protocol === 'file:') return;
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = `css/chat.css?v=${ASSET_V}`;
+        document.head.appendChild(css);
+        const start = async () => {
+            try {
+                if (!window.supabase?.createClient) await loadScript('js/vendor/supabase.js?v=2.118.0');
+                if (!window.EorAuth) await loadScript(`js/auth.js?v=${ASSET_V}`);
+                if (!window.SiteCrests) await loadScript('js/crests.js?v=2026112017');
+                await loadScript(`js/chat.js?v=${ASSET_V}`);
+            } catch { /* sem internet: o site continua funcionando sem a janela */ }
+        };
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+        else start();
     }
 
     // Sessão salva no navegador → token para consultas simples (se venceu, não mostra nada).
@@ -199,39 +249,30 @@
         }
     }
 
-    // Mensagens não lidas → número no envelope e no item "Mensagens" do menu
-    async function loadMessageAlert() {
-        const count = await countFrom('unread_message_count');
-        if (count === null) return;
-        document.querySelectorAll('.header-messages, .nav-messages a').forEach((link) => {
-            link.querySelector('.friend-alert')?.remove();
-            if (!count) return;
-            const dot = document.createElement('span');
-            dot.className = 'friend-alert';
-            dot.textContent = count > 9 ? '9+' : String(count);
-            link.appendChild(dot);
-        });
+    // Números nos ícones do topo:
+    //   envelope / "Mensagens" do menu → mensagens não lidas
+    //   sino → mensagens não lidas + pedidos de amizade esperando resposta
+    function setDot(link, count) {
+        link.querySelector('.friend-alert')?.remove();
+        if (!count) return;
+        const dot = document.createElement('span');
+        dot.className = 'friend-alert';
+        dot.textContent = count > 9 ? '9+' : String(count);
+        link.appendChild(dot);
     }
-    window.addEventListener('eor-messages-changed', () => { if (nickname) loadMessageAlert(); });
-
-    // Pedidos de amizade esperando resposta → bolinha com o número no botão do apelido.
-    async function loadFriendAlert() {
-        {
-            const count = await countFrom('pending_friend_count');
-            if (count === null) return;
-            document.querySelectorAll('.header-login.is-player, .nav-login a.is-player').forEach((link) => {
-                link.querySelector('.friend-alert')?.remove();
-                if (!count) return;
-                const dot = document.createElement('span');
-                dot.className = 'friend-alert';
-                dot.textContent = count > 9 ? '9+' : String(count);
-                dot.title = window.getSiteTranslation ? window.getSiteTranslation('friendRequestsAlert', 'Friend requests') : 'Friend requests';
-                link.appendChild(dot);
-                link.href = 'amigos.html#recebidos';
-            });
+    async function loadAlerts() {
+        const [messages, friends] = await Promise.all([countFrom('unread_message_count'), countFrom('pending_friend_count')]);
+        if (messages !== null) document.querySelectorAll('.header-messages, .nav-messages a').forEach((link) => setDot(link, messages));
+        if (messages !== null || friends !== null) {
+            const bell = document.querySelector('.header-bell');
+            if (bell) setDot(bell, (messages || 0) + (friends || 0));
         }
     }
-    window.addEventListener('eor-friends-changed', () => { if (nickname) loadFriendAlert(); });
+    window.addEventListener('eor-messages-changed', () => { if (nickname) loadAlerts(); });
+    window.addEventListener('eor-friends-changed', () => { if (nickname) loadAlerts(); });
+    document.addEventListener('visibilitychange', () => { if (nickname && document.visibilityState === 'visible') loadAlerts(); });
+    // Pedidos de amizade não chegam na hora: confere de novo a cada minuto com a aba aberta
+    setInterval(() => { if (nickname && document.visibilityState === 'visible') loadAlerts(); }, 60000);
 
     // Qualquer link da página marcado com data-link="itch" aponta para a página do itch.io.
     document.querySelectorAll('[data-link="itch"]').forEach((link) => {

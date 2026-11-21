@@ -11,14 +11,13 @@
     <meta name="robots" content="noindex">
     <title data-i18n="messagesPageTitle">Messages</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112025">
+    <link rel="stylesheet" href="css/global.css?v=2026112030">
     <link rel="stylesheet" href="css/perfil.css?v=2026112025">
-    <link rel="stylesheet" href="css/mensagens.css?v=2026112025">
 </head>
-<body class="messages-body">
+<body>
     <div id="site-header"></div>
 
-    <main class="messages-page">
+    <main class="profile-page">
         <p class="profile-status" id="msgStatus" data-i18n="loading">Loading...</p>
 
         <!-- Sem login -->
@@ -27,73 +26,12 @@
             <p data-i18n="messagesNeedLogin">Sign in to see your messages.</p>
             <a class="btn btn-download" href="login.html" data-i18n="login">Login</a>
         </section>
-
-        <div class="messages-layout" id="msgWrap" hidden>
-            <!-- Lista de conversas -->
-            <aside class="conv-panel" id="convPanel">
-                <div class="conv-head">
-                    <h1 class="conv-title" data-i18n="messagesPageTitle">Messages</h1>
-                    <button type="button" class="btn btn-download conv-new" id="newChat" data-i18n="newMessage">New message</button>
-                </div>
-
-                <!-- Escolher amigo para nova conversa -->
-                <div class="conv-picker" id="friendPicker" hidden>
-                    <p class="conv-picker-title" data-i18n="chooseFriend">Choose a friend</p>
-                    <ul class="conv-list" id="pickerList"></ul>
-                </div>
-
-                <ul class="conv-list" id="convList"></ul>
-                <p class="conv-empty" id="convEmpty" hidden data-i18n="noConversations">No conversations yet. Click "New message" to talk to a friend.</p>
-            </aside>
-
-            <!-- Conversa aberta -->
-            <section class="chat-panel" id="chatPanel">
-                <div class="chat-placeholder" id="chatPlaceholder">
-                    <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 10 H40 V32 H20 L12 39 V32 H8 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-                    <p data-i18n="pickConversation">Choose a conversation to start.</p>
-                </div>
-
-                <div class="chat" id="chat" hidden>
-                    <header class="chat-head">
-                        <button type="button" class="chat-back" id="chatBack" data-i18n-aria="backToConversations" aria-label="Back">←</button>
-                        <a class="chat-who" id="chatWho" href="#">
-                            <span class="player-pic" id="chatPic"></span>
-                            <span class="chat-name" id="chatName"></span>
-                        </a>
-                        <div class="chat-menu">
-                            <button type="button" class="chat-menu-btn" id="chatMenuBtn" aria-haspopup="true" aria-expanded="false" data-i18n-aria="moreOptions" aria-label="More options">⋯</button>
-                            <div class="chat-menu-list" id="chatMenu" hidden>
-                                <a id="chatProfileLink" href="#" data-i18n="viewProfile">View profile</a>
-                                <button type="button" id="chatBlock" data-i18n="blockPlayer">Block player</button>
-                            </div>
-                        </div>
-                    </header>
-
-                    <div class="chat-scroll" id="chatScroll">
-                        <button type="button" class="chat-older" id="chatOlder" hidden data-i18n="loadOlder">Load older messages</button>
-                        <ol class="chat-messages" id="chatMessages" aria-live="polite"></ol>
-                    </div>
-
-                    <p class="chat-notice" id="chatNotice" hidden></p>
-
-                    <form class="chat-compose" id="chatForm" novalidate>
-                        <label for="chatInput" class="sr-only" data-i18n="typeMessage">Type a message</label>
-                        <textarea id="chatInput" rows="1" maxlength="1000"></textarea>
-                        <button type="submit" class="btn btn-download chat-send" data-i18n="send">Send</button>
-                    </form>
-                    <p class="chat-error" id="chatError" role="alert"></p>
-                </div>
-            </section>
-        </div>
     </main>
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112025"></script>
-    <script src="js/langSwitcher.js?v=2026112025"></script>
-    <script src="js/vendor/supabase.js?v=2.118.0"></script>
-    <script src="js/auth.js?v=2026112025"></script>
-    <script src="js/crests.js?v=2026112017"></script>
-    <script src="js/mensagens.js?v=2026112025"></script>
+    <script src="js/layout.js?v=2026112030"></script>
+    <script src="js/langSwitcher.js?v=2026112030"></script>
+    <script src="js/mensagens.js?v=2026112030"></script>
 </body>
 </html>
