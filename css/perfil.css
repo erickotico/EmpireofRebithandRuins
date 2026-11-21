@@ -3,7 +3,7 @@
    ===================================================================== */
 
 .profile-page {
-    width: min(760px, 100% - 32px);
+    width: min(var(--max, 1200px), 100% - 32px);
     margin: 0 auto;
     padding: clamp(40px, 6vw, 72px) 0 96px;
     min-height: 60vh;
@@ -24,41 +24,69 @@
 
 .profile-empty p { margin: 0; }
 
-/* ========== CARTÃO ========== */
-.profile-card {
-    background:
-        radial-gradient(90% 60% at 50% 0%, rgba(var(--accent-rgb), 0.08), transparent 70%),
-        var(--surface);
-    border: 1px solid var(--line-strong);
+/* ========== LAYOUT EM 3 COLUNAS ========== */
+/* esquerda: quem é · centro: publicações · direita: sobre, insígnias, novos jogadores */
+.profile-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr) 300px;
+    gap: 24px;
+    align-items: start;
+}
+
+.profile-side,
+.profile-main,
+.aside-card,
+.profile-edit > .profile-block {
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: var(--radius);
-    box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--line), 0 24px 60px rgba(0, 0, 0, 0.5);
 }
 
-.profile-head {
+/* ----- Esquerda ----- */
+/* --avatar = cor do brasão escolhido (dourado se for a inicial) */
+.profile-hero {
+    --avatar: var(--accent);
+    position: sticky;
+    top: calc(var(--header-h, 76px) + 20px);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: clamp(18px, 4vw, 32px);
-    padding: clamp(24px, 5vw, 40px);
-    border-bottom: 1px solid var(--line);
+    padding: 32px 22px 24px;
+    text-align: center;
+    background:
+        radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--avatar) 22%, transparent), transparent 70%),
+        var(--surface);
+    border-top: 3px solid var(--avatar);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
 }
 
-/* Selo dourado com a inicial (vira a foto/personagem no futuro) */
-.profile-seal {
-    flex-shrink: 0;
-    width: clamp(76px, 14vw, 104px);
-    aspect-ratio: 1;
+.profile-avatar {
     display: grid;
     place-items: center;
-    background:
-        radial-gradient(circle at 50% 35%, #2a2116, var(--bg) 70%);
+    width: 128px;
+    margin-bottom: 18px;
+}
+
+.profile-avatar .profile-crest {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    filter: drop-shadow(0 8px 22px color-mix(in srgb, var(--avatar) 35%, transparent));
+}
+
+/* Sem brasão: selo dourado com a inicial */
+.profile-avatar.is-initial {
+    width: 112px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle at 50% 35%, #2a2116, var(--bg) 70%);
     border: 1px solid var(--accent);
     border-radius: 50%;
     box-shadow: 0 0 0 5px var(--surface), 0 0 0 6px var(--line-strong), 0 0 34px rgba(var(--accent-rgb), 0.25);
 }
 
-.profile-seal span {
+.profile-avatar.is-initial span {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1;
     background: linear-gradient(180deg, #fff3d6, var(--accent-bright) 45%, var(--accent) 75%, var(--accent-deep));
@@ -69,13 +97,315 @@
 
 .profile-name {
     margin: 0;
-    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    font-size: 1.8rem;
     overflow-wrap: anywhere;
 }
 
 .profile-since {
-    margin: 8px 0 0;
+    margin: 6px 0 0;
+    font-size: 0.92rem;
     color: var(--muted);
+}
+
+.profile-character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.profile-character-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.profile-edit-btn {
+    width: 100%;
+    margin-top: 22px;
+}
+
+/* ----- Centro ----- */
+.profile-main {
+    min-height: 420px;
+    padding: 24px clamp(20px, 3vw, 32px);
+}
+
+.profile-column-title {
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--line);
+}
+
+.feed-empty {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    padding: 70px 20px;
+    text-align: center;
+    color: var(--muted);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+}
+
+.feed-empty svg {
+    width: 44px;
+    height: 44px;
+    color: var(--accent-deep);
+}
+
+.feed-empty p { margin: 0; font-size: 1.02rem; }
+
+/* ----- Direita ----- */
+.profile-aside {
+    display: grid;
+    gap: 16px;
+}
+
+.aside-card { padding: 20px 22px; }
+
+.aside-card .profile-bio { font-size: 1.02rem; }
+
+.badge-list,
+.player-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: rgba(var(--accent-rgb), 0.06);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+}
+
+.badge svg {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    fill: var(--accent-bright);
+    background: radial-gradient(circle, #2a2116, var(--bg));
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+}
+
+.badge span { display: grid; gap: 2px; }
+.badge strong { font-size: 0.95rem; color: var(--title); }
+.badge small { font-size: 0.82rem; color: var(--muted); }
+
+.badge-empty { font-size: 0.92rem; color: var(--muted); }
+
+.player-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px;
+    margin: -6px;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: var(--radius);
+}
+
+.player-link:hover { background: rgba(var(--accent-rgb), 0.08); }
+.player-link:hover .player-name { color: var(--accent-bright); }
+
+.player-pic {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 40px;
+}
+
+.player-pic .crest { width: 34px; height: 40px; margin: 0; }
+
+.player-pic.is-initial {
+    width: 34px;
+    height: 34px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--accent-bright);
+    background: var(--bg);
+    border: 1px solid var(--accent-deep);
+    border-radius: 50%;
+}
+
+.player-name {
+    display: grid;
+    min-width: 0;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.player-name small {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+/* Personagem: em breve */
+.soon-tag {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 14px;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px dashed var(--line-strong);
+    border-radius: 999px;
+}
+
+/* ========== EDITAR PERFIL ========== */
+.profile-edit {
+    max-width: 820px;
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+}
+
+.profile-edit-head {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.auth-back {
+    justify-self: start;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.auth-back::before { content: '← '; }
+.auth-back:hover { color: var(--accent-bright); }
+
+.profile-edit-title {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+/* ========== FOTO DO PERFIL (BRASÕES) ========== */
+.avatar-group-title {
+    margin: 18px 0 10px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+}
+
+.avatar-group-title:first-of-type { margin-top: 0; }
+
+.avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 10px;
+}
+
+.avatar-option {
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 12px 6px 10px;
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.avatar-option .crest {
+    width: 46px;
+    height: 55px;
+    margin: 0;
+}
+
+.avatar-name {
+    font-size: 0.82rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.avatar-option:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+}
+
+.avatar-option[aria-checked="true"] {
+    background: rgba(var(--accent-rgb), 0.1);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.avatar-option:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.avatar-clear {
+    margin-top: 14px;
+    padding: 0;
+    font: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 0.92rem;
+}
+
+.avatar-clear:hover { color: var(--accent-bright); text-decoration: underline; }
+
+.profile-msg {
+    margin: 10px 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.profile-msg:empty { display: none; }
+.profile-msg[data-kind="error"] { color: #e2685a; }
+.profile-msg[data-kind="success"] { color: var(--verdant); }
+
+/* Escudo do brasão (mesmo desenho da página inicial) */
+.crest-shield {
+    fill: #120f0c;
+    stroke: var(--crest);
+    stroke-width: 2;
+}
+
+.crest-inner {
+    fill: none;
+    stroke: var(--crest);
+    stroke-opacity: 0.35;
+    stroke-width: 1;
 }
 
 /* ========== BLOCOS ========== */
@@ -199,12 +529,30 @@
     margin-bottom: 12px;
 }
 
-@media (max-width: 520px) {
-    .profile-head {
-        flex-direction: column;
-        text-align: center;
+/* ========== RESPONSIVO ========== */
+/* Tela média: Sobre/Insígnias/Novos jogadores vão para baixo do cartão (coluna da esquerda),
+   e as publicações ocupam a direita inteira (podem ser muitas). */
+@media (max-width: 1100px) {
+    .profile-layout {
+        grid-template-columns: 280px minmax(0, 1fr);
+        grid-template-areas: "hero main" "aside main";
     }
+    .profile-hero { grid-area: hero; position: static; }
+    .profile-aside { grid-area: aside; }
+    .profile-main { grid-area: main; }
+}
 
+/* Celular: cartão → sobre/insígnias/novos jogadores → publicações por último */
+@media (max-width: 760px) {
+    .profile-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: "hero" "aside" "main";
+    }
+    .profile-main { min-height: 0; }
+    .feed-empty { padding: 44px 20px; }
+}
+
+@media (max-width: 520px) {
     .bio-row { flex-wrap: wrap; }
     .bio-row .btn { width: 100%; }
 }
@@ -306,3 +654,48 @@
 .mfa-msg { margin-top: 14px; }
 .mfa-msg[data-kind="error"] { color: #e2685a; }
 .mfa-msg[data-kind="success"] { color: var(--verdant); }
+
+/* ========== ESCOLHER INSÍGNIAS EM DESTAQUE ========== */
+.badge-count {
+    margin-left: 6px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0;
+    color: var(--muted);
+}
+
+.badge-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+}
+
+.badge-choice {
+    cursor: pointer;
+    background: var(--bg);
+    border-color: var(--line);
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.badge-choice input {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--accent);
+}
+
+.badge-choice:has(input:checked) {
+    background: rgba(var(--accent-rgb), 0.08);
+    border-color: var(--accent);
+}
+
+.badge-choice:has(input:disabled) {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.badge-choice:has(input:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}

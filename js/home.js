@@ -23,26 +23,10 @@
     }
 
     // ---------- Brasões dos reinos ----------
-    // Cor e símbolo de cada reino. Reino novo sem brasão aqui usa o padrão (estrela).
-    const CRESTS = {
-        thalor: { color: '#a9b8c9', icon: '<path d="M32 6 L39 20 L34.5 20 L34.5 56 L29.5 56 L29.5 20 L25 20 Z" fill="currentColor"/><path d="M22 26 H42" />' },
-        aurelis: { color: '#d9b452', icon: '<path d="M32 10 V40"/><path d="M33 13 L48 36 H33 Z" fill="currentColor" stroke="none"/><path d="M12 42 H52 L45 52 H19 Z" fill="currentColor" stroke="none"/>' },
-        sylvanor: { color: '#7fae62', icon: '<circle cx="32" cy="24" r="14"/><path d="M32 56 V30 M32 40 L22 30 M32 35 L42 25"/>' },
-        dracoria: { color: '#e0612b', icon: '<path d="M32 6 C41 19 49 26 45 40 C43 50 37 55 32 57 C27 55 21 50 19 40 C17 30 25 25 27 17 C29 23 33 25 34 30 C38 24 35 15 32 6 Z" fill="currentColor" stroke="none"/>' },
-        ventharis: { color: '#79b9c6', icon: '<path d="M12 52 L52 12 M52 12 L41 14 M52 12 L50 23 M16 48 L10 42 M16 48 L22 54"/><path d="M18 22 Q28 16 36 22 M12 32 Q22 26 30 32"/>' },
-        malakar: { color: '#c0392b', icon: '<path d="M20 28 C11 20 13 10 19 6 C19 14 22 20 27 23 M44 28 C53 20 51 10 45 6 C45 14 42 20 37 23"/><path d="M21 28 Q32 16 43 28 V42 L38 47 H26 L21 42 Z" fill="currentColor" stroke="none"/><path d="M26 33 L30 36 M38 33 L34 36" stroke="#0c0b0a" stroke-width="3"/>' }
-    };
-    const DEFAULT_CREST = { color: '#d9a441', icon: '<path d="M32 10 L38 26 L54 26 L41 36 L46 52 L32 42 L18 52 L23 36 L10 26 L26 26 Z" fill="currentColor" stroke="none"/>' };
-
-    function crest(id) {
-        const { color, icon } = CRESTS[id] || DEFAULT_CREST;
-        return `
-            <svg class="crest" viewBox="0 0 80 96" style="--crest:${color}" aria-hidden="true" focusable="false">
-                <path class="crest-shield" d="M8 6 H72 V44 C72 70 54 84 40 92 C26 84 8 70 8 44 Z"/>
-                <path class="crest-inner" d="M14 12 H66 V44 C66 66 51 78 40 85 C29 78 14 66 14 44 Z"/>
-                <g transform="translate(8 12)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:${color}">${icon}</g>
-            </svg>`;
-    }
+    // Desenhos e cores ficam em js/crests.js (compartilhado com o perfil).
+    const crests = window.SiteCrests;
+    const crestColor = (id) => (crests.KINGDOMS[id] || crests.DEFAULT).color;
+    const crest = (id) => crests.kingdom(id);
 
     // ---------- Cards ----------
     const grid = document.querySelector('.kingdom-grid');
@@ -54,7 +38,7 @@
             ? [t('legendaryHero', 'Legendary hero'), txt(kingdom.hero)]
             : [t('ruler', 'Ruler'), txt(kingdom.ruler)];
         return `
-            <a class="kingdom-card${kingdom.enemy ? ' is-enemy' : ''}" href="guia.html#reino-${encodeURIComponent(kingdom.id)}" style="--crest:${(CRESTS[kingdom.id] || DEFAULT_CREST).color}">
+            <a class="kingdom-card${kingdom.enemy ? ' is-enemy' : ''}" href="guia.html#reino-${encodeURIComponent(kingdom.id)}" style="--crest:${crestColor(kingdom.id)}">
                 ${kingdom.enemy ? `<span class="kingdom-tag">${esc(t('enemyKingdom', 'Enemy kingdom'))}</span>` : ''}
                 ${crest(kingdom.id)}
                 <h3>${esc(txt(kingdom.name))}</h3>
