@@ -7,6 +7,7 @@
 
     const NAV = [
         { href: 'index.html', key: 'home', label: 'Home' },
+        { href: 'comunidade.html', key: 'community', label: 'Community' },
         { href: 'bestiario.html', key: 'bestiary', label: 'Bestiary' },
         { href: 'classes.html', key: 'classes', label: 'Classes' },
         { href: 'guia.html', key: 'guide', label: 'Guide' },
@@ -37,7 +38,7 @@
         }
     ];
 
-    const ASSET_V = '2026112030';
+    const ASSET_V = '2026112040';
     const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
     function linkAttrs(link) {
@@ -261,11 +262,14 @@
         link.appendChild(dot);
     }
     async function loadAlerts() {
-        const [messages, friends] = await Promise.all([countFrom('unread_message_count'), countFrom('pending_friend_count')]);
+        const [messages, friends, notes, reports] = await Promise.all([
+            countFrom('unread_message_count'), countFrom('pending_friend_count'),
+            countFrom('unread_notification_count'), countFrom('admin_open_report_count')
+        ]);
         if (messages !== null) document.querySelectorAll('.header-messages, .nav-messages a').forEach((link) => setDot(link, messages));
         if (messages !== null || friends !== null) {
             const bell = document.querySelector('.header-bell');
-            if (bell) setDot(bell, (messages || 0) + (friends || 0));
+            if (bell) setDot(bell, (messages || 0) + (friends || 0) + (notes || 0) + (reports || 0));
         }
     }
     window.addEventListener('eor-messages-changed', () => { if (nickname) loadAlerts(); });

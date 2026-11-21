@@ -6,7 +6,7 @@ const fs = require('node:fs');
 
 const root = path.join(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const sitePages = ['index.html', 'bestiario.html', 'classes.html', 'guia.html', 'updates.html', 'sobre.html', 'perfil.html', 'privacidade.html', 'amigos.html', 'mensagens.html'];
+const sitePages = ['index.html', 'bestiario.html', 'classes.html', 'guia.html', 'updates.html', 'sobre.html', 'perfil.html', 'privacidade.html', 'amigos.html', 'mensagens.html', 'comunidade.html', 'moderacao.html'];
 
 test('as páginas usam o header e o footer de js/layout.js, carregado antes do langSwitcher', () => {
   sitePages.forEach((page) => {

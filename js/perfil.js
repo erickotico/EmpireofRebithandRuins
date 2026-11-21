@@ -75,6 +75,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const isOwner = !!me && me.id === profile.id;
 
+    // ---------- publicações (centro) ----------
+    if (window.EorFeed) {
+        const posts = window.EorFeed.list($('profilePosts'), {
+            author: profile.nickname,
+            emptyText: t('noPostsYet', 'No posts yet')
+        });
+        if (isOwner) window.EorFeed.composer($('profileComposer'), (id) => posts.prepend(id));
+        document.addEventListener('site-language-changed', () => posts.reload());
+    }
+
     // ---------- cabeçalho e aba Perfil ----------
     function renderAvatar() {
         const box = $('profileAvatar');

@@ -577,3 +577,8 @@
 
     .bell-panel { position: fixed; right: 16px; left: 16px; top: calc(var(--header-h, 64px) + 6px); width: auto; }
 }
+
+/* Curtidas e comentários no sino */
+.bell-item.is-new { background: rgba(var(--accent-rgb), 0.06); }
+.bell-when { color: var(--muted); opacity: 0.8; font-size: 0.75rem !important; }
+.bell-mod { color: #e2685a; }

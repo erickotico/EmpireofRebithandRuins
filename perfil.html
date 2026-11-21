@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://qjpogjpmxbpuuclpdfhv.supabase.co; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -11,8 +11,9 @@
     <meta name="robots" content="noindex">
     <title data-i18n="profilePageTitle">Player profile</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112030">
-    <link rel="stylesheet" href="css/perfil.css?v=2026112025">
+    <link rel="stylesheet" href="css/global.css?v=2026112040">
+    <link rel="stylesheet" href="css/perfil.css?v=2026112040">
+    <link rel="stylesheet" href="css/comunidade.css?v=2026112040">
 </head>
 <body>
     <div id="site-header"></div>
@@ -63,10 +64,8 @@
                 <!-- Centro: publicações (o fórum preenche depois) -->
                 <section class="profile-main">
                     <h2 class="profile-column-title" data-i18n="postsTitle">Posts</h2>
-                    <div class="feed-empty">
-                        <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M10 8 H34 L40 14 V40 H10 Z M34 8 V14 H40 M16 22 H34 M16 28 H34 M16 34 H27" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-                        <p data-i18n="noPostsYet">No posts yet</p>
-                    </div>
+                    <div id="profileComposer"></div>
+                    <div id="profilePosts"></div>
                 </section>
 
                 <!-- Direita: sobre, insígnias, amigos -->
@@ -200,11 +199,12 @@
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112030"></script>
-    <script src="js/langSwitcher.js?v=2026112030"></script>
+    <script src="js/layout.js?v=2026112040"></script>
+    <script src="js/langSwitcher.js?v=2026112040"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
-    <script src="js/auth.js?v=2026112030"></script>
+    <script src="js/auth.js?v=2026112040"></script>
     <script src="js/crests.js?v=2026112017"></script>
-    <script src="js/perfil.js?v=2026112025"></script>
+    <script src="js/feed.js?v=2026112040"></script>
+    <script src="js/perfil.js?v=2026112040"></script>
 </body>
 </html>

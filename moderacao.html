@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://qjpogjpmxbpuuclpdfhv.supabase.co; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <meta name="theme-color" content="#0c0b0a">
+    <title data-i18n="reportsPanel">Reports panel</title>
+    <link rel="stylesheet" href="css/reset.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112040">
+    <link rel="stylesheet" href="css/comunidade.css?v=2026112040">
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Só funciona para admin com 2FA: quem decide é o banco (is_admin), não esta página. -->
+    <main class="community-page">
+        <p class="post-status" id="modStatus" data-i18n="loading">Loading...</p>
+
+        <section id="modDenied" hidden>
+            <h1 class="community-title" data-i18n="pageNotFound">Page not found</h1>
+            <a class="btn btn-login" href="index.html" data-i18n="home">Home</a>
+        </section>
+
+        <section id="modWrap" hidden>
+            <header class="community-head">
+                <h1 class="community-title" data-i18n="reportsPanel">Reports panel</h1>
+                <p class="community-sub" data-i18n="reportsPanelSub">Open reports from messages, posts and comments. Oldest first.</p>
+            </header>
+            <div class="post-list" id="modList"></div>
+            <p class="post-empty" id="modEmpty" hidden data-i18n="noReports">No open reports. All clear!</p>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/layout.js?v=2026112040"></script>
+    <script src="js/langSwitcher.js?v=2026112040"></script>
+    <script src="js/vendor/supabase.js?v=2.118.0"></script>
+    <script src="js/auth.js?v=2026112040"></script>
+    <script src="js/moderacao.js?v=2026112040"></script>
+</body>
+</html>

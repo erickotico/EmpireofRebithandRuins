@@ -529,7 +529,11 @@
         bell?.setAttribute('aria-expanded', String(open));
     }
     async function renderBell() {
-        const [{ data: rows }] = await Promise.all([client.rpc('my_friendships'), loadConversations()]);
+        const [{ data: rows }, , { data: notes }, { data: reports }] = await Promise.all([
+            client.rpc('my_friendships'), loadConversations(),
+            client.rpc('my_notifications', { p_limit: 15 }), client.rpc('admin_open_report_count')
+        ]);
+        const activity = notes || [];
         const requests = (rows || []).filter((r) => r.kind === 'received');
         const unread = conversations.filter((c) => c.unread);
         bellPanel.textContent = '';
@@ -599,7 +603,34 @@
             list.appendChild(li);
         });
 
-        if (!requests.length && !unread.length) {
+        // Curtidas e comentários nas suas publicações
+        activity.forEach((n) => {
+            const li = document.createElement('li');
+            li.className = `bell-item${n.unread ? ' is-new' : ''}`;
+            const a = document.createElement('a');
+            a.className = 'bell-who';
+            a.href = `comunidade.html?post=${n.post_id}`;
+            const text = document.createElement('span');
+            const name = document.createElement('strong');
+            name.textContent = n.nickname;
+            const what = n.kind === 'like'
+                ? t('bellLiked', 'liked your post.')
+                : t('bellCommented', 'commented on your post:');
+            const preview = document.createElement('small');
+            preview.textContent = n.snippet || '';
+            const when = document.createElement('small');
+            when.className = 'bell-when';
+            when.textContent = new Date(n.created_at).toLocaleString(lang(), { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+            text.append(name, ` ${what}`, preview, when);
+            a.append(picFor(n), text);
+            li.appendChild(a);
+            list.appendChild(li);
+        });
+        if (activity.some((n) => n.unread)) {
+            client.rpc('mark_notifications_read').then(() => notifyHeader());
+        }
+
+        if (!requests.length && !unread.length && !activity.length) {
             const li = document.createElement('li');
             li.className = 'bell-empty';
             li.textContent = t('noNotifications', 'No new notifications.');
@@ -610,6 +641,19 @@
         more.href = 'amigos.html';
         more.textContent = t('myFriends', 'My friends');
         bellPanel.appendChild(more);
+        // Só aparece para o admin (o banco confere o cargo e o 2FA)
+        if (reports !== null && reports !== undefined && (await isAdmin())) {
+            const mod = document.createElement('a');
+            mod.className = 'bell-more bell-mod';
+            mod.href = 'moderacao.html';
+            mod.textContent = t('reportsPanel', 'Reports panel') + (reports ? ` (${reports})` : '');
+            bellPanel.appendChild(mod);
+        }
+    }
+    let adminCheck = null;
+    function isAdmin() {
+        if (!adminCheck) adminCheck = client.rpc('is_admin').then(({ data }) => !!data);
+        return adminCheck;
     }
     bell?.addEventListener('click', async () => {
         if (!bellPanel.hidden) { setBell(false); return; }
