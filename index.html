@@ -22,8 +22,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <title>Empire of Rebirth & Ruins</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112040">
-    <link rel="stylesheet" href="css/index.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112070">
+    <link rel="stylesheet" href="css/index.css?v=2026112050">
 </head>
 <body>
     <div id="site-header"></div>
@@ -117,6 +117,25 @@
             </div>
         </section>
 
+        <!-- Da comunidade (preenchido por js/home-community.js; some se não houver publicações) -->
+        <section class="home-community" id="homeCommunity" hidden>
+            <div class="container">
+                <h2 class="section-title" data-i18n="fromCommunity">From the community</h2>
+                <div class="hc-grid">
+                    <div class="hc-col">
+                        <h3 class="hc-title" data-i18n="latestSocial">Latest on Social</h3>
+                        <ul class="hc-list" id="hcLatest"></ul>
+                        <a class="btn btn-download" href="social.html" data-i18n="goToSocialBtn">Go to Social</a>
+                    </div>
+                    <div class="hc-col">
+                        <h3 class="hc-title" data-i18n="openQuestions">Questions waiting for help in the Tavern</h3>
+                        <ul class="hc-list" id="hcOpen"></ul>
+                        <a class="btn btn-login" href="taverna.html?filtro=sem-solucao" data-i18n="helpAPlayer">Help a player</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="updates">
             <div class="container">
                 <h2 class="section-title" data-i18n="latestUpdates">Latest Updates</h2>
@@ -128,9 +147,10 @@
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112040"></script>
-    <script src="js/langSwitcher.js?v=2026112040"></script>
+    <script src="js/layout.js?v=2026112070"></script>
+    <script src="js/langSwitcher.js?v=2026112070"></script>
     <script src="js/crests.js?v=2026112017"></script>
     <script src="js/home.js?v=2026112017"></script>
+    <script src="js/home-community.js?v=2026112060"></script>
 </body>
 </html>

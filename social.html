@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://qjpogjpmxbpuuclpdfhv.supabase.co; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta name="theme-color" content="#0c0b0a">
+    <title data-i18n="socialPageTitle">Social</title>
+    <meta name="description" content="Empire of Rebirth &amp; Ruins social feed: moments, screenshots and news from players.">
+    <link rel="stylesheet" href="css/reset.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112070">
+    <link rel="stylesheet" href="css/comunidade.css?v=2026112070">
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="community-page" data-area="social">
+        <header class="community-head" id="communityHead">
+            <h1 class="community-title" data-i18n="socialPageTitle">Social</h1>
+            <p class="community-sub" data-i18n="socialSubtitle">Show your moments in the game, screenshots and news.</p>
+            <a class="community-cross" href="taverna.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4 H19 L17 12 H7 Z M12 12 V18 M8 20 H16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span data-i18n="goToTavern">Have a question? Ask in the Tavern</span></a>
+        </header>
+
+        <!-- Link direto para uma publicação -->
+        <a class="community-back" id="communityBack" href="social.html" hidden data-i18n="backToSocial">Back to Social</a>
+
+        <div id="composer"></div>
+
+        <form class="feed-search" id="feedSearch" role="search" novalidate>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16 L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <label for="searchInput" class="sr-only" data-i18n="searchLabel">Search posts and players</label>
+            <input type="search" id="searchInput" maxlength="60" autocomplete="off" enterkeyhint="search">
+            <button type="button" class="feed-search-clear" id="searchClear" hidden data-i18n-aria="clearSearch" aria-label="Clear search">×</button>
+        </form>
+
+        <!-- Resultado da busca: jogadores encontrados -->
+        <section class="search-players" id="searchPlayers" hidden aria-live="polite">
+            <h2 class="search-title" data-i18n="searchPlayersTitle">Players</h2>
+            <ul id="searchPlayerList"></ul>
+        </section>
+        <p class="search-summary" id="searchSummary" hidden></p>
+
+        <div class="feed-filters" id="feedFilters" role="tablist" data-i18n-aria="postTag" aria-label="Topic"></div>
+
+        <section id="feed" aria-live="polite"></section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/layout.js?v=2026112070"></script>
+    <script src="js/langSwitcher.js?v=2026112070"></script>
+    <script src="js/vendor/supabase.js?v=2.118.0"></script>
+    <script src="js/auth.js?v=2026112060"></script>
+    <script src="js/crests.js?v=2026112017"></script>
+    <script src="js/feed.js?v=2026112070"></script>
+    <script src="js/area.js?v=2026112070"></script>
+</body>
+</html>

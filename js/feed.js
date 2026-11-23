@@ -1,4 +1,4 @@
-// Publicações da comunidade (usado em comunidade.html e no centro do perfil).
+// Publicações da comunidade (usado em social.html, taverna.html e no centro do perfil).
 // Regras ficam no banco (supabase/008_comunidade.sql). Tudo que vem do banco entra como TEXTO.
 //   EorFeed.ready()                    → { me, isAdmin } (uma vez por página)
 //   EorFeed.list(elemento, opções)     → lista com "carregar mais"
@@ -94,7 +94,10 @@
         return time;
     }
     const profileUrl = (nick) => `perfil.html?n=${encodeURIComponent(nick)}`;
-    const postUrl = (id) => `comunidade.html?post=${id}`;
+    // Social (geral, arte, anúncio) e Taverna (pergunta, dica) ficam em páginas separadas
+    const AREAS = { social: ['geral', 'arte', 'anuncio'], taverna: ['pergunta', 'dica'] };
+    const areaOf = (tag) => (AREAS.taverna.includes(tag) ? 'taverna' : 'social');
+    const postUrl = (id, tag) => `${areaOf(tag)}.html?post=${id}`;
 
     // Menu ⋯ simples
     function menu(items) {
@@ -181,21 +184,135 @@
         return form;
     }
 
+    // ---------- @menções ----------
+    const MENTION_RE = /@([A-Za-z0-9_À-ÖØ-öø-ÿĀ-ž-]{3,20})/g;
+
+    // Texto com @apelido virando link para o perfil (sempre como texto, nunca HTML)
+    function richText(el, text) {
+        el.textContent = '';
+        let last = 0;
+        for (const m of String(text || '').matchAll(MENTION_RE)) {
+            if (m.index > last) el.appendChild(document.createTextNode(text.slice(last, m.index)));
+            const a = node('a', 'mention', m[0]);
+            a.href = profileUrl(m[1]);
+            el.appendChild(a);
+            last = m.index + m[0].length;
+        }
+        if (last < String(text || '').length) el.appendChild(document.createTextNode(text.slice(last)));
+        return el;
+    }
+
+    // Ao digitar "@ab" aparece a lista de jogadores para escolher
+    function attachMentions(area) {
+        const wrap = node('div', 'mention-wrap');
+        area.replaceWith(wrap);
+        wrap.appendChild(area);
+        const box = node('ul', 'mention-list');
+        box.hidden = true;
+        box.setAttribute('role', 'listbox');
+        wrap.appendChild(box);
+        let items = [];
+        let active = 0;
+        let timer = null;
+        let token = null;
+
+        const close = () => { box.hidden = true; items = []; token = null; };
+        function pick(i) {
+            const p = items[i];
+            if (!p || !token) return;
+            const before = area.value.slice(0, token.start);
+            const after = area.value.slice(area.selectionStart);
+            const insert = `@${p.nickname} `;
+            area.value = before + insert + after;
+            const pos = before.length + insert.length;
+            area.setSelectionRange(pos, pos);
+            area.dispatchEvent(new Event('input'));
+            close();
+            area.focus();
+        }
+        function paint() {
+            box.textContent = '';
+            items.forEach((p, i) => {
+                const li = node('li', i === active ? 'is-active' : '');
+                li.setAttribute('role', 'option');
+                li.setAttribute('aria-selected', String(i === active));
+                li.append(picFor(p), node('span', '', p.nickname));
+                li.addEventListener('mousedown', (e) => { e.preventDefault(); pick(i); });
+                box.appendChild(li);
+            });
+            box.hidden = !items.length;
+        }
+        area.addEventListener('input', () => {
+            const upto = area.value.slice(0, area.selectionStart);
+            const m = upto.match(/(^|\s)@([A-Za-z0-9_À-ÖØ-öø-ÿĀ-ž-]{2,20})$/);
+            clearTimeout(timer);
+            if (!m) { close(); return; }
+            token = { start: upto.length - m[2].length - 1, q: m[2] };
+            timer = setTimeout(async () => {
+                const q = token?.q;
+                if (!q) return;
+                const { data } = await client.rpc('search_players', { p_query: q, p_limit: 5 });
+                if (token?.q !== q) return;
+                items = data || [];
+                active = 0;
+                paint();
+            }, 250);
+        });
+        // registrado antes do "Enter envia", para escolher da lista sem enviar
+        area.addEventListener('keydown', (e) => {
+            if (box.hidden || !items.length) return;
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                active = (active + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length;
+                paint();
+            } else if (e.key === 'Enter' || e.key === 'Tab') {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                pick(active);
+            } else if (e.key === 'Escape') {
+                e.stopPropagation();
+                close();
+            }
+        });
+        area.addEventListener('blur', () => setTimeout(close, 150));
+        return area;
+    }
+
     // ---------- comentários ----------
-    function comment(c, viewer, post, onRemoved) {
-        const li = node('li', 'comment');
+    // ctx = { viewer, post, onRemoved(qtd), onBest(), onReply(comentário) }
+    function comment(c, ctx) {
+        const { viewer, post } = ctx;
+        const el = node('div', `comment${c.parent_id ? ' is-reply' : ''}`);
+        if (c.is_best) el.classList.add('is-best');
         const pic = node('a', 'comment-pic');
         pic.href = profileUrl(c.nickname);
         pic.appendChild(picFor(c));
+        const main = node('div', 'comment-main');
         const box = node('div', 'comment-box');
         const head = node('div', 'comment-head');
         const name = node('a', 'comment-name', c.nickname);
         name.href = profileUrl(c.nickname);
         head.append(name, timeEl(c.created_at, c.edited_at));
-        const body = node('p', 'comment-body', c.body);
+        const body = richText(node('p', 'comment-body'), c.body);
+        if (c.is_best) box.appendChild(node('span', 'best-label', `✓ ${t('bestAnswer', 'Best answer')}`));
         box.append(head, body);
+        main.appendChild(box);
+
+        if (viewer.me && !viewer.needMfa && ctx.onReply) {
+            const reply = node('button', 'comment-reply', t('reply', 'Reply'));
+            reply.type = 'button';
+            reply.addEventListener('click', () => ctx.onReply(c));
+            main.appendChild(reply);
+        }
 
         const items = [];
+        if (c.can_mark_best && ctx.onBest) {
+            items.push([c.is_best ? t('unmarkBest', 'Unmark best answer') : t('markBest', 'Mark as best answer'), async () => {
+                const { error } = await client.rpc('set_best_answer', { p_post: post.id, p_comment: c.is_best ? null : c.id });
+                if (error) { window.alert(errorText(error)); return; }
+                ctx.onBest();
+            }]);
+        }
         if (c.mine) {
             items.push([t('edit', 'Edit'), () => {
                 const editor = inlineEditor(c.body, 1000, async (text) => {
@@ -204,7 +321,7 @@
                     if (error) { window.alert(errorText(error)); return false; }
                     c.body = text;
                     c.edited_at = new Date().toISOString();
-                    li.replaceWith(comment(c, viewer, post, onRemoved));
+                    el.replaceWith(comment(c, ctx));
                     return true;
                 }, () => { editor.replaceWith(body); });
                 body.replaceWith(editor);
@@ -215,19 +332,61 @@
                 if (!window.confirm(t('deleteCommentConfirm', 'Delete this comment?'))) return;
                 const { error } = await client.rpc('delete_comment', { p_id: c.id });
                 if (error) { window.alert(errorText(error)); return; }
-                li.remove();
-                onRemoved();
+                // comentário principal leva as respostas junto
+                const thread = el.closest('.comment-thread');
+                if (!c.parent_id && thread) {
+                    const removed = 1 + thread.querySelectorAll('.comment.is-reply').length;
+                    thread.remove();
+                    ctx.onRemoved(removed);
+                } else {
+                    el.closest('li')?.remove();
+                    ctx.onRemoved(1);
+                }
             }, true]);
         }
         if (viewer.me && !c.mine) {
             items.push([t('report', 'Report'), () => report({ p_comment: c.id })]);
         }
-        li.append(pic, box);
-        if (items.length) li.appendChild(menu(items));
-        return li;
+        el.append(pic, main);
+        if (items.length) el.appendChild(menu(items));
+        return el;
     }
 
-    function commentsSection(post, viewer, countEl) {
+    // Caixa de escrever um comentário ou uma resposta
+    function commentForm(viewer, placeholderKey, placeholderText, onSend) {
+        const form = node('form', 'comment-form');
+        const area = node('textarea');
+        area.rows = 1;
+        area.maxLength = 1000;
+        area.placeholder = t(placeholderKey, placeholderText);
+        area.setAttribute('aria-label', area.placeholder);
+        const send = node('button', 'post-btn is-main', t('send', 'Send'));
+        send.type = 'submit';
+        const err = node('p', 'post-error');
+        const grow = () => { area.style.height = 'auto'; area.style.height = `${Math.min(area.scrollHeight, 140)}px`; };
+        form.append(area, send);
+        attachMentions(area);
+        area.addEventListener('input', () => { grow(); err.textContent = ''; });
+        area.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit(); }
+        });
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = area.value.trim();
+            if (!text || send.disabled) return;
+            send.disabled = true;
+            const error = await onSend(text);
+            send.disabled = false;
+            if (error) { err.textContent = errorText(error); return; }
+            area.value = '';
+            grow();
+        });
+        const wrap = node('div', 'comment-form-wrap');
+        wrap.append(form, err);
+        return { wrap, area };
+    }
+
+    function commentsSection(post, viewer, countEl, onBest) {
         const section = node('div', 'post-comments');
         const older = node('button', 'comments-older', t('loadOlderComments', 'See earlier comments'));
         older.type = 'button';
@@ -236,51 +395,94 @@
         section.append(older, list);
         let oldest = null;
         const setCount = () => { countEl.textContent = post.comment_count ? String(post.comment_count) : ''; };
+        const me = () => viewer.profile || { nickname: viewer.me?.user_metadata?.nickname || '?', avatar: null };
+
+        const ctx = {
+            viewer,
+            post,
+            onBest,
+            onRemoved(n) { post.comment_count = Math.max(0, post.comment_count - n); setCount(); },
+            onReply: null
+        };
+
+        // Uma conversa: comentário principal + respostas + caixa de resposta (aberta ao clicar "Responder")
+        function thread(c, replies) {
+            const li = node('li', 'comment-thread');
+            li.dataset.id = c.id;
+            const replyList = node('ol', 'reply-list');
+            replies.forEach((r) => {
+                const item = node('li');
+                item.appendChild(comment(r, ctx));
+                replyList.appendChild(item);
+            });
+            li.append(comment(c, ctx), replyList);
+            return li;
+        }
+
+        ctx.onReply = (target) => {
+            const topId = target.parent_id || target.id;
+            const li = list.querySelector(`.comment-thread[data-id="${topId}"]`);
+            if (!li) return;
+            let box = li.querySelector(':scope > .comment-form-wrap');
+            if (!box) {
+                const made = commentForm(viewer, 'writeReply', 'Write a reply...', async (text) => {
+                    const { data, error } = await client.rpc('add_comment', { p_post: post.id, p_body: text, p_parent: target.id });
+                    if (error) return error;
+                    const row = Array.isArray(data) ? data[0] : data;
+                    const item = node('li');
+                    item.appendChild(comment({
+                        id: row.id, parent_id: row.parent_id || topId, nickname: me().nickname, avatar: me().avatar, body: text,
+                        created_at: row.created_at, mine: true, can_delete: true, can_mark_best: post.mine && post.tag === 'pergunta'
+                    }, ctx));
+                    li.querySelector(':scope > .reply-list').appendChild(item);
+                    post.comment_count += 1;
+                    setCount();
+                    return null;
+                });
+                box = made.wrap;
+                box.classList.add('is-reply-form');
+                li.appendChild(box);
+            }
+            const area = box.querySelector('textarea');
+            // marca quem está sendo respondido (se não for você)
+            const mention = `@${target.nickname} `;
+            if (target.nickname !== me().nickname && !area.value.includes(mention.trim())) area.value = mention + area.value;
+            area.focus();
+            area.setSelectionRange(area.value.length, area.value.length);
+            area.dispatchEvent(new Event('input'));
+        };
 
         async function load(before) {
             const { data, error } = await client.rpc('post_comments_list', { p_post: post.id, p_before: before, p_limit: 20 });
             if (error) return;
-            const rows = (data || []).slice().reverse();
+            const rows = data || [];
+            const tops = rows.filter((c) => !c.parent_id).sort((a, b) => a.id - b.id);
+            const byParent = new Map();
+            rows.filter((c) => c.parent_id).forEach((r) => {
+                if (!byParent.has(r.parent_id)) byParent.set(r.parent_id, []);
+                byParent.get(r.parent_id).push(r);
+            });
             const first = list.firstChild;
-            rows.forEach((c) => list.insertBefore(comment(c, viewer, post, () => { post.comment_count = Math.max(0, post.comment_count - 1); setCount(); }), first));
-            if (rows.length) oldest = rows[0].id;
-            older.hidden = (data || []).length < 20;
+            tops.forEach((c) => list.insertBefore(thread(c, (byParent.get(c.id) || []).sort((a, b) => a.id - b.id)), first));
+            if (tops.length) oldest = tops[0].id;
+            older.hidden = tops.length < 20;
         }
         older.addEventListener('click', () => load(oldest));
 
         if (viewer.me && !viewer.needMfa) {
-            const form = node('form', 'comment-form');
-            const area = node('textarea');
-            area.rows = 1;
-            area.maxLength = 1000;
-            area.placeholder = t('writeComment', 'Write a comment...');
-            area.setAttribute('aria-label', t('writeComment', 'Write a comment...'));
-            const send = node('button', 'post-btn is-main', t('send', 'Send'));
-            send.type = 'submit';
-            const err = node('p', 'post-error');
-            const grow = () => { area.style.height = 'auto'; area.style.height = `${Math.min(area.scrollHeight, 140)}px`; };
-            area.addEventListener('input', () => { grow(); err.textContent = ''; });
-            area.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit(); }
-            });
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const text = area.value.trim();
-                if (!text || send.disabled) return;
-                send.disabled = true;
+            const made = commentForm(viewer, 'writeComment', 'Write a comment...', async (text) => {
                 const { data, error } = await client.rpc('add_comment', { p_post: post.id, p_body: text });
-                send.disabled = false;
-                if (error) { err.textContent = errorText(error); return; }
+                if (error) return error;
                 const row = Array.isArray(data) ? data[0] : data;
-                const me = viewer.profile || { nickname: viewer.me.user_metadata?.nickname || '?', avatar: null };
-                list.appendChild(comment({ id: row.id, nickname: me.nickname, avatar: me.avatar, body: text, created_at: row.created_at, mine: true, can_delete: true }, viewer, post, () => { post.comment_count = Math.max(0, post.comment_count - 1); setCount(); }));
+                list.appendChild(thread({
+                    id: row.id, parent_id: null, nickname: me().nickname, avatar: me().avatar, body: text, created_at: row.created_at,
+                    mine: true, can_delete: true, can_mark_best: post.mine && post.tag === 'pergunta'
+                }, []));
                 post.comment_count += 1;
                 setCount();
-                area.value = '';
-                grow();
+                return null;
             });
-            form.append(area, send);
-            section.append(form, err);
+            section.appendChild(made.wrap);
         } else if (!viewer.me) {
             const p = node('p', 'comments-login');
             const a = node('a', '', t('login', 'Login'));
@@ -291,6 +493,7 @@
         load(null);
         return section;
     }
+
 
     // ---------- uma publicação ----------
     function card(post, viewer, opts = {}) {
@@ -305,7 +508,7 @@
         const name = node('strong', 'post-name', post.nickname);
         const meta = node('span', 'post-meta');
         const link = node('a', 'post-link');
-        link.href = postUrl(post.id);
+        link.href = postUrl(post.id, post.tag);
         link.appendChild(timeEl(post.created_at, post.edited_at));
         meta.append(link);
         names.append(name);
@@ -319,8 +522,18 @@
             head.appendChild(pin);
         }
         head.appendChild(tagEl);
+        const solved = post.tag === 'pergunta' && !!post.best_comment;
+        if (solved) {
+            article.classList.add('is-solved');
+            head.appendChild(node('span', 'post-tag tag-solved', `✓ ${t('solved', 'Solved')}`));
+        }
+        // Recarrega esta publicação (depois de marcar a melhor resposta)
+        const refresh = async () => {
+            const { data } = await client.rpc('feed', { p_post: post.id });
+            if (data?.[0]) article.replaceWith(card(data[0], viewer, { ...opts, openComments: true }));
+        };
 
-        const body = node('p', 'post-body', post.body);
+        const body = richText(node('p', 'post-body'), post.body);
         body.hidden = !post.body;
 
         const items = [];
@@ -378,6 +591,21 @@
             article.appendChild(fig);
         }
 
+        // Melhor resposta em destaque (perguntas resolvidas)
+        if (solved && post.best_body) {
+            const best = node('div', 'best-answer');
+            const label = node('span', 'best-label', `✓ ${t('bestAnswer', 'Best answer')}`);
+            const who = node('a', 'best-who');
+            who.href = profileUrl(post.best_nickname);
+            who.append(picFor({ nickname: post.best_nickname, avatar: post.best_avatar }), node('strong', '', post.best_nickname));
+            const text = richText(node('p', 'best-body'), post.best_body);
+            const open = node('button', 'best-open', t('seeConversation', 'See the conversation'));
+            open.type = 'button';
+            open.addEventListener('click', () => { if (!comments || comments.hidden) toggleComments(); });
+            best.append(label, who, text, open);
+            article.appendChild(best);
+        }
+
         // Curtir / comentar
         const actions = node('div', 'post-actions');
         const like = node('button', 'post-action post-like');
@@ -415,7 +643,7 @@
         let comments = null;
         const toggleComments = () => {
             if (!comments) {
-                comments = commentsSection(post, viewer, commentCount);
+                comments = commentsSection(post, viewer, commentCount, refresh);
                 article.appendChild(comments);
             } else {
                 comments.hidden = !comments.hidden;
@@ -442,15 +670,23 @@
         container.append(status, feedEl, empty, more);
         let before = null;
         let tag = opts.tag || null;
+        let unsolved = false;
+        let query = null;
         let viewer = null;
+        let ticket = 0; // só a resposta do pedido mais recente vale (filtros trocados rápido)
 
         async function load(reset) {
+            const mine = ++ticket;
             viewer = viewer || await ready();
-            if (reset) { before = null; feedEl.textContent = ''; }
+            if (reset) { before = null; feedEl.textContent = ''; status.hidden = false; status.textContent = t('loading', 'Loading...'); empty.hidden = true; more.hidden = true; }
             more.disabled = true;
             const { data, error } = await client.rpc('feed', {
-                p_before: before, p_limit: 15, p_tag: tag, p_author_nick: opts.author || null, p_post: opts.post || null
+                p_before: before, p_limit: 15, p_tag: tag, p_author_nick: opts.author || null, p_post: opts.post || null,
+                ...(opts.tags && !tag ? { p_tags: opts.tags } : {}),
+                ...(query ? { p_query: query } : {}), ...(unsolved ? { p_unsolved: true } : {})
             });
+            if (mine !== ticket) return;
+            if (reset) feedEl.textContent = '';
             more.disabled = false;
             status.hidden = true;
             if (error) {
@@ -460,7 +696,8 @@
             }
             const rows = data || [];
             rows.forEach((p) => feedEl.appendChild(card(p, viewer, { openComments: !!opts.post, onRemoved: () => { if (!feedEl.children.length) showEmpty(); } })));
-            const normal = rows.filter((p) => !(p.pinned && !opts.author && !opts.post));
+            const general = !opts.author && !opts.post && !query && !unsolved;
+            const normal = rows.filter((p) => !(p.pinned && general));
             if (normal.length) before = normal[normal.length - 1].id;
             more.hidden = opts.post || rows.length < 15;
             if (reset && !rows.length) showEmpty(); else empty.hidden = true;
@@ -469,12 +706,22 @@
             empty.hidden = false;
             empty.textContent = opts.post
                 ? t('postNotFound', 'This post was removed or does not exist.')
-                : (opts.emptyText || t('noPostsYet', 'No posts yet'));
+                : query
+                    ? t('noSearchResults', 'No posts found for this search.')
+                    : unsolved
+                        ? t('noUnsolved', 'No open questions. Everyone got help!')
+                        : (opts.emptyText || t('noPostsYet', 'No posts yet'));
         }
         more.addEventListener('click', () => load(false));
         load(true);
         return {
-            setTag(value) { tag = value || null; load(true); },
+            setTag(value) { tag = value || null; unsolved = false; load(true); },
+            // Filtro "Sem solução" (perguntas sem melhor resposta)
+            setUnsolved() { tag = null; unsolved = true; load(true); },
+            // Busca (null = volta ao feed normal)
+            setQuery(value) { query = value || null; load(true); },
+            // Tudo de uma vez: { tag, unsolved, query }
+            setFilter(f = {}) { tag = f.tag || null; unsolved = !!f.unsolved; query = f.query || null; load(true); },
             async prepend(id) {
                 const { data } = await client.rpc('feed', { p_post: id });
                 if (data?.[0]) {
@@ -514,7 +761,8 @@
         throw new Error('big');
     }
 
-    function composer(container, onPosted) {
+    // opts.tags = etiquetas que aparecem para escolher (padrão: todas); opts.placeholder = texto da caixa
+    function composer(container, onPosted, opts = {}) {
         ready().then((viewer) => {
             container.textContent = '';
             if (!viewer.me || viewer.needMfa) {
@@ -531,7 +779,7 @@
             const area = node('textarea', 'composer-text');
             area.maxLength = 2000;
             area.rows = 3;
-            area.placeholder = t('composerPlaceholder', 'Share something, ask a question or post a screenshot...');
+            area.placeholder = opts.placeholder ? t(...opts.placeholder) : t('composerPlaceholder', 'Share something, ask a question or post a screenshot...');
             area.setAttribute('aria-label', area.placeholder);
 
             const preview = node('div', 'composer-preview');
@@ -546,8 +794,9 @@
             const tags = node('div', 'composer-tags');
             tags.setAttribute('role', 'radiogroup');
             tags.setAttribute('aria-label', t('postTag', 'Topic'));
-            let chosen = 'geral';
-            TAGS.filter((x) => !x.admin || viewer.isAdmin).forEach((x) => {
+            const allowed = TAGS.filter((x) => (!x.admin || viewer.isAdmin) && (!opts.tags || opts.tags.includes(x.id)));
+            let chosen = allowed[0]?.id || 'geral';
+            allowed.forEach((x) => {
                 const b = node('button', `tag-chip tag-${x.id}`, t(x.key, x.label));
                 b.type = 'button';
                 b.setAttribute('role', 'radio');
@@ -576,6 +825,7 @@
             err.setAttribute('role', 'alert');
 
             form.append(area, preview, tags, row, err);
+            attachMentions(area);
             container.appendChild(form);
 
             let image = null; // { blob, ext, url }
@@ -647,5 +897,5 @@
         });
     }
 
-    window.EorFeed = { ready, list, composer, TAGS, tagLabel, imageUrl, picFor, errorText };
+    window.EorFeed = { ready, list, composer, TAGS, AREAS, areaOf, postUrl, tagLabel, imageUrl, picFor, errorText };
 })();

@@ -7,7 +7,9 @@
 
     const NAV = [
         { href: 'index.html', key: 'home', label: 'Home' },
-        { href: 'comunidade.html', key: 'community', label: 'Community' },
+        // member: só aparece no menu para quem está logado
+        { href: 'social.html', key: 'socialPageTitle', label: 'Social', member: true },
+        { href: 'taverna.html', key: 'tavernPageTitle', label: 'Tavern', member: true },
         { href: 'bestiario.html', key: 'bestiary', label: 'Bestiary' },
         { href: 'classes.html', key: 'classes', label: 'Classes' },
         { href: 'guia.html', key: 'guide', label: 'Guide' },
@@ -38,7 +40,7 @@
         }
     ];
 
-    const ASSET_V = '2026112040';
+    const ASSET_V = '2026112070';
     const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
     function linkAttrs(link) {
@@ -46,7 +48,8 @@
     }
 
     function renderHeader() {
-        const nav = NAV.map((link) => {
+        const loggedIn = !!playerNickname();
+        const nav = NAV.filter((link) => !link.member || loggedIn).map((link) => {
             const current = link.href === currentPage ? ' aria-current="page"' : '';
             return `<li><a href="${link.href}"${current} data-i18n="${link.key}">${link.label}</a></li>`;
         }).join('');
@@ -104,7 +107,7 @@
     const footer = document.getElementById('site-footer');
     if (footer) footer.outerHTML = renderFooter();
 
-    // Menu mobile (abaixo de 1000px o menu vira um painel aberto pelo botão ☰).
+    // Menu mobile (abaixo de 1340px o menu vira um painel aberto pelo botão ☰).
     const siteHeader = document.querySelector('.site-header');
     const menuToggle = siteHeader?.querySelector('.menu-toggle');
     if (siteHeader && menuToggle) {
@@ -145,6 +148,7 @@
         });
         addMessagesLinks();
         addBell();
+        addTabbar();
         loadAlerts();
         loadChat();
     }
@@ -175,6 +179,39 @@
         // No menu ☰ do celular: o próprio perfil primeiro, depois Mensagens
         const navList = navLogin?.parentElement;
         if (navList) navList.prepend(navLogin, document.querySelector('.nav-messages') || '');
+    }
+
+    // Barra de abas fixa embaixo da tela (só celular e só logado), como nos apps de rede social.
+    function addTabbar() {
+        if (document.querySelector('.tabbar')) return;
+        const tr = (key, fallback) => (window.getSiteTranslation ? window.getSiteTranslation(key, fallback) : fallback);
+        const icon = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+        const TABS = [
+            { id: 'home', href: 'index.html', key: 'home', label: 'Home', d: 'M4 11 L12 4 L20 11 V20 H14 V14 H10 V20 H4 Z' },
+            { id: 'social', href: 'social.html', key: 'socialPageTitle', label: 'Social', d: 'M4 6 H20 V18 H4 Z M4 15 L9 10 L13 14 L15 12 L20 17 M15.5 9.5 A1 1 0 1 0 15.5 9.4' },
+            { id: 'tavern', href: 'taverna.html', key: 'tavernPageTitle', label: 'Tavern', d: 'M5 4 H19 L17 12 H7 Z M12 12 V18 M8 20 H16' },
+            { id: 'messages', href: 'mensagens.html', key: 'messagesPageTitle', label: 'Messages', d: 'M3 6 H21 V18 H3 Z M3 6 L12 13 L21 6' },
+            { id: 'profile', href: 'perfil.html', key: 'myProfile', label: 'Profile', d: 'M12 12 A4 4 0 1 0 12 4 A4 4 0 1 0 12 12 Z M4 21 C4.5 16.5 8 15 12 15 C16 15 19.5 16.5 20 21' }
+        ];
+        const nav = document.createElement('nav');
+        nav.className = 'tabbar';
+        nav.setAttribute('aria-label', tr('quickMenu', 'Quick menu'));
+        nav.setAttribute('data-i18n-aria', 'quickMenu');
+        TABS.forEach((tab) => {
+            const a = document.createElement('a');
+            a.href = tab.href;
+            a.dataset.tab = tab.id;
+            const on = tab.href === currentPage && (tab.id !== 'profile' || !window.location.search);
+            if (on) a.setAttribute('aria-current', 'page');
+            a.innerHTML = icon(tab.d);
+            const label = document.createElement('span');
+            label.setAttribute('data-i18n', tab.key);
+            label.textContent = tr(tab.key, tab.label);
+            a.appendChild(label);
+            nav.appendChild(a);
+        });
+        document.body.appendChild(nav);
+        document.documentElement.classList.add('has-tabbar');
     }
 
     // Sino de notificações ao lado do apelido (computador e celular).
@@ -266,7 +303,9 @@
             countFrom('unread_message_count'), countFrom('pending_friend_count'),
             countFrom('unread_notification_count'), countFrom('admin_open_report_count')
         ]);
-        if (messages !== null) document.querySelectorAll('.header-messages, .nav-messages a').forEach((link) => setDot(link, messages));
+        if (messages !== null) document.querySelectorAll('.header-messages, .nav-messages a, .tabbar [data-tab="messages"]').forEach((link) => setDot(link, messages));
+        const friendsTab = document.querySelector('.tabbar [data-tab="profile"]');
+        if (friendsTab && friends !== null) setDot(friendsTab, friends);
         if (messages !== null || friends !== null) {
             const bell = document.querySelector('.header-bell');
             if (bell) setDot(bell, (messages || 0) + (friends || 0) + (notes || 0) + (reports || 0));

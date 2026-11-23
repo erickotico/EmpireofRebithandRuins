@@ -1,48 +1,31 @@
-// Página Comunidade: escrever, filtrar por etiqueta e ler o feed (js/feed.js faz o trabalho).
-//   comunidade.html            → feed geral
-//   comunidade.html?post=123   → uma publicação, com os comentários abertos
-document.addEventListener('DOMContentLoaded', () => {
-    const feedApi = window.EorFeed;
-    const t = (key, fallback) => (window.getSiteTranslation ? window.getSiteTranslation(key, fallback) : fallback);
-    const $ = (id) => document.getElementById(id);
-    if (!feedApi) {
-        $('feed').textContent = t('errNetwork', 'Connection failed. Check your internet and try again.');
-        return;
-    }
-
-    const postId = Number(new URLSearchParams(window.location.search).get('post'));
-    if (Number.isInteger(postId) && postId > 0) {
-        $('communityBack').hidden = false;
-        $('feedFilters').hidden = true;
-        feedApi.list($('feed'), { post: postId });
-        return;
-    }
-
-    const list = feedApi.list($('feed'), { emptyText: t('communityEmpty', 'No posts yet. Be the first!') });
-    feedApi.composer($('composer'), (id) => list.prepend(id));
-
-    // Filtros: Tudo + etiquetas
-    const filters = $('feedFilters');
-    const options = [{ id: '', key: 'tagAll', label: 'All' }, ...feedApi.TAGS];
-    function renderFilters(active) {
-        filters.textContent = '';
-        options.forEach((o) => {
-            const b = document.createElement('button');
-            b.type = 'button';
-            b.className = `tag-chip${o.id ? ` tag-${o.id}` : ''}`;
-            b.setAttribute('role', 'tab');
-            b.setAttribute('aria-selected', String(o.id === active));
-            b.textContent = t(o.key, o.label);
-            b.addEventListener('click', () => {
-                if (o.id === current) return;
-                current = o.id;
-                renderFilters(current);
-                list.setTag(current);
+// Endereço antigo "comunidade.html": agora a comunidade tem duas páginas.
+//   Social  (social.html)  → momentos, prints e anúncios
+//   Taverna (taverna.html) → perguntas e dicas
+// Este arquivo só manda para a página certa (links antigos e avisos do sino).
+(function () {
+    const params = new URLSearchParams(window.location.search);
+    const go = (url) => window.location.replace(url);
+    const post = Number(params.get('post'));
+    if (Number.isInteger(post) && post > 0) {
+        // Descobre a etiqueta da publicação para abrir na página certa
+        fetch('https://qjpogjpmxbpuuclpdfhv.supabase.co/rest/v1/rpc/feed', {
+            method: 'POST',
+            headers: {
+                apikey: 'sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc',
+                Authorization: 'Bearer sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ p_post: post })
+        })
+            .then((res) => (res.ok ? res.json() : []))
+            .catch(() => [])
+            .then((rows) => {
+                const tag = rows?.[0]?.tag;
+                go(`${tag === 'pergunta' || tag === 'dica' ? 'taverna' : 'social'}.html?post=${post}`);
             });
-            filters.appendChild(b);
-        });
+        return;
     }
-    let current = '';
-    renderFilters(current);
-    document.addEventListener('site-language-changed', () => { renderFilters(current); list.reload(); });
-});
+    if (params.get('filtro') === 'sem-solucao') { go('taverna.html?filtro=sem-solucao'); return; }
+    const q = params.get('q');
+    go(q ? `social.html?q=${encodeURIComponent(q)}` : 'social.html');
+})();

@@ -615,7 +615,13 @@
             name.textContent = n.nickname;
             const what = n.kind === 'like'
                 ? t('bellLiked', 'liked your post.')
-                : t('bellCommented', 'commented on your post:');
+                : n.kind === 'best'
+                    ? t('bellBest', 'chose your comment as the best answer:')
+                    : n.kind === 'reply'
+                        ? t('bellReplied', 'replied to your comment:')
+                        : n.kind === 'mention'
+                            ? t('bellMentioned', 'mentioned you:')
+                            : t('bellCommented', 'commented on your post:');
             const preview = document.createElement('small');
             preview.textContent = n.snippet || '';
             const when = document.createElement('small');

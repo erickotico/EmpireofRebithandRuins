@@ -591,3 +591,296 @@
 .mod-actions { padding: 12px 16px 16px; flex-wrap: wrap; }
 .post-btn.is-danger { color: #fff; background: #a8392c; border-color: transparent; }
 .post-btn.is-danger:hover { background: #c0392b; }
+
+/* ---------- Busca ---------- */
+.feed-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.feed-search svg {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: var(--muted);
+    pointer-events: none;
+}
+
+.feed-search input {
+    width: 100%;
+    padding: 11px 42px;
+    font: inherit;
+    color: var(--title);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+}
+
+.feed-search input::-webkit-search-cancel-button { display: none; }
+
+.feed-search input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+}
+
+.feed-search-clear {
+    position: absolute;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.feed-search-clear:hover { color: var(--title); background: rgba(var(--accent-rgb), 0.12); }
+
+.search-players { margin-bottom: 14px; }
+
+.search-title {
+    margin: 0 0 8px;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.search-players ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.search-player {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 14px 4px 6px;
+    font-weight: 700;
+    color: var(--title);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+}
+
+.search-player:hover { border-color: var(--accent); color: var(--accent-bright); }
+
+.search-player .player-pic,
+.search-player .player-pic .crest { width: 26px; height: 30px; }
+.search-player .player-pic { display: grid; place-items: center; }
+.search-player .player-pic.is-initial {
+    width: 26px; height: 26px; font-size: 0.8rem; font-family: var(--font-display);
+    color: var(--accent-bright); background: var(--bg); border: 1px solid var(--accent-deep); border-radius: 50%;
+}
+.search-player .crest-shield { fill: #120f0c; stroke: var(--crest); stroke-width: 2; }
+.search-player .crest-inner { fill: none; stroke: var(--crest); stroke-opacity: 0.35; stroke-width: 1; }
+
+.search-summary { margin: 0 0 12px; font-size: 0.92rem; color: var(--muted); }
+
+.tag-chip.tag-unsolved[aria-selected="false"] { color: #8fc1e8; border-color: rgba(143, 193, 232, 0.45); }
+
+/* ---------- Pergunta resolvida / melhor resposta ---------- */
+.post-tag.tag-solved { color: #0f1a0b; background: var(--verdant); border-color: var(--verdant); }
+.post-card.is-solved { border-color: rgba(127, 174, 98, 0.45); }
+
+.best-answer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 10px;
+    align-items: center;
+    margin: 12px 16px 4px;
+    padding: 12px 14px;
+    background: rgba(127, 174, 98, 0.08);
+    border: 1px solid rgba(127, 174, 98, 0.35);
+    border-left: 3px solid var(--verdant);
+    border-radius: 8px;
+}
+
+.best-answer .best-label { grid-column: 1 / -1; }
+
+.best-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--verdant);
+}
+
+.best-who {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--title);
+    text-decoration: none;
+}
+
+.best-who:hover strong { color: var(--accent-bright); }
+.best-who .player-pic,
+.best-who .player-pic .crest { width: 28px; height: 32px; }
+.best-who .player-pic.is-initial { width: 28px; height: 28px; font-size: 0.8rem; }
+
+.best-body {
+    grid-column: 1 / -1;
+    margin: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.best-open {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 0;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--verdant);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.best-open:hover { text-decoration: underline; }
+
+.comment.is-best .comment-box {
+    background: rgba(127, 174, 98, 0.1);
+    border: 1px solid rgba(127, 174, 98, 0.4);
+}
+
+.comment .best-label { margin-bottom: 2px; font-size: 0.68rem; }
+
+/* Atalho entre Social e Taverna (embaixo do título) */
+.community-cross {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.community-cross svg { width: 18px; height: 18px; }
+.community-cross:hover span { text-decoration: underline; color: var(--accent-bright); }
+
+/* ---------- Respostas (conversas) ---------- */
+.comment-main {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    justify-items: start;
+    gap: 2px;
+}
+
+.comment-main .comment-box { width: 100%; }
+
+.comment-reply {
+    margin-left: 12px;
+    padding: 2px 0;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-reply:hover { color: var(--accent-bright); text-decoration: underline; }
+
+.comment-thread { display: grid; gap: 8px; }
+
+.reply-list {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 0 38px;
+    padding: 0 0 0 10px;
+    list-style: none;
+    border-left: 2px solid var(--line);
+}
+
+.reply-list:empty { display: none; }
+
+.comment.is-reply .player-pic,
+.comment.is-reply .player-pic .crest { width: 24px; height: 28px; }
+.comment.is-reply .player-pic.is-initial { width: 24px; height: 24px; font-size: 0.72rem; }
+
+.comment-form-wrap { display: grid; gap: 6px; }
+.comment-form-wrap.is-reply-form { margin-left: 48px; }
+
+/* ---------- @menções ---------- */
+.mention {
+    font-weight: 700;
+    color: var(--accent-bright);
+    text-decoration: none;
+}
+
+.mention:hover { text-decoration: underline; }
+
+.mention-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: grid;
+}
+
+.mention-wrap textarea { width: 100%; }
+
+.mention-list {
+    position: absolute;
+    left: 8px;
+    top: calc(100% + 4px);
+    z-index: 30;
+    min-width: 200px;
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.mention-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.mention-list li.is-active,
+.mention-list li:hover { background: rgba(var(--accent-rgb), 0.12); color: var(--title); }
+
+.mention-list .player-pic { display: grid; place-items: center; width: 24px; height: 28px; flex-shrink: 0; }
+.mention-list .player-pic .crest { width: 24px; height: 28px; margin: 0; }
+.mention-list .player-pic.is-initial {
+    width: 24px; height: 24px; font-family: var(--font-display); font-size: 0.72rem;
+    color: var(--accent-bright); background: var(--surface); border: 1px solid var(--accent-deep); border-radius: 50%;
+}
+.mention-list .crest-shield { fill: #120f0c; stroke: var(--crest); stroke-width: 2; }
+.mention-list .crest-inner { fill: none; stroke: var(--crest); stroke-opacity: 0.35; stroke-width: 1; }
+
+/* A lista de @menções e o menu ⋯ podem passar da borda do cartão */
+.post-card { overflow: visible; }
+.post-comments { border-radius: 0 0 10px 10px; }
