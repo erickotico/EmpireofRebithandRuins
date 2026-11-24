@@ -243,8 +243,18 @@
         return box;
     }
 
+    // O próprio status escolhido (supabase/014_status_privado.sql). Sem o 014, lê a coluna direto.
+    async function myPresenceMode() {
+        const { data: { session } } = await client.auth.getSession();
+        if (!session) return null;
+        const { data, error } = await client.rpc('my_presence_mode');
+        if (!error) return typeof data === 'string' ? data : null;
+        const r = await client.from('profiles').select('presence_mode').eq('id', session.user.id).maybeSingle();
+        return typeof r.data?.presence_mode === 'string' ? r.data.presence_mode : null;
+    }
+
     window.EorAuth = {
-        presence: { friends: friendsPresence, text: presenceText, mark: markOnline, active: isActive, textClass, picker: statusPicker, MODES },
+        presence: { friends: friendsPresence, text: presenceText, mark: markOnline, active: isActive, textClass, picker: statusPicker, myMode: myPresenceMode, MODES },
         friendError,
         client,
         SUPABASE_URL,

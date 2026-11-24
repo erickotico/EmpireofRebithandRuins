@@ -44,7 +44,7 @@
         }
     ];
 
-    const ASSET_V = '2026112092';
+    const ASSET_V = '2026112093';
     const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
     function linkAttrs(link) {

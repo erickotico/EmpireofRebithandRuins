@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se o banco ainda não tiver a coluna "avatar" (003_avatar.sql não rodado), busca sem ela.
     // Se o banco ainda não tiver alguma coluna nova (scripts 003/004 não rodados), tenta com menos campos.
     const FIELD_SETS = [
-        'id, nickname, bio, avatar, shown_badges, friends_public, presence_mode, created_at',
         'id, nickname, bio, avatar, shown_badges, friends_public, created_at',
         'id, nickname, bio, avatar, shown_badges, created_at',
         'id, nickname, bio, avatar, created_at',
@@ -538,6 +537,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // ---------- privacidade: meu status (online / ocupado / não perturbe / oculto) ----------
+    // O status escolhido é privado: só o dono lê (supabase/014_status_privado.sql)
+    if (auth.presence) profile.presence_mode = await auth.presence.myMode().catch(() => null);
     if (typeof profile.presence_mode === 'string' && auth.presence) {
         $('statusPickerBox').appendChild(auth.presence.picker(profile.presence_mode, (saved) => {
             if (saved) { profile.presence_mode = saved; setMsg(privacyMsg, 'saved', 'Saved!', 'success'); }

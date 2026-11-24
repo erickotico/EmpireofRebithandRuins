@@ -38,8 +38,10 @@
                     ? [{ data: false }, { data: null }]
                     : await Promise.all([
                         client.rpc('is_admin'),
-                        client.from('profiles').select('nickname, avatar, presence_mode').eq('id', session.user.id).maybeSingle()
-                            .then((r) => (r.error ? client.from('profiles').select('nickname, avatar').eq('id', session.user.id).maybeSingle() : r))
+                        Promise.all([
+                            client.from('profiles').select('nickname, avatar').eq('id', session.user.id).maybeSingle(),
+                            auth.presence.myMode().catch(() => null)
+                        ]).then(([r, mode]) => (r.data && mode ? { ...r, data: { ...r.data, presence_mode: mode } } : r))
                     ]);
                 return { me: session.user, isAdmin: !!admin, needMfa, profile };
             })();
