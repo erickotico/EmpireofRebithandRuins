@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se o banco ainda não tiver a coluna "avatar" (003_avatar.sql não rodado), busca sem ela.
     // Se o banco ainda não tiver alguma coluna nova (scripts 003/004 não rodados), tenta com menos campos.
     const FIELD_SETS = [
+        'id, nickname, bio, avatar, shown_badges, friends_public, presence_mode, created_at',
         'id, nickname, bio, avatar, shown_badges, friends_public, created_at',
         'id, nickname, bio, avatar, shown_badges, created_at',
         'id, nickname, bio, avatar, created_at',
@@ -181,6 +182,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     show('profileWrap');
 
     // Números do jogador (insígnias de Ajudante). Chegam depois; aí redesenha as insígnias.
+    // Online / visto por último (só aparece para amigos; o banco decide)
+    if (me && me.id !== profile.id && auth.presence) {
+        client.rpc('presence_of', { p_nick: profile.nickname }).then(({ data }) => {
+            const row = Array.isArray(data) ? data[0] : data;
+            const text = auth.presence.text(row);
+            const el = $('profilePresence');
+            el.hidden = !text;
+            el.textContent = text;
+            el.className = `profile-presence ${auth.presence.textClass(row)}`;
+        });
+    }
+
     const statsListeners = [];
     client.rpc('player_stats', { p_nick: profile.nickname }).then(({ data }) => {
         const row = Array.isArray(data) ? data[0] : data;
@@ -522,6 +535,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     } else {
         friendsPublic.closest('.profile-block').hidden = true; // banco ainda sem o script 005
+    }
+
+    // ---------- privacidade: meu status (online / ocupado / não perturbe / oculto) ----------
+    if (typeof profile.presence_mode === 'string' && auth.presence) {
+        $('statusPickerBox').appendChild(auth.presence.picker(profile.presence_mode, (saved) => {
+            if (saved) { profile.presence_mode = saved; setMsg(privacyMsg, 'saved', 'Saved!', 'success'); }
+            else setMsg(privacyMsg, 'errGeneric', 'Something went wrong. Please try again.', 'error');
+        }));
+    } else {
+        $('statusRow').hidden = true; // banco ainda sem o script 013
     }
 
     // ---------- bio ----------

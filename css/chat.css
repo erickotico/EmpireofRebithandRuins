@@ -582,3 +582,7 @@
 .bell-item.is-new { background: rgba(var(--accent-rgb), 0.06); }
 .bell-when { color: var(--muted); opacity: 0.8; font-size: 0.75rem !important; }
 .bell-mod { color: #e2685a; }
+
+/* Bolinha de online dentro da janela (o fundo da janela é outro) */
+.chat-dock .presence-dot { box-shadow: 0 0 0 2px var(--surface); }
+.dock-head .presence-dot { box-shadow: 0 0 0 2px var(--surface-2); }

@@ -79,6 +79,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const seeProfile = el('span', 'side-me-link', t('viewMyProfile', 'View my profile'));
         who.querySelector('.side-me-name').appendChild(seeProfile);
         meCard.appendChild(who);
+        // Meu status (online / ocupado / não perturbe / oculto)
+        if (typeof me.presence_mode === 'string') {
+            const status = auth.presence.picker(me.presence_mode, (saved) => { if (saved) me.presence_mode = saved; });
+            status.classList.add('is-compact');
+            meCard.appendChild(status);
+        }
 
         const nav = el('nav', 'side-nav');
         nav.setAttribute('aria-label', t('quickMenu', 'Quick menu'));
@@ -99,8 +105,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         left.appendChild(meCard);
 
         // Amigos (até 8)
-        const { data } = await client.rpc('my_friendships');
-        const friends = (data || []).filter((r) => r.kind === 'friend');
+        const [{ data }, online] = await Promise.all([client.rpc('my_friendships'), auth.presence.friends()]);
+        const status = (f) => online.get(f.nickname.toLowerCase());
+        // online primeiro, depois quem foi visto por último mais recentemente
+        const friends = (data || []).filter((r) => r.kind === 'friend').sort((a, b) =>
+            (auth.presence.active(status(b)) ? 1 : 0) - (auth.presence.active(status(a)) ? 1 : 0)
+            || new Date(status(b)?.seen_at || 0) - new Date(status(a)?.seen_at || 0));
         const fCard = card('friendsTitle', 'Friends');
         if (!friends.length) {
             const p = el('p', 'side-empty', t('noFriendsSide', 'No friends yet.'));
@@ -111,7 +121,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const li = el('li');
                 const a = el('a', 'side-friend');
                 a.href = profileUrl(f.nickname);
-                a.append(feedApi.picFor(f), el('span', '', f.nickname));
+                const pic = feedApi.picFor(f);
+                auth.presence.mark(pic, status(f));
+                const label = el('span', 'side-friend-name');
+                label.append(el('span', '', f.nickname));
+                const seen = auth.presence.text(status(f));
+                if (seen) label.appendChild(el('small', auth.presence.textClass(status(f)), seen));
+                a.append(pic, label);
                 const chat = el('a', 'side-friend-chat');
                 chat.href = `mensagens.html?com=${encodeURIComponent(f.nickname)}`;
                 chat.setAttribute('aria-label', `${t('sendMessage', 'Send message')}: ${f.nickname}`);

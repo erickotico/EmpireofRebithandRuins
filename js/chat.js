@@ -206,6 +206,7 @@
     // ---------- lista: conversas + amigos ----------
     let conversations = [];
     let friends = [];
+    let presence = new Map(); // amigos online (bolinha verde)
     let current = null; // { nickname, avatar, blocked, oldestId, newestId }
 
     async function loadConversations() {
@@ -218,7 +219,8 @@
         if (!error) friends = (data || []).filter((r) => r.kind === 'friend');
     }
     async function refreshList() {
-        await Promise.all([loadConversations(), loadFriends()]);
+        const [, , online] = await Promise.all([loadConversations(), loadFriends(), auth.presence.friends()]);
+        presence = online;
         renderList();
         render();
     }
@@ -236,7 +238,9 @@
         name.textContent = p.nickname;
         top.appendChild(name);
         text.appendChild(top);
-        btn.append(picFor(p), text);
+        const photo = picFor(p);
+        auth.presence.mark(photo, presence.get(p.nickname.toLowerCase()));
+        btn.append(photo, text);
         if (extra) extra(btn, top, text);
         btn.addEventListener('click', () => openChat(p.nickname, p.avatar));
         li.appendChild(btn);
@@ -323,7 +327,11 @@
         state.nick = nickname;
         save();
         const pic = el.who.querySelector('.player-pic');
-        pic.replaceWith(picFor({ nickname, avatar }));
+        const photo = picFor({ nickname, avatar });
+        const status = presence.get(nickname.toLowerCase());
+        auth.presence.mark(photo, status);
+        pic.replaceWith(photo);
+        el.who.title = auth.presence.text(status) || nickname;
         el.name.textContent = nickname;
         const url = `perfil.html?n=${encodeURIComponent(nickname)}`;
         el.who.href = url;

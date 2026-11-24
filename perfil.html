@@ -11,9 +11,9 @@
     <meta name="robots" content="noindex">
     <title data-i18n="profilePageTitle">Player profile</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112070">
-    <link rel="stylesheet" href="css/perfil.css?v=2026112040">
-    <link rel="stylesheet" href="css/comunidade.css?v=2026112080">
+    <link rel="stylesheet" href="css/global.css?v=2026112092">
+    <link rel="stylesheet" href="css/perfil.css?v=2026112092">
+    <link rel="stylesheet" href="css/comunidade.css?v=2026112092">
 </head>
 <body>
     <div id="site-header"></div>
@@ -44,6 +44,7 @@
                     <div class="profile-avatar" id="profileAvatar" aria-hidden="true"></div>
                     <h1 class="profile-name" id="profileName"></h1>
                     <p class="profile-since"><span data-i18n="memberSince">Member since</span> <time id="profileSince"></time></p>
+                    <p class="profile-presence presence-text" id="profilePresence" hidden></p>
                     <div class="profile-character">
                         <span class="profile-character-label" data-i18n="characterTitle">Character</span>
                         <span class="soon-tag" data-i18n="comingSoon">Coming soon</span>
@@ -138,6 +139,11 @@
                         <input type="checkbox" id="friendsPublic">
                         <span><strong data-i18n="friendsPublicLabel">Show my friends list to everyone</strong><small data-i18n="friendsPublicHint">If off, other players only see how many friends you have.</small></span>
                     </label>
+                    <div class="status-row" id="statusRow">
+                        <strong data-i18n="myStatus">My status</strong>
+                        <small data-i18n="statusHint">Only your friends see it. Hidden: nobody sees when you are online or when you were last seen.</small>
+                        <div id="statusPickerBox"></div>
+                    </div>
                     <p class="profile-msg" id="privacyMsg" role="status"></p>
                 </section>
 
@@ -199,12 +205,12 @@
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112080"></script>
-    <script src="js/langSwitcher.js?v=2026112080"></script>
+    <script src="js/layout.js?v=2026112092"></script>
+    <script src="js/langSwitcher.js?v=2026112092"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
-    <script src="js/auth.js?v=2026112040"></script>
+    <script src="js/auth.js?v=2026112092"></script>
     <script src="js/crests.js?v=2026112017"></script>
-    <script src="js/feed.js?v=2026112080"></script>
-    <script src="js/perfil.js?v=2026112080"></script>
+    <script src="js/feed.js?v=2026112092"></script>
+    <script src="js/perfil.js?v=2026112092"></script>
 </body>
 </html>

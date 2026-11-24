@@ -38,7 +38,8 @@
                     ? [{ data: false }, { data: null }]
                     : await Promise.all([
                         client.rpc('is_admin'),
-                        client.from('profiles').select('nickname, avatar').eq('id', session.user.id).maybeSingle()
+                        client.from('profiles').select('nickname, avatar, presence_mode').eq('id', session.user.id).maybeSingle()
+                            .then((r) => (r.error ? client.from('profiles').select('nickname, avatar').eq('id', session.user.id).maybeSingle() : r))
                     ]);
                 return { me: session.user, isAdmin: !!admin, needMfa, profile };
             })();

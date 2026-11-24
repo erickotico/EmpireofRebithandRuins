@@ -4,6 +4,10 @@
 (function () {
     const ITCH_URL = 'https://erickotico-dev.itch.io/';
     const DISCORD_URL = 'https://discord.gg/rpUdmjrxq';
+    // Endereço e chave PÚBLICA do Supabase (a mesma de js/auth.js). Declarados aqui em cima
+    // porque o header já usa ao abrir a página (contadores do sino/envelope e "estou aqui").
+    const SUPABASE_URL = 'https://qjpogjpmxbpuuclpdfhv.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc';
 
     const NAV = [
         { href: 'index.html', key: 'home', label: 'Home' },
@@ -40,7 +44,7 @@
         }
     ];
 
-    const ASSET_V = '2026112070';
+    const ASSET_V = '2026112092';
     const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
     function linkAttrs(link) {
@@ -151,6 +155,7 @@
         addTabbar();
         loadAlerts();
         loadChat();
+        startHeartbeat();
     }
 
     // Envelope de mensagens: no topo (computador) e dentro do menu ☰ (celular).
@@ -241,6 +246,22 @@
             document.body.appendChild(s);
         });
     }
+    // "Estou aqui": avisa o banco a cada minuto enquanto a aba está aberta (online para os amigos).
+    function startHeartbeat() {
+        const beat = () => {
+            const token = sessionToken();
+            if (!token || document.visibilityState !== 'visible') return;
+            fetch(`${SUPABASE_URL}/rest/v1/rpc/heartbeat`, {
+                method: 'POST',
+                headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: '{}'
+            }).catch(() => {});
+        };
+        beat();
+        setInterval(beat, 60000);
+        document.addEventListener('visibilitychange', beat);
+    }
+
     function loadChat() {
         if (window.location.protocol === 'file:') return;
         const css = document.createElement('link');
@@ -260,8 +281,6 @@
     }
 
     // Sessão salva no navegador → token para consultas simples (se venceu, não mostra nada).
-    const SUPABASE_URL = 'https://qjpogjpmxbpuuclpdfhv.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc';
     function sessionToken() {
         for (const area of ['localStorage', 'sessionStorage']) {
             try {

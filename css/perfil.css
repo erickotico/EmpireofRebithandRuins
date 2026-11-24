@@ -773,3 +773,24 @@
 
 #friendMessage { width: 100%; }
 .friend-block { font-size: 0.82rem; }
+
+/* Online / visto por último (perfil de um amigo) */
+.profile-presence { margin: 4px 0 0; text-align: center; }
+.profile-presence.state-online::before, .profile-presence.state-busy::before, .profile-presence.state-dnd::before {
+    content: '';
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 6px;
+    background: #4cc36a;
+    border-radius: 50%;
+    vertical-align: 1px;
+}
+.switch-row + .switch-row { margin-top: 14px; }
+.profile-presence.state-busy::before { background: #e0453a; }
+.profile-presence.state-dnd::before { background: #f2c230; }
+
+/* Editar perfil → Privacidade → Meu status */
+.status-row { display: grid; gap: 6px; margin-top: 16px; }
+.status-row small { font-size: 0.85rem; color: var(--muted); }
+.status-row .status-picker { margin-top: 4px; }

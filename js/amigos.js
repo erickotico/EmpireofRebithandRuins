@@ -50,8 +50,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ---------- listas ----------
     let rows = [];
     let blocks = [];
+    let presence = new Map(); // amigos online / visto por último
     async function load() {
-        const [{ data, error }, blockResult] = await Promise.all([client.rpc('my_friendships'), client.rpc('my_blocks')]);
+        const [{ data, error }, blockResult, online] = await Promise.all([
+            client.rpc('my_friendships'), client.rpc('my_blocks'), auth.presence.friends(true)
+        ]);
+        presence = online;
         blocks = blockResult.error ? [] : (blockResult.data || []);
         if (error) {
             const [key, fallback] = auth.friendError(error);
@@ -105,7 +109,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         const since = document.createElement('small');
         since.textContent = new Date(p.since).toLocaleDateString(lang(), { day: 'numeric', month: 'short', year: 'numeric' });
         name.appendChild(since);
-        link.append(pic(p), name);
+        // Amigos: online agora / visto por último (no lugar da data, se houver)
+        const status = p.kind === 'friend' ? presence.get(p.nickname.toLowerCase()) : null;
+        const seen = auth.presence.text(status);
+        if (seen) {
+            since.textContent = seen;
+            since.className = auth.presence.textClass(status);
+        }
+        const photo = pic(p);
+        if (p.kind === 'friend') auth.presence.mark(photo, presence.get(p.nickname.toLowerCase()));
+        link.append(photo, name);
         const box = document.createElement('div');
         box.className = 'friend-row-actions';
         actions.forEach((a) => box.appendChild(a));
@@ -140,7 +153,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function render() {
-        const friendsList = rows.filter((r) => r.kind === 'friend');
+        const on = (p) => presence.get(p.nickname.toLowerCase());
+        // online primeiro
+        const friendsList = rows.filter((r) => r.kind === 'friend')
+            .sort((x, y) => (auth.presence.active(on(y)) ? 1 : 0) - (auth.presence.active(on(x)) ? 1 : 0));
         const received = rows.filter((r) => r.kind === 'received');
         const sent = rows.filter((r) => r.kind === 'sent');
         $('countFriends').textContent = friendsList.length || '';

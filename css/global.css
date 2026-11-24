@@ -745,3 +745,116 @@ a {
     .site-header { gap: 16px; }
     .header-actions { gap: 8px; }
 }
+
+/* ========== STATUS (online verde, ocupado vermelho, não perturbe amarelo, offline/oculto cinza) ========== */
+.has-presence { position: relative; }
+
+.presence-dot {
+    position: absolute;
+    right: -2px;
+    bottom: -1px;
+    width: 11px;
+    height: 11px;
+    background: #6b665e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--surface);
+}
+
+.presence-dot.state-online { background: #4cc36a; }
+.presence-dot.state-busy { background: #e0453a; }
+.presence-dot.state-dnd { background: #f2c230; }
+.presence-dot.state-offline { background: #6b665e; }
+
+.presence-text { font-size: 0.8rem; color: var(--muted); }
+.presence-text.state-online { color: #6fd38a; font-weight: 700; }
+.presence-text.state-busy { color: #f07a70; font-weight: 700; }
+.presence-text.state-dnd { color: #f2cf5b; font-weight: 700; }
+
+/* Escolher o próprio status: mostra o atual; clicar abre a lista */
+.status-picker { position: relative; display: inline-block; }
+
+.status-picker-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--title);
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.status-picker-toggle:hover,
+.status-picker.is-open .status-picker-toggle { border-color: var(--accent); }
+
+.status-picker-caret {
+    width: 7px;
+    height: 7px;
+    margin-left: 2px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.15s ease;
+}
+
+.status-picker.is-open .status-picker-caret { transform: translateY(1px) rotate(-135deg); }
+
+.status-picker-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    min-width: 190px;
+    padding: 6px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+.status-picker-menu[hidden] { display: none; }
+
+.status-picker-menu button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.status-picker-menu button:hover,
+.status-picker-menu button:focus-visible { color: var(--title); background: rgba(var(--accent-rgb), 0.1); outline: none; }
+
+.status-picker-menu button[aria-checked="true"] { color: var(--title); background: rgba(var(--accent-rgb), 0.16); }
+
+.status-picker-menu button[aria-checked="true"]::after {
+    content: "";
+    width: 5px;
+    height: 10px;
+    margin-left: auto;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: translateY(-2px) rotate(45deg);
+}
+
+.status-picker .presence-dot { position: static; flex: none; width: 10px; height: 10px; box-shadow: none; }
+
+.status-picker.is-compact .status-picker-toggle { padding: 4px 10px; font-size: 0.78rem; gap: 6px; }
+.status-picker.is-compact .presence-dot { width: 8px; height: 8px; }
+.status-picker.is-compact .status-picker-menu { min-width: 170px; }
+.status-picker.is-compact .status-picker-menu button { padding: 8px 10px; font-size: 0.82rem; }

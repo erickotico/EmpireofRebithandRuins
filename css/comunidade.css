@@ -1132,3 +1132,8 @@
     .community-page.community-wide { grid-template-columns: minmax(0, 680px); }
     .side-right { display: none; }
 }
+
+/* Amigos na lateral: apelido + online / visto por último */
+.side-friend-name { display: grid; min-width: 0; line-height: 1.2; }
+.side-friend-name > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.side-friend-name small { font-size: 0.72rem; font-weight: 400; }
