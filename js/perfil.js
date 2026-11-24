@@ -127,6 +127,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             icon: '<path d="M12 3 L14.6 8.6 L20.7 9.3 L16.2 13.4 L17.4 19.5 L12 16.5 L6.6 19.5 L7.8 13.4 L3.3 9.3 L9.4 8.6 Z"/>',
             name: ['badgePioneer', 'Alpha Pioneer'],
             desc: ['badgePioneerDesc', 'Joined during the Alpha.']
+        },
+        {
+            // Respostas escolhidas como "melhor resposta" na Taverna (o banco conta, sem valer a própria pergunta)
+            id: 'helper',
+            has: (p) => (p.best_answers || 0) >= 3,
+            icon: '<path fill-rule="evenodd" d="M12 2 L20 5 V11 C20 16 16.5 19.8 12 22 C7.5 19.8 4 16 4 11 V5 Z M10.6 15.8 L16.6 9.8 L15.2 8.4 L10.6 13 L8.4 10.8 L7 12.2 Z"/>',
+            name: ['badgeHelper', 'Helper'],
+            desc: ['badgeHelperDesc', '3 answers chosen as best in the Tavern.']
+        },
+        {
+            id: 'sage',
+            has: (p) => (p.best_answers || 0) >= 15,
+            icon: '<path d="M6 3 H18 L17 9 C16.6 11.6 14.6 13.4 13 13.8 V18 H16 V21 H8 V18 H11 V13.8 C9.4 13.4 7.4 11.6 7 9 Z"/>',
+            name: ['badgeSage', 'Tavern Sage'],
+            desc: ['badgeSageDesc', '15 answers chosen as best in the Tavern.']
         }
     ];
     const MAX_SHOWN = 5;
@@ -164,6 +179,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     render();
     renderBadges();
     show('profileWrap');
+
+    // Números do jogador (insígnias de Ajudante). Chegam depois; aí redesenha as insígnias.
+    const statsListeners = [];
+    client.rpc('player_stats', { p_nick: profile.nickname }).then(({ data }) => {
+        const row = Array.isArray(data) ? data[0] : data;
+        if (!row) return;
+        profile.best_answers = row.best_answers;
+        renderBadges();
+        statsListeners.forEach((fn) => fn());
+    });
     document.addEventListener('site-language-changed', () => { render(); renderBadges(); renderFriends(); renderFriendAction(); });
 
     // ---------- amigos (quadro na direita) ----------
@@ -453,6 +478,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     renderBadgePicker();
+    statsListeners.push(renderBadgePicker);
     document.addEventListener('site-language-changed', renderBadgePicker);
 
     $('badgePicker').addEventListener('change', async (e) => {

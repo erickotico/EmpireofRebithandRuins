@@ -671,6 +671,7 @@
         let before = null;
         let tag = opts.tag || null;
         let unsolved = false;
+        let friendsOnly = false;
         let query = null;
         let viewer = null;
         let ticket = 0; // só a resposta do pedido mais recente vale (filtros trocados rápido)
@@ -683,7 +684,7 @@
             const { data, error } = await client.rpc('feed', {
                 p_before: before, p_limit: 15, p_tag: tag, p_author_nick: opts.author || null, p_post: opts.post || null,
                 ...(opts.tags && !tag ? { p_tags: opts.tags } : {}),
-                ...(query ? { p_query: query } : {}), ...(unsolved ? { p_unsolved: true } : {})
+                ...(query ? { p_query: query } : {}), ...(unsolved ? { p_unsolved: true } : {}), ...(friendsOnly ? { p_friends: true } : {})
             });
             if (mine !== ticket) return;
             if (reset) feedEl.textContent = '';
@@ -696,7 +697,7 @@
             }
             const rows = data || [];
             rows.forEach((p) => feedEl.appendChild(card(p, viewer, { openComments: !!opts.post, onRemoved: () => { if (!feedEl.children.length) showEmpty(); } })));
-            const general = !opts.author && !opts.post && !query && !unsolved;
+            const general = !opts.author && !opts.post && !query && !unsolved && !friendsOnly;
             const normal = rows.filter((p) => !(p.pinned && general));
             if (normal.length) before = normal[normal.length - 1].id;
             more.hidden = opts.post || rows.length < 15;
@@ -708,6 +709,8 @@
                 ? t('postNotFound', 'This post was removed or does not exist.')
                 : query
                     ? t('noSearchResults', 'No posts found for this search.')
+                    : friendsOnly
+                        ? t('noFriendPosts', 'Your friends have not posted anything yet.')
                     : unsolved
                         ? t('noUnsolved', 'No open questions. Everyone got help!')
                         : (opts.emptyText || t('noPostsYet', 'No posts yet'));
@@ -721,7 +724,7 @@
             // Busca (null = volta ao feed normal)
             setQuery(value) { query = value || null; load(true); },
             // Tudo de uma vez: { tag, unsolved, query }
-            setFilter(f = {}) { tag = f.tag || null; unsolved = !!f.unsolved; query = f.query || null; load(true); },
+            setFilter(f = {}) { tag = f.tag || null; unsolved = !!f.unsolved; friendsOnly = !!f.friends; query = f.query || null; load(true); },
             async prepend(id) {
                 const { data } = await client.rpc('feed', { p_post: id });
                 if (data?.[0]) {

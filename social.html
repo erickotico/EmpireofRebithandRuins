@@ -12,12 +12,15 @@
     <meta name="description" content="Empire of Rebirth &amp; Ruins social feed: moments, screenshots and news from players.">
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
     <link rel="stylesheet" href="css/global.css?v=2026112070">
-    <link rel="stylesheet" href="css/comunidade.css?v=2026112070">
+    <link rel="stylesheet" href="css/comunidade.css?v=2026112080">
 </head>
 <body>
     <div id="site-header"></div>
 
-    <main class="community-page" data-area="social">
+    <main class="community-page community-wide" data-area="social">
+        <aside class="side side-left" id="sideLeft" aria-label="Menu"></aside>
+
+        <div class="community-center">
         <header class="community-head" id="communityHead">
             <h1 class="community-title" data-i18n="socialPageTitle">Social</h1>
             <p class="community-sub" data-i18n="socialSubtitle">Show your moments in the game, screenshots and news.</p>
@@ -46,16 +49,20 @@
         <div class="feed-filters" id="feedFilters" role="tablist" data-i18n-aria="postTag" aria-label="Topic"></div>
 
         <section id="feed" aria-live="polite"></section>
+        </div>
+
+        <aside class="side side-right" id="sideRight"></aside>
     </main>
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112070"></script>
-    <script src="js/langSwitcher.js?v=2026112070"></script>
+    <script src="js/layout.js?v=2026112080"></script>
+    <script src="js/langSwitcher.js?v=2026112080"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
     <script src="js/auth.js?v=2026112060"></script>
     <script src="js/crests.js?v=2026112017"></script>
-    <script src="js/feed.js?v=2026112070"></script>
-    <script src="js/area.js?v=2026112070"></script>
+    <script src="js/feed.js?v=2026112080"></script>
+    <script src="js/area.js?v=2026112080"></script>
+    <script src="js/sidebars.js?v=2026112080"></script>
 </body>
 </html>

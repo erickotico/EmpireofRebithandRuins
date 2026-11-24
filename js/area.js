@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const AREA = {
         social: {
             tags: feedApi.AREAS.social,
-            filters: [['', 'tagAll', 'All'], ['geral', 'tagGeneral', 'General'], ['arte', 'tagArt', 'Art & screenshots'], ['anuncio', 'tagNews', 'Announcement']],
+            filters: [['', 'tagAll', 'All'], ['friends', 'filterFriends', 'Friends', true], ['geral', 'tagGeneral', 'General'], ['arte', 'tagArt', 'Art & screenshots'], ['anuncio', 'tagNews', 'Announcement']],
             placeholder: ['socialPlaceholder', 'Share a moment from your adventure or a screenshot...'],
             empty: ['socialEmpty', 'No posts yet. Share the first moment!']
         },
@@ -42,14 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const state = {
         tag: '',
         unsolved: area === 'taverna' && params.get('filtro') === 'sem-solucao',
+        friends: area === 'social' && params.get('filtro') === 'amigos',
         query: (params.get('q') || '').trim().slice(0, 60)
     };
     if (state.query.length < 2) state.query = '';
 
     const list = feedApi.list($('feed'), { tags: AREA.tags, emptyText: t(...AREA.empty) });
-    if (state.query || state.unsolved) list.setFilter(state);
+    if (state.query || state.unsolved || state.friends) list.setFilter(state);
     feedApi.composer($('composer'), (id) => {
-        if (state.query || state.unsolved || state.tag) apply({ tag: '', unsolved: false, query: '' });
+        if (state.query || state.unsolved || state.friends || state.tag) apply({ tag: '', unsolved: false, friends: false, query: '' });
         else list.prepend(id);
     }, { tags: AREA.tags, placeholder: AREA.placeholder });
 
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const q = new URLSearchParams();
         if (state.query) q.set('q', state.query);
         if (state.unsolved) q.set('filtro', 'sem-solucao');
+        if (state.friends) q.set('filtro', 'amigos');
         const s = q.toString();
         window.history.replaceState(null, '', `${window.location.pathname}${s ? `?${s}` : ''}`);
     }
@@ -73,8 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const filters = $('feedFilters');
     function renderFilters() {
         filters.textContent = '';
-        const active = state.unsolved ? 'unsolved' : state.tag;
-        AREA.filters.forEach(([id, key, label]) => {
+        const active = state.unsolved ? 'unsolved' : state.friends ? 'friends' : state.tag;
+        AREA.filters.forEach(([id, key, label, needsLogin]) => {
+            if (needsLogin && !loggedIn) return;
             const b = document.createElement('button');
             b.type = 'button';
             b.className = `tag-chip${id ? ` tag-${id}` : ''}`;
@@ -83,8 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
             b.textContent = t(key, label);
             b.addEventListener('click', () => {
                 $('searchInput').value = '';
-                if (id === 'unsolved') apply({ tag: '', unsolved: true, query: '' });
-                else apply({ tag: id, unsolved: false, query: '' });
+                if (id === 'unsolved') apply({ tag: '', unsolved: true, friends: false, query: '' });
+                else if (id === 'friends') apply({ tag: '', unsolved: false, friends: true, query: '' });
+                else apply({ tag: id, unsolved: false, friends: false, query: '' });
             });
             filters.appendChild(b);
         });
@@ -131,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function search() {
         const q = input.value.trim().slice(0, 60);
         if (q.length === 1 || q === state.query) return;
-        apply({ tag: '', unsolved: false, query: q });
+        apply({ tag: '', unsolved: false, friends: false, query: q });
     }
     input.addEventListener('input', () => {
         $('searchClear').hidden = !input.value;
@@ -148,6 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
         apply({ query: '' });
         input.focus();
     });
+
+    // Aba Amigos só para quem está logado
+    let loggedIn = false;
+    feedApi.ready().then((v) => { loggedIn = !!v.me && !v.needMfa; renderFilters(); });
 
     renderFilters();
     renderSearch();
