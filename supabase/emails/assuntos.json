@@ -1,5 +1,9 @@
 {
   "confirmar-cadastro.html": "Confirme sua conta em Empire of Rebirth & Ruins",
   "redefinir-senha.html": "Crie uma nova senha · Empire of Rebirth & Ruins",
-  "trocar-email.html": "Confirme seu novo e-mail · Empire of Rebirth & Ruins"
+  "trocar-email.html": "Confirme seu novo e-mail · Empire of Rebirth & Ruins",
+  "aviso-senha-alterada.html": "Sua senha foi trocada · Empire of Rebirth & Ruins",
+  "aviso-email-alterado.html": "Seu e-mail foi trocado · Empire of Rebirth & Ruins",
+  "aviso-2fa-ativada.html": "Verificação em duas etapas ativada · Empire of Rebirth & Ruins",
+  "aviso-2fa-desativada.html": "Verificação em duas etapas desligada · Empire of Rebirth & Ruins"
 }

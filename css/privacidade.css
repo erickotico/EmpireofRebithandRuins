@@ -1,5 +1,5 @@
 /* =====================================================================
-   POLÍTICA DE PRIVACIDADE · texto nos dois idiomas; o idioma da página
+   TEXTOS LEGAIS (privacidade e termos) · texto nos dois idiomas; o idioma da página
    (definido pelo langSwitcher em <html lang>) escolhe qual aparece.
    ===================================================================== */
 
@@ -46,3 +46,45 @@ html:not([lang="en"]) .legal-text[data-lang="en"] {
 }
 
 .legal-text a:hover { color: var(--accent-bright); }
+
+/* Índice no topo (termos de uso) */
+.legal-toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0 32px;
+}
+
+.legal-toc a {
+    padding: 6px 14px;
+    border: 1px solid rgba(var(--accent-rgb), 0.35);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.legal-toc a:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    border-color: var(--accent);
+}
+
+/* Títulos com âncora não ficam escondidos atrás do header fixo */
+.legal-text h2[id] { scroll-margin-top: 96px; }
+
+/* Versões anteriores (legal/*.html) e lista no fim de cada documento */
+.archive-banner {
+    margin: 0 0 24px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--title);
+    background: rgba(var(--accent-rgb), 0.08);
+    border: 1px dashed rgba(var(--accent-rgb), 0.45);
+    border-radius: 6px;
+}
+.archive-banner a { margin-left: 6px; color: var(--accent); }
+.legal-archive .legal-text + .legal-text { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+.legal-versions { margin-top: 36px; padding-top: 18px; font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--line); }
+.legal-versions ul { margin: 6px 0 0; }

@@ -153,9 +153,9 @@
     }
 
     async function report(args) {
-        const reason = window.prompt(t('reportPostPrompt', 'Why are you reporting this? (optional)'), '');
-        if (reason === null) return false;
-        const { error } = await client.rpc('report_content', { ...args, p_reason: reason.slice(0, 300) });
+        const answer = await auth.reportDialog();
+        if (!answer) return false;
+        const { error } = await client.rpc('report_content', { ...args, p_reason: answer.reason, p_category: answer.category });
         if (error) { window.alert(errorText(error)); return false; }
         window.alert(t('reportThanks', 'Thanks! The report was sent to the moderators.'));
         return true;
@@ -286,6 +286,13 @@
     function comment(c, ctx) {
         const { viewer, post } = ctx;
         const el = node('div', `comment${c.parent_id ? ' is-reply' : ''}`);
+        el.dataset.mine = c.mine ? '1' : '0';
+        // Apagado, mas com respostas de outras pessoas: fica só o aviso
+        if (c.removed) {
+            el.classList.add('is-removed');
+            el.appendChild(node('p', 'comment-removed', t('commentRemoved', 'Comment removed')));
+            return el;
+        }
         if (c.is_best) el.classList.add('is-best');
         const pic = node('a', 'comment-pic');
         pic.href = profileUrl(c.nickname);
@@ -335,9 +342,12 @@
                 if (!window.confirm(t('deleteCommentConfirm', 'Delete this comment?'))) return;
                 const { error } = await client.rpc('delete_comment', { p_id: c.id });
                 if (error) { window.alert(errorText(error)); return; }
-                // comentário principal leva as respostas junto
+                // comentário principal leva as respostas junto — a não ser que outras pessoas
+                // tenham respondido: aí ele vira "Comentário removido" e as respostas ficam
                 const thread = el.closest('.comment-thread');
-                if (!c.parent_id && thread) {
+                if (!c.parent_id && thread?.querySelector('.comment.is-reply[data-mine="0"]:not(.is-removed)')) {
+                    el.replaceWith(comment({ ...c, removed: true }, ctx));
+                } else if (!c.parent_id && thread) {
                     const removed = 1 + thread.querySelectorAll('.comment.is-reply').length;
                     thread.remove();
                     ctx.onRemoved(removed);
@@ -422,7 +432,7 @@
             return li;
         }
 
-        ctx.onReply = (target) => {
+        if (!post.removed) ctx.onReply = (target) => {   // removida: só leitura
             const topId = target.parent_id || target.id;
             const li = list.querySelector(`.comment-thread[data-id="${topId}"]`);
             if (!li) return;
@@ -472,7 +482,9 @@
         }
         older.addEventListener('click', () => load(oldest));
 
-        if (viewer.me && !viewer.needMfa) {
+        if (post.removed) {
+            // publicação removida: as conversas ficam para leitura
+        } else if (viewer.me && !viewer.needMfa) {
             const made = commentForm(viewer, 'writeComment', 'Write a comment...', async (text) => {
                 const { data, error } = await client.rpc('add_comment', { p_post: post.id, p_body: text });
                 if (error) return error;
@@ -499,7 +511,39 @@
 
 
     // ---------- uma publicação ----------
+    // Publicação apagada que tinha comentários de outras pessoas: aviso + conversa (só leitura)
+    function removedCard(post, viewer) {
+        const article = node('article', 'post-card is-removed');
+        const head = node('header', 'post-head');
+        const text = node('div', 'post-head-text');
+        text.append(node('strong', 'post-removed-title', t('postRemoved', 'Post removed')),
+            node('span', 'post-removed-hint', t('postRemovedHint', 'The author or the moderators removed this post. The replies from other players stay here.')));
+        head.append(text, node('span', `post-tag tag-${post.tag}`, tagLabel(post.tag)));
+        article.appendChild(head);
+        const actions = node('div', 'post-actions');
+        const talk = node('button', 'post-action');
+        talk.type = 'button';
+        talk.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5 H20 V16 H10 L5 20 V16 H4 Z"/></svg>';
+        const count = node('span', 'post-count', post.comment_count ? String(post.comment_count) : '');
+        talk.append(node('span', 'post-action-label', t('seeConversation', 'See the conversation')), count);
+        talk.setAttribute('aria-expanded', 'false');
+        let comments = null;
+        talk.addEventListener('click', () => {
+            if (!comments) {
+                comments = commentsSection(post, viewer, count, () => {});
+                article.appendChild(comments);
+            } else {
+                comments.hidden = !comments.hidden;
+            }
+            talk.setAttribute('aria-expanded', String(!comments.hidden));
+        });
+        actions.appendChild(talk);
+        article.appendChild(actions);
+        return article;
+    }
+
     function card(post, viewer, opts = {}) {
+        if (post.removed) return removedCard(post, viewer);
         const article = node('article', 'post-card');
         if (post.pinned) article.classList.add('is-pinned');
         if (post.tag === 'anuncio') article.classList.add('is-news');
@@ -569,12 +613,20 @@
                 const { data: path, error } = await client.rpc('delete_post', { p_id: post.id });
                 if (error) { window.alert(errorText(error)); return; }
                 if (path) await client.storage.from(BUCKET).remove([path]);
-                article.remove();
+                // Se outras pessoas comentaram, o banco deixa "Publicação removida" no lugar
+                const { data: left } = await client.rpc('feed', { p_post: post.id });
+                if (left?.[0]?.removed && !opts.author) article.replaceWith(removedCard(left[0], viewer));
+                else article.remove();
                 opts.onRemoved?.(post);
             }, true]);
         }
         if (viewer.me && !post.mine) {
             items.push([t('report', 'Report'), () => report({ p_post: post.id })]);
+        }
+        if (viewer.isAdmin && !post.mine) {
+            items.push([t('modModeratePlayer', 'Moderate player'), () => {
+                window.location.href = `moderacao.html#jogador=${encodeURIComponent(post.nickname)}`;
+            }]);
         }
         if (items.length) head.appendChild(menu(items));
 
@@ -699,7 +751,7 @@
                 return;
             }
             const rows = data || [];
-            rows.forEach((p) => feedEl.appendChild(card(p, viewer, { openComments: !!opts.post, onRemoved: () => { if (!feedEl.children.length) showEmpty(); } })));
+            rows.forEach((p) => feedEl.appendChild(card(p, viewer, { author: opts.author, openComments: !!opts.post, onRemoved: () => { if (!feedEl.children.length) showEmpty(); } })));
             const general = !opts.author && !opts.post && !query && !unsolved && !friendsOnly;
             const normal = rows.filter((p) => !(p.pinned && general));
             if (normal.length) before = normal[normal.length - 1].id;

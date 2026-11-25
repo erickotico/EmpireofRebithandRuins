@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ---------- direita ----------
     async function feed(args) {
         const { data } = await client.rpc('feed', args);
-        return data || [];
+        return (data || []).filter((p) => !p.removed);   // sem "Publicação removida" nas listas
     }
 
     async function renderRight() {
@@ -204,6 +204,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             how.appendChild(steps);
             right.appendChild(how);
         }
+        const rules = el('a', 'side-rules', t('communityRules', 'Community rules'));
+        rules.href = 'termos.html#regras';
+        right.appendChild(rules);
     }
 
     await Promise.all([renderLeft(), renderRight()]);

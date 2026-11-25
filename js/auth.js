@@ -6,7 +6,7 @@
     const SUPABASE_URL = 'https://qjpogjpmxbpuuclpdfhv.supabase.co';
     const SUPABASE_KEY = 'sb_publishable_mYKOcjU5XYwsDQW-4Bve8g_SpCqp1Dc';
     const REMEMBER_KEY = 'eor-remember';
-    const TERMS_VERSION = '2026-11-20';
+    const TERMS_VERSION = '2026-11-24'; // igual a current_terms_version() no banco (supabase/015_termos.sql)
     const MIN_AGE = 16;
     // Captcha (Cloudflare Turnstile). A "site key" é pública; a secreta fica só no Supabase.
     const TURNSTILE_SITE_KEY = '0x4AAAAAAGK0ljsGtPrcYIvr';
@@ -79,6 +79,8 @@
             EOR_ALREADY_SENT: ['errAlreadySent', 'Request already sent.'],
             EOR_COOLDOWN: ['errFriendCooldown', 'This player declined your request recently. Try again in a few days.'],
             EOR_BANNED: ['errBanned', 'Your account is suspended.'],
+            EOR_TERMS_PENDING: ['errTermsPending', 'Accept the new terms (notice at the top of the page) to continue.'],
+            EOR_GUARDIAN: ['errGuardianPending', 'Your account is waiting for your guardian\'s permission (notice at the top of the page).'],
             EOR_MFA: ['errNeedMfa', 'Confirm your two-step code to continue.'],
             EOR_BLOCKED: ['errBlocked', 'You cannot interact with this player.']
         };
@@ -253,8 +255,99 @@
         return typeof r.data?.presence_mode === 'string' ? r.data.presence_mode : null;
     }
 
+    // ---------- janela de denúncia (feed e mensagens; supabase/019_comunidade_moderacao.sql) ----------
+    // Devolve { category, reason } ou null (cancelou). As categorias graves vão para o topo da moderação.
+    const REPORT_CATEGORIES = [
+        ['spam', 'reportCatSpam', 'Spam or advertising'],
+        ['ofensa', 'reportCatHate', 'Hate or discrimination'],
+        ['assedio', 'reportCatHarass', 'Harassment, threats to annoy, stalking'],
+        ['sexual', 'reportCatSexual', 'Sexual content or nudity'],
+        ['menor', 'reportCatMinor', 'Sexual content involving minors'],
+        ['ameaca', 'reportCatThreat', 'Threat or real violence'],
+        ['autolesao', 'reportCatSelfHarm', 'Someone at risk of hurting themselves'],
+        ['golpe', 'reportCatScam', 'Scam, phishing or dangerous link'],
+        ['dados', 'reportCatDoxx', "Exposes someone's personal data"],
+        ['trapaca', 'reportCatCheat', 'Cheats, hacks or selling accounts'],
+        ['outro', 'reportCatOther', 'Something else']
+    ];
+    function reportDialog() {
+        const tr = (k, f) => (window.getSiteTranslation ? window.getSiteTranslation(k, f) : f);
+        const el = (tag, cls, text) => {
+            const n = document.createElement(tag);
+            if (cls) n.className = cls;
+            if (text !== undefined) n.textContent = text;
+            return n;
+        };
+        return new Promise((resolve) => {
+            const dialog = el('dialog', 'report-dialog');
+            dialog.setAttribute('aria-labelledby', 'reportDialogTitle');
+            const form = el('form', 'report-form');
+            form.method = 'dialog';
+            const title = el('h2', 'report-title', tr('report', 'Report'));
+            title.id = 'reportDialogTitle';
+            const fieldset = el('fieldset', 'report-cats');
+            fieldset.appendChild(el('legend', '', tr('reportWhat', 'What is wrong?')));
+            REPORT_CATEGORIES.forEach(([value, key, fallback]) => {
+                const label = el('label', 'report-cat');
+                const radio = el('input');
+                radio.type = 'radio';
+                radio.name = 'category';
+                radio.value = value;
+                label.append(radio, el('span', '', tr(key, fallback)));
+                fieldset.appendChild(label);
+            });
+            const help = el('p', 'report-help', tr('reportSelfHarmHelp', 'If someone is in danger right now, contact local emergency services.'));
+            help.hidden = true;
+            const reasonLabel = el('label', 'report-reason-label', tr('reportDetails', 'Details (optional)'));
+            const reason = el('textarea', 'report-reason');
+            reason.maxLength = 300;
+            reason.rows = 3;
+            reasonLabel.appendChild(reason);
+            const err = el('p', 'report-error');
+            err.setAttribute('role', 'alert');
+            const row = el('div', 'report-actions');
+            const cancel = el('button', 'btn btn-login', tr('cancel', 'Cancel'));
+            cancel.type = 'button';
+            const send = el('button', 'btn btn-download', tr('reportSend', 'Send report'));
+            send.type = 'submit';
+            row.append(cancel, send);
+            const note = el('p', 'report-note', tr('reportPrivate', 'The reported player does not find out who reported.'));
+            form.append(title, fieldset, help, reasonLabel, err, row, note);
+            dialog.appendChild(form);
+            document.body.appendChild(dialog);
+
+            let done = false;
+            const finish = (result) => {
+                if (done) return;
+                done = true;
+                if (dialog.open) dialog.close();
+                dialog.remove();
+                resolve(result);
+            };
+            fieldset.addEventListener('change', () => {
+                help.hidden = form.category.value !== 'autolesao';
+                err.textContent = '';
+            });
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (!form.category.value) {
+                    err.textContent = tr('reportPickOne', 'Choose what is wrong.');
+                    return;
+                }
+                finish({ category: form.category.value, reason: reason.value.trim().slice(0, 300) });
+            });
+            cancel.addEventListener('click', () => finish(null));
+            dialog.addEventListener('cancel', (e) => { e.preventDefault(); finish(null); });   // Esc
+            dialog.addEventListener('close', () => finish(null));
+            dialog.showModal();
+            fieldset.querySelector('input')?.focus();
+        });
+    }
+
     window.EorAuth = {
         presence: { friends: friendsPresence, text: presenceText, mark: markOnline, active: isActive, textClass, picker: statusPicker, myMode: myPresenceMode, MODES },
+        reportDialog,
+        reportCategories: REPORT_CATEGORIES,
         friendError,
         client,
         SUPABASE_URL,

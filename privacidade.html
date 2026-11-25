@@ -8,8 +8,8 @@
     <meta name="theme-color" content="#0c0b0a">
     <title data-i18n="privacyPageTitle">Privacy policy</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112093">
-    <link rel="stylesheet" href="css/privacidade.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112150">
+    <link rel="stylesheet" href="css/privacidade.css?v=2026112150">
 </head>
 <body>
     <div id="site-header"></div>
@@ -17,98 +17,289 @@
     <main class="legal-page">
         <h1 class="section-title" data-i18n="privacyPageTitle">Privacy policy</h1>
 
+        <!-- Ao mudar este texto, siga o passo a passo de legal/COMO-ATUALIZAR.md -->
+
         <!-- ===================== PORTUGUÊS ===================== -->
         <article class="legal-text" data-lang="pt">
-            <p class="legal-updated">Versão de 20 de novembro de 2026</p>
+            <p class="legal-updated">Versão de 24 de novembro de 2026</p>
 
-            <p>Esta política explica quais dados a Myth Forge Studios guarda quando você cria uma conta no site de Empire of Rebirth &amp; Ruins, para que servem e como você pode pedir para vê-los, corrigi-los ou apagá-los, conforme a Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018).</p>
+            <nav class="legal-toc" aria-label="Nesta página">
+                <a href="#dados">Dados</a>
+                <a href="#mensagens">Mensagens</a>
+                <a href="#guarda">Prazos</a>
+                <a href="#excluir">Excluir conta</a>
+                <a href="#direitos">Seus direitos</a>
+            </nav>
 
-            <h2>1. Quais dados guardamos</h2>
+            <p>Esta política explica quais dados guardamos quando você usa o site de Empire of Rebirth &amp; Ruins, quem pode vê-los, por quanto tempo ficam guardados e como você pode vê-los, corrigi-los, levá-los ou apagá-los, conforme a Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018). As regras de uso estão nos <a href="termos.html">Termos de uso</a>.</p>
             <ul>
-                <li><strong>E-mail:</strong> para entrar na conta, confirmar o cadastro e recuperar a senha.</li>
-                <li><strong>Senha:</strong> guardada de forma criptografada. Nem a equipe consegue vê-la.</li>
-                <li><strong>Apelido e bio:</strong> o seu nome de jogador e o texto que você escrever sobre você. <strong>São públicos</strong>: qualquer visitante pode vê-los no seu perfil.</li>
-                <li><strong>Data de nascimento:</strong> só para confirmar a idade mínima de 16 anos. Não é mostrada a ninguém além de você.</li>
-                <li><strong>Data em que aceitou estes termos.</strong></li>
-                <li><strong>Dados técnicos de acesso</strong> (como endereço IP e horário), registrados pelo nosso provedor para proteger as contas contra invasões e abusos.</li>
+                <li><strong>Responsável pelos dados (controlador):</strong> Erick dos Santos Monteiro, criador da Myth Forge Studios, São Paulo (SP), Brasil. A Myth Forge Studios ainda não é uma empresa registrada; quando for, este documento será atualizado.</li>
+                <li><strong>Canal de privacidade (encarregado):</strong> Equipe Myth Forge, pelo e-mail <a href="mailto:empireofrebirth@gmail.com">empireofrebirth@gmail.com</a>.</li>
             </ul>
-            <p>Não pedimos telefone, documento, endereço nem foto.</p>
 
-            <h2>2. Para que usamos</h2>
+            <h2 id="dados">1. Quais dados guardamos</h2>
             <ul>
-                <li>Criar e manter a sua conta e o seu perfil de jogador (execução do serviço que você pediu).</li>
-                <li>Cumprir a classificação indicativa do jogo, confirmando a idade mínima (obrigação legal).</li>
-                <li>Proteger o site e os jogadores contra fraudes, invasões e abusos (legítimo interesse).</li>
+                <li><strong>Conta:</strong> e-mail, apelido, data de nascimento e qual versão dos termos você aceitou, com a data. Se você trocar de apelido, guardamos o apelido antigo (para reservá-lo por 30 dias e para a moderação).</li>
+                <li><strong>16 e 17 anos:</strong> o e-mail do responsável que você informou e a resposta dele (autorizou ou não, e quando).</li>
+                <li><strong>Senha:</strong> o nosso provedor de login guarda apenas um <em>hash</em> da senha (bcrypt), um código que não pode ser revertido para a senha original. Ninguém, nem a equipe, consegue ver a sua senha.</li>
+                <li><strong>Verificação em duas etapas (se você ativar):</strong> o provedor de login guarda um segredo de autenticação ligado à sua conta, usado para conferir os códigos do seu aplicativo. Os códigos de 6 dígitos não são guardados.</li>
+                <li><strong>Código de recuperação (se você criar):</strong> guardamos só um <em>hash</em> dele, como a senha. O código em si aparece uma vez, só para você.</li>
+                <li><strong>Perfil e o que você publica:</strong> bio, emblema, insígnias, posts, imagens, comentários, respostas, curtidas e respostas marcadas como melhor. As imagens são reprocessadas no seu navegador antes do envio, o que <strong>remove a localização e os dados da câmera</strong> guardados na foto.</li>
+                <li><strong>Amizades e bloqueios:</strong> pedidos enviados e recebidos, amigos e jogadores que você bloqueou.</li>
+                <li><strong>Mensagens privadas</strong> trocadas com amigos.</li>
+                <li><strong>Status:</strong> o status que você escolheu (automático, ocupado, não perturbe ou oculto) e a última vez em que esteve no site.</li>
+                <li><strong>Notificações, denúncias e moderação:</strong> avisos de curtidas, comentários e menções; as denúncias que você fizer, com o motivo escolhido; e, se você receber um aviso ou punição, o registro dessa ação. Se a conta for suspensa ou banida, guardamos uma "impressão" embaralhada do e-mail (não o e-mail em si) para impedir um cadastro novo com ele durante a punição.</li>
+                <li><strong>Dados técnicos de acesso:</strong> endereço IP e navegador da sessão de login, um registro de auditoria do login (entradas, saídas e trocas de senha, com IP e horário) e as tentativas de login por apelido e de recuperação de conta (sem IP). Servem para proteger as contas contra invasões e abusos.</li>
+                <li><strong>Contato com a equipe:</strong> o que você escrever para o nosso e-mail.</li>
             </ul>
-            <p>Não vendemos seus dados e não usamos para publicidade.</p>
+            <p>Não pedimos telefone, documento nem endereço. O site não vende nada e não recebe dados de pagamento.</p>
 
-            <h2>3. Com quem compartilhamos</h2>
-            <p>As contas ficam no <strong>Supabase</strong>, empresa que fornece o banco de dados e o sistema de login, e que só trata os dados para prestar esse serviço. Não compartilhamos com mais ninguém, exceto se a lei ou uma autoridade exigir.</p>
+            <h2 id="quem-ve">2. Quem vê o quê</h2>
+            <ul>
+                <li><strong>Qualquer visitante, mesmo sem conta:</strong> apelido, bio, emblema, data de cadastro, insígnias, seus posts, comentários e imagens, e a sua lista de amigos (você pode deixá-la privada em Editar perfil).</li>
+                <li><strong>Só os seus amigos:</strong> se você está online e quando esteve no site pela última vez. No status "Oculto" ninguém vê nenhum dos dois.</li>
+                <li><strong>Só você e quem recebeu:</strong> as mensagens privadas (veja o item 3).</li>
+                <li><strong>Seu responsável (16 e 17 anos):</strong> o seu apelido e a sua idade, na página do pedido de autorização.</li>
+                <li><strong>Só você:</strong> e-mail, data de nascimento, jogadores bloqueados, o status que você escolheu e a versão dos termos que você aceitou.</li>
+            </ul>
+            <p><strong>Divulgação:</strong> conforme os <a href="termos.html#conteudo">Termos de uso</a>, a Myth Forge Studios pode compartilhar nos canais oficiais do jogo o conteúdo que você criar sobre o jogo, com crédito ao seu apelido. Se você apagar o post, retiramos a publicação feita a partir dele.</p>
 
-            <h2>4. Navegador</h2>
-            <p>O site guarda no seu navegador apenas a sua sessão de login e o idioma escolhido. Não usamos cookies de propaganda nem rastreadores.</p>
+            <h2 id="mensagens">3. Mensagens privadas e acesso da equipe</h2>
+            <ul>
+                <li><strong>Proteção:</strong> as mensagens viajam criptografadas (HTTPS) e ficam guardadas em disco criptografado pelo provedor do banco de dados. Elas <strong>não</strong> têm criptografia de ponta a ponta.</li>
+                <li><strong>Pelo site:</strong> uma conversa só pode ser lida pelas duas pessoas que participam dela. Ninguém da equipe consegue abrir conversas pelo site.</li>
+                <li><strong>Se você denunciar uma mensagem:</strong> uma cópia do texto daquela mensagem vai para o painel de moderação, que só a moderação acessa, com verificação em duas etapas. A pessoa denunciada não fica sabendo quem denunciou.</li>
+                <li><strong>O que a moderação vê de um jogador:</strong> apelido, bio, emblema, números de posts e denúncias, conteúdo público e o histórico de avisos e punições. O painel não mostra e-mail, data de nascimento nem conversas. Hoje a moderação é feita só pelo administrador; se a equipe crescer, os novos moderadores terão o mesmo limite.</li>
+                <li><strong>Acesso técnico ao banco de dados:</strong> o administrador do site tem acesso ao painel do nosso provedor de banco de dados, protegido por senha e verificação em duas etapas. Esse acesso técnico permite ver todos os dados guardados, inclusive mensagens. Ele só é usado para atender a um pedido seu, investigar conteúdo denunciado, corrigir falhas, responder a incidentes de segurança ou cumprir uma obrigação legal. Não lemos conversas por nenhum outro motivo.</li>
+            </ul>
 
-            <h2>5. Por quanto tempo</h2>
-            <p>Enquanto a sua conta existir. Se você pedir a exclusão, apagamos a conta e os dados ligados a ela em até 15 dias, salvo o que a lei obrigar a guardar.</p>
+            <h2>4. Para que usamos</h2>
+            <ul>
+                <li>Criar e manter a sua conta, o seu perfil e as funções da comunidade que você usa (execução do serviço que você pediu).</li>
+                <li>Confirmar a idade mínima e, para quem tem 16 ou 17 anos, pedir e registrar a autorização do responsável (obrigação legal, consentimento do responsável e o melhor interesse do adolescente).</li>
+                <li>Mandar e-mails da conta: confirmação de cadastro, troca de senha e de e-mail, avisos de segurança (senha trocada, e-mail trocado, verificação em duas etapas ligada ou desligada, código de recuperação usado), pedido ao responsável e confirmação de exclusão da conta (execução do serviço e segurança).</li>
+                <li>Proteger o site e os jogadores contra fraudes, invasões, spam e abusos, analisar denúncias e impedir a volta de quem foi banido (legítimo interesse).</li>
+                <li>Responder às suas mensagens e pedidos (execução do serviço e obrigação legal).</li>
+            </ul>
+            <p>Não vendemos seus dados, não mandamos propaganda por e-mail e não usamos ferramentas de análise de audiência (analytics). Nenhuma decisão sobre você é tomada só por computador, além das verificações automáticas de segurança: recusa de cadastro de quem tem menos de 16 anos, verificação anti-robô, limites de envio e apelidos reservados. Punições são sempre decididas por uma pessoa da equipe.</p>
 
-            <h2>6. Seus direitos</h2>
-            <p>Você pode, a qualquer momento, pedir para <strong>ver, corrigir, levar para outro serviço ou apagar</strong> seus dados, e retirar o seu consentimento. É só escrever para <a href="mailto:empireofrebirth@gmail.com">empireofrebirth@gmail.com</a> a partir do e-mail da conta. Respondemos em até 15 dias.</p>
+            <h2 id="servicos">5. Serviços que usamos e onde ficam os dados</h2>
+            <p>Estes fornecedores tratam dados só para prestar o serviço deles:</p>
+            <ul>
+                <li><strong>Supabase:</strong> banco de dados, login e armazenamento das imagens. Os dados ficam na região de <strong>São Paulo, Brasil</strong>.</li>
+                <li><strong>Cloudflare Turnstile:</strong> a verificação que confirma que você não é um robô no login, no cadastro e na recuperação de conta. Ela analisa dados técnicos do navegador e o IP (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">política da Cloudflare</a>).</li>
+                <li><strong>Brevo:</strong> envia os e-mails do site e por isso recebe o endereço de quem recebe (você ou o seu responsável) e o conteúdo da mensagem (<a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener">política da Brevo</a>).</li>
+                <li><strong>Gmail (Google):</strong> recebe os e-mails que você manda para empireofrebirth@gmail.com (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política do Google</a>).</li>
+                <li><strong>GitHub Pages:</strong> hospeda as páginas do site e registra dados técnicos de acesso, como o IP de quem visita (<a href="https://docs.github.com/pt/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">política do GitHub</a>).</li>
+            </ul>
+            <p>Cloudflare, Brevo, Google e GitHub podem tratar dados fora do Brasil (por exemplo, na União Europeia e nos Estados Unidos), com as garantias previstas nos termos desses serviços. As fontes de letra são carregadas do próprio site. Os links para o itch.io e o Discord só enviam algo a esses serviços quando você clica neles. Não compartilhamos dados com mais ninguém, exceto quando a lei ou uma autoridade exigir, ou nos casos graves descritos nos <a href="termos.html#moderacao">Termos de uso</a>.</p>
 
-            <h2>7. Idade mínima</h2>
-            <p>As contas são para pessoas com <strong>16 anos ou mais</strong>. Se soubermos de uma conta de alguém mais novo, ela será removida.</p>
+            <h2>6. Navegador</h2>
+            <p>O site não cria cookies. Ele guarda no seu navegador apenas: a sua sessão de login (até você sair; se não marcar "Lembrar de mim", até fechar o navegador), o idioma escolhido, o estado da janela de mensagens e o seu emblema (até fechar a aba) e quando você escolheu "Depois" no lembrete do código de recuperação. Nada disso é usado para rastrear você. A verificação anti-robô da Cloudflare roda numa janela própria, com as regras dela. Não usamos cookies de propaganda nem rastreadores.</p>
 
-            <h2>8. Mudanças</h2>
-            <p>Se esta política mudar, a nova versão aparece nesta página com a data atualizada e avisaremos quem tem conta quando a mudança for importante.</p>
+            <h2 id="guarda">7. Por quanto tempo guardamos</h2>
+            <ul>
+                <li><strong>Conta, perfil e publicações:</strong> enquanto a conta existir, ou até você apagar o post ou comentário.</li>
+                <li><strong>Mensagens privadas:</strong> 1 ano.</li>
+                <li><strong>Notificações:</strong> 90 dias depois de lidas (as não lidas, 1 ano).</li>
+                <li><strong>Avisos da moderação:</strong> 90 dias depois de vistos (os não vistos, 1 ano).</li>
+                <li><strong>Denúncias:</strong> até serem resolvidas e mais 1 ano.</li>
+                <li><strong>Suspensões:</strong> até 1 ano depois que terminam.</li>
+                <li><strong>Histórico de moderação:</strong> 2 anos.</li>
+                <li><strong>"Impressão" do e-mail de quem foi punido:</strong> enquanto durar a suspensão; no banimento, por tempo indeterminado.</li>
+                <li><strong>Apelidos antigos:</strong> 1 ano (reservados para outras pessoas por 30 dias).</li>
+                <li><strong>Pedido ao responsável (16 e 17 anos):</strong> enquanto a conta existir. Contas sem autorização são excluídas 7 dias depois do cadastro, ou 1 dia depois da recusa.</li>
+                <li><strong>Código de recuperação:</strong> até ser usado, trocado ou a conta ser excluída.</li>
+                <li><strong>Sessão de login (IP e navegador):</strong> enquanto você estiver conectado, até 90 dias sem uso; é apagada quando você sai ou exclui a conta.</li>
+                <li><strong>Registro de auditoria do login:</strong> 7 dias.</li>
+                <li><strong>Registros técnicos da plataforma do banco de dados:</strong> até 7 dias.</li>
+                <li><strong>Tentativas de login por apelido e de recuperação de conta:</strong> 1 dia.</li>
+                <li><strong>E-mails na fila de envio:</strong> apagados assim que enviados (no máximo 7 dias, se o envio falhar).</li>
+                <li><strong>Registros de envio de e-mail na Brevo:</strong> 30 dias.</li>
+                <li><strong>E-mails trocados com a equipe:</strong> enquanto forem necessários para atender o seu pedido.</li>
+                <li><strong>Registros de acesso do GitHub Pages e da verificação da Cloudflare:</strong> pelos prazos definidos por esses serviços nas políticas acima.</li>
+            </ul>
+            <p>Os prazos são aplicados por uma limpeza automática que roda no nosso banco de dados. Hoje não guardamos cópias de segurança (<em>backups</em>) do banco; se isso mudar, o prazo delas aparecerá aqui.</p>
+
+            <h2 id="excluir">8. Excluir a sua conta</h2>
+            <p>Você pode excluir a conta quando quiser em <strong>Editar perfil → Privacidade e dados → Excluir conta</strong>, ou pelo link "Excluir minha conta" no rodapé do site. Por segurança, é preciso ter entrado na conta há pouco tempo e digitar o seu apelido para confirmar. A exclusão é imediata e você recebe um e-mail de confirmação.</p>
+            <ul>
+                <li><strong>Apagado na hora:</strong> perfil, apelido, bio, emblema, insígnias, data de nascimento, e-mail, posts, <strong>imagens</strong>, comentários, curtidas, amizades, bloqueios, notificações, status, código de recuperação e mensagens privadas. As mensagens somem também da conversa da outra pessoa. Onde outros jogadores tinham respondido, fica só um aviso de "removido", sem o seu conteúdo e sem o seu nome, para as respostas deles não sumirem.</li>
+                <li><strong>Fica guardado, sem ligação com nenhuma conta:</strong> as denúncias que você fez e as cópias de conteúdo denunciado contra você (até 1 ano depois de resolvida a denúncia) e o histórico de moderação com o apelido e a ação tomada (até 2 anos), para a segurança dos outros jogadores. Menções ao seu apelido em textos de outras pessoas continuam como texto.</li>
+                <li><strong>Registros técnicos dos fornecedores</strong> (login, e-mails enviados, acessos ao site) somem nos prazos do item 7.</li>
+                <li><strong>Conta suspensa ou banida:</strong> não pode ser excluída pelo site enquanto a punição durar. Se a conta foi banida, você pode pedir a exclusão por e-mail; a "impressão" do e-mail continua guardada para impedir um cadastro novo.</li>
+            </ul>
+            <p>Se não conseguir entrar na conta, peça a exclusão pelo e-mail <a href="mailto:empireofrebirth@gmail.com?subject=Excluir%20conta">empireofrebirth@gmail.com</a>, a partir do e-mail da conta.</p>
+
+            <h2 id="direitos">9. Seus direitos</h2>
+            <p>Pela LGPD, você pode, a qualquer momento: confirmar se tratamos seus dados, ter acesso a eles, corrigi-los, levá-los para outro serviço, pedir que sejam apagados, saber com quem são compartilhados e retirar um consentimento.</p>
+            <ul>
+                <li><strong>Pelo próprio site:</strong> em Editar perfil você vê e muda seus dados (apelido, e-mail, bio, emblema, visibilidade), <strong>baixa uma cópia de tudo</strong> (Privacidade e dados → Baixar meus dados) e exclui a conta.</li>
+                <li><strong>Por e-mail:</strong> escreva para <a href="mailto:empireofrebirth@gmail.com">empireofrebirth@gmail.com</a> <strong>a partir do e-mail da conta</strong> (é assim que confirmamos que o pedido é seu). Respondemos em até <strong>15 dias</strong>.</li>
+                <li>A data de nascimento não pode ser trocada pelo site. Se ela estiver errada, peça a correção por e-mail.</li>
+                <li>Se não ficar satisfeito com a nossa resposta, você pode reclamar à <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong>, em <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">gov.br/anpd</a>.</li>
+            </ul>
+
+            <h2>10. Idade mínima e adolescentes</h2>
+            <p>As contas são para pessoas com <strong>16 anos ou mais</strong>, idade informada pela própria pessoa no cadastro. Quem tem 16 ou 17 anos precisa da autorização de um responsável, pedida por e-mail; até lá, a conta não publica nem conversa, e sem autorização em 7 dias ela é excluída. O responsável pode retirar a autorização quando quiser, escrevendo para o nosso e-mail. Se soubermos de uma conta de alguém com menos de 16 anos, ela será removida.</p>
+
+            <h2>11. Segurança</h2>
+            <p>Usamos conexão criptografada, senhas guardadas só como <em>hash</em>, verificação anti-robô, limites de tentativas, regras no banco de dados que impedem cada pessoa de ler dados que não são dela e verificação em duas etapas obrigatória para a moderação. Você recebe um e-mail quando a senha ou o e-mail mudam, quando a verificação em duas etapas é ligada ou desligada e quando o código de recuperação é usado. Se receber um aviso que não reconhece, troque a senha (ou use o código de recuperação) e escreva para nós. Se acontecer um incidente de segurança que possa trazer risco a você, avisaremos você e a ANPD.</p>
+
+            <h2 id="versoes">12. Aceite, mudanças e versões</h2>
+            <p>Guardamos qual versão destes documentos você aceitou e quando. Você vê isso em Editar perfil → Privacidade e dados. Quando uma mudança importante acontecer (um novo uso dos seus dados, um novo serviço recebendo dados, novas regras ou o início de vendas), a nova versão aparece aqui com a data atualizada e quem tem conta vê um aviso no site para aceitá-la; até aceitar, a conta pode navegar, mas não publica nem conversa. As versões anteriores ficam disponíveis abaixo.</p>
+
+            <div class="legal-versions">
+                <strong>Versões anteriores</strong>
+                <ul>
+                    <li><a href="legal/privacidade-2026-11-20.html" target="_blank" rel="noopener">20 de novembro de 2026</a></li>
+                </ul>
+            </div>
         </article>
 
         <!-- ===================== ENGLISH ===================== -->
         <article class="legal-text" data-lang="en">
-            <p class="legal-updated">Version of November 20, 2026</p>
+            <p class="legal-updated">Version of November 24, 2026</p>
 
-            <p>This policy explains what data Myth Forge Studios keeps when you create an account on the Empire of Rebirth &amp; Ruins website, what it is used for, and how you can ask to see, correct or delete it, under Brazil's General Data Protection Law (LGPD, Law 13.709/2018).</p>
+            <nav class="legal-toc" aria-label="On this page">
+                <a href="#dados-en">Data</a>
+                <a href="#mensagens-en">Messages</a>
+                <a href="#guarda-en">Retention</a>
+                <a href="#excluir-en">Delete account</a>
+                <a href="#direitos-en">Your rights</a>
+            </nav>
 
-            <h2>1. What we keep</h2>
+            <p>This policy explains what data we keep when you use the Empire of Rebirth &amp; Ruins website, who can see it, how long it is kept and how you can see, correct, take or delete it, under Brazil's General Data Protection Law (LGPD, Law 13.709/2018). The rules for using the site are in the <a href="termos.html">Terms of use</a>.</p>
             <ul>
-                <li><strong>Email:</strong> to sign in, confirm your account and recover your password.</li>
-                <li><strong>Password:</strong> stored encrypted. Not even the team can see it.</li>
-                <li><strong>Nickname and bio:</strong> your player name and the text you write about yourself. <strong>They are public</strong>: any visitor can see them on your profile.</li>
-                <li><strong>Date of birth:</strong> only to confirm the minimum age of 16. It is never shown to anyone but you.</li>
-                <li><strong>The date you accepted these terms.</strong></li>
-                <li><strong>Technical access data</strong> (such as IP address and time), logged by our provider to protect accounts against break-ins and abuse.</li>
+                <li><strong>Data controller:</strong> Erick dos Santos Monteiro, creator of Myth Forge Studios, São Paulo (SP), Brazil. Myth Forge Studios is not a registered company yet; when it is, this document will be updated.</li>
+                <li><strong>Privacy contact (data protection officer):</strong> the Myth Forge Team, at <a href="mailto:empireofrebirth@gmail.com">empireofrebirth@gmail.com</a>.</li>
             </ul>
-            <p>We do not ask for your phone, ID, address or photo.</p>
 
-            <h2>2. What we use it for</h2>
+            <h2 id="dados-en">1. What we keep</h2>
             <ul>
-                <li>Creating and keeping your account and player profile (providing the service you asked for).</li>
-                <li>Following the game's age rating by confirming the minimum age (legal obligation).</li>
-                <li>Protecting the site and players against fraud, break-ins and abuse (legitimate interest).</li>
+                <li><strong>Account:</strong> email, nickname, date of birth and which version of the terms you accepted, with the date. If you change your nickname, we keep the old one (to reserve it for 30 days and for moderation).</li>
+                <li><strong>Ages 16 and 17:</strong> the guardian's email you gave and their answer (approved or not, and when).</li>
+                <li><strong>Password:</strong> our sign-in provider keeps only a <em>hash</em> of the password (bcrypt), a code that cannot be turned back into the original password. Nobody, not even the team, can see your password.</li>
+                <li><strong>Two-step verification (if you turn it on):</strong> the sign-in provider keeps an authentication secret linked to your account, used to check the codes from your app. The 6-digit codes are not stored.</li>
+                <li><strong>Recovery code (if you create one):</strong> we keep only a <em>hash</em> of it, like the password. The code itself is shown once, only to you.</li>
+                <li><strong>Profile and what you post:</strong> bio, crest, badges, posts, images, comments, replies, likes and answers marked as best. Images are reprocessed in your browser before upload, which <strong>removes the location and camera data</strong> stored in the photo.</li>
+                <li><strong>Friends and blocks:</strong> requests sent and received, friends and players you blocked.</li>
+                <li><strong>Private messages</strong> exchanged with friends.</li>
+                <li><strong>Status:</strong> the status you chose (automatic, busy, do not disturb or hidden) and the last time you were on the site.</li>
+                <li><strong>Notifications, reports and moderation:</strong> notices of likes, comments and mentions; the reports you make, with the reason you chose; and, if you receive a warning or penalty, the record of that action. If the account is suspended or banned, we keep a scrambled "fingerprint" of the email (not the email itself) to block a new sign-up with it during the penalty.</li>
+                <li><strong>Technical access data:</strong> IP address and browser of the sign-in session, a sign-in audit log (sign-ins, sign-outs and password changes, with IP and time) and nickname sign-in and account recovery attempts (without IP). They protect accounts against break-ins and abuse.</li>
+                <li><strong>Contact with the team:</strong> what you write to our email.</li>
             </ul>
-            <p>We do not sell your data and do not use it for advertising.</p>
+            <p>We do not ask for a phone number, ID or address. The site does not sell anything and does not receive payment data.</p>
 
-            <h2>3. Who we share it with</h2>
-            <p>Accounts are hosted by <strong>Supabase</strong>, the company that provides the database and sign-in system, which only processes the data to provide that service. We share it with no one else unless the law or an authority requires it.</p>
+            <h2 id="quem-ve-en">2. Who sees what</h2>
+            <ul>
+                <li><strong>Any visitor, even without an account:</strong> nickname, bio, crest, join date, badges, your posts, comments and images, and your friends list (you can make it private in Edit profile).</li>
+                <li><strong>Only your friends:</strong> whether you are online and when you were last on the site. With the "Hidden" status nobody sees either.</li>
+                <li><strong>Only you and the recipient:</strong> private messages (see item 3).</li>
+                <li><strong>Your guardian (ages 16 and 17):</strong> your nickname and age, on the permission request page.</li>
+                <li><strong>Only you:</strong> email, date of birth, blocked players, the status you chose and the version of the terms you accepted.</li>
+            </ul>
+            <p><strong>Promotion:</strong> as described in the <a href="termos.html#conteudo">Terms of use</a>, Myth Forge Studios may share content you create about the game on the game's official channels, crediting your nickname. If you delete the post, we take down the publication based on it.</p>
 
-            <h2>4. Your browser</h2>
-            <p>The site only stores your sign-in session and your chosen language in your browser. We use no advertising cookies or trackers.</p>
+            <h2 id="mensagens-en">3. Private messages and team access</h2>
+            <ul>
+                <li><strong>Protection:</strong> messages travel encrypted (HTTPS) and are stored on disks encrypted by the database provider. They are <strong>not</strong> end-to-end encrypted.</li>
+                <li><strong>Through the site:</strong> a conversation can only be read by the two people in it. Nobody on the team can open conversations through the site.</li>
+                <li><strong>If you report a message:</strong> a copy of that message's text goes to the moderation panel, which only moderators can open, with two-step verification. The reported person does not learn who reported them.</li>
+                <li><strong>What moderation sees about a player:</strong> nickname, bio, crest, post and report counts, public content and the history of warnings and penalties. The panel does not show email, date of birth or conversations. Today moderation is done only by the administrator; if the team grows, new moderators will have the same limits.</li>
+                <li><strong>Technical access to the database:</strong> the site administrator has access to our database provider's dashboard, protected by a password and two-step verification. This technical access allows seeing all stored data, including messages. It is only used to handle a request from you, investigate reported content, fix bugs, respond to security incidents or meet a legal obligation. We do not read conversations for any other reason.</li>
+            </ul>
 
-            <h2>5. How long</h2>
-            <p>For as long as your account exists. If you ask for deletion, we delete the account and its data within 15 days, except what the law requires us to keep.</p>
+            <h2>4. What we use it for</h2>
+            <ul>
+                <li>Creating and running your account, your profile and the community features you use (performing the service you asked for).</li>
+                <li>Checking the minimum age and, for ages 16 and 17, asking for and recording the guardian's permission (legal obligation, guardian consent and the best interest of the teenager).</li>
+                <li>Sending account emails: sign-up confirmation, password and email changes, security notices (password changed, email changed, two-step verification turned on or off, recovery code used), the guardian request and the account deletion confirmation (performing the service and security).</li>
+                <li>Protecting the site and players against fraud, break-ins, spam and abuse, reviewing reports and preventing banned players from coming back (legitimate interest).</li>
+                <li>Answering your messages and requests (performing the service and legal obligation).</li>
+            </ul>
+            <p>We do not sell your data, we do not send advertising emails and we do not use audience analytics. No decision about you is made by a computer alone, apart from automatic security checks: refusing sign-ups under 16, the anti-robot check, sending limits and reserved nicknames. Penalties are always decided by a person on the team.</p>
 
-            <h2>6. Your rights</h2>
-            <p>At any time you can ask to <strong>see, correct, export or delete</strong> your data, and withdraw your consent. Just write to <a href="mailto:empireofrebirth@gmail.com">empireofrebirth@gmail.com</a> from your account email. We reply within 15 days.</p>
+            <h2 id="servicos-en">5. Services we use and where data is stored</h2>
+            <p>These providers handle data only to provide their service:</p>
+            <ul>
+                <li><strong>Supabase:</strong> database, sign-in and image storage. Data is stored in the <strong>São Paulo, Brazil</strong> region.</li>
+                <li><strong>Cloudflare Turnstile:</strong> the check that confirms you are not a robot at sign-in, sign-up and account recovery. It analyzes technical browser data and the IP (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare policy</a>).</li>
+                <li><strong>Brevo:</strong> sends the site's emails, so it receives the recipient's address (yours or your guardian's) and the message content (<a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener">Brevo policy</a>).</li>
+                <li><strong>Gmail (Google):</strong> receives the emails you send to empireofrebirth@gmail.com (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google policy</a>).</li>
+                <li><strong>GitHub Pages:</strong> hosts the site's pages and logs technical access data, such as visitors' IP addresses (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub policy</a>).</li>
+            </ul>
+            <p>Cloudflare, Brevo, Google and GitHub may handle data outside Brazil (for example, in the European Union and the United States), with the safeguards set out in those services' terms. Fonts are loaded from the site itself. Links to itch.io and Discord only send anything to those services when you click them. We do not share data with anyone else, except when the law or an authority requires it, or in the serious cases described in the <a href="termos.html#moderacao">Terms of use</a>.</p>
 
-            <h2>7. Minimum age</h2>
-            <p>Accounts are for people <strong>16 or older</strong>. If we learn of an account belonging to someone younger, it will be removed.</p>
+            <h2>6. Your browser</h2>
+            <p>The site does not create cookies. It stores in your browser only: your sign-in session (until you sign out; if you don't tick "Remember me", until you close the browser), the chosen language, the state of the messages window and your crest (until you close the tab), and when you chose "Later" on the recovery code reminder. None of it is used to track you. Cloudflare's anti-robot check runs in its own frame, under its own rules. We do not use advertising cookies or trackers.</p>
 
-            <h2>8. Changes</h2>
-            <p>If this policy changes, the new version will appear on this page with the updated date, and we will notify account holders of important changes.</p>
+            <h2 id="guarda-en">7. How long we keep it</h2>
+            <ul>
+                <li><strong>Account, profile and posts:</strong> while the account exists, or until you delete the post or comment.</li>
+                <li><strong>Private messages:</strong> 1 year.</li>
+                <li><strong>Notifications:</strong> 90 days after being read (unread ones, 1 year).</li>
+                <li><strong>Moderation notices:</strong> 90 days after being seen (unseen ones, 1 year).</li>
+                <li><strong>Reports:</strong> until resolved, plus 1 year.</li>
+                <li><strong>Suspensions:</strong> up to 1 year after they end.</li>
+                <li><strong>Moderation history:</strong> 2 years.</li>
+                <li><strong>Email "fingerprint" of penalized players:</strong> while the suspension lasts; for a ban, indefinitely.</li>
+                <li><strong>Old nicknames:</strong> 1 year (reserved from other people for 30 days).</li>
+                <li><strong>Guardian request (ages 16 and 17):</strong> while the account exists. Accounts without permission are deleted 7 days after sign-up, or 1 day after a refusal.</li>
+                <li><strong>Recovery code:</strong> until it is used, replaced or the account is deleted.</li>
+                <li><strong>Sign-in session (IP and browser):</strong> while you are signed in, up to 90 days without use; deleted when you sign out or delete the account.</li>
+                <li><strong>Sign-in audit log:</strong> 7 days.</li>
+                <li><strong>Database platform technical logs:</strong> up to 7 days.</li>
+                <li><strong>Nickname sign-in and account recovery attempts:</strong> 1 day.</li>
+                <li><strong>Emails in the sending queue:</strong> deleted as soon as they are sent (at most 7 days, if sending fails).</li>
+                <li><strong>Email sending logs at Brevo:</strong> 30 days.</li>
+                <li><strong>Emails exchanged with the team:</strong> as long as needed to handle your request.</li>
+                <li><strong>GitHub Pages and Cloudflare check access logs:</strong> for the periods set by those services in the policies above.</li>
+            </ul>
+            <p>These periods are applied by an automatic cleanup that runs in our database. We do not keep database backups today; if that changes, their retention period will appear here.</p>
+
+            <h2 id="excluir-en">8. Deleting your account</h2>
+            <p>You can delete your account whenever you want in <strong>Edit profile → Privacy and data → Delete account</strong>, or through the "Delete my account" link in the site footer. For safety, you must have signed in recently and type your nickname to confirm. Deletion is immediate and you receive a confirmation email.</p>
+            <ul>
+                <li><strong>Deleted right away:</strong> profile, nickname, bio, crest, badges, date of birth, email, posts, <strong>images</strong>, comments, likes, friends, blocks, notifications, status, recovery code and private messages. Messages also disappear from the other person's conversation. Where other players had replied, only a "removed" notice stays, without your content or your name, so their replies are not lost.</li>
+                <li><strong>Kept, no longer linked to any account:</strong> the reports you made and copies of content reported against you (up to 1 year after the report is resolved) and the moderation history with the nickname and the action taken (up to 2 years), for other players' safety. Mentions of your nickname in other people's texts stay as text.</li>
+                <li><strong>Providers' technical records</strong> (sign-in, emails sent, site visits) disappear within the periods in item 7.</li>
+                <li><strong>Suspended or banned accounts:</strong> cannot be deleted through the site while the penalty lasts. If the account was banned, you can ask for deletion by email; the email "fingerprint" stays stored to block a new sign-up.</li>
+            </ul>
+            <p>If you cannot sign in, ask for deletion at <a href="mailto:empireofrebirth@gmail.com?subject=Delete%20account">empireofrebirth@gmail.com</a>, from your account email.</p>
+
+            <h2 id="direitos-en">9. Your rights</h2>
+            <p>Under the LGPD, you may at any time: confirm whether we handle your data, access it, correct it, take it to another service, ask for it to be deleted, learn who it is shared with and withdraw consent.</p>
+            <ul>
+                <li><strong>On the site:</strong> in Edit profile you see and change your data (nickname, email, bio, crest, visibility), <strong>download a copy of everything</strong> (Privacy and data → Download my data) and delete the account.</li>
+                <li><strong>By email:</strong> write to <a href="mailto:empireofrebirth@gmail.com">empireofrebirth@gmail.com</a> <strong>from your account email</strong> (that is how we confirm the request is yours). We answer within <strong>15 days</strong>.</li>
+                <li>The date of birth cannot be changed on the site. If it is wrong, ask for a correction by email.</li>
+                <li>If you are not satisfied with our answer, you can complain to Brazil's <strong>National Data Protection Authority (ANPD)</strong>, at <a href="https://www.gov.br/anpd" target="_blank" rel="noopener">gov.br/anpd</a>.</li>
+            </ul>
+
+            <h2>10. Minimum age and teenagers</h2>
+            <p>Accounts are for people <strong>16 or older</strong>, with the age given by the person at sign-up. Players aged 16 or 17 need a guardian's permission, requested by email; until then, the account cannot post or chat, and without permission within 7 days it is deleted. The guardian can withdraw permission at any time by writing to our email. If we learn of an account belonging to someone under 16, it will be removed.</p>
+
+            <h2>11. Security</h2>
+            <p>We use encrypted connections, passwords stored only as a <em>hash</em>, an anti-robot check, attempt limits, database rules that stop each person from reading data that is not theirs and mandatory two-step verification for moderation. You receive an email when your password or email changes, when two-step verification is turned on or off and when the recovery code is used. If you get a notice you don't recognize, change your password (or use the recovery code) and write to us. If a security incident happens that may put you at risk, we will tell you and the ANPD.</p>
+
+            <h2 id="versoes-en">12. Agreement, changes and versions</h2>
+            <p>We keep which version of these documents you accepted and when. You can see it in Edit profile → Privacy and data. When an important change happens (a new use of your data, a new service receiving data, new rules or the start of sales), the new version appears here with the updated date and account holders see a notice on the site to accept it; until they accept, the account can browse but cannot post or chat. Previous versions are available below.</p>
+
+            <div class="legal-versions">
+                <strong>Previous versions</strong>
+                <ul>
+                    <li><a href="legal/privacidade-2026-11-20.html" target="_blank" rel="noopener">November 20, 2026</a></li>
+                </ul>
+            </div>
         </article>
     </main>
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112093"></script>
-    <script src="js/langSwitcher.js?v=2026112093"></script>
+    <script src="js/layout.js?v=2026112150"></script>
+    <script src="js/langSwitcher.js?v=2026112150"></script>
+    <script src="js/legal.js?v=2026112150"></script>
 </body>
 </html>

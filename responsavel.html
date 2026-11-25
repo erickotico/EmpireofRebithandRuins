@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="robots" content="noindex">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta name="theme-color" content="#0c0b0a">
+    <title data-i18n="guardianPageTitle">Guardian permission</title>
+    <link rel="stylesheet" href="css/reset.css?v=2026112010">
+    <link rel="stylesheet" href="css/global.css?v=2026112150">
+    <link rel="stylesheet" href="css/responsavel.css?v=2026112150">
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="guardian-page">
+        <p class="guardian-kicker" data-i18n="guardianKicker">Guardian permission</p>
+        <h1 class="section-title" data-i18n="guardianPageTitle">Guardian permission</h1>
+
+        <!-- Preenchido por js/responsavel.js -->
+        <section class="guardian-card" id="guardianCard" aria-live="polite">
+            <p class="guardian-loading" data-i18n="loading">Loading...</p>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/layout.js?v=2026112150"></script>
+    <script src="js/langSwitcher.js?v=2026112150"></script>
+    <script src="js/vendor/supabase.js?v=2.118.0"></script>
+    <script src="js/auth.js?v=2026112150"></script>
+    <script src="js/responsavel.js?v=2026112150"></script>
+</body>
+</html>

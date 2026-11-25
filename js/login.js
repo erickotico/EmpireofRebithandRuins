@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reason === 'EOR_NICK_INVALID') return ['nicknameInvalid', 'Invalid nickname. Check the rules above.'];
         if (reason === 'EOR_BIRTH_INVALID') return ['invalidBirthDate', 'Invalid date of birth.'];
         if (reason === 'EOR_TERMS') return ['acceptTerms', 'You must accept the terms.'];
+        if (reason === 'EOR_GUARDIAN_EMAIL') return ['guardianEmailInvalid', 'Enter a valid email for your parent or guardian (different from yours).'];
+        if (reason === 'EOR_EMAIL_BLOCKED') return ['errSignupRejected', 'We could not create the account. Check your nickname and date of birth.'];
         if (code === 'captcha_failed' || /captcha/i.test(error?.message || '')) return ['captchaFailed', 'The robot check failed. Please try again.'];
         if (code === 'invalid_credentials') return ['errInvalidLogin', 'Incorrect email or password.'];
         if (code === 'email_not_confirmed') return ['errNotConfirmed', 'Confirm your email first. Check your inbox (and spam).'];
@@ -125,16 +127,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function showView(name) {
         views.forEach((view) => { view.hidden = view.dataset.view !== name; });
         if (name === 'forgot') renderCaptcha('forgot');
+        if (name === 'recover') renderCaptcha('recover');
         const first = document.querySelector(`[data-view="${name}"] input`);
         first?.focus();
     }
     document.querySelectorAll('[data-goto]').forEach((button) => {
         button.addEventListener('click', () => {
             hideNotice();
+            const typed = document.getElementById('loginEmail')?.value.trim();
             if (button.dataset.goto === 'forgot') {
-                const typed = document.getElementById('loginEmail')?.value.trim();
                 const target = document.getElementById('forgotEmail');
                 if (typed && typed.includes('@') && target && !target.value) target.value = typed;
+            }
+            if (button.dataset.goto === 'recover') {
+                const target = document.getElementById('recoverLogin');
+                if (typed && target && !target.value) target.value = typed;
             }
             showView(button.dataset.goto);
         });
@@ -169,6 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const { data } = await client.auth.mfa.getAuthenticatorAssuranceLevel();
         return !!data && data.nextLevel === 'aal2' && data.currentLevel !== 'aal2';
     }
+    // ?volta=...: veio de um bloco do Editar perfil que pede login (excluir conta, código de recuperação)
+    function afterLoginPage() {
+        const back = { excluir: 'perfil.html#excluir-conta', recuperacao: 'perfil.html#recuperacao', responsavel: 'perfil.html#responsavel' };
+        return back[params.get('volta')] || 'perfil.html';
+    }
     async function continueAfterLogin(next = 'profile') {
         if (await needsMfa()) {
             afterMfa = next;
@@ -177,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         if (next === 'reset') showView('reset');
-        else window.location.replace('perfil.html');
+        else window.location.replace(afterLoginPage());
     }
 
     // Os tratadores rodam fora do callback (o Supabase não deixa chamar a API dentro dele)
@@ -224,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         if (afterMfa === 'reset') showView('reset');
-        else window.location.replace('perfil.html');
+        else window.location.replace(afterLoginPage());
     });
     document.getElementById('mfaCancel')?.addEventListener('click', async () => {
         await client.auth.signOut();
@@ -341,6 +353,74 @@ document.addEventListener('DOMContentLoaded', () => {
         showNotice('resetSent', 'If this email has an account, a link to create a new password is on its way. Check your inbox (and spam).', 'success');
     });
 
+    // ---------- recuperar com o código ----------
+    // O servidor (Edge Function "recuperar-conta") confere o código, encerra todas as
+    // sessões, desliga a 2FA, troca o e-mail se pedido e devolve uma entrada de uso único.
+    const recoverForm = document.getElementById('recoverForm');
+    recoverForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors(recoverForm);
+        hideNotice();
+        const login = recoverForm.login.value.trim();
+        const code = recoverForm.code.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        const newEmail = recoverForm.newEmail.value.trim();
+        if (!login || code.length !== 16) {
+            setError(recoverForm, 'recover', 'recoverInvalid', 'Nickname/email or recovery code is incorrect.');
+            return;
+        }
+        if (newEmail && !/^\S+@\S+\.\S+$/.test(newEmail)) {
+            setError(recoverForm, 'recover', 'invalidEmail', 'Invalid email.');
+            return;
+        }
+        const token = captchaToken('recover');
+        if (!token) {
+            setError(recoverForm, 'recover', 'captchaRequired', 'Confirm you are not a robot.');
+            return;
+        }
+        const button = recoverForm.querySelector('button[type="submit"]');
+        busy(button, true, 'verifying', 'Verifying...');
+        handled = true;
+        let response = null;
+        let body = {};
+        try {
+            response = await fetch(`${auth.SUPABASE_URL}/functions/v1/recuperar-conta`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', apikey: auth.SUPABASE_KEY },
+                body: JSON.stringify({ login, code, newEmail, captchaToken: token })
+            });
+            body = await response.json().catch(() => ({}));
+        } catch { /* sem conexão */ }
+        resetCaptcha('recover');
+        if (!response?.ok || !body.token_hash) {
+            busy(button, false);
+            handled = false;
+            const map = {
+                invalid_code: ['recoverInvalid', 'Nickname/email or recovery code is incorrect.'],
+                too_many_attempts: ['errRateLimit', 'Too many attempts. Please wait a few minutes and try again.'],
+                email_taken: ['recoverEmailTaken', 'This email already belongs to another account.'],
+                invalid_email: ['invalidEmail', 'Invalid email.'],
+                captcha_failed: ['captchaFailed', 'The robot check failed. Please try again.']
+            };
+            const [key, fallback] = !response
+                ? ['errNetwork', 'Connection failed. Check your internet and try again.']
+                : (map[body.error] || ['errGeneric', 'Something went wrong. Please try again.']);
+            setError(recoverForm, 'recover', key, fallback);
+            return;
+        }
+        auth.setRemember(false);
+        const { error } = await client.auth.verifyOtp({ token_hash: body.token_hash, type: 'email' });
+        busy(button, false);
+        if (error) {
+            handled = false;
+            const [key, fallback] = errorKey(error);
+            setError(recoverForm, 'recover', key, fallback);
+            return;
+        }
+        recoverForm.reset();
+        showView('reset');
+        showNotice('recoverDone', 'Account recovered! Now choose a new password. Then create a new recovery code in Edit profile.', 'success');
+    });
+
     // ---------- nova senha ----------
     const resetForm = document.getElementById('resetForm');
     resetForm?.addEventListener('submit', async (e) => {
@@ -395,6 +475,32 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
         openButton?.focus();
     };
+    // Termos de uso e Privacidade abrem numa janela (js/legal-modal.js). A caixa do cadastro
+    // só fica marcada depois do "Li e concordo" lá dentro; desmarcar continua livre.
+    const agreeBox = signupForm?.querySelector('#agreeTerms');
+    const openLegal = (tab) => window.EorLegal.open({
+        tab,
+        agree: true,
+        onAgree: () => {
+            agreeBox.checked = true;
+            setError(signupForm, 'agreeTerms', null);
+            agreeBox.focus();
+        }
+    });
+    agreeBox?.addEventListener('click', (e) => {
+        if (agreeBox.checked && window.EorLegal) {   // estava desmarcada: primeiro lê
+            e.preventDefault();
+            openLegal('termos');
+        }
+    });
+    signupForm?.querySelectorAll('[data-legal]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            if (!window.EorLegal) return;              // sem o script: abre a página normal
+            e.preventDefault();
+            openLegal(link.dataset.legal);
+        });
+    });
+
     closeButton?.addEventListener('click', closeModal);
     cancelButton?.addEventListener('click', closeModal);
     modal?.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
@@ -412,6 +518,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const date = new Date(y, m - 1, d);
         return date > new Date() ? null : date;
     }
+
+    // 16 ou 17 anos → aparece o campo do e-mail do responsável
+    const guardianGroup = document.getElementById('guardianGroup');
+    function isMinor(birth) {
+        if (!birth) return false;
+        const age = auth.ageOn(birth);
+        return age >= auth.MIN_AGE && age < 18;
+    }
+    function updateGuardian() {
+        if (!signupForm || !guardianGroup) return;
+        const minor = isMinor(birthDate(signupForm.day?.value, signupForm.month?.value, signupForm.year?.value));
+        guardianGroup.hidden = !minor;
+        if (!minor) setError(signupForm, 'guardianEmail', null);
+    }
+    ['birthDay', 'birthMonth', 'birthYear'].forEach((id) => {
+        document.getElementById(id)?.addEventListener('input', updateGuardian);
+    });
 
     signupForm?.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -439,6 +562,12 @@ document.addEventListener('DOMContentLoaded', () => {
             valid = false;
         } else if (auth.ageOn(birth) < auth.MIN_AGE) {
             setError(signupForm, 'dob', 'underAge', 'You must be 16 or older to create an account.');
+            valid = false;
+        }
+        const minor = isMinor(birth);
+        const guardian = minor ? (signupForm.guardian?.value.trim().toLowerCase() ?? '') : '';
+        if (minor && (!/^\S+@\S+\.\S+$/.test(guardian) || guardian === vals.email.toLowerCase())) {
+            setError(signupForm, 'guardianEmail', 'guardianEmailInvalid', 'Enter a valid email for your parent or guardian (different from yours).');
             valid = false;
         }
         if (!strongPassword(vals.password)) {
@@ -488,7 +617,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     nickname: vals.nickname,
                     birth_date: `${pad(birth.getFullYear(), 4)}-${pad(birth.getMonth() + 1, 2)}-${pad(birth.getDate(), 2)}`,
-                    terms_version: auth.TERMS_VERSION
+                    terms_version: auth.TERMS_VERSION,
+                    ...(minor ? { guardian_email: guardian } : {})
                 }
             }
         });
@@ -499,7 +629,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const [key, fallback] = errorKey(error);
             const fieldFor = {
                 errWeakPassword: 'signupPassword', underAge: 'dob', invalidBirthDate: 'dob',
-                nicknameTaken: 'nickname', nicknameInvalid: 'nickname', acceptTerms: 'agreeTerms'
+                nicknameTaken: 'nickname', nicknameInvalid: 'nickname', acceptTerms: 'agreeTerms',
+                guardianEmailInvalid: 'guardianEmail'
             };
             const field = fieldFor[key] || 'signup';
             setError(signupForm, field, key, fallback);
@@ -509,7 +640,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mesma mensagem mesmo se o e-mail já tiver conta (não revela quem é cadastrado)
         closeModal();
         signupForm.reset();
+        updateGuardian();
         showView('login');
-        showNotice('checkEmail', 'Almost there! We sent a confirmation link to {email}. Open it to activate your account (check spam too).', 'success', { email: vals.email });
+        if (minor) {
+            showNotice('checkEmailMinor', 'Almost there! We sent a confirmation link to {email}. After you confirm and sign in, we will email your guardian asking for permission.', 'success', { email: vals.email });
+        } else {
+            showNotice('checkEmail', 'Almost there! We sent a confirmation link to {email}. Open it to activate your account (check spam too).', 'success', { email: vals.email });
+        }
     });
 });

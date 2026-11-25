@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://qjpogjpmxbpuuclpdfhv.supabase.co; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://qjpogjpmxbpuuclpdfhv.supabase.co; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -11,9 +11,9 @@
     <meta name="robots" content="noindex">
     <title data-i18n="profilePageTitle">Player profile</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112093">
-    <link rel="stylesheet" href="css/perfil.css?v=2026112093">
-    <link rel="stylesheet" href="css/comunidade.css?v=2026112093">
+    <link rel="stylesheet" href="css/global.css?v=2026112150">
+    <link rel="stylesheet" href="css/perfil.css?v=2026112150">
+    <link rel="stylesheet" href="css/comunidade.css?v=2026112150">
 </head>
 <body>
     <div id="site-header"></div>
@@ -36,60 +36,94 @@
         </section>
 
         <div id="profileWrap" hidden>
-            <!-- ===== PERFIL EM 3 COLUNAS (o que todo mundo vê) ===== -->
-            <div class="profile-layout" id="profileView">
+            <!-- ===== PERFIL (o que todo mundo vê): capa + publicações + lateral ===== -->
+            <div class="profile-view" id="profileView" data-tab="posts">
 
-                <!-- Esquerda: quem é o jogador -->
-                <aside class="profile-side profile-hero" id="profileHero">
-                    <div class="profile-avatar" id="profileAvatar" aria-hidden="true"></div>
-                    <h1 class="profile-name" id="profileName"></h1>
-                    <p class="profile-since"><span data-i18n="memberSince">Member since</span> <time id="profileSince"></time></p>
-                    <p class="profile-presence presence-text" id="profilePresence" hidden></p>
-                    <div class="profile-character">
-                        <span class="profile-character-label" data-i18n="characterTitle">Character</span>
-                        <span class="soon-tag" data-i18n="comingSoon">Coming soon</span>
+                <!-- Capa: emblema, apelido, ações e números -->
+                <header class="profile-hero" id="profileHero">
+                    <div class="profile-cover" aria-hidden="true">
+                        <img src="img/ruins-scene.svg" alt="">
                     </div>
-                    <button type="button" class="btn btn-login profile-edit-btn" id="editProfile" hidden data-i18n="editProfile">Edit profile</button>
-                    <a class="btn btn-login profile-edit-btn" id="myFriendsLink" href="amigos.html" hidden data-i18n="myFriends">My friends</a>
+                    <div class="profile-hero-body">
+                        <div class="profile-avatar" id="profileAvatar" aria-hidden="true"></div>
+                        <div class="profile-identity">
+                            <h1 class="profile-name" id="profileName"></h1>
+                            <p class="profile-since"><span data-i18n="memberSince">Member since</span> <time id="profileSince"></time></p>
+                            <p class="profile-presence presence-text" id="profilePresence" hidden></p>
+                        </div>
+                        <div class="profile-hero-actions">
+                            <button type="button" class="btn btn-download profile-edit-btn" id="editProfile" hidden data-i18n="editProfile">Edit profile</button>
+                            <a class="btn btn-login profile-edit-btn" id="myFriendsLink" href="amigos.html" hidden data-i18n="myFriends">My friends</a>
 
-                    <!-- Perfil de outro jogador: adicionar / aceitar / desfazer amizade -->
-                    <div class="friend-action" id="friendAction" hidden>
-                        <button type="button" class="btn btn-download" id="friendMain"></button>
-                        <a class="btn btn-login" id="friendMessage" href="#" hidden data-i18n="sendMessage">Send message</a>
-                        <button type="button" class="small-link link-button friend-secondary" id="friendSecondary" hidden></button>
-                        <button type="button" class="small-link link-button friend-secondary friend-block" id="blockToggle" hidden></button>
-                        <p class="profile-msg" id="friendMsg" role="status"></p>
+                            <!-- Perfil de outro jogador: adicionar / aceitar / desfazer amizade -->
+                            <div class="friend-action" id="friendAction" hidden>
+                                <button type="button" class="btn btn-download" id="friendMain"></button>
+                                <a class="btn btn-login" id="friendMessage" href="#" hidden data-i18n="sendMessage">Send message</a>
+                                <div class="friend-links">
+                                    <button type="button" class="small-link link-button friend-secondary" id="friendSecondary" hidden></button>
+                                    <button type="button" class="small-link link-button friend-secondary friend-block" id="blockToggle" hidden></button>
+                                    <!-- Só aparece para admin (o banco confere cargo + 2FA) -->
+                                    <a class="small-link friend-secondary" id="modLink" href="moderacao.html" hidden data-i18n="modModeratePlayer">Moderate player</a>
+                                </div>
+                                <p class="profile-msg" id="friendMsg" role="status"></p>
+                            </div>
+                        </div>
                     </div>
-                </aside>
+                    <dl class="profile-stats">
+                        <div><dt data-i18n="statPosts">Posts</dt><dd id="statPosts">–</dd></div>
+                        <div><dt data-i18n="statBest">Best answers</dt><dd id="statBest">–</dd></div>
+                        <div><dt data-i18n="friendsTitle">Friends</dt><dd id="statFriends">–</dd></div>
+                        <div><dt data-i18n="badgesTitle">Badges</dt><dd id="statBadges">–</dd></div>
+                    </dl>
+                </header>
 
-                <!-- Centro: publicações (o fórum preenche depois) -->
-                <section class="profile-main">
-                    <h2 class="profile-column-title" data-i18n="postsTitle">Posts</h2>
-                    <div id="profileComposer"></div>
-                    <div id="profilePosts"></div>
-                </section>
+                <!-- Celular: abas (no computador tudo aparece lado a lado) -->
+                <div class="profile-tabs-mobile" role="tablist" aria-label="Perfil">
+                    <button type="button" role="tab" data-tab="posts" aria-selected="true" data-i18n="postsTitle">Posts</button>
+                    <button type="button" role="tab" data-tab="about" aria-selected="false" data-i18n="aboutPlayer">About</button>
+                    <button type="button" role="tab" data-tab="friends" aria-selected="false" data-i18n="friendsTitle">Friends</button>
+                </div>
 
-                <!-- Direita: sobre, insígnias, amigos -->
-                <aside class="profile-aside">
-                    <section class="aside-card">
-                        <h2 class="profile-block-title" data-i18n="aboutPlayer">About</h2>
-                        <p class="profile-bio" id="profileBio"></p>
-                        <p class="profile-bio profile-bio-empty" id="profileBioEmpty" hidden></p>
+                <div class="profile-layout">
+                    <!-- Publicações -->
+                    <section class="profile-main" data-pane="posts">
+                        <h2 class="profile-column-title" data-i18n="postsTitle">Posts</h2>
+                        <div id="profileComposer"></div>
+                        <div id="profilePosts"></div>
                     </section>
 
-                    <section class="aside-card">
-                        <h2 class="profile-block-title" data-i18n="badgesTitle">Badges</h2>
-                        <ul class="badge-list" id="badgeList"></ul>
-                    </section>
+                    <!-- Lateral: sobre, personagem, insígnias, amigos -->
+                    <aside class="profile-aside">
+                        <section class="aside-card" data-pane="about">
+                            <h2 class="profile-block-title" data-i18n="aboutPlayer">About</h2>
+                            <p class="profile-bio" id="profileBio"></p>
+                            <p class="profile-bio profile-bio-empty" id="profileBioEmpty" hidden></p>
+                        </section>
 
-                    <section class="aside-card" id="friendsCard" hidden>
-                        <h2 class="profile-block-title"><span data-i18n="friendsTitle">Friends</span> <span class="badge-count" id="friendsTotal"></span></h2>
-                        <ul class="player-list" id="friendList"></ul>
-                        <p class="badge-empty" id="friendsEmpty" hidden></p>
-                        <button type="button" class="friends-more" id="friendsMore" hidden></button>
-                    </section>
+                        <section class="aside-card profile-character" data-pane="about">
+                            <svg class="character-silhouette" viewBox="0 0 64 80" aria-hidden="true" focusable="false">
+                                <path d="M32 6 A11 11 0 1 1 31.9 6 Z M14 74 C14 52 20 40 32 40 C44 40 50 52 50 74 Z M52 18 L58 12 M55 26 L62 26" />
+                            </svg>
+                            <div>
+                                <h2 class="profile-block-title" data-i18n="characterTitle">Character</h2>
+                                <p data-i18n="characterSoon">Soon you will be able to show your in-game character here: class, level and gear.</p>
+                                <span class="soon-tag" data-i18n="comingSoon">Coming soon</span>
+                            </div>
+                        </section>
 
-                </aside>
+                        <section class="aside-card" data-pane="about">
+                            <h2 class="profile-block-title" data-i18n="badgesTitle">Badges</h2>
+                            <ul class="badge-list" id="badgeList"></ul>
+                        </section>
+
+                        <section class="aside-card" id="friendsCard" data-pane="friends" hidden>
+                            <h2 class="profile-block-title"><span data-i18n="friendsTitle">Friends</span> <span class="badge-count" id="friendsTotal"></span></h2>
+                            <ul class="player-list" id="friendList"></ul>
+                            <p class="badge-empty" id="friendsEmpty" hidden></p>
+                            <button type="button" class="friends-more" id="friendsMore" hidden></button>
+                        </section>
+                    </aside>
+                </div>
             </div>
 
             <!-- ===== EDITAR PERFIL (só o dono, aberto pelo botão "Editar perfil") ===== -->
@@ -98,6 +132,21 @@
                     <button type="button" class="auth-back link-button" id="closeEdit" data-i18n="backToProfile">Back to profile</button>
                     <h1 class="profile-edit-title" data-i18n="editProfile">Edit profile</h1>
                 </div>
+
+                <!-- 16/17 anos: autorização do responsável (só aparece para quem precisa) -->
+                <section class="profile-block guardian-block" id="responsavel" hidden>
+                    <h2 class="profile-block-title" data-i18n="guardianBlockTitle">Guardian permission</h2>
+                    <p class="mfa-text" id="guardianState"></p>
+                    <form class="account-form" id="guardianForm" novalidate>
+                        <label for="guardianInput" data-i18n="guardianEmail">Parent or guardian's email</label>
+                        <div class="account-form-row">
+                            <input id="guardianInput" type="email" autocomplete="off" maxlength="254">
+                            <button type="submit" class="btn btn-download" data-i18n="guardianResend">Send request</button>
+                        </div>
+                        <p class="form-hint" data-i18n="guardianResendHint">You can send a new request every 10 minutes (up to 5 a day). The link in the email lasts 7 days.</p>
+                    </form>
+                    <p class="profile-msg" id="guardianMsg" role="status"></p>
+                </section>
 
                 <!-- Foto do perfil -->
                 <section class="profile-block">
@@ -134,7 +183,7 @@
 
                 <!-- Privacidade -->
                 <section class="profile-block">
-                    <h2 class="profile-block-title" data-i18n="privacyTitle">Privacy</h2>
+                    <h2 class="profile-block-title" data-i18n="privacyTitle">Visibility</h2>
                     <label class="switch-row">
                         <input type="checkbox" id="friendsPublic">
                         <span><strong data-i18n="friendsPublicLabel">Show my friends list to everyone</strong><small data-i18n="friendsPublicHint">If off, other players only see how many friends you have.</small></span>
@@ -155,6 +204,35 @@
                         <div><dt data-i18n="email">Email</dt><dd id="profileEmail"></dd></div>
                         <div><dt data-i18n="birthDate">Date of birth</dt><dd id="profileBirth"></dd></div>
                     </dl>
+                    <p class="profile-private-note" data-i18n="birthLocked">The date of birth cannot be changed.</p>
+
+                    <details class="account-change" id="nickChange">
+                        <summary data-i18n="changeNickname">Change nickname</summary>
+                        <form class="account-form" id="nickForm" novalidate>
+                            <label for="nickInput" data-i18n="newNickname">New nickname</label>
+                            <div class="account-form-row">
+                                <input id="nickInput" type="text" autocomplete="off" spellcheck="false" minlength="3" maxlength="20">
+                                <button type="submit" class="btn btn-download" data-i18n="save">Save</button>
+                            </div>
+                            <p class="form-hint" data-i18n="nickChangeRule">3 to 20 letters or numbers. You can change it once every 30 days, and your old nickname stays reserved for 30 days so nobody can pretend to be you.</p>
+                            <p class="form-hint" id="nickNext" hidden></p>
+                        </form>
+                        <p class="profile-msg" id="nickMsg" role="status"></p>
+                    </details>
+
+                    <details class="account-change" id="emailChange">
+                        <summary data-i18n="changeEmail">Change email</summary>
+                        <form class="account-form" id="emailForm" novalidate>
+                            <label for="emailInput" data-i18n="newEmail">New email</label>
+                            <div class="account-form-row">
+                                <input id="emailInput" type="email" autocomplete="email" maxlength="254">
+                                <button type="submit" class="btn btn-download" data-i18n="emailChangeSend">Send confirmation</button>
+                            </div>
+                            <p class="form-hint" data-i18n="emailChangeRule">We will email confirmation links (to the new address and, for safety, to the current one). The email only changes after you confirm.</p>
+                        </form>
+                        <p class="profile-msg" id="emailMsg" role="status"></p>
+                    </details>
+
                     <div class="profile-actions">
                         <button type="button" class="btn btn-login" id="changePassword" data-i18n="changePassword">Change password</button>
                         <button type="button" class="btn btn-login" id="logoutButton" data-i18n="logout">Sign out</button>
@@ -199,18 +277,92 @@
 
                     <p class="profile-private-note mfa-msg" id="mfaMsg" role="status"></p>
                 </section>
+
+                <!-- Código de recuperação (supabase/018_contas_seguranca.sql) -->
+                <section class="profile-block recovery-block" id="recuperacao">
+                    <h2 class="profile-block-title" data-i18n="recoveryTitle">Recovery code</h2>
+                    <p class="mfa-text" data-i18n="recoveryDesc">If you lose access to your email or to the phone with your authenticator app, this code gets you back into your account. Keep it somewhere safe and away from this device (on paper, for example): anyone who has it can take over your account.</p>
+                    <p class="profile-private-note" id="recoveryState"></p>
+                    <div class="recovery-show" id="recoveryShow" hidden>
+                        <code class="recovery-code" id="recoveryCode"></code>
+                        <div class="profile-actions">
+                            <button type="button" class="btn btn-login" id="recoveryCopy" data-i18n="recoveryCopy">Copy</button>
+                            <button type="button" class="btn btn-login" id="recoveryDownload" data-i18n="recoveryDownload">Download (.txt)</button>
+                        </div>
+                        <p class="form-hint" data-i18n="recoveryShownOnce">Save it now: this code will not be shown again.</p>
+                    </div>
+                    <div class="profile-actions">
+                        <button type="button" class="btn btn-download" id="recoveryCreate" data-i18n="recoveryCreate">Create recovery code</button>
+                    </div>
+                    <p class="profile-msg" id="recoveryMsg" role="status"></p>
+                </section>
+
+                <!-- Privacidade e dados: documentos, versão aceita e excluir conta -->
+                <section class="profile-block data-block" id="dadosConta">
+                    <h2 class="profile-block-title" data-i18n="dataTitle">Privacy and data</h2>
+                    <ul class="data-docs">
+                        <li><a href="termos.html" data-i18n="termsOfUse">Terms of use</a></li>
+                        <li><a href="termos.html#regras" data-i18n="communityRules">Community rules</a></li>
+                        <li><a href="privacidade.html" data-i18n="privacyPolicy">Privacy policy</a></li>
+                    </ul>
+                    <p class="profile-private-note" id="termsAccepted"></p>
+
+                    <div class="data-export">
+                        <h3 class="danger-title" data-i18n="exportTitle">Download my data</h3>
+                        <p data-i18n="exportDesc">A file (.json) with everything the site keeps about you: account, profile, posts, comments, likes, friends, blocks, messages, notifications, reports you made and moderation notices.</p>
+                        <button type="button" class="btn btn-login" id="exportData" data-i18n="exportButton">Download my data</button>
+                        <p class="profile-msg" id="exportMsg" role="status"></p>
+                    </div>
+
+                    <div class="danger-zone" id="excluir-conta">
+                        <h3 class="danger-title" data-i18n="deleteAccountTitle">Delete account</h3>
+                        <p data-i18n="deleteAccountIntro">Deleting your account is permanent. Before you continue, see what is deleted and what is kept.</p>
+                        <button type="button" class="btn btn-login danger-open" id="deleteOpen" data-i18n="deleteAccountOpen">I want to delete my account</button>
+
+                        <div class="danger-panel" id="deletePanel" hidden>
+                            <p class="danger-sub" data-i18n="deleteGoneTitle">Deleted right away:</p>
+                            <ul>
+                                <li data-i18n="deleteGone1">Your profile, nickname, bio, crest, badges and date of birth.</li>
+                                <li data-i18n="deleteGone2">Your posts, images, comments, likes and answers.</li>
+                                <li data-i18n="deleteGone3">Your friends, blocks, notifications and online status.</li>
+                                <li data-i18n="deleteGone4">Your private messages, including in the other person's conversation.</li>
+                            </ul>
+                            <p class="danger-sub" data-i18n="deleteKeptTitle">Kept, no longer linked to an account:</p>
+                            <ul>
+                                <li data-i18n="deleteKept1">Copies of content reported against you: up to 1 year after the report is resolved.</li>
+                                <li data-i18n="deleteKept2">The moderation record (nickname and action taken): up to 2 years.</li>
+                                <li data-i18n="deleteKept3">Technical records of our providers (sign-in, e-mails sent): up to the periods in the Privacy policy.</li>
+                            </ul>
+
+                            <div class="danger-step" id="deleteReauth" hidden>
+                                <p data-i18n="deleteReauth">For your safety, sign in again before deleting (your last sign-in was more than 15 minutes ago).</p>
+                                <button type="button" class="btn btn-login" id="deleteRelogin" data-i18n="deleteRelogin">Sign in again</button>
+                            </div>
+                            <p class="danger-step" id="deleteAdmin" hidden data-i18n="deleteAdmin">Admin accounts cannot be deleted from the site.</p>
+                            <p class="danger-step" id="deleteBanned" hidden data-i18n="deleteBanned">While your account is suspended or banned, it cannot be deleted. Once the suspension ends you can delete it here; for a ban, write to empireofrebirth@gmail.com.</p>
+
+                            <form class="danger-step" id="deleteForm" novalidate hidden>
+                                <label for="deleteConfirm"><span data-i18n="deleteTypeNick">To confirm, type your nickname:</span> <strong id="deleteNick"></strong></label>
+                                <input id="deleteConfirm" type="text" autocomplete="off" spellcheck="false" maxlength="20">
+                                <button type="submit" class="btn danger-btn" id="deleteSubmit" disabled data-i18n="deleteAccountButton">Delete my account permanently</button>
+                            </form>
+                            <p class="profile-msg" id="deleteMsg" role="status"></p>
+                            <p class="profile-private-note"><span data-i18n="deleteByEmail">Can't sign in? Ask for deletion at</span> <a href="mailto:empireofrebirth@gmail.com?subject=Excluir%20conta">empireofrebirth@gmail.com</a>.</p>
+                        </div>
+                    </div>
+                </section>
             </section>
         </div>
     </main>
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112093"></script>
-    <script src="js/langSwitcher.js?v=2026112093"></script>
+    <script src="js/layout.js?v=2026112150"></script>
+    <script src="js/langSwitcher.js?v=2026112150"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
-    <script src="js/auth.js?v=2026112093"></script>
+    <script src="js/auth.js?v=2026112150"></script>
     <script src="js/crests.js?v=2026112017"></script>
-    <script src="js/feed.js?v=2026112093"></script>
-    <script src="js/perfil.js?v=2026112093"></script>
+    <script src="js/feed.js?v=2026112150"></script>
+    <script src="js/perfil.js?v=2026112150"></script>
 </body>
 </html>

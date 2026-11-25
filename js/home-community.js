@@ -16,7 +16,8 @@
                 headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify(args)
             });
-            return res.ok ? await res.json() : [];
+            // "Publicação removida" não aparece fora do Social/Taverna
+            return res.ok ? (await res.json()).filter((p) => !p.removed) : [];
         } catch {
             return [];
         }

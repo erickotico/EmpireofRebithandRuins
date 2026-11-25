@@ -1,0 +1,61 @@
+/* Página do responsável (responsavel.html) */
+.guardian-page {
+    width: min(720px, 100% - 32px);
+    margin: 0 auto;
+    padding: 48px 0 72px;
+}
+.guardian-kicker {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+}
+.guardian-page .section-title { text-align: center; margin-bottom: 28px; }
+
+.guardian-card {
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 32px clamp(20px, 5vw, 40px);
+    line-height: 1.65;
+}
+.guardian-card p { margin: 0 0 16px; }
+.guardian-card[data-state="error"] { border-top-color: var(--ember, #c0532b); }
+.guardian-loading { color: var(--muted); text-align: center; }
+.guardian-title {
+    margin: 0 0 12px;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--accent-bright);
+}
+.guardian-nick { color: var(--accent-bright); }
+
+.guardian-facts {
+    margin: 24px 0;
+    padding: 20px 22px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+}
+.guardian-facts ul { margin: 0; padding-left: 1.2em; }
+.guardian-facts li { margin: 0 0 8px; }
+.guardian-facts li:last-child { margin-bottom: 0; }
+.guardian-docs a { color: var(--accent-bright); }
+
+.guardian-form { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.guardian-check { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.guardian-check input { margin-top: 5px; flex: none; width: 18px; height: 18px; accent-color: var(--accent); }
+.guardian-check p { margin: 0; }
+.guardian-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 8px; }
+.guardian-actions .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.guardian-note { margin-top: 16px !important; font-size: 0.9rem; color: var(--muted); }
+
+@media (max-width: 520px) {
+    .guardian-page { padding-top: 32px; }
+    .guardian-actions .btn { width: 100%; }
+}

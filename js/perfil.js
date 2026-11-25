@@ -67,6 +67,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (error || !data) { show('profileMissing'); return; }
         profile = data;
     } else {
+        const backTo = { '#excluir-conta': 'excluir', '#recuperacao': 'recuperacao', '#responsavel': 'responsavel' }[window.location.hash];
+        if (!me && backTo) { window.location.replace(`login.html?volta=${backTo}`); return; }
         if (!me) { show('profileGuest'); return; }
         const { data, error } = await fetchProfile((q) => q.eq('id', me.id).maybeSingle());
         if (error || !data) { show('profileMissing'); return; }
@@ -156,6 +158,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             .slice(0, MAX_SHOWN);
     }
     function renderBadges() {
+        $('statBadges').textContent = String(earnedBadges().length);
         const list = $('badgeList');
         list.textContent = '';
         const shown = shownBadges();
@@ -180,6 +183,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderBadges();
     show('profileWrap');
 
+    // Abas do celular (Publicações | Sobre | Amigos). No computador tudo aparece junto.
+    const tabButtons = [...document.querySelectorAll('.profile-tabs-mobile [role="tab"]')];
+    tabButtons.forEach((button, i) => {
+        button.addEventListener('click', () => {
+            $('profileView').dataset.tab = button.dataset.tab;
+            tabButtons.forEach((b) => b.setAttribute('aria-selected', String(b === button)));
+        });
+        button.addEventListener('keydown', (e) => {
+            const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+            if (!dir) return;
+            const next = tabButtons[(i + dir + tabButtons.length) % tabButtons.length];
+            next.focus();
+            next.click();
+        });
+    });
+
     // Números do jogador (insígnias de Ajudante). Chegam depois; aí redesenha as insígnias.
     // Online / visto por último (só aparece para amigos; o banco decide)
     if (me && me.id !== profile.id && auth.presence) {
@@ -198,6 +217,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const row = Array.isArray(data) ? data[0] : data;
         if (!row) return;
         profile.best_answers = row.best_answers;
+        $('statPosts').textContent = String(row.posts ?? 0);
+        $('statBest').textContent = String(row.best_answers ?? 0);
         renderBadges();
         statsListeners.forEach((fn) => fn());
     });
@@ -237,12 +258,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     function renderFriends() {
         if (!friends) return;
+        $('statFriends').textContent = String(friends.total ?? 0);
         $('friendsCard').hidden = false;
         $('friendsTotal').textContent = friends.total ? `(${friends.total})` : '';
         const list = $('friendList');
         list.textContent = '';
-        // Poucos amigos no quadro: 6 no computador, 3 no celular. O resto em "Ver todos".
-        const limit = friendsExpanded ? Infinity : (mobile.matches ? 3 : 6);
+        // Amigos no quadro: 8 no computador (grade de 2), 12 na aba Amigos do celular. O resto em "Ver todos".
+        const limit = friendsExpanded ? Infinity : (mobile.matches ? 12 : 8);
         friends.list.slice(0, limit).forEach((p) => list.appendChild(playerItem(p)));
         const more = $('friendsMore');
         const hasMore = friends.total > Math.min(limit, friends.list.length) && !friends.isPrivate;
@@ -327,6 +349,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 client.rpc('friendship_status', { p_nick: profile.nickname }),
                 client.rpc('i_blocked', { p_nick: profile.nickname })
             ]);
+            client.rpc('is_admin').then(({ data: admin }) => {
+                if (!admin) return;
+                const link = $('modLink');
+                link.href = `moderacao.html#jogador=${encodeURIComponent(profile.nickname)}`;
+                link.hidden = false;
+            });
             if (!error) {
                 iBlocked = blocked.error ? false : !!blocked.data;
                 friendState = data || 'none';
@@ -599,6 +627,340 @@ document.addEventListener('DOMContentLoaded', async () => {
     $('logoutButton').addEventListener('click', async () => {
         await client.auth.signOut();
         window.location.replace('index.html');
+    });
+
+    // ---------- situação da conta (supabase/018_contas_seguranca.sql) ----------
+    // Se o SQL ainda não rodou, my_account falha e os blocos novos ficam escondidos.
+    let account = null;
+    const errCode = (error) => String(error?.message || '').match(/EOR_[A-Z_]+/)?.[0];
+    const longDate = (d) => new Date(d).toLocaleDateString(lang(), { day: 'numeric', month: 'long', year: 'numeric' });
+    async function loadAccount() {
+        const { data, error } = await client.rpc('my_account');
+        account = error ? null : data;
+        renderGuardian();
+        renderNickRule();
+        renderRecovery();
+    }
+
+    // Trocar o apelido (1 vez a cada 30 dias)
+    const nickMsg = $('nickMsg');
+    const NICK_ERRORS = {
+        EOR_NICK_INVALID: ['nicknameInvalid', 'Invalid nickname. Use 3 to 20 letters or numbers, no spaces.'],
+        EOR_NICK_TAKEN: ['nicknameTaken', 'This nickname is already taken.'],
+        EOR_NICK_SAME: ['nickSame', 'That is already your nickname.'],
+        EOR_NICK_COOLDOWN: ['nickCooldown', 'You changed your nickname less than 30 days ago.']
+    };
+    function renderNickRule() {
+        const next = account?.nickname_next_change;
+        $('nickNext').hidden = !next;
+        if (next) $('nickNext').textContent = `${t('nickNextChange', 'Next change allowed on')} ${longDate(next)}.`;
+    }
+    $('nickInput').value = profile.nickname;
+    $('nickForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const value = $('nickInput').value.trim();
+        if (!auth.NICK_RE.test(value)) { setMsg(nickMsg, ...NICK_ERRORS.EOR_NICK_INVALID, 'error'); return; }
+        if (value === profile.nickname) { setMsg(nickMsg, ...NICK_ERRORS.EOR_NICK_SAME, 'error'); return; }
+        if (!window.confirm(t('nickConfirm', 'Change your nickname to "{nick}"? You can only change it again in 30 days.').replace('{nick}', value))) return;
+        const button = e.submitter || $('nickForm').querySelector('button');
+        button.disabled = true;
+        const { data, error } = await client.rpc('change_nickname', { p_new: value });
+        button.disabled = false;
+        if (error) {
+            const code = errCode(error);
+            const pair = NICK_ERRORS[code] || auth.friendError(error);
+            setMsg(nickMsg, pair[0], pair[1], 'error');
+            return;
+        }
+        // o endereço do perfil e o nome do topo mudam junto
+        if (data?.nickname) window.location.replace('perfil.html?apelido=1#editar');
+    });
+    if (params.has('apelido')) setMsg(nickMsg, 'nickChanged', 'Nickname changed!', 'success');
+
+    // Trocar o e-mail: o Supabase manda os links de confirmação
+    const emailMsg = $('emailMsg');
+    $('emailForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const value = $('emailInput').value.trim().toLowerCase();
+        if (!/^\S+@\S+\.\S+$/.test(value)) { setMsg(emailMsg, 'invalidEmail', 'Invalid email.', 'error'); return; }
+        if (value === String(me.email || '').toLowerCase()) { setMsg(emailMsg, 'emailSame', 'That is already your email.', 'error'); return; }
+        const button = e.submitter || $('emailForm').querySelector('button');
+        button.disabled = true;
+        const { error } = await client.auth.updateUser({ email: value }, { emailRedirectTo: auth.siteUrl('perfil.html?email=1#editar') });
+        button.disabled = false;
+        if (error) {
+            console.warn('[conta]', error.status, error.code, error.message);
+            const taken = error.code === 'email_exists' || /already/i.test(error.message || '');
+            const limited = error.status === 429 || String(error.code || '').startsWith('over_');
+            setMsg(emailMsg, taken ? 'emailTaken' : limited ? 'errRateLimit' : 'errGeneric',
+                taken ? 'This email already belongs to another account.' : limited ? 'Too many attempts. Please wait a few minutes and try again.' : 'Something went wrong. Please try again.', 'error');
+            return;
+        }
+        $('emailInput').value = '';
+        setMsg(emailMsg, 'emailChangeSent', 'Done! Open the confirmation links we sent by email to finish the change.', 'success');
+    });
+    if (params.has('email')) {
+        $('emailChange').open = true;
+        setMsg(emailMsg, 'emailChangeConfirmed', 'Email confirmed. If you were asked to confirm on both addresses, the change finishes after the second link.', 'success');
+    }
+
+    // Responsável (16/17 anos)
+    const guardianMsg = $('guardianMsg');
+    function renderGuardian() {
+        const g = account?.guardian;
+        $('responsavel').hidden = !g || g.status === 'approved';
+        if (!g) return;
+        if (g.email && !$('guardianInput').value) $('guardianInput').value = g.email;
+        let state;
+        if (g.status === 'denied') {
+            state = t('guardianNoticeDeniedText', 'The account will be deleted within 24 hours. When you turn 18, you can create a new one.');
+            $('guardianForm').hidden = true;
+        } else if (g.sent_at) {
+            state = `${t('guardianSentAt', 'Request sent to {email} on').replace('{email}', g.email || '')} ${new Date(g.sent_at).toLocaleString(lang())}. ${t('guardianWaiting', 'Until your guardian approves, you can browse but cannot post, comment or send messages.')}`;
+        } else {
+            state = t('guardianNotSent', 'The request has not been sent yet. Check the email below and send it.');
+        }
+        $('guardianState').textContent = state;
+    }
+    const GUARDIAN_ERRORS = {
+        EOR_GUARDIAN_EMAIL: ['guardianEmailInvalid', 'Enter a valid email for your parent or guardian (different from yours).'],
+        EOR_WAIT: ['guardianWait', 'Wait 10 minutes before sending another request.'],
+        EOR_TOO_MANY: ['guardianTooMany', 'You reached 5 requests today. Try again tomorrow.'],
+        EOR_GUARDIAN_DENIED: ['guardianNoticeDenied', 'Your guardian did not approve your account']
+    };
+    $('guardianForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const value = $('guardianInput').value.trim().toLowerCase();
+        if (!/^\S+@\S+\.\S+$/.test(value) || value === String(me.email || '').toLowerCase()) {
+            setMsg(guardianMsg, ...GUARDIAN_ERRORS.EOR_GUARDIAN_EMAIL, 'error');
+            return;
+        }
+        const button = e.submitter || $('guardianForm').querySelector('button');
+        button.disabled = true;
+        const { error } = await client.rpc('guardian_send', { p_email: value });
+        button.disabled = false;
+        if (error) {
+            const pair = GUARDIAN_ERRORS[errCode(error)] || ['errGeneric', 'Something went wrong. Please try again.'];
+            setMsg(guardianMsg, pair[0], pair[1], 'error');
+            return;
+        }
+        setMsg(guardianMsg, 'guardianSent', 'Request sent! Ask your guardian to check their inbox (and spam).', 'success');
+        loadAccount();
+    });
+
+    // Código de recuperação: aparece uma vez só
+    const recoveryMsg = $('recoveryMsg');
+    function renderRecovery() {
+        const r = account?.recovery;
+        $('recuperacao').hidden = !account;
+        if (!r) return;
+        $('recoveryState').textContent = r.has_code
+            ? `${t('recoveryHasCode', 'You created your code on')} ${longDate(r.created_at)}. ${t('recoveryReplaceHint', 'Lost it? Create a new one: the old code stops working.')}`
+            : t('recoveryNone', 'You have not created a recovery code yet.');
+        $('recoveryCreate').textContent = r.has_code ? t('recoveryReplace', 'Create a new code') : t('recoveryCreate', 'Create recovery code');
+    }
+    $('recoveryCreate').addEventListener('click', async () => {
+        if (account?.recovery?.has_code
+            && !window.confirm(t('recoveryReplaceConfirm', 'Create a new code? The old one stops working right away.'))) return;
+        $('recoveryCreate').disabled = true;
+        setMsg(recoveryMsg, null);
+        const { data, error } = await client.rpc('recovery_code_create');
+        $('recoveryCreate').disabled = false;
+        if (error) {
+            if (errCode(error) === 'EOR_REAUTH') {
+                recoveryMsg.dataset.kind = 'error';
+                recoveryMsg.textContent = `${t('recoveryReauth', 'To replace an existing code, sign in again first (your last sign-in was more than 15 minutes ago).')} `;
+                const again = document.createElement('button');
+                again.type = 'button';
+                again.className = 'small-link link-button';
+                again.textContent = t('deleteRelogin', 'Sign in again');
+                again.addEventListener('click', async () => {
+                    await client.auth.signOut();
+                    window.location.href = 'login.html?volta=recuperacao';
+                });
+                recoveryMsg.appendChild(again);
+                return;
+            }
+            const pair = auth.friendError(error);
+            setMsg(recoveryMsg, pair[0], pair[1], 'error');
+            return;
+        }
+        $('recoveryCode').textContent = data;
+        $('recoveryShow').hidden = false;
+        setMsg(recoveryMsg, 'recoveryCreated', 'Code created. Save it before leaving this page.', 'success');
+        loadAccount();
+    });
+    $('recoveryCopy').addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText($('recoveryCode').textContent);
+            setMsg(recoveryMsg, 'recoveryCopied', 'Copied!', 'success');
+        } catch {
+            setMsg(recoveryMsg, 'recoveryCopyFail', 'Could not copy. Select the code and copy it by hand.', 'error');
+        }
+    });
+    $('recoveryDownload').addEventListener('click', () => {
+        const text = [
+            'Empire of Rebirth & Ruins',
+            `${t('recoveryTitle', 'Recovery code')}: ${$('recoveryCode').textContent}`,
+            `${t('nickname', 'Nickname')}: ${profile.nickname}`,
+            `${t('recoveryFileDate', 'Created on')}: ${new Date().toLocaleString(lang())}`,
+            '',
+            t('recoveryFileHelp', 'To use it: login page → Forgot password? → Lost access to your email? Use your recovery code.'),
+            t('recoveryFileWarn', 'Anyone who has this code can take over your account. Keep it safe.')
+        ].join('\r\n');
+        const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'empire-codigo-de-recuperacao.txt';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+    document.addEventListener('site-language-changed', () => { renderGuardian(); renderNickRule(); renderRecovery(); });
+    loadAccount();
+
+    // ---------- privacidade e dados (supabase/017_dados_conta.sql) ----------
+    // Versão dos termos aceita
+    let privacy = null;
+    const versionText = (v) => {
+        const [y, m, d] = String(v).split('-').map(Number);
+        return y && m && d ? new Date(y, m - 1, d).toLocaleDateString(lang(), { day: 'numeric', month: 'long', year: 'numeric' }) : v;
+    };
+    const renderAccepted = () => {
+        if (!privacy?.terms_version) return;
+        let text = `${t('termsAcceptedLabel', 'You accepted the version of')} ${versionText(privacy.terms_version)}`;
+        if (privacy.terms_accepted_at) text += ` ${t('termsAcceptedOn', 'on')} ${new Date(privacy.terms_accepted_at).toLocaleDateString(lang())}`;
+        text += '.';
+        if (privacy.current_version && privacy.terms_version !== privacy.current_version) {
+            text += ` ${t('termsNewWaiting', 'A new version is waiting for your agreement (notice at the bottom of the screen).')}`;
+        }
+        $('termsAccepted').textContent = text;
+    };
+    client.rpc('my_privacy').then(({ data }) => { privacy = data; renderAccepted(); });
+    document.addEventListener('site-language-changed', renderAccepted);
+
+    // Baixar meus dados (my_data_export, supabase/018_contas_seguranca.sql)
+    const exportMsg = $('exportMsg');
+    $('exportData').addEventListener('click', async () => {
+        $('exportData').disabled = true;
+        setMsg(exportMsg, 'exportWorking', 'Preparing the file...', 'info');
+        const { data, error } = await client.rpc('my_data_export');
+        $('exportData').disabled = false;
+        if (error || !data) {
+            const pair = error ? auth.friendError(error) : ['errGeneric', 'Something went wrong. Please try again.'];
+            setMsg(exportMsg, pair[0], pair[1], 'error');
+            return;
+        }
+        const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `empire-meus-dados-${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        setMsg(exportMsg, 'exportDone', 'Done! The file was downloaded.', 'success');
+    });
+
+    // Excluir conta: 1) confere login recente  2) apaga as imagens pela API  3) o banco apaga a conta
+    const deleteMsg = $('deleteMsg');
+    const deleteInput = $('deleteConfirm');
+    const deleteSubmit = $('deleteSubmit');
+    $('deleteNick').textContent = profile.nickname;
+    const DELETE_ERRORS = {
+        EOR_REAUTH: ['deleteErrReauth', 'Your sign-in is no longer recent. Sign in again and try once more.'],
+        EOR_CONFIRM: ['deleteErrConfirm', 'The nickname does not match.'],
+        EOR_IMAGES_LEFT: ['deleteErrImages', 'Some images could not be deleted. Try again.'],
+        EOR_MFA: ['errNeedMfa', 'Confirm your two-step code to continue.'],
+        EOR_PROTECTED: ['deleteAdmin', 'Admin accounts cannot be deleted from the site.'],
+        EOR_BANNED: ['deleteBanned', 'While your account is suspended or banned, it cannot be deleted.']
+    };
+    const deleteError = (error) => {
+        const code = String(error?.message || '').match(/EOR_[A-Z_]+/)?.[0];
+        if (code === 'EOR_REAUTH') checkDeletion();
+        return DELETE_ERRORS[code] || ['errGeneric', 'Something went wrong. Please try again.'];
+    };
+
+    async function checkDeletion() {
+        const { data, error } = await client.rpc('account_deletion_check');
+        if (error) { setMsg(deleteMsg, 'errGeneric', 'Something went wrong. Please try again.', 'error'); return null; }
+        const blocked = data.is_admin || data.banned === true;
+        $('deleteAdmin').hidden = !data.is_admin;
+        $('deleteBanned').hidden = data.is_admin || data.banned !== true;
+        $('deleteReauth').hidden = blocked || data.recent_login;
+        $('deleteForm').hidden = blocked || !data.recent_login;
+        return data;
+    }
+    async function openDeletion() {
+        const panel = $('deletePanel');
+        panel.hidden = false;
+        $('deleteOpen').setAttribute('aria-expanded', 'true');
+        await checkDeletion();
+    }
+    $('deleteOpen').setAttribute('aria-expanded', 'false');
+    $('deleteOpen').addEventListener('click', () => {
+        if ($('deletePanel').hidden) openDeletion();
+        else {
+            $('deletePanel').hidden = true;
+            $('deleteOpen').setAttribute('aria-expanded', 'false');
+        }
+    });
+    $('deleteRelogin').addEventListener('click', async () => {
+        await client.auth.signOut();
+        window.location.href = 'login.html?volta=excluir';
+    });
+    deleteInput.addEventListener('input', () => {
+        deleteSubmit.disabled = deleteInput.value.trim().toLowerCase() !== profile.nickname.toLowerCase();
+    });
+    $('deleteForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (deleteSubmit.disabled) return;
+        if (!window.confirm(t('deleteFinalConfirm', 'Last step: delete your account forever? This cannot be undone.'))) return;
+        deleteSubmit.disabled = true;
+        deleteInput.disabled = true;
+        const fail = (pair) => {
+            setMsg(deleteMsg, pair[0], pair[1], 'error');
+            deleteInput.disabled = false;
+            deleteSubmit.disabled = false;
+        };
+        // 1) ainda pode? (evita apagar as imagens e depois o banco recusar)
+        const check = await checkDeletion();
+        if (check?.banned) { fail(DELETE_ERRORS.EOR_BANNED); return; }
+        if (!check || check.is_admin || !check.recent_login) { fail(DELETE_ERRORS.EOR_REAUTH); return; }
+        // 2) imagens (só a API de armazenamento apaga os arquivos de verdade)
+        setMsg(deleteMsg, 'deleteWorking', 'Deleting your images...', 'info');
+        const bucket = client.storage.from('post-images');
+        for (let round = 0; round < 50; round++) {
+            const { data: files, error } = await bucket.list(me.id, { limit: 100 });
+            if (error) { fail(DELETE_ERRORS.EOR_IMAGES_LEFT); return; }
+            if (!files?.length) break;
+            const { error: rmError } = await bucket.remove(files.map((f) => `${me.id}/${f.name}`));
+            if (rmError) { fail(DELETE_ERRORS.EOR_IMAGES_LEFT); return; }
+        }
+        // 3) conta
+        setMsg(deleteMsg, 'deleteWorkingAccount', 'Deleting your account...', 'info');
+        const { error } = await client.rpc('delete_my_account', { p_confirm: deleteInput.value.trim() });
+        if (error) { fail(deleteError(error)); return; }
+        await client.auth.signOut({ scope: 'local' }).catch(() => {});
+        try { sessionStorage.removeItem('eor-chat'); } catch { /* sem armazenamento */ }
+        window.location.replace('index.html?conta=excluida');
+    });
+    // Links diretos para um bloco do Editar perfil (rodapé, avisos do topo)
+    const goToSection = () => {
+        const hash = window.location.hash;
+        if (!['#excluir-conta', '#recuperacao', '#responsavel'].includes(hash)) return;
+        setEditing(true, false);
+        window.history.replaceState(null, '', `${window.location.pathname}${hash}`);
+        const target = $(hash.slice(1));
+        if (hash === '#excluir-conta') openDeletion().then(() => target.scrollIntoView({ block: 'start' }));
+        else setTimeout(() => target.scrollIntoView({ block: 'start' }), 300);  // depois do my_account
+    };
+    goToSection();
+    window.addEventListener('hashchange', () => {
+        // "Editar perfil" do menu do topo, com o perfil já aberto
+        if (['#editar', '#configuracoes'].includes(window.location.hash)) setEditing(true);
+        else goToSection();
     });
 
     // ---------- verificação em duas etapas (opcional) ----------

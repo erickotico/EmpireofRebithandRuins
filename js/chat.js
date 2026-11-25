@@ -444,10 +444,10 @@
 
     // ---------- denunciar ----------
     async function reportMessage(id, btn) {
-        const reason = window.prompt(t('reportPrompt', 'Why are you reporting this message? (optional)'), '');
-        if (reason === null) return;
+        const answer = await auth.reportDialog();
+        if (!answer) return;
         btn.disabled = true;
-        const { error } = await client.rpc('report_message', { p_id: id, p_reason: reason.slice(0, 300) });
+        const { error } = await client.rpc('report_message', { p_id: id, p_reason: answer.reason, p_category: answer.category });
         if (error) {
             btn.disabled = false;
             const [key, fallback] = messageError(error);
@@ -505,16 +505,11 @@
     document.addEventListener('visibilitychange', markReadIfWatching);
 
     // ---------- links que abrem a janela ----------
-    // Envelope do topo, "Mensagens" do menu ☰, "Enviar mensagem" do perfil e da página Amigos.
+    // Envelope do topo, "Mensagens" do menu do topo (que fecha sozinho), "Enviar mensagem" do perfil e da página Amigos.
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href^="mensagens.html"]');
         if (!link || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
         e.preventDefault();
-        const header = document.querySelector('.site-header.menu-open');
-        if (header) {
-            header.classList.remove('menu-open');
-            header.querySelector('.menu-toggle')?.setAttribute('aria-expanded', 'false');
-        }
         const nick = new URL(link.href).searchParams.get('com');
         if (nick && auth.NICK_RE.test(nick)) {
             openChat(nick);
@@ -660,7 +655,7 @@
             const mod = document.createElement('a');
             mod.className = 'bell-more bell-mod';
             mod.href = 'moderacao.html';
-            mod.textContent = t('reportsPanel', 'Reports panel') + (reports ? ` (${reports})` : '');
+            mod.textContent = t('modPanelTitle', 'Moderation') + (reports ? ` (${reports})` : '');
             bellPanel.appendChild(mod);
         }
     }

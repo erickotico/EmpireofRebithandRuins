@@ -941,6 +941,15 @@
 
 .side-more:hover { color: var(--accent-bright); text-decoration: underline; }
 
+/* Link discreto para as regras, no fim da coluna direita */
+.side-rules {
+    justify-self: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+}
+.side-rules:hover { color: var(--accent); text-decoration: underline; }
+
 /* Foto do jogador nas laterais */
 .side .player-pic { display: grid; place-items: center; flex-shrink: 0; width: 30px; height: 34px; }
 .side .player-pic .crest { width: 30px; height: 34px; margin: 0; }
@@ -1137,3 +1146,19 @@
 .side-friend-name { display: grid; min-width: 0; line-height: 1.2; }
 .side-friend-name > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .side-friend-name small { font-size: 0.72rem; font-weight: 400; }
+
+/* ========== Publicação / comentário removidos (019) ========== */
+.post-card.is-removed { border-style: dashed; background: transparent; }
+.post-card.is-removed .post-head-text { display: grid; gap: 2px; }
+.post-removed-title { font-style: italic; color: var(--muted); }
+.post-removed-hint { font-size: 0.85rem; color: var(--muted); }
+.comment.is-removed { display: block; }
+.comment-removed {
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--muted);
+    border: 1px dashed var(--line-strong);
+    border-radius: 10px;
+}

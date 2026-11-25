@@ -24,16 +24,8 @@
 
 .profile-empty p { margin: 0; }
 
-/* ========== LAYOUT EM 3 COLUNAS ========== */
-/* esquerda: quem é · centro: publicações · direita: sobre, insígnias, novos jogadores */
-.profile-layout {
-    display: grid;
-    grid-template-columns: 280px minmax(0, 1fr) 300px;
-    gap: 24px;
-    align-items: start;
-}
-
-.profile-side,
+/* ========== CAPA + DUAS COLUNAS ========== */
+/* capa (emblema, apelido, ações, números) · publicações · lateral (sobre, personagem, insígnias, amigos) */
 .profile-main,
 .aside-card,
 .profile-edit > .profile-block {
@@ -42,51 +34,85 @@
     border-radius: var(--radius);
 }
 
-/* ----- Esquerda ----- */
+/* ----- Capa ----- */
 /* --avatar = cor do brasão escolhido (dourado se for a inicial) */
 .profile-hero {
     --avatar: var(--accent);
-    position: sticky;
-    top: calc(var(--header-h, 76px) + 20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px 22px 24px;
-    text-align: center;
-    background:
-        radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--avatar) 22%, transparent), transparent 70%),
-        var(--surface);
-    border-top: 3px solid var(--avatar);
+    position: relative;
+    margin-bottom: 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
 }
 
+.profile-cover {
+    position: relative;
+    height: clamp(120px, 18vw, 190px);
+    background:
+        radial-gradient(70% 120% at 20% 100%, color-mix(in srgb, var(--avatar) 38%, transparent), transparent 70%),
+        linear-gradient(180deg, #1a1410, #0f0d0b);
+    border-bottom: 1px solid color-mix(in srgb, var(--avatar) 45%, transparent);
+    overflow: hidden;
+}
+
+.profile-cover img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 70%;
+    opacity: 0.55;
+    mix-blend-mode: screen;
+}
+
+.profile-cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(12, 11, 10, 0.85));
+}
+
+.profile-hero-body {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 22px;
+    padding: 0 clamp(20px, 3vw, 32px) 20px;
+    margin-top: -64px;
+}
+
 .profile-avatar {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
     display: grid;
     place-items: center;
-    width: 128px;
-    margin-bottom: 18px;
+    width: 132px;
 }
 
 .profile-avatar .profile-crest {
     width: 100%;
     height: auto;
     margin: 0;
-    filter: drop-shadow(0 8px 22px color-mix(in srgb, var(--avatar) 35%, transparent));
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 20px color-mix(in srgb, var(--avatar) 35%, transparent));
 }
 
 /* Sem brasão: selo dourado com a inicial */
 .profile-avatar.is-initial {
-    width: 112px;
+    width: 120px;
     aspect-ratio: 1;
     background: radial-gradient(circle at 50% 35%, #2a2116, var(--bg) 70%);
     border: 1px solid var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 0 5px var(--surface), 0 0 0 6px var(--line-strong), 0 0 34px rgba(var(--accent-rgb), 0.25);
+    box-shadow: 0 0 0 6px var(--surface), 0 0 0 7px var(--line-strong), 0 0 34px rgba(var(--accent-rgb), 0.25);
 }
 
 .profile-avatar.is-initial span {
     font-family: var(--font-display);
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 700;
     line-height: 1;
     background: linear-gradient(180deg, #fff3d6, var(--accent-bright) 45%, var(--accent) 75%, var(--accent-deep));
@@ -95,10 +121,18 @@
     color: transparent;
 }
 
+.profile-identity {
+    flex: 1;
+    min-width: 0;
+    padding-bottom: 4px;
+}
+
 .profile-name {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+    line-height: 1.1;
     overflow-wrap: anywhere;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 .profile-since {
@@ -107,34 +141,46 @@
     color: var(--muted);
 }
 
-.profile-character {
+.profile-hero-actions {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     align-items: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 22px;
-    padding-top: 18px;
+    gap: 10px;
+    padding-bottom: 4px;
+}
+
+.profile-edit-btn { white-space: nowrap; }
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0;
     border-top: 1px solid var(--line);
 }
 
-.profile-character-label {
-    font-family: var(--font-display);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
+.profile-stats > div {
+    padding: 14px 10px;
+    text-align: center;
 }
 
-.profile-edit-btn {
-    width: 100%;
-    margin-top: 22px;
+.profile-stats > div + div { border-left: 1px solid var(--line); }
+.profile-stats dt { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.profile-stats dd { margin: 4px 0 0; font-family: var(--font-display); font-size: 1.45rem; color: var(--title); }
+
+/* ----- Abas (só celular) ----- */
+.profile-tabs-mobile { display: none; }
+
+/* ----- Duas colunas ----- */
+.profile-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
 }
 
-/* ----- Centro ----- */
 .profile-main {
-    min-height: 420px;
+    min-height: 360px;
     padding: 24px clamp(20px, 3vw, 32px);
 }
 
@@ -165,8 +211,10 @@
 
 .feed-empty p { margin: 0; font-size: 1.02rem; }
 
-/* ----- Direita ----- */
+/* ----- Lateral ----- */
 .profile-aside {
+    position: sticky;
+    top: calc(var(--header-h, 76px) + 20px);
     display: grid;
     gap: 16px;
 }
@@ -174,6 +222,46 @@
 .aside-card { padding: 20px 22px; }
 
 .aside-card .profile-bio { font-size: 1.02rem; }
+
+/* Personagem: em breve */
+.profile-character {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background:
+        radial-gradient(90% 90% at 0% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+        var(--surface);
+}
+
+.character-silhouette {
+    flex-shrink: 0;
+    width: 52px;
+    height: 66px;
+    fill: rgba(var(--accent-rgb), 0.12);
+    stroke: rgba(var(--accent-rgb), 0.55);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+}
+
+.profile-character p {
+    margin: 0 0 12px;
+    font-size: 0.92rem;
+    color: var(--muted);
+}
+
+.soon-tag {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 14px;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px dashed rgba(var(--accent-rgb), 0.45);
+    border-radius: 999px;
+}
 
 .badge-list,
 .player-list {
@@ -211,12 +299,14 @@
 
 .badge-empty { font-size: 0.92rem; color: var(--muted); }
 
+/* Amigos em grade de 2 */
+.player-list { grid-template-columns: 1fr 1fr; gap: 6px; }
+
 .player-link {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     padding: 6px;
-    margin: -6px;
     color: var(--text);
     text-decoration: none;
     border-radius: var(--radius);
@@ -229,15 +319,15 @@
     flex-shrink: 0;
     display: grid;
     place-items: center;
-    width: 34px;
-    height: 40px;
+    width: 30px;
+    height: 36px;
 }
 
-.player-pic .crest { width: 34px; height: 40px; margin: 0; }
+.player-pic .crest { width: 30px; height: 36px; margin: 0; }
 
 .player-pic.is-initial {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     font-family: var(--font-display);
     font-weight: 700;
     color: var(--accent-bright);
@@ -250,28 +340,15 @@
     display: grid;
     min-width: 0;
     font-weight: 700;
-    overflow-wrap: anywhere;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .player-name small {
     font-weight: 400;
     font-size: 0.8rem;
     color: var(--muted);
-}
-
-/* Personagem: em breve */
-.soon-tag {
-    display: inline-block;
-    margin: 0;
-    padding: 5px 14px;
-    font-family: var(--font-display);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px dashed var(--line-strong);
-    border-radius: 999px;
 }
 
 /* ========== EDITAR PERFIL ========== */
@@ -530,25 +607,55 @@
 }
 
 /* ========== RESPONSIVO ========== */
-/* Tela média: Sobre/Insígnias/Novos jogadores vão para baixo do cartão (coluna da esquerda),
-   e as publicações ocupam a direita inteira (podem ser muitas). */
-@media (max-width: 1100px) {
-    .profile-layout {
-        grid-template-columns: 280px minmax(0, 1fr);
-        grid-template-areas: "hero main" "aside main";
-    }
-    .profile-hero { grid-area: hero; position: static; }
-    .profile-aside { grid-area: aside; }
-    .profile-main { grid-area: main; }
+/* Tela média: a lateral desce para baixo das publicações */
+@media (max-width: 1000px) {
+    .profile-layout { grid-template-columns: minmax(0, 1fr); }
+    .profile-aside { position: static; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); align-items: start; }
 }
 
-/* Celular: cartão → sobre/insígnias/novos jogadores → publicações por último */
+/* Celular: capa empilhada + abas Publicações | Sobre | Amigos */
 @media (max-width: 760px) {
-    .profile-layout {
-        grid-template-columns: 1fr;
-        grid-template-areas: "hero" "aside" "main";
+    .profile-hero-body { flex-direction: column; align-items: center; text-align: center; margin-top: -58px; gap: 12px; }
+    .profile-avatar { width: 104px; }
+    .profile-avatar.is-initial { width: 96px; }
+    .profile-avatar.is-initial span { font-size: 2.6rem; }
+    .profile-presence { justify-content: center; }
+    .profile-hero-actions { justify-content: center; width: 100%; }
+    .profile-hero-actions .btn,
+    .friend-action { width: 100%; }
+    .profile-stats { grid-template-columns: repeat(4, 1fr); }
+    .profile-stats > div { padding: 10px 4px; }
+    .profile-stats dt { font-size: 0.62rem; letter-spacing: 0.06em; }
+    .profile-stats dd { font-size: 1.15rem; }
+
+    .profile-tabs-mobile {
+        display: flex;
+        margin: 0 0 16px;
+        border-bottom: 1px solid var(--line);
     }
-    .profile-main { min-height: 0; }
+    .profile-tabs-mobile [role="tab"] {
+        flex: 1;
+        padding: 12px 6px;
+        font-family: var(--font-display);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        cursor: pointer;
+    }
+    .profile-tabs-mobile [role="tab"][aria-selected="true"] { color: var(--accent-bright); border-bottom-color: var(--accent); }
+
+    .profile-aside { grid-template-columns: 1fr; }
+    .profile-view[data-tab="posts"] [data-pane]:not([data-pane="posts"]),
+    .profile-view[data-tab="about"] [data-pane]:not([data-pane="about"]),
+    .profile-view[data-tab="friends"] [data-pane]:not([data-pane="friends"]) { display: none; }
+    .profile-main { min-height: 0; padding: 18px 16px; }
+    .profile-main .profile-column-title { display: none; }
     .feed-empty { padding: 44px 20px; }
 }
 
@@ -700,33 +807,49 @@
     outline-offset: 2px;
 }
 
-/* ========== AMIZADE NO PERFIL ========== */
+/* ========== AMIZADE NO PERFIL (botões na capa) ========== */
 .friend-action {
-    display: grid;
-    justify-items: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px 10px;
 }
 
-.friend-action .btn { width: 100%; }
 .friend-action .btn:disabled { cursor: default; opacity: 0.85; }
+
+.friend-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px 14px;
+    flex-basis: 100%;
+}
+
+.friend-links:not(:has(> :not([hidden]))) { display: none; }
 
 .friend-secondary {
     padding: 0;
     font: inherit;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     color: var(--muted);
     background: none;
     border: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .friend-secondary:hover { color: #e2685a; text-decoration: underline; }
+a.friend-secondary:hover { color: var(--accent-bright); }
 
-.friend-action .profile-msg { margin: 0; text-align: center; }
+.friend-action .profile-msg { flex-basis: 100%; margin: 0; text-align: right; }
 
-#myFriendsLink { margin-top: 10px; }
+@media (max-width: 760px) {
+    .friend-action,
+    .friend-links { justify-content: center; }
+    .friend-action .btn { flex: 1 1 160px; }
+    .friend-action .profile-msg { text-align: center; }
+}
 
 /* Interruptor da privacidade */
 .switch-row {
@@ -771,11 +894,10 @@
     border-color: var(--accent);
 }
 
-#friendMessage { width: 100%; }
 .friend-block { font-size: 0.82rem; }
 
 /* Online / visto por último (perfil de um amigo) */
-.profile-presence { margin: 4px 0 0; text-align: center; }
+.profile-presence { display: flex; align-items: center; margin: 6px 0 0; }
 .profile-presence.state-online::before, .profile-presence.state-busy::before, .profile-presence.state-dnd::before {
     content: '';
     display: inline-block;
@@ -794,3 +916,124 @@
 .status-row { display: grid; gap: 6px; margin-top: 16px; }
 .status-row small { font-size: 0.85rem; color: var(--muted); }
 .status-row .status-picker { margin-top: 4px; }
+
+/* ----- Privacidade e dados (Editar perfil) ----- */
+.data-docs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 0;
+    list-style: none;
+}
+.data-docs a {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid rgba(var(--accent-rgb), 0.35);
+    border-radius: 999px;
+}
+.data-docs a:hover { color: var(--accent-bright); background: rgba(var(--accent-rgb), 0.08); }
+
+.danger-zone {
+    margin-top: 22px;
+    padding: 18px 20px;
+    border: 1px solid rgba(226, 104, 90, 0.35);
+    border-radius: 8px;
+    background: rgba(226, 104, 90, 0.04);
+    scroll-margin-top: calc(var(--header-h, 76px) + 16px);
+}
+.danger-title { margin: 0 0 6px; font-size: 1rem; color: #f0a198; }
+.danger-zone p { margin: 0 0 12px; color: var(--text); }
+.danger-zone ul { margin: 0 0 14px; padding-left: 20px; color: var(--text); }
+.danger-zone li { margin-bottom: 4px; }
+.danger-zone li::marker { color: #e2685a; }
+.danger-sub { font-weight: 700; color: var(--title) !important; }
+.danger-panel { margin-top: 16px; }
+.danger-step { margin: 8px 0 12px; }
+#deleteForm { display: grid; gap: 8px; max-width: 420px; }
+#deleteForm[hidden] { display: none; }
+#deleteForm input {
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--title);
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+}
+#deleteForm input:focus { outline: none; border-color: #e2685a; box-shadow: 0 0 0 3px rgba(226, 104, 90, 0.18); }
+.danger-btn {
+    justify-self: start;
+    color: #fff;
+    background: #a8392c;
+    border: 1px solid transparent;
+}
+.danger-btn:hover:not(:disabled) { background: #c0392b; }
+.danger-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ========== CONTA: apelido, e-mail, responsável, código de recuperação, baixar dados ========== */
+.account-change {
+    margin: 14px 0 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface-2);
+}
+.account-change > summary {
+    padding: 12px 16px;
+    font-weight: 700;
+    color: var(--title);
+    cursor: pointer;
+    list-style: none;
+}
+.account-change > summary::-webkit-details-marker { display: none; }
+.account-change > summary::after { content: '▾'; float: right; color: var(--accent); transition: transform 0.2s; }
+.account-change[open] > summary::after { transform: rotate(180deg); }
+.account-change > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+.account-change .account-form,
+.account-change .profile-msg { margin-left: 16px; margin-right: 16px; }
+.account-change .profile-msg { margin-bottom: 14px; }
+.account-form { display: grid; gap: 8px; margin-bottom: 14px; }
+.account-form label { font-weight: 600; color: var(--title); }
+.account-form .form-hint { margin: 0; font-size: 0.86rem; color: var(--muted); }
+.account-form-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.account-form-row input {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--title);
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+}
+.account-form-row input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.18); }
+.account-form-row .btn[disabled] { opacity: 0.55; cursor: wait; }
+
+.guardian-block { border-color: rgba(var(--accent-rgb), 0.45); scroll-margin-top: calc(var(--header-h, 76px) + 16px); }
+.guardian-block .account-form { margin-top: 6px; }
+.recovery-block { scroll-margin-top: calc(var(--header-h, 76px) + 16px); }
+.recovery-show {
+    margin: 12px 0 16px;
+    padding: 16px;
+    border: 1px dashed var(--line-strong);
+    border-radius: 8px;
+    background: var(--bg);
+}
+.recovery-code {
+    display: block;
+    margin-bottom: 12px;
+    font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+    font-size: clamp(1.05rem, 4vw, 1.45rem);
+    letter-spacing: 0.12em;
+    color: var(--accent-bright);
+    user-select: all;
+    word-break: break-all;
+}
+.recovery-show .form-hint { margin: 10px 0 0; color: var(--muted); font-size: 0.86rem; }
+
+.data-export { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.data-export .danger-title { color: var(--title); }
+.data-export p { margin: 0 0 12px; color: var(--text); }
+.account-change + .profile-actions { margin-top: 18px; }

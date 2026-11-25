@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://qjpogjpmxbpuuclpdfhv.supabase.co; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://qjpogjpmxbpuuclpdfhv.supabase.co; connect-src 'self' https://qjpogjpmxbpuuclpdfhv.supabase.co wss://qjpogjpmxbpuuclpdfhv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="no-referrer">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
     <meta name="theme-color" content="#0c0b0a">
-    <title data-i18n="reportsPanel">Reports panel</title>
+    <title data-i18n="modPanelTitle">Moderation</title>
     <link rel="stylesheet" href="css/reset.css?v=2026112010">
-    <link rel="stylesheet" href="css/global.css?v=2026112093">
-    <link rel="stylesheet" href="css/comunidade.css?v=2026112093">
+    <link rel="stylesheet" href="css/global.css?v=2026112150">
+    <link rel="stylesheet" href="css/comunidade.css?v=2026112150">
+    <link rel="stylesheet" href="css/moderacao.css?v=2026112150">
 </head>
 <body>
     <div id="site-header"></div>
 
     <!-- Só funciona para admin com 2FA: quem decide é o banco (is_admin), não esta página. -->
-    <main class="community-page">
+    <main class="community-page mod-page">
         <p class="post-status" id="modStatus" data-i18n="loading">Loading...</p>
 
         <section id="modDenied" hidden>
@@ -27,20 +28,51 @@
 
         <section id="modWrap" hidden>
             <header class="community-head">
-                <h1 class="community-title" data-i18n="reportsPanel">Reports panel</h1>
-                <p class="community-sub" data-i18n="reportsPanelSub">Open reports from messages, posts and comments. Oldest first.</p>
+                <h1 class="community-title" data-i18n="modPanelTitle">Moderation</h1>
+                <p class="community-sub" data-i18n="modPanelSub">Reports, players, penalties and the record of every action.</p>
             </header>
-            <div class="post-list" id="modList"></div>
-            <p class="post-empty" id="modEmpty" hidden data-i18n="noReports">No open reports. All clear!</p>
+
+            <div class="mod-tabs" role="tablist">
+                <button type="button" role="tab" aria-selected="true" data-tab="denuncias" aria-controls="panelReports"><span data-i18n="modTabReports">Reports</span> <span class="tab-count is-alert" id="countReports"></span></button>
+                <button type="button" role="tab" aria-selected="false" tabindex="-1" data-tab="jogadores" aria-controls="panelPlayers"><span data-i18n="modTabPlayers">Players</span></button>
+                <button type="button" role="tab" aria-selected="false" tabindex="-1" data-tab="punidos" aria-controls="panelBans"><span data-i18n="modTabBans">Penalized</span> <span class="tab-count" id="countBans"></span></button>
+                <button type="button" role="tab" aria-selected="false" tabindex="-1" data-tab="historico" aria-controls="panelLog"><span data-i18n="modTabLog">History</span></button>
+            </div>
+
+            <section class="mod-panel" id="panelReports" data-panel="denuncias" role="tabpanel">
+                <p class="mod-hint" data-i18n="reportsPanelSub">Open reports from messages, posts and comments. Oldest first.</p>
+                <div class="post-list" id="modList"></div>
+                <p class="post-empty" id="modEmpty" hidden data-i18n="noReports">No open reports. All clear!</p>
+            </section>
+
+            <section class="mod-panel" id="panelPlayers" data-panel="jogadores" role="tabpanel" hidden>
+                <form class="mod-search" id="modSearchForm" role="search">
+                    <label class="sr-only" for="modSearch" data-i18n="modSearchLabel">Search player by nickname</label>
+                    <input id="modSearch" type="search" autocomplete="off" spellcheck="false" maxlength="20" data-i18n="modSearchLabel" placeholder="Search player by nickname">
+                    <ul class="mod-suggest" id="modSuggest" hidden></ul>
+                </form>
+                <div id="modSheet"></div>
+            </section>
+
+            <section class="mod-panel" id="panelBans" data-panel="punidos" role="tabpanel" hidden>
+                <div id="modBans"></div>
+            </section>
+
+            <section class="mod-panel" id="panelLog" data-panel="historico" role="tabpanel" hidden>
+                <p class="mod-hint" data-i18n="modLogHint">Every action is recorded here and cannot be edited or deleted from the site.</p>
+                <div id="modLog"></div>
+                <button type="button" class="post-btn mod-more" id="modLogMore" hidden data-i18n="loadMorePosts">Load more</button>
+            </section>
         </section>
     </main>
 
     <div id="site-footer"></div>
 
-    <script src="js/layout.js?v=2026112093"></script>
-    <script src="js/langSwitcher.js?v=2026112093"></script>
+    <script src="js/layout.js?v=2026112150"></script>
+    <script src="js/langSwitcher.js?v=2026112150"></script>
     <script src="js/vendor/supabase.js?v=2.118.0"></script>
-    <script src="js/auth.js?v=2026112093"></script>
-    <script src="js/moderacao.js?v=2026112040"></script>
+    <script src="js/auth.js?v=2026112150"></script>
+    <script src="js/crests.js?v=2026112017"></script>
+    <script src="js/moderacao.js?v=2026112150"></script>
 </body>
 </html>
